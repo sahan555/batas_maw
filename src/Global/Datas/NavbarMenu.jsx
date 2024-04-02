@@ -33,6 +33,6 @@ export const NavbarMenu = [
   },
   {
     title: "CONTACT",
-    slug: "/contact",
+    slug: "/branches",
   },
 ];
