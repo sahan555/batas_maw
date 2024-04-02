@@ -18,13 +18,79 @@
 }
 
 @layer utilities {
-.navbar-bottom .navbar-group .active {
+  .section-break {
+    @apply py-16
+  }
+
+  .heading {
+    @apply text-black font-medium text-2xl uppercase
+  }
+
+  .navbar-bottom .navbar-group .active {
     @apply text-white relative z-0;
   }
 
   .navbar-bottom .navbar-group .active::before {
-    @apply bg-primary text-white absolute content-[''] inset-0 -z-[1]  transform -skew-x-[20deg];
+    @apply bg-primary text-white absolute content-[''] inset-0 -z-[1] transform -skew-x-[20deg];
+  }
 
+  .hero-slider .slick-dots {
+    @apply bottom-8;
+
+    li {
+      @apply w-[60px] h-2 mx-3;
+
+      &.slick-active {
+        button::before {
+          @apply bg-primary opacity-100;
+        }
+      }
+
+      button {
+        @apply w-full h-full;
+
+        &::before {
+          @apply bg-white content-[''] opacity-100 w-full h-full transform -skew-x-[30deg] shadow-md;
+        }
+      }
+    }
+  }
+
+  .products-tab .react-tabs__tab--selected {
+    @apply text-primary underline
+  }
+
+  .product-slider {
+    .slick-slide {
+      padding: 0 12px;
+    }
+
+    .slick-list {
+      margin: 0 -12px;
+    }
+
+    .slick-dots {
+
+      li {
+        @apply w-[13px] h-[10px] mx-2 transition-[width] duration-700 ease-in-out;
+
+        &.slick-active {
+          @apply w-[40px];
+
+          button::before {
+            @apply bg-primary opacity-100;
+          }
+        }
+
+        button {
+          @apply w-full h-full;
+
+          &::before {
+            @apply bg-gray-400 bg-opacity-30 content-[''] opacity-100 w-full h-full rounded-full ;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -41,17 +107,18 @@ body {
   margin: 0 auto;
   overflow-x: hidden;
 }
+
 a {
-    text-decoration: none;
-    transition: 0.3s all ease-in-out;
+  text-decoration: none;
+  transition: 0.3s all ease-in-out;
 }
 
 figure {
-    overflow: hidden;
-    margin-bottom: 0;
+  overflow: hidden;
+  margin-bottom: 0;
 
-    img {
-        height: 100%;
-        width: 100%;
-    }
+  img {
+    height: 100%;
+    width: 100%;
+  }
 }

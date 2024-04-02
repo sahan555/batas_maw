@@ -8,16 +8,17 @@ const HeroSection = () => {
     dots: true,
     arrows: false,
     infinite: false,
+    autoplay:true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
   return (
     <section className="hero-section relative">
-      <div className="hero-slider">
-        <Slider {...heroSilder}>
+      <div className="hero-slider-wrapper">
+        <Slider {...heroSilder} className="hero-slider">
           <div>
-            <figure className=" h-[700px]">
+            <figure className=" h-[600px]">
               <img
                 src="./assets/images/hero/1.png"
                 className="object-cover object-center"
@@ -26,7 +27,7 @@ const HeroSection = () => {
             </figure>
           </div>
           <div>
-            <figure className=" h-[700px]">
+            <figure className=" h-[600px]">
               <img
                 src="./assets/images/hero/1.png"
                 className="object-cover object-center"
@@ -35,7 +36,7 @@ const HeroSection = () => {
             </figure>
           </div>
           <div>
-            <figure className=" h-[700px]">
+            <figure className=" h-[600px]">
               <img
                 src="./assets/images/hero/1.png"
                 className="object-cover object-center"
@@ -44,7 +45,7 @@ const HeroSection = () => {
             </figure>
           </div>
           <div>
-            <figure className=" h-[700px]">
+            <figure className=" h-[600px]">
               <img
                 src="./assets/images/hero/1.png"
                 className="object-cover object-center"
@@ -53,7 +54,7 @@ const HeroSection = () => {
             </figure>
           </div>
           <div>
-            <figure className=" h-[700px]">
+            <figure className=" h-[600px]">
               <img
                 src="./assets/images/hero/1.png"
                 className="object-cover object-center"
@@ -62,7 +63,7 @@ const HeroSection = () => {
             </figure>
           </div>
           <div>
-            <figure className=" h-[700px]">
+            <figure className=" h-[600px]">
               <img
                 src="./assets/images/hero/1.png"
                 className="object-cover object-center"
@@ -71,7 +72,7 @@ const HeroSection = () => {
             </figure>
           </div>
           <div>
-            <figure className=" h-[700px]">
+            <figure className=" h-[600px]">
               <img
                 src="./assets/images/hero/1.png"
                 className="object-cover object-center"
@@ -80,6 +81,11 @@ const HeroSection = () => {
             </figure>
           </div>
         </Slider>
+        <div className="hero-desc bg-light-grey -mt-1.5 py-8">
+            <div className="container mx-auto">
+                <h2 className="text-xl text-secondary font-medium leading-8"><b className="text-primary font-medium">BATASMAW</b> Commercial Vehicles, established in 2023, is Nepal's premier distributor for Volvo-Eicher commercial vehicles, boasting over 4500 sales, a widespread national presence, and market leadership in both light and heavy segments.</h2>
+            </div>
+        </div>
       </div>
       <div className="container absolute inset-x-0 top-9 mx-auto flex justify-end pointer-events-none">
         <figure className="w-full max-w-[330px] bg-white bg-opacity-40 px-5 py-3">
