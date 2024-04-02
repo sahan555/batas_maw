@@ -1,7 +1,14 @@
 import React from "react";
+import HeroSection from "../Component/Home/HeroSection";
 
 const Homepage = () => {
-  return <div className="container flex justify-center">Homepage</div>;
+  return (
+    <>
+    <main className="home">
+      <HeroSection/>
+    </main>
+    </>
+  );
 };
 
 export default Homepage;

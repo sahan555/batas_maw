@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply text-black
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+}
+
+@layer utilities {
+.navbar-bottom .navbar-group .active {
+    @apply text-white relative z-0;
+  }
+
+  .navbar-bottom .navbar-group .active::before {
+    @apply bg-primary text-white absolute content-[''] inset-0 -z-[1]  transform -skew-x-[20deg];
+
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -9,9 +35,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  max-width: 2000px;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+a {
+    text-decoration: none;
+    transition: 0.3s all ease-in-out;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+figure {
+    overflow: hidden;
+    margin-bottom: 0;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
 }
