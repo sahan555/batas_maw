@@ -3,6 +3,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { SubMenu } from "../../Global/Datas/SubMenu";
 import ProductCard from "../Global/ProductCard";
 import Slider from "react-slick";
+import Button from "../Global/Button";
+import Buttons from "../Global/Button";
+import { Link } from "react-router-dom";
 
 const ProductsTab = () => {
   var ProductSlider = {
@@ -21,7 +24,7 @@ const ProductsTab = () => {
           <h2 className="heading">products</h2>
           <div className="products-tab">
             <Tabs>
-              <div className="tab-headings transfrom  flex -skew-x-[20deg] flex-row flex-wrap items-center justify-between bg-light-grey bg-opacity-50 mx-[9px] mb-5">
+              <div className="tab-headings transfrom  mx-[9px] mb-5 flex -skew-x-[20deg] flex-row flex-wrap items-center justify-between bg-light-grey bg-opacity-50">
                 <h4 className="transfrom before:transfrom relative z-0  skew-x-[20deg] px-20 py-2.5 text-white before:absolute before:inset-0 before:-z-[1] before:-skew-x-[20deg] before:bg-primary before:content-[''] ">
                   Featured
                 </h4>
@@ -36,7 +39,7 @@ const ProductsTab = () => {
                   ))}
                 </TabList>
               </div>
-              <div className="tab-content">
+              <div className="tab-content pb-10">
                 {
                   // Using a for loop to iterate over items
                   (() => {
@@ -103,6 +106,15 @@ const ProductsTab = () => {
                 }
               </div>
             </Tabs>
+          </div>
+          <div></div>
+          <div className="btn-wrapper text-center pt-6">
+            <Link
+              className="inline-block btn-transparent skew-btn px-8 py-2 text-primary before:border-primary hover:text-white hover:before:bg-primary"
+              to="/"
+            >
+              View All Products
+            </Link>
           </div>
         </div>
       </section>

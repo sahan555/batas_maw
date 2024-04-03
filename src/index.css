@@ -15,9 +15,27 @@
     @apply text-xl;
   }
 
+  @font-face {
+    font-family: 'hermes';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(./../public/assets/fonts/hermes-fb.otf) format('otf');
+  }
 }
 
 @layer utilities {
+  .skew-btn {
+    @apply before:-skew-x-[20deg] before:transform
+  }
+
+  .btn-full {
+    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] text-white transition-all ease-linear duration-300 ;
+  }
+  .btn-transparent {
+    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] before:border before:border-solid  transition-all ease-linear duration-300;
+  }
+
   .section-break {
     @apply py-16
   }
@@ -70,9 +88,10 @@
     }
 
     .slick-dots {
+      bottom: -30px;
 
       li {
-        @apply w-[13px] h-[10px] mx-2 transition-[width] duration-700 ease-in-out;
+        @apply w-[13px] h-[10px] mx-2 transition-[width] duration-1000 ease-in-out;
 
         &.slick-active {
           @apply w-[40px];
@@ -86,10 +105,46 @@
           @apply w-full h-full;
 
           &::before {
-            @apply bg-gray-400 bg-opacity-30 content-[''] opacity-100 w-full h-full rounded-full ;
+            @apply bg-gray-400 bg-opacity-30 content-[''] opacity-100 w-full h-full rounded-full;
           }
         }
       }
+    }
+  }
+  .news-slider {
+    .slick-dots {
+      bottom: 48%;
+      left: -30%;
+      right: auto;
+
+      li {
+        @apply w-[13px] h-[10px] mx-2 transition-[width] duration-1000 ease-in-out;
+
+        &.slick-active {
+          @apply w-[40px];
+
+          button::before {
+            @apply bg-primary ;
+          }
+        }
+
+        button {
+          @apply w-full h-full;
+
+          &::before {
+            @apply bg-white bg-opacity-100 content-[''] opacity-100 w-full h-full rounded-full ;
+          }
+        }
+      }
+    }
+  }
+  .news-section .event-group {
+    height: calc(100% - 6.5px);
+    &::before {
+      height:100%;
+      width: 120%;
+      /* right: 0; */
+      left: -6%;
     }
   }
 }
