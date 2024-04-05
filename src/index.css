@@ -29,11 +29,70 @@
     @apply before:-skew-x-[20deg] before:transform
   }
 
-  .btn-full {
-    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] text-white transition-all ease-linear duration-300 ;
+  .skew-image {
+    clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+
   }
+
+  .stripe-wrapper {
+    @apply relative bg-black bg-opacity-10;
+
+    &::before {
+      @apply absolute content-[''] inset-0 w-[50px] left-full right-auto;
+      clip-path: polygon(0 0, 0% 100%, 27% 0);
+
+    }
+  }
+
+  .stripe-wrapper-opp {
+    @apply relative bg-black bg-opacity-10;
+
+    &::before {
+      @apply absolute content-[''] inset-0 w-[50px] right-full left-auto;
+      clip-path: polygon(100% 0, 100% 100%, 73% 0);
+    }
+  }
+
+  .stripe {
+    @apply relative;
+
+    &::before,
+    &::after {
+      @apply absolute content-[''] bg-white transform -skew-x-12 w-[20px] h-full top-0 bottom-0;
+    }
+
+    &::before {
+      @apply right-5;
+    }
+
+    &::after {
+      @apply right-[50px];
+    }
+  }
+
+  .stripe-opp {
+    @apply relative;
+
+    &::before,
+    &::after {
+      @apply absolute content-[''] bg-white transform skew-x-12 w-[20px] h-full top-0 bottom-0;
+    }
+
+    &::before {
+      @apply left-5;
+    }
+
+    &::after {
+      @apply left-[50px];
+    }
+  }
+
+  .btn-full {
+    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] text-white transition-all ease-linear duration-300;
+  }
+
   .btn-transparent {
-    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] before:border before:border-solid  transition-all ease-linear duration-300;
+    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] before:border before:border-solid transition-all ease-linear duration-300;
   }
 
   .section-break {
@@ -111,6 +170,7 @@
       }
     }
   }
+
   .news-slider {
     .slick-dots {
       bottom: 48%;
@@ -124,7 +184,7 @@
           @apply w-[40px];
 
           button::before {
-            @apply bg-primary ;
+            @apply bg-primary;
           }
         }
 
@@ -132,20 +192,33 @@
           @apply w-full h-full;
 
           &::before {
-            @apply bg-white bg-opacity-100 content-[''] opacity-100 w-full h-full rounded-full ;
+            @apply bg-white bg-opacity-100 content-[''] opacity-100 w-full h-full rounded-full;
           }
         }
       }
     }
   }
+
   .news-section .event-group {
     height: calc(100% - 6.5px);
+
     &::before {
-      height:100%;
-      width: 120%;
-      /* right: 0; */
-      left: -6%;
+      height: 100%;
+      right: calc(99% + 7px);
+      left: auto;
+      z-index: 1;
+      width: 100%;
     }
+  }
+
+  .testimonals-section .slick-list,.gallery-slider .slick-list{
+    overflow: visible;
+    overflow-x: clip;
+  }
+
+  .clip-pol {
+    &::before {
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 89% 100%);    }
   }
 }
 

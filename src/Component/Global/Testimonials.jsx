@@ -1,40 +1,73 @@
 import React from "react";
 import Slider from "react-slick";
+import { testiData } from "../../Global/Datas/HomeData";
 
-const Testimonials = () => {
+const Testimonials = ({ right }) => {
   var testiSlider = {
     dots: false,
     arrows: true,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
   return (
     <section className="testimonals-section">
-      <div className="container mx-auto">
-        <div className="heading-wrapper">
-          <h2 className="heading">Testimonials</h2>
+      <div className="mx-auto w-full">
+        <div
+          className={`heading-wrapper stripe-wrapper mb-3 max-w-[900px] before:bg-black before:bg-opacity-10 ${right === true ? "stripe-wrapper-opp ml-auto" : ""}`}
+        >
+          <h2
+            className={`heading stripe flex items-center gap-4 py-1 pl-[20%] uppercase ${right === true ? "stripe-opp justify-end pl-0 pr-[20%]" : ""}`}
+          >
+            <img
+              src="./assets/images/quote.svg"
+              alt="Testimonials"
+              className={`h-[50px] w-[50px] object-contain object-center ${right === true ? "order-2" : ""}`}
+              style={{ transform: right === true ? 'rotateY(180deg)' : '' }}
+            />
+            Testimonials
+          </h2>
         </div>
-        <Slider {...testiSlider}>
-          <div>
-            <div className="client-box">
-              <div className="client-content">
-                <article>
-                  <h4></h4>
-                  <p></p>
-                </article>
-                <div className="client-testi">
-                  <p></p>
+      </div>
+      <div className="bg-black bg-opacity-10 pb-20">
+        <div className="container mx-auto">
+          <Slider {...testiSlider}>
+            {testiData.map((item, index) => (
+              <div key={index}>
+                <div className="client-box grid grid-cols-7">
+                  <div
+                    className={`col-span-4 ${right === true ? "order-2" : ""}`}
+                  >
+                    <div className="client-content flex h-full flex-col flex-wrap justify-center">
+                      <article>
+                        <h4 className="mb-1 font-medium uppercase">
+                          {item.name}
+                        </h4>
+                        <p className="mb-5 font-medium uppercase text-grey">
+                          {item.post}
+                        </p>
+                      </article>
+                      <div className="client-testi">
+                        <p>{item.testi}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-3">
+                    <figure className="skew-image -mt-20 ml-20 h-[341px] max-w-[512px] shadow-md">
+                      <img
+                        src={item.img}
+                        alt={item.name}
+                        className="object-cover object-center"
+                      />
+                    </figure>
+                  </div>
                 </div>
               </div>
-              <figure>
-                <img src="" alt="" />
-              </figure>
-            </div>
-          </div>
-        </Slider>
+            ))}
+          </Slider>
+        </div>
       </div>
     </section>
   );

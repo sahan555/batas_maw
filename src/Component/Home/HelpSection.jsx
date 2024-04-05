@@ -21,8 +21,8 @@ const HelpSection = () => {
                       <div className="flex flex-wrap justify-between font-medium capitalize ">
                         <div className="help-number">
                             <ul>
-                          {item.number.map((number) => (
-                            <li className="flex items-center [&:not(:last-child)]:mb-2">
+                          {item.number.map((number,index) => (
+                            <li key={index} className="flex items-center [&:not(:last-child)]:mb-2">
                               <span className="mr-2 text-primary">{number.icon}</span>
                               {number.name}
                               <a href={`tel:${number.phone}`} className="ml-2 hover:text-primary">{number.phone}</a>

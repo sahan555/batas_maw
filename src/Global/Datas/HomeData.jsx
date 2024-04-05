@@ -97,3 +97,47 @@ export const clientData = [
     img: "./assets/images/clients/5.png",
   },
 ];
+
+export const testiData =[
+  {
+    name:'mr. john cha',
+    post:'CEO of auto mobile enterprise ',
+    testi:'lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ',
+    img:'./assets/images/testi/1.jfif',
+  },
+  {
+    name:'mr. john ji',
+    post:'CEO of auto mobile enterprise ',
+    testi:'lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ',
+    img:'./assets/images/testi/1.jfif',
+  },
+  {
+    name:'mr. john chha',
+    post:'CEO of auto mobile enterprise ',
+    testi:'lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ',
+    img:'./assets/images/testi/1.jfif',
+  },
+  {
+    name:'mr. john doe',
+    post:'CEO of auto mobile enterprise ',
+    testi:'lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ',
+    img:'./assets/images/testi/1.jfif',
+  },
+]
+export const galleryData =[
+  {
+    img:'./assets/images/product/1.png',
+  },
+  {
+    img:'./assets/images/product/2.png',
+  },
+  {
+    img:'./assets/images/product/3.png',
+  },
+  {
+    img:'./assets/images/product/4.png',
+  },
+  {
+    img:'./assets/images/product/1.png',
+  },
+]

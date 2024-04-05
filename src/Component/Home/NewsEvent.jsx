@@ -57,9 +57,9 @@ const NewsEvent = () => {
             </div>
           </div>
           <div className="col-span-2">
-            <div className="event-group skew-btn relative z-0 p-8 before:absolute before:inset-0 before:z-[-1] before:skew-x-[-10deg] before:bg-light-grey before:content-[''] ">
+            <div className="event-group  relative z-0 p-8 before:absolute before:inset-0 before:z-[-1]  bg-light-grey before:content-[''] clip-pol before:bg-light-grey  ">
               <h3 className="flex items-center justify-between text-xl uppercase mb-10">
-                upcoming events{" "}
+                upcoming events
                 <Link
                   to="/"
                   className="skew-btn btn-full px-8 py-2 before:bg-primary hover:opacity-90 text-sm"
@@ -86,8 +86,8 @@ const NewsEvent = () => {
                     </h6>
                     <p className="font-medium italic text-sm">{item.title}</p>
                   </article>
-                  <figure className="-skew-x-[20deg] overflow-visible max-h-20 max-w-40">
-                    <img  className="skew-x-[10deg] object-cover object-center" src={item.img} alt={item.title} />
+                  <figure className="skew-image max-h-20 max-w-40">
+                    <img  className="object-cover object-center" src={item.img} alt={item.title} />
                   </figure>
                 </div>
               ))}

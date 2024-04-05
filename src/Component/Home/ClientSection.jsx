@@ -13,7 +13,7 @@ const ClientSection = () => {
     slidesToScroll: 1,
   };
   return (
-    <section className="h-clients section-break text-center !pt-20">
+    <section className="h-clients  text-center !pt-20 pb-24">
       <div className="container mx-auto">
         <article className="mb-16">
           <h2 className="heading mb-4">Our Clients</h2>

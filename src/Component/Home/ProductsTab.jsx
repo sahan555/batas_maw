@@ -3,8 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { SubMenu } from "../../Global/Datas/SubMenu";
 import ProductCard from "../Global/ProductCard";
 import Slider from "react-slick";
-import Button from "../Global/Button";
-import Buttons from "../Global/Button";
 import { Link } from "react-router-dom";
 
 const ProductsTab = () => {
@@ -110,7 +108,7 @@ const ProductsTab = () => {
           <div></div>
           <div className="btn-wrapper text-center pt-6">
             <Link
-              className="inline-block btn-transparent skew-btn px-8 py-2 text-primary before:border-primary hover:text-white hover:before:bg-primary"
+              className="inline-block btn-transparent skew-btn px-8 py-2 text-primary before:border-primary hover:text-white hover:before:bg-primary uppercase"
               to="/"
             >
               View All Products

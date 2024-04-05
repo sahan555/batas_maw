@@ -5,9 +5,10 @@ import { lazy } from "react";
 import Loading from "./Component/Global/Loading";
 import Error from "./Pages/Error";
 import Navbar from "./Component/Navbar/Navbar";
+import Homepage from "./Pages/Homepage";
 
 const App = () => {
-  const Homepage = lazy(() => import('./Pages/Homepage'));
+  // const Homepage = lazy(() => import('./Pages/Homepage'));
 
   return (
     <>
