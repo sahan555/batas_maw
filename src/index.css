@@ -70,6 +70,10 @@
     }
   }
 
+  .error {
+    @apply border-red-500;
+  }
+
   .stripe-opp {
     @apply relative;
 
@@ -211,14 +215,30 @@
     }
   }
 
-  .testimonals-section .slick-list,.gallery-slider .slick-list{
+  .testimonals-section .slick-list,
+  .gallery-slider .slick-list {
     overflow: visible;
     overflow-x: clip;
   }
 
   .clip-pol {
     &::before {
-      clip-path: polygon(100% 0, 100% 0, 100% 100%, 89% 100%);    }
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 89% 100%);
+    }
+  }
+
+  .accordion {
+    .accordion-panel {
+      font-weight: 500;
+
+    }
+
+    .accordion-title {
+      &.active {}
+    }
+
+    .accordion-content {}
+
   }
 }
 

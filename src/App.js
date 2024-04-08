@@ -6,6 +6,7 @@ import Loading from "./Component/Global/Loading";
 import Error from "./Pages/Error";
 import Navbar from "./Component/Navbar/Navbar";
 import Homepage from "./Pages/Homepage";
+import Footer from "./Component/Footer/Footer";
 
 const App = () => {
   // const Homepage = lazy(() => import('./Pages/Homepage'));
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="*" element={<Error />} />
         </Routes>
       </Suspense>
+      <Footer/>
     </>
   );
 };

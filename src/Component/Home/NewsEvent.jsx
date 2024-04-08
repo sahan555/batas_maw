@@ -67,7 +67,7 @@ const NewsEvent = () => {
                   View all events
                 </Link>
               </h3>
-              {eventDatas.slice(0, 3).map((item, index) => (
+              {eventDatas?.slice(0, 3).map((item, index) => (
                 <div
                   className="event-box flex gap-3 [&:not(:last-child)]:mb-10"
                   style={{

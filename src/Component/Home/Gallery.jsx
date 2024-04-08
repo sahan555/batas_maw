@@ -35,7 +35,7 @@ const Gallery = () => {
 
   return (
     <>
-    <section className="gallery-section bg-light-grey pt-4">
+    <section className="gallery-section bg-light-grey pt-4 pb-12">
       <div className="pswp-gallery" id="gallery">
         <Slider {...gallerySliderSettings} className="gallery-slider">
           {galleryData.map((item, index) => (

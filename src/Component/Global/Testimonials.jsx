@@ -1,16 +1,20 @@
 import React from "react";
 import Slider from "react-slick";
 import { testiData } from "../../Global/Datas/HomeData";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Testimonials = ({ right }) => {
   var testiSlider = {
     dots: false,
     arrows: true,
-    infinite: true,
+    infinite: false,
     autoplay: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <IoIosArrowForward className="text-primary" />,
+    prevArrow: <IoIosArrowBack  className="fill-primary"/>
+    ,
   };
   return (
     <section className="testimonals-section">
@@ -25,7 +29,7 @@ const Testimonials = ({ right }) => {
               src="./assets/images/quote.svg"
               alt="Testimonials"
               className={`h-[50px] w-[50px] object-contain object-center ${right === true ? "order-2" : ""}`}
-              style={{ transform: right === true ? 'rotateY(180deg)' : '' }}
+              style={{ transform: right === true ? "rotateY(180deg)" : "" }}
             />
             Testimonials
           </h2>

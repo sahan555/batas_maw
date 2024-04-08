@@ -32,7 +32,7 @@ const Navbar = () => {
               <div className="top-contact">
                 <ul className="flex flex-wrap gap-6 text-grey ">
                   <li className="flex flex-wrap items-center">
-                    <MdLocalPhone className="mr-2 text-lg" />
+                    <MdLocalPhone className="mr-2 text-lg text-primary" />
                     <a href="#!" className="mr-2 inline-block hover:text-primary">
                       01 - 4520025
                     </a>
@@ -49,12 +49,12 @@ const Navbar = () => {
                       9802311655
                     </a>
                   </li>
-                  <li>
+                  <li className="flex  flex-wrap items-center">
+                    <MdOutlineMailOutline className="mr-2 mt-[2px] text-lg text-primary" />
                     <a
                       href="mailto:info@batasmaw.com"
                       className="flex flex-wrap items-center"
                     >
-                      <MdOutlineMailOutline className="mr-2 mt-[2px] text-lg" />
                       <span className=" hover:text-primary">info@batasmaw.com</span>
                     </a>
                   </li>
