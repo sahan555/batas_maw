@@ -4,6 +4,19 @@ import { testiData } from "../../Global/Datas/HomeData";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Testimonials = ({ right }) => {
+  const CustomPrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div onClick={onClick}><IoIosArrowBack className="text-primary slick-arrow slick-prev" /></div>
+    );
+  };
+  
+  const CustomNextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div onClick={onClick}><IoIosArrowForward className="text-primary slick-arrow slick-next" /></div>
+    );
+  };
   var testiSlider = {
     dots: false,
     arrows: true,
@@ -12,10 +25,10 @@ const Testimonials = ({ right }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <IoIosArrowForward className="text-primary" />,
-    prevArrow: <IoIosArrowBack  className="fill-primary"/>
-    ,
-  };
+    nextArrow: <CustomNextArrow/>,
+    prevArrow: <CustomPrevArrow/>,
+  }
+  
   return (
     <section className="testimonals-section">
       <div className="mx-auto w-full">
@@ -53,7 +66,7 @@ const Testimonials = ({ right }) => {
                           {item.post}
                         </p>
                       </article>
-                      <div className="client-testi">
+                      <div className="client-testi text-grey">
                         <p>{item.testi}</p>
                       </div>
                     </div>

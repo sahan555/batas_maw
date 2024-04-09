@@ -7,7 +7,7 @@ const HeroSection = () => {
   var heroSilder = {
     dots: true,
     arrows: false,
-    infinite: false,
+    infinite: true,
     autoplay:true,
     speed: 500,
     slidesToShow: 1,
@@ -81,7 +81,7 @@ const HeroSection = () => {
             </figure>
           </div>
         </Slider>
-        <div className="hero-desc bg-light-grey -mt-1.5 py-8">
+        <div className="hero-desc bg-light-grey -mt-1.5 py-8 text-center stripe before:w-[50px] after:w-[50px] after:right-[90px]">
             <div className="container mx-auto">
                 <h2 className="text-xl text-secondary font-medium leading-8"><b className="text-primary font-medium">BATASMAW</b> Commercial Vehicles, established in 2023, is Nepal's premier distributor for Volvo-Eicher commercial vehicles, boasting over 4500 sales, a widespread national presence, and market leadership in both light and heavy segments.</h2>
             </div>

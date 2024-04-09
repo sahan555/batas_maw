@@ -7,6 +7,7 @@ import Error from "./Pages/Error";
 import Navbar from "./Component/Navbar/Navbar";
 import Homepage from "./Pages/Homepage";
 import Footer from "./Component/Footer/Footer";
+import Vehicles from "./Pages/Vehicles";
 
 const App = () => {
   // const Homepage = lazy(() => import('./Pages/Homepage'));
@@ -17,6 +18,7 @@ const App = () => {
       <Suspense fallback={<Loading/>}>
         <Routes>
           <Route exact path="/" element={<Homepage />} />
+          <Route path="/vehicles" element={<Vehicles />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Suspense>

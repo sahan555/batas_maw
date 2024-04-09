@@ -4,6 +4,7 @@ import { SubMenu } from "../../Global/Datas/SubMenu";
 import ProductCard from "../Global/ProductCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import { productData } from "../../Global/Datas/HomeData";
 
 const ProductsTab = () => {
   var ProductSlider = {
@@ -27,9 +28,9 @@ const ProductsTab = () => {
                   Featured
                 </h4>
                 <TabList className="transfrom flex skew-x-[20deg]">
-                  {SubMenu.map((item, index) => (
+                  {SubMenu.map((item) => (
                     <Tab
-                      key={index}
+                      key={item.id}
                       className="cursor-pointer px-4 font-medium uppercase last:pr-8 focus:outline-none"
                     >
                       {item.name}
@@ -44,57 +45,17 @@ const ProductsTab = () => {
                     const jsxElements = [];
                     for (let i = 0; i < SubMenu.length; i++) {
                       jsxElements.push(
-                        <TabPanel>
+                        <TabPanel key={i}>
                           <Slider {...ProductSlider} className="product-slider">
-                            <div>
-                              <ProductCard
-                                heading={true}
-                                title="PRO 1049 C FSD"
-                                image="./assets/images/product/1.png"
-                              />
-                            </div>
-                            <div>
-                              <ProductCard
-                                heading={true}
-                                title="PRO 1059 C HSD"
-                                image="./assets/images/product/2.png"
-                              />
-                            </div>
-                            <div>
-                              <ProductCard
-                                heading={true}
-                                title="PRO 1055 C DSD"
-                                image="./assets/images/product/3.png"
-                              />
-                            </div>
-                            <div>
-                              <ProductCard
-                                heading={true}
-                                title="PRO 1114 XP TRUCK"
-                                image="./assets/images/product/4.png"
-                              />
-                            </div>
-                            <div>
-                              <ProductCard
-                                heading={true}
-                                title="PRO 1049 C FSD"
-                                image="./assets/images/product/1.png"
-                              />
-                            </div>
-                            <div>
-                              <ProductCard
-                                heading={true}
-                                title="PRO 1059 C HSD"
-                                image="./assets/images/product/2.png"
-                              />
-                            </div>
-                            <div>
-                              <ProductCard
-                                heading={true}
-                                title="PRO 1055 C DSD"
-                                image="./assets/images/product/3.png"
-                              />
-                            </div>
+                            {productData.map((item, index) => (
+                              <div key={index}>
+                                <ProductCard
+                                  heading={true}
+                                  title={item.title}
+                                  image={item.multiImg[0].img}
+                                />
+                              </div>
+                            ))}
                           </Slider>
                         </TabPanel>,
                       );
@@ -106,9 +67,9 @@ const ProductsTab = () => {
             </Tabs>
           </div>
           <div></div>
-          <div className="btn-wrapper text-center pt-6">
+          <div className="btn-wrapper pt-6 text-center">
             <Link
-              className="inline-block btn-transparent skew-btn px-8 py-2 text-primary before:border-primary hover:text-white hover:before:bg-primary uppercase"
+              className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
               to="/"
             >
               View All Products

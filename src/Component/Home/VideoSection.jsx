@@ -7,7 +7,7 @@ const VideoSection = () => {
       <div className="container mx-auto">
         <div className="heading-wrapper pb-[50px] text-center">
           <h2 className="heading mb-2">videos</h2>
-          <p className=" mx-auto max-w-[900px] font-medium">
+          <p className=" mx-auto max-w-[850px] text-grey">
             lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum
             dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit
             amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,

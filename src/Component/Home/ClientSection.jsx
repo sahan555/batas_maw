@@ -17,7 +17,7 @@ const ClientSection = () => {
       <div className="container mx-auto">
         <article className="mb-16">
           <h2 className="heading mb-4">Our Clients</h2>
-          <p className="text-black font-medium max-w-[900px] mx-auto">
+          <p className="text-grey font-medium max-w-[900px] mx-auto">
             lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum
             dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit
             amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,

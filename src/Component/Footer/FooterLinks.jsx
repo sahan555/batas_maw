@@ -2,21 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const FooterLinks = ({ title, data, showList, className }) => {
-  console.log(data);
-
   return (
     <div className={`footer-links mb-[30px] ${className}`}>
       {title && (
-        <h4 className="relative mb-2 inline-block pb-0.5 pr-3 font-medium uppercase before:absolute before:bottom-0 before:left-0 before:right-0 before:h-[1px] before:bg-green before:content-['']">
+        <h4 className="relative mb-2 inline-block pb-0.5 pr-3 text-base font-medium uppercase before:absolute before:bottom-0 before:left-0 before:right-0 before:h-[1px] before:bg-green before:content-['']">
           {title}
         </h4>
       )}
       <ul>
         {data?.slice(0, showList)?.map((item, index) => (
-          <li className="mb-3 uppercase " key={index}>
+          <li className="mb-3 uppercase text-[rgba(240,_240,_240,_0.75)]" key={index}>
             <Link
               to={item.slug}
-              className={`hover:underline ${title === false ? "relative inline-block pb-0.5 pr-3 font-medium before:absolute before:bottom-0 before:left-0 before:right-0 before:h-[1px] before:bg-green before:content-[''] hover:pr-5 hover:no-underline" : ""}`}
+              className={`hover:underline ${title === false ? "text-white relative inline-block pb-0.5 pr-3 text-base before:absolute before:bottom-0 before:left-0 before:right-0 before:h-[1px] before:bg-green before:content-[''] hover:pr-5 hover:no-underline" : ""}`}
             >
               {item.name}
             </Link>

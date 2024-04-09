@@ -22,10 +22,9 @@ import {
 import { IoLogoWhatsapp } from "react-icons/io";
 
 const Footer = () => {
-  console.log(extralink);
   return (
     <>
-      <footer className="bg-secondary pt-[80px] text-white">
+      <footer className="bg-secondary pt-[80px] text-white text-sm">
         <div className="container mx-auto pb-[80px]">
           <div className="grid grid-cols-5 gap-8">
             <div className="col-span-2">
@@ -38,7 +37,7 @@ const Footer = () => {
                   />
                 </figure>
               </div>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-3 text-sm">
                 <li className="relative py-2 pl-[40px]">
                   <MdLocalPhone className="absolute bottom-0 left-0 top-0 m-auto h-[30px] w-[30px] rounded-full bg-green p-1 text-center text-lg text-white" />
                   <div>
@@ -83,6 +82,9 @@ const Footer = () => {
                 <li className="relative py-2 pl-[40px]">
                   <MdLocationOn className="absolute bottom-0 left-0 top-0 m-auto h-[30px] w-[30px] rounded-full bg-green p-1 text-center text-lg text-white" />
                   <span>Tangal Chowk, Laxmi Narayan Temple , Kathmandu</span>
+                </li>
+                <li className="relative py-2 pl-[40px]">
+                  <span className="capitalize text-green">open time: 09:30 am to 5:30 pm</span>
                 </li>
               </ul>
             </div>
@@ -159,10 +161,10 @@ const Footer = () => {
               <div className={`footer-links mb-5 mb-[30px]`}>
                 <ul>
                   {extralink2?.map((item, index) => (
-                    <li className="mb-3 uppercase " key={index}>
+                    <li className="mb-3 uppercase text-base" key={index}>
                       <Link
                         to={item.slug}
-                        className={`relative inline-block pb-0.5 pr-3 font-medium hover:underline`}
+                        className={`relative inline-block pb-0.5 pr-3 hover:underline`}
                       >
                         {item.name}
                       </Link>
@@ -171,7 +173,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="affiliated">
-                <h4 className=" mb-2  font-medium uppercase ">
+                <h4 className=" mb-2 uppercase text-base ">
                   AFFILIATED WITH:
                 </h4>
                 <ul>
@@ -193,33 +195,33 @@ const Footer = () => {
         </div>
         <div className="copyright bg-white text-secondary">
           <div className="container mx-auto flex justify-between items-center">
-            <div className="socials flex items-center gap-4 max-w-[356px] w-full">
+            <div className="socials flex items-center gap-6 max-w-[356px] w-full">
               <p className="uppercase font-medium">Get in Touch</p>
-              <ul className="flex flex-wrap gap-8">
+              <ul className="flex flex-wrap gap-8 text-xl">
                 <li>
-                  <Link to="/" className="hover:opacity-90">
+                  <Link to="/" className="hover:text-primary">
                     <FaFacebook />
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="hover:opacity-90">
+                  <Link to="/" className="hover:text-primary">
                     <FaXTwitter />
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="hover:opacity-90">
+                  <Link to="/" className="hover:text-primary">
                     <FaYoutube />
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="hover:opacity-90">
+                  <Link to="/" className="hover:text-primary">
                     <FaLinkedinIn />
                   </Link>
                 </li>
               </ul>
             </div>
-            <div className="makecall  bg-green text-white hover:opacity-90 transition-all duration-300">
-              <Link to="tel:0000000" className="flex px-20 py-5 items-center h-full gap-2 ">
+            <div className="makecall  bg-green text-white hover:opacity-90 text-xl transition-all duration-300">
+              <Link to="tel:0000000" className="flex px-20 py-4 items-center h-full gap-2 ">
                 <IoLogoWhatsapp className="text-2xl" /> Make a Call
               </Link>
             </div>

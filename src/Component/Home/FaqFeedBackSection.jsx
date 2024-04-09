@@ -18,11 +18,11 @@ const FaqFeedBackSection = () => {
               <div className="faq-ques py-6">
                 <h4 className="mb-4">Feel free to ask your question</h4>
                 <form action="">
-                  <div className="form-control flex justify-between border-b border-light-grey pb-2">
+                  <div className="form-control flex justify-between border-b border-light-grey pb-2 ">
                     <input
                       type="text"
                       placeholder="Type here"
-                      className="w-full outline-0"
+                      className="w-full outline-0 pr-4"
                     />
                     <button
                       type="submit"

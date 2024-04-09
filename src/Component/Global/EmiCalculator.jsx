@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import FloatingInput from "./FloatingInput";
 const EmiCalculator = () => {
+  const [emiCalculate,setEmiCalculate] =useState('');
   const initialValues = {
     vehicle_price: "",
     interest: "",
@@ -11,18 +12,28 @@ const EmiCalculator = () => {
   };
   const schema = Yup.object().shape({
     vehicle_price: Yup.number().positive().required("required"),
-    interest: Yup.number().positive().required("required"),
+    interest: Yup.number().positive().min(1,'').max(100,'asd').required("required"),
     amortization: Yup.number().positive().required("required"),
     down_payment: Yup.number().positive().required("required"),
   });
 
+  const handleSubmit = (values) => {
+    const initialPrincipal = values.vehicle_price;
+    const Principal = values.vehicle_price - values.down_payment;
+    const Rate = values.interest / 12 / 100;
+    const Year = values.amortization * 12;
+    const DownPayment = values.down_payment;
+    const Result = ([Principal * Rate * (1 + Rate) ** Year] / [(1 + Rate) ** Year - 1]).toFixed(0);
+
+    setEmiCalculate({Result,initialPrincipal,DownPayment});
+  };
   return (
     <section className="emi-section ">
       <div className="section-break bg-secondary">
         <div className="container mx-auto">
           <div className="heading-wrapper mb-14 text-center text-white">
             <h3 className="heading mb-2 !text-white">emi Calculator</h3>
-            <p className="font-medium uppercase text-light-grey opacity-50">
+            <p className="font-hermes-thin uppercase text-light-grey opacity-50">
               Please fill the required fields
             </p>
           </div>
@@ -30,9 +41,7 @@ const EmiCalculator = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={schema}
-              onSubmit={(values) => {
-                console.log(values);
-              }}
+              onSubmit={(values) => handleSubmit(values)}
             >
               {(formik) => (
                 <Form
@@ -62,6 +71,8 @@ const EmiCalculator = () => {
                           ? "error"
                           : ""
                       }
+                      min={1}
+                      max={99}
                       labelname="Interest Rate (%)*"
                       onchange={formik.handleChange}
                     />
@@ -115,14 +126,14 @@ const EmiCalculator = () => {
               <tr>
                 <th
                   scope="col"
-                  className="px-6 py-3 uppercase text-secondary  text-base "
+                  className="px-6 py-3 text-base uppercase  text-secondary "
                   colSpan={2}
                 >
                   emi payment information
                 </th>
               </tr>
             </thead>
-            <tbody className="text-left uppercase font-medium">
+            <tbody className="text-left font-medium uppercase">
               <tr className="odd:bg-[#D0E9FF]">
                 <th
                   scope="row"
@@ -131,8 +142,8 @@ const EmiCalculator = () => {
                   <h4 className="ml-auto w-60 text-left">principal (rs.)</h4>
                 </th>
                 <td className="w-[50%] px-6 py-4">
-                  <p className="w-60 mr-auto text-right">10,00,000 (rs.)</p>
-                  </td>
+                  <p className="mr-auto w-60 text-right">{emiCalculate.initialPrincipal || 0} (rs.)</p>
+                </td>
               </tr>
               <tr className="even:bg-[#DFEFFF]">
                 <th
@@ -142,8 +153,8 @@ const EmiCalculator = () => {
                   <h4 className="ml-auto w-60 text-left">down payment (rs.)</h4>
                 </th>
                 <td className="w-[50%] px-6 py-4">
-                  <p className="w-60 mr-auto text-right">1,00,000 (rs.)</p>
-                  </td>
+                  <p className="mr-auto w-60 text-right">{emiCalculate.DownPayment|| 0} (rs.)</p>
+                </td>
               </tr>
               <tr className="odd:bg-[#D0E9FF]">
                 <th
@@ -151,12 +162,12 @@ const EmiCalculator = () => {
                   className="w-[50%] whitespace-nowrap px-6 py-4 font-medium  text-black"
                 >
                   <h4 className="ml-auto w-60 text-left">
-                    Monthly Payment (rs.)
+                  Monthly Payment (rs.)
                   </h4>
                 </th>
                 <td className="w-[50%] px-6 py-4">
-                  <p className="w-60 mr-auto text-right">10,00,000 (rs.)</p>
-                  </td>
+                  <p className="mr-auto w-60 text-right">{emiCalculate.Result|| 0} (rs.)</p>
+                </td>
               </tr>
             </tbody>
           </table>

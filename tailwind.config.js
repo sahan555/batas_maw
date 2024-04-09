@@ -8,6 +8,13 @@ module.exports = {
         'width': 'width',
       },
       fontFamily: {
+        hermes: ['HermesFB-Regular'],
+        'hermes-italic': ['HermesFB-RegularItalic'],
+        'hermes-thin': ['HermesFB-Thin'],
+        'hermes-thin-italic': ['HermesFB-ThinItalic'],
+        'hermes-bold': ['HermesFB-Bold'],
+        'hermes-bold-italic': ['HermesFB-BoldItalic'],
+
       },
       colors: {
         primary: "#E32134",

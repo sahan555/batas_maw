@@ -283,3 +283,89 @@ export const footerAffiliated = [
     img: "./assets/images/ve.jfif",
   },
 ];
+export const productData = [
+  {
+    title: "PRO 1049 C FSD",
+    multiImg: [
+      {
+        img: "./assets/images/product/1.png",
+      },
+      {
+        img: "./assets/images/product/2.png",
+      },
+      {
+        img: "./assets/images/product/3.png",
+      },
+      {
+        img: "./assets/images/product/4.png",
+      },
+      {
+        img: "./assets/images/product/5.png",
+      },
+    ],
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+  },
+  {
+    title: "PRO 1059 C HSD",
+    multiImg: [
+      {
+        img: "./assets/images/product/2.png",
+      },
+      {
+        img: "./assets/images/product/2.png",
+      },
+      {
+        img: "./assets/images/product/3.png",
+      },
+      {
+        img: "./assets/images/product/4.png",
+      },
+      {
+        img: "./assets/images/product/5.png",
+      },
+    ],
+    desc: "Eicher Pro 1059, is a light truck that offers more payload and loading space compared to other light trucks in the category, small",
+  },
+  {
+    title: "PRO 1055 C DSD",
+    multiImg: [
+      {
+        img: "./assets/images/product/3.png",
+      },
+      {
+        img: "./assets/images/product/2.png",
+      },
+      {
+        img: "./assets/images/product/3.png",
+      },
+      {
+        img: "./assets/images/product/4.png",
+      },
+      {
+        img: "./assets/images/product/5.png",
+      },
+    ],
+    desc: "Eicher Pro 1055 is one of the most profitable, reliable multi-business city trucks in Eicher Pro 1000 LCV Range",
+  },
+  {
+    title: "PRO 1114 XP TRUCK",
+    multiImg: [
+      {
+        img: "./assets/images/product/4.png",
+      },
+      {
+        img: "./assets/images/product/2.png",
+      },
+      {
+        img: "./assets/images/product/3.png",
+      },
+      {
+        img: "./assets/images/product/4.png",
+      },
+      {
+        img: "./assets/images/product/5.png",
+      },
+    ],
+    desc: "Eicher Pro 1114XP is one of the most profitable product of the Eicher PRO philosophy. It has the highest rated payload in its category",
+  },
+];

@@ -16,7 +16,7 @@ const HelpSection = () => {
               <h4 className="bg-primary text-white p-6 py-2.5 font-medium">24x7 helpline</h4>
               {Helpline.map((item, index) => (
                 <div className="help-group [&:not(:last-child)]:mb-2" key={index}>
-                  <h5 className="bg-light-grey bg-opacity-85 p-6 py-1 font-medium text-secondary">{item.title}</h5>
+                  <h5 className="bg-light-grey bg-opacity-85 p-6 py-1 font-medium text-secondary stripe">{item.title}</h5>
                   <div className="help-box p-6 ">
                       <div className="flex flex-wrap justify-between font-medium capitalize ">
                         <div className="help-number">

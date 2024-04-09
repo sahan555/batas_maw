@@ -2,16 +2,32 @@ import React from "react";
 import Slider from "react-slick";
 import { NewsSlider, eventDatas } from "../../Global/Datas/HomeData";
 import { Link } from "react-router-dom";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const NewsEvent = () => {
+  const CustomPrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div onClick={onClick}><IoIosArrowBack className="text-primary slick-arrow slick-prev" /></div>
+    );
+  };
+  
+  const CustomNextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div onClick={onClick}><IoIosArrowForward className="text-primary slick-arrow slick-next" /></div>
+    );
+  };
   var newsSilder = {
     dots: true,
-    arrows: false,
-    infinite: false,
+    arrows: true,
+    infinite: true,
     autoplay: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <CustomNextArrow/>,
+    prevArrow: <CustomPrevArrow />
   };
   return (
     <section className="news-section">
@@ -56,7 +72,7 @@ const NewsEvent = () => {
               <h5>Latest News</h5>
             </div>
           </div>
-          <div className="col-span-2">
+          <div className="col-span-2 ">
             <div className="event-group  relative z-0 p-8 before:absolute before:inset-0 before:z-[-1]  bg-light-grey before:content-[''] clip-pol before:bg-light-grey  ">
               <h3 className="flex items-center justify-between text-xl uppercase mb-10">
                 upcoming events
@@ -78,13 +94,13 @@ const NewsEvent = () => {
                   key={index}
                 >
                   <article>
-                    <h6 className="uppercase mb-2 italic text-grey">
-                      <span className="skew-btn btn-full inline-block px-4 py-1 font-normal  before:bg-black mr-4 ml-2">
+                    <h6 className="uppercase mb-2 font-hermes-thin-italic text-sm text-grey">
+                      <span className="skew-btn btn-full inline-block px-4 py-1.5 font-normal  before:bg-black mr-4 ml-2">
                         {item.date}
                       </span>
                       {item.day}
                     </h6>
-                    <p className="font-medium italic text-sm">{item.title}</p>
+                    <p className="font-medium font-hermes-italic text-sm">{item.title}</p>
                   </article>
                   <figure className="skew-image max-h-20 max-w-40">
                     <img  className="object-cover object-center" src={item.img} alt={item.title} />

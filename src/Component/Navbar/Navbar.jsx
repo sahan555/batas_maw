@@ -22,7 +22,7 @@ const Navbar = () => {
                 <ul className="flex flex-wrap gap-6">
                   {SubMenu.slice(0, 3).map((item, index) => (
                     <li key={index}>
-                      <Link to="/" className="font-medium uppercase  hover:text-primary">
+                      <Link to="/" className="uppercase  hover:text-primary">
                         {item.name}
                       </Link>
                     </li>
@@ -74,7 +74,7 @@ const Navbar = () => {
                   <li key={index}>
                     <NavLink
                       activeclassname="is-active"
-                      className="font-medium uppercase px-6 py-4 inline-block hover:text-primary"
+                      className="uppercase px-6 py-4 inline-block hover:text-primary"
                       to={item.slug}
                     >
                       {item.title}

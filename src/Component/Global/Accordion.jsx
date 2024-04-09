@@ -31,7 +31,7 @@ const Accordion = ({ defaultIcon, expandIcon }) => {
             </span>
           </div>
           {isActive(item.id) && (
-            <div className="accordion-content font-normal text-sm pt-2">
+            <div className="accordion-content text-grey tracking-wide text-sm pt-2">
               <p> {item.content}</p>
             </div>
           )}
