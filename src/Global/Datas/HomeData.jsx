@@ -94,28 +94,28 @@ export const testiData = [
   {
     name: "mr. john cha",
     post: "CEO of auto mobile enterprise ",
-    testi:
+    desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "./assets/images/testi/1.jfif",
   },
   {
     name: "mr. john ji",
     post: "CEO of auto mobile enterprise ",
-    testi:
+    desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "./assets/images/testi/1.jfif",
   },
   {
     name: "mr. john chha",
     post: "CEO of auto mobile enterprise ",
-    testi:
+    desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "./assets/images/testi/1.jfif",
   },
   {
     name: "mr. john doe",
     post: "CEO of auto mobile enterprise ",
-    testi:
+    desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "./assets/images/testi/1.jfif",
   },

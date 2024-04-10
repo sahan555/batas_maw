@@ -192,7 +192,7 @@
       bottom: -30px;
 
       li {
-        @apply w-[13px] h-[10px] mx-2 transition-[width] duration-1000 ease-in-out;
+        @apply w-[12px] h-[12px] mx-1.5 transition-[width] duration-1000 ease-in-out;
 
         &.slick-active {
           @apply w-[40px];
@@ -220,7 +220,7 @@
       right: auto;
 
       li {
-        @apply w-[13px] h-[10px] mx-2 transition-[width] duration-1000 ease-in-out;
+        @apply w-[12px] h-[12px] mx-1.5 transition-[width] duration-1000 ease-in-out;
 
         &.slick-active {
           @apply w-[40px];
@@ -234,7 +234,7 @@
           @apply w-full h-full;
 
           &::before {
-            @apply bg-white bg-opacity-100 content-[''] opacity-100 w-full h-full rounded-full;
+            @apply bg-white bg-opacity-100 content-[''] !opacity-100 w-full h-full rounded-full;
           }
         }
       }
@@ -282,6 +282,10 @@
   .testimonals-section {
     .slick-arrow {
       @apply text-primary w-[30px] h-[30px] hover:text-primary;
+
+      &::before {
+        @apply hidden
+      }
     }
 
     .slick-prev {
@@ -289,7 +293,7 @@
     }
 
     .slick-disabled {
-      @apply opacity-0
+      @apply opacity-0 pointer-events-none
     }
   }
 
@@ -313,10 +317,76 @@
         margin: 0 -5px;
       }
 
+      .slick-arrow {
+        @apply text-primary w-[30px] h-[30px] hover:text-primary;
+
+        &::before {
+          @apply hidden
+        }
+      }
+
+      .slick-prev {
+        @apply left-[-30px];
+      }
+
+      .slick-next {
+        @apply right-[-30px]
+      }
+
+      .slick-disabled {
+        @apply opacity-0 pointer-events-none
+      }
     }
 
-    .react-tabs__tab--selected {
-      @apply text-white before:border-primary before:bg-primary;
+    .product-slider-img {
+      .slick-dots {
+        bottom: 10%;
+
+
+        li {
+          @apply w-[10px] h-[10px] mx-1.5 transition-[width] duration-1000 ease-in-out;
+
+          &.slick-active {
+            @apply w-[30px];
+
+            button::before {
+              @apply bg-primary;
+            }
+          }
+
+          button {
+            @apply w-full h-full;
+
+            &::before {
+              @apply bg-white bg-opacity-100 content-[''] opacity-100 w-full h-full rounded-full;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .about-page {
+    .history-slider {
+      .slick-arrow {
+        @apply text-secondary w-[30px] h-[30px] hover:text-secondary top-full;
+
+        &::before {
+          @apply hidden
+        }
+      }
+
+      .slick-prev {
+        @apply left-0;
+      }
+
+      .slick-next {
+        @apply right-0
+      }
+
+      .slick-disabled {
+        @apply opacity-0 pointer-events-none
+      }
     }
   }
 }

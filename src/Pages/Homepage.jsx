@@ -9,6 +9,7 @@ import EmiCalculator from "../Component/Global/EmiCalculator";
 import VideoSection from "../Component/Home/VideoSection";
 import Gallery from "../Component/Home/Gallery";
 import FaqFeedBackSection from "../Component/Home/FaqFeedBackSection";
+import { testiData } from "../Global/Datas/HomeData";
 
 const Homepage = () => {
   return (
@@ -19,7 +20,7 @@ const Homepage = () => {
       <HelpSection/>
       <NewsEvent/>
       <ClientSection/>
-      <Testimonials/>
+      <Testimonials heading='Testimonials' data={testiData} slider={true} right={false}/>
       <EmiCalculator/>
       <VideoSection/>
       <Gallery/>

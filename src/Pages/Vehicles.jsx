@@ -1,13 +1,27 @@
 import React, { useState } from "react";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import { TabList, TabPanel, Tabs } from "react-tabs";
 import { SubMenu } from "../Global/Datas/SubMenu";
 import Slider from "react-slick";
 import { productData } from "../Global/Datas/HomeData";
 import ProductCard from "../Component/Global/ProductCard";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { CustomTab } from "../Component/Global/CustomTab";
 
 const Vehicles = () => {
   const [tabIndex, setTabIndex] = useState(0);
-
+  const CustomPrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div onClick={onClick} className={props.className}><IoIosArrowBack className="text-primary slick-arrow slick-prev" /></div>
+    );
+  };
+  
+  const CustomNextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div onClick={onClick} className={props.className}><IoIosArrowForward className="text-primary slick-arrow slick-next" /></div>
+    );
+  };
   var ProductTab = {
     dots: false,
     arrows: true,
@@ -16,18 +30,15 @@ const Vehicles = () => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+    draggable:false,
+    nextArrow: <CustomNextArrow/>,
+    prevArrow: <CustomPrevArrow/>,
   };
-  const CustomTab = ({ onClick, children, className }) => {
-    return (
-      <div className={className} onClick={onClick}>
-        {children}
-      </div>
-    );
-  };
-  CustomTab.tabsRole = "Tab";
+
+  
   return (
     <>
-      <section className="vehicles-page section-break">
+      <section className="vehicles-page section-break bg-light-grey bg-opacity-40">
         <div className="container mx-auto">
           <div className="heading-wrapper mb-10 text-center">
             <h1 className="heading mb-3">Vehicles</h1>

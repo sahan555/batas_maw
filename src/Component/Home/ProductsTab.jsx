@@ -52,7 +52,7 @@ const ProductsTab = () => {
                                 <ProductCard
                                   heading={true}
                                   title={item.title}
-                                  image={item.multiImg[0].img}
+                                  image={item.multiImg}
                                 />
                               </div>
                             ))}

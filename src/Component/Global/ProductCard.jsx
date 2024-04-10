@@ -14,6 +14,7 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    
   };
   return (
     <>
@@ -27,7 +28,7 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
             </article>
           )}
           {slider ? (
-            <Slider {...ProductSlider}>
+            <Slider {...ProductSlider} className="product-slider-img">
               {image.map((item, index) => (
                 <div key={index}>
                   <figure className="h-[298px]">
@@ -43,39 +44,49 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
           ) : (
             <figure className="h-[298px]">
               <img
-                src={image}
+                src={image[0].img}
                 alt={title}
                 className="object-cover object-center"
               />
             </figure>
           )}
           {!heading && (
-            <div className="product-details">
-              <article className={slider ? "-mt-[7px]" : ""}>
-                <h4 className="bg-light-grey bg-opacity-65 px-2 py-3 text-center text-xl font-medium text-black">
+            <div
+              className={`product-details border border-light-grey bg-white p-7 ${slider ? "-mt-[7px]" : ""}`}
+            >
+              <article className="mb-6 text-center">
+                <h4 className="mb-2 text-2xl font-medium text-black">
                   {title}
                 </h4>
-                <p>{desc}</p>
+                <p className="line-clamp-3 text-sm tracking-wide text-grey">
+                  {desc}
+                </p>
               </article>
-              <div className="product-info">
+              <div className="product-info text-sm text-grey opacity-90">
                 <ul className="flex items-start justify-between">
-                  <li>
+                  <li className="w-1/3 px-2">
                     <div className="info-wrapper text-center">
-                      <LiaLongArrowAltRightSolid className="mx-auto"/>
-                      <Link to="/">Learn More</Link>
+                      <Link to="/" className="hover:text-primary cursor-pointer">
+                        <LiaLongArrowAltRightSolid className="mx-auto mb-3 text-2xl" />
+                        <span>Learn More</span>
+                      </Link>
                     </div>
                   </li>
-                  <li>
+                  <li className="w-1/3 px-2">
                     <div className="info-wrapper text-center">
-                      <TfiGallery className="mx-auto"/>
-                      <Link to="/">Photos</Link>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="info-wrapper text-center">
-                    <BsFiletypePdf className="mx-auto"/>
+                      <Link to="/" className="hover:text-primary cursor-pointer">
+                        <TfiGallery className="mx-auto mb-3 text-2xl" />
 
-                      <Link to="/">Download Brochure</Link>
+                        <span>Photos</span>
+                      </Link>
+                    </div>
+                  </li>
+                  <li className="w-1/3 px-2">
+                    <div className="info-wrapper text-center">
+                      <Link to="/" className="hover:text-primary cursor-pointer">
+                        <BsFiletypePdf className="mx-auto mb-3 text-2xl" />
+                        <span>Download Brochure</span>
+                      </Link>
                     </div>
                   </li>
                 </ul>
