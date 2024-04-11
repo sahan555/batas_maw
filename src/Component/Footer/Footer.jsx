@@ -31,7 +31,7 @@ const Footer = () => {
               <div className="footer-logo mb-10 text-white">
                 <figure className="w-[300px]">
                   <img
-                    src="./assets/images/logo-white.png"
+                    src="/assets/images/logo-white.png"
                     className="w-full object-contain object-center"
                     alt=""
                   />
@@ -158,7 +158,7 @@ const Footer = () => {
                 ))}
             </div>
             <div className="col-span-1">
-              <div className={`footer-links mb-5 mb-[30px]`}>
+              <div className={`footer-links mb-[30px]`}>
                 <ul>
                   {extralink2?.map((item, index) => (
                     <li className="mb-3 uppercase text-base" key={index}>

@@ -9,6 +9,7 @@ import Homepage from "./Pages/Homepage";
 import Footer from "./Component/Footer/Footer";
 import Vehicles from "./Pages/Vehicles";
 import About from "./Pages/About";
+import Career from "./Pages/Career";
 
 const App = () => {
   // const Homepage = lazy(() => import('./Pages/Homepage'));
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path="/" element={<Homepage />} />
           <Route path="/vehicles" element={<Vehicles />} />
           <Route path="/about" element={<About />} />
+          <Route path="/about/careers" element={<Career />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Suspense>

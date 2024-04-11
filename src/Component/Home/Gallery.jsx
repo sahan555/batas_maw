@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import Slider from "react-slick";
+import React from "react";
 import { galleryData } from "../../Global/Datas/HomeData";
-import PhotoSwipeLightbox from "photoswipe/lightbox";
-import "photoswipe/style.css";
+
 import { Link } from "react-router-dom";
+import SliderNGallery from "../Global/SliderNGallery";
 const Gallery = () => {
   // Slider settings
   const gallerySliderSettings = {
@@ -15,52 +14,16 @@ const Gallery = () => {
     slidesToShow: 4.25,
     centerMode: true,
     slidesToScroll: 1,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
+    draggable:false,
     cssEase: 'linear',
   };
-  useEffect(() => {
-    let lightbox = new PhotoSwipeLightbox({
-      gallery: "#gallery",
-      children: "a",
-      preloadFirstSlide: true,
-      pswpModule: () => import("photoswipe"),
-    });
-    lightbox.init();
-
-    return () => {
-      lightbox.destroy();
-      lightbox = null;
-    };
-  }, []);
+  
 
   return (
     <>
     <section className="gallery-section bg-light-grey pt-4 pb-12">
-      <div className="pswp-gallery" id="gallery">
-        <Slider {...gallerySliderSettings} className="gallery-slider">
-          {galleryData.map((item, index) => (
-            <div
-              key={index}
-              className=" pr-4 transition-all duration-300 ease-out hover:-mt-6"
-            >
-              <a
-                href={item.img}
-                data-pswp-width={800}
-                data-pswp-height={600}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block h-[300px] w-full focus:outline-none"
-              >
-                <img
-                  src={item.img}
-                  alt={`gallery-${index}`}
-                  className="h-full w-full object-cover object-center"
-                />
-              </a>
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <SliderNGallery Slidersetting={gallerySliderSettings} data={galleryData} transition={true}/>
       <div className="container mx-auto">
         <div className="btn-wrapper pt-8 text-center">
           <Link

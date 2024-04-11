@@ -34,12 +34,12 @@ const Testimonials = ({ right, heading, data, slider }) => {
 
   return (
     <section className="testimonals-section">
-      <div className="mx-auto w-full">
+      <div className="container mx-auto">
         <div
-          className={`heading-wrapper stripe-wrapper mb-3 max-w-[900px] before:bg-black before:bg-opacity-10 ${right ? "stripe-wrapper-opp ml-auto" : ""}`}
+          className={`heading-wrapper stripe-wrapper mb-3 max-w-[600px] before:bg-black before:bg-opacity-10 after:bg-black after:bg-opacity-10 ${right ? "stripe-wrapper-opp ml-auto max-w-[600px] before:bg-black before:bg-opacity-10 after:bg-black after:bg-opacity-10" : ""}`}
         >
           <h2
-            className={`heading stripe flex items-center gap-4 py-1 pl-[20%] uppercase ${right ? "stripe-opp justify-end pl-0 pr-[20%]" : ""}`}
+            className={`heading stripe flex items-center gap-4 py-1 uppercase ${right ? "stripe-opp justify-end pl-0 " : ""}`}
           >
             <img
               src="./assets/images/quote.svg"

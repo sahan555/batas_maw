@@ -6,20 +6,26 @@ import { productData } from "../Global/Datas/HomeData";
 import ProductCard from "../Component/Global/ProductCard";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CustomTab } from "../Component/Global/CustomTab";
+import Article from "../Component/Global/Article";
+import { vehicleArticle } from "../Global/Datas/VehicleData";
 
 const Vehicles = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
     return (
-      <div onClick={onClick} className={props.className}><IoIosArrowBack className="text-primary slick-arrow slick-prev" /></div>
+      <div onClick={onClick} className={props.className}>
+        <IoIosArrowBack className="slick-arrow slick-prev text-primary" />
+      </div>
     );
   };
-  
+
   const CustomNextArrow = (props) => {
     const { onClick } = props;
     return (
-      <div onClick={onClick} className={props.className}><IoIosArrowForward className="text-primary slick-arrow slick-next" /></div>
+      <div onClick={onClick} className={props.className}>
+        <IoIosArrowForward className="slick-arrow slick-next text-primary" />
+      </div>
     );
   };
   var ProductTab = {
@@ -30,25 +36,16 @@ const Vehicles = () => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    draggable:false,
-    nextArrow: <CustomNextArrow/>,
-    prevArrow: <CustomPrevArrow/>,
+    draggable: false,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
   };
 
-  
   return (
     <>
       <section className="vehicles-page section-break bg-light-grey bg-opacity-40">
         <div className="container mx-auto">
-          <div className="heading-wrapper mb-10 text-center">
-            <h1 className="heading mb-3">Vehicles</h1>
-            <p className="mx-auto w-full max-w-[900px]">
-              lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem
-              ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit
-              amet, consectetur adipiscing elit.lorem ipsum dolor sit amet
-            </p>
-          </div>
+          <Article title={vehicleArticle.title} desc={vehicleArticle.desc} headClass={''} />
           <div className="product-wrapper">
             <Tabs
               selectedIndex={tabIndex}
@@ -77,21 +74,21 @@ const Vehicles = () => {
                     for (let i = 0; i < SubMenu.length; i++) {
                       jsxElements.push(
                         <>
-                        <TabPanel key={i}>
-                          <div className="-mx-4 flex flex-wrap">
-                            {productData.map((item, index) => (
-                              <ProductCard
-                              index={index}
-                                col={true}
-                                slider={true}
-                                title={item.title}
-                                image={item.multiImg}
-                                desc={item.desc}
-                              />
-                            ))}
-                          </div>
-                        </TabPanel>
-                        </>
+                          <TabPanel key={i}>
+                            <div className="-mx-4 flex flex-wrap">
+                              {productData.map((item, index) => (
+                                <ProductCard
+                                  index={index}
+                                  col={true}
+                                  slider={true}
+                                  title={item.title}
+                                  image={item.multiImg}
+                                  desc={item.desc}
+                                />
+                              ))}
+                            </div>
+                          </TabPanel>
+                        </>,
                       );
                     }
                     return jsxElements;

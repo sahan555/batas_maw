@@ -15,7 +15,7 @@ const Navbar = () => {
             <div className="container mx-auto flex flex-row flex-wrap items-center justify-between">
               <div className="navbar-brand">
                 <Link to="/" className="inline-block w-[200px]">
-                  <img src="./assets/images/logo.png" alt="" />
+                  <img src="/assets/images/logo.png" alt="" />
                 </Link>
               </div>
               <div className="nbar-top-links ml-20 mr-auto hidden md:block">
