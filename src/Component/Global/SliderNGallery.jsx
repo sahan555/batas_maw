@@ -15,6 +15,7 @@ const SliderNGallery = ({ Slidersetting, data,transition }) => {
       mainClass: 'pswp--custom',
       preload: [1, 4],
       preloaderDelay:1,
+      fade: true,
       showHideAnimationType: 'zoom',
       showAnimationDuration: 0,
       hideAnimationDuration: 0,

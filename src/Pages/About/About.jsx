@@ -1,13 +1,16 @@
-import AtaGlance from "../Component/About/AtaGlance";
-import HistoryTab from "../Component/About/HistoryTab";
-import Mission from "../Component/About/Mission";
-import OurValues from "../Component/About/OurValues";
-import Vision from "../Component/About/Vision";
-import Testimonials from "../Component/Global/Testimonials";
-import { CeoWords } from "../Global/Datas/AboutData";
+import AtaGlance from "../../Component/About/AtaGlance";
+import HistoryTab from "../../Component/About/HistoryTab";
+import Mission from "../../Component/About/Mission";
+import OurValues from "../../Component/About/OurValues";
+import Vision from "../../Component/About/Vision";
+import Breadcrumbs from "../../Component/Global/BreadCrumbs";
+import Testimonials from "../../Component/Global/Testimonials";
+import { CeoWords } from "../../Global/Datas/AboutData";
 
 const About = () => {
   return (
+    <>
+    <Breadcrumbs/>
     <main className="about-page">
       <section className="about-banner relative z-0">
         <figure className="absolute inset-0 z-[-1]">
@@ -62,6 +65,7 @@ const About = () => {
       <Vision/>
       <OurValues/>
     </main>
+    </>
   );
 };
 

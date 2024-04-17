@@ -23,7 +23,7 @@ const Testimonials = ({ right, heading, data, slider }) => {
   var testiSlider = {
     dots: false,
     arrows: true,
-    infinite: false,
+    infinite: false,fade: true,
     autoplay: false,
     speed: 500,
     slidesToShow: 1,

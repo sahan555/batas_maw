@@ -8,6 +8,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CustomTab } from "../Component/Global/CustomTab";
 import Article from "../Component/Global/Article";
 import { vehicleArticle } from "../Global/Datas/VehicleData";
+import Breadcrumbs from "../Component/Global/BreadCrumbs";
 
 const Vehicles = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -43,9 +44,14 @@ const Vehicles = () => {
 
   return (
     <>
+      <Breadcrumbs />
       <section className="vehicles-page section-break bg-light-grey bg-opacity-40">
         <div className="container mx-auto">
-          <Article title={vehicleArticle.title} desc={vehicleArticle.desc} headClass={''} />
+          <Article
+            title={vehicleArticle.title}
+            desc={vehicleArticle.desc}
+            headClass={""}
+          />
           <div className="product-wrapper">
             <Tabs
               selectedIndex={tabIndex}
@@ -75,7 +81,7 @@ const Vehicles = () => {
                       jsxElements.push(
                         <>
                           <TabPanel key={i}>
-                            <div className="-mx-4 flex flex-wrap">
+                            <div className="-mx-4 flex flex-wrap gap-y-8">
                               {productData.map((item, index) => (
                                 <ProductCard
                                   index={index}

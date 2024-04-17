@@ -16,7 +16,7 @@ export const Helpline = [
         icon: <LuPhoneCall />,
       },
     ],
-    image: "./assets/images/help1.png",
+    image: "/assets/images/help1.png",
   },
   {
     title: "Eos VAn",
@@ -32,25 +32,25 @@ export const Helpline = [
         icon: <MdWhatsapp />,
       },
     ],
-    image: "./assets/images/van.png",
+    image: "/assets/images/van.png",
   },
 ];
 
 export const NewsSlider = [
   {
-    img: "./assets/images/news.png",
+    img: "/assets/images/news.png",
     title: "Lorem ipsum dolor sit amet, ",
     date: "Tue, 12 march, 2024",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
-    img: "./assets/images/news.png",
+    img: "/assets/images/news.png",
     title: "Lorem ipsum dolor sit amet, ",
     date: "Tue, 12 march, 2024",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
   {
-    img: "./assets/images/news.png",
+    img: "/assets/images/news.png",
     title: "Lorem ipsum dolor sit amet, ",
     date: "Tue, 12 march, 2024",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -58,21 +58,21 @@ export const NewsSlider = [
 ];
 export const eventDatas = [
   {
-    img: "./assets/images/product/1.png",
+    img: "/assets/images/product/1.png",
     title:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing elit.Lorem ipsum dolor sit amet",
     date: "12 march, 2024",
     day: "Tuesday",
   },
   {
-    img: "./assets/images/product/2.png",
+    img: "/assets/images/product/2.png",
     title:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing elit.Lorem ipsum dolor sit amet",
     date: "12 march, 2024",
     day: "Tuesday",
   },
   {
-    img: "./assets/images/product/3.png",
+    img: "/assets/images/product/3.png",
     title:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.consectetur adipiscing elit.Lorem ipsum dolor sit amet",
     date: "12 march, 2024",
@@ -82,12 +82,12 @@ export const eventDatas = [
 export const clientData = [
   {
     name: "1",
-    img: "./assets/images/clients/1.png",
+    img: "/assets/images/clients/1.png",
   },
-  { name: "1", img: "./assets/images/clients/2.jfif" },
-  { name: "1", img: "./assets/images/clients/3.png" },
-  { name: "1", img: "./assets/images/clients/4.jfif" },
-  { name: "1", img: "./assets/images/clients/5.png" },
+  { name: "1", img: "/assets/images/clients/2.jfif" },
+  { name: "1", img: "/assets/images/clients/3.png" },
+  { name: "1", img: "/assets/images/clients/4.jfif" },
+  { name: "1", img: "/assets/images/clients/5.png" },
 ];
 
 export const testiData = [
@@ -96,45 +96,45 @@ export const testiData = [
     post: "CEO of auto mobile enterprise ",
     desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
-    img: "./assets/images/testi/1.jfif",
+    img: "/assets/images/testi/1.jfif",
   },
   {
     name: "mr. john ji",
     post: "CEO of auto mobile enterprise ",
     desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
-    img: "./assets/images/testi/1.jfif",
+    img: "/assets/images/testi/1.jfif",
   },
   {
     name: "mr. john chha",
     post: "CEO of auto mobile enterprise ",
     desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
-    img: "./assets/images/testi/1.jfif",
+    img: "/assets/images/testi/1.jfif",
   },
   {
     name: "mr. john doe",
     post: "CEO of auto mobile enterprise ",
     desc:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
-    img: "./assets/images/testi/1.jfif",
+    img: "/assets/images/testi/1.jfif",
   },
 ];
 export const galleryData = [
   {
-    img: "./assets/images/product/1.png",
+    img: "/assets/images/product/1.png",
   },
   {
-    img: "./assets/images/product/2.png",
+    img: "/assets/images/product/2.png",
   },
   {
-    img: "./assets/images/product/3.png",
+    img: "/assets/images/product/3.png",
   },
   {
-    img: "./assets/images/product/4.png",
+    img: "/assets/images/product/4.png",
   },
   {
-    img: "./assets/images/product/1.png",
+    img: "/assets/images/product/1.png",
   },
 ];
 export const faqData = [
@@ -276,11 +276,11 @@ export const extralink2 = [
 export const footerAffiliated = [
   {
     name: "eicher",
-    img: "./assets/images/eicher2.png",
+    img: "/assets/images/eicher2.png",
   },
   {
     name: "ve",
-    img: "./assets/images/ve.jfif",
+    img: "/assets/images/ve.jfif",
   },
 ];
 export const productData = [
@@ -288,19 +288,19 @@ export const productData = [
     title: "PRO 1049 C FSD",
     multiImg: [
       {
-        img: "./assets/images/product/1.png",
+        img: "/assets/images/product/1.png",
       },
       {
-        img: "./assets/images/product/2.png",
+        img: "/assets/images/product/2.png",
       },
       {
-        img: "./assets/images/product/3.png",
+        img: "/assets/images/product/3.png",
       },
       {
-        img: "./assets/images/product/4.png",
+        img: "/assets/images/product/4.png",
       },
       {
-        img: "./assets/images/product/5.png",
+        img: "/assets/images/product/5.png",
       },
     ],
     desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
@@ -309,19 +309,19 @@ export const productData = [
     title: "PRO 1059 C HSD",
     multiImg: [
       {
-        img: "./assets/images/product/2.png",
+        img: "/assets/images/product/2.png",
       },
       {
-        img: "./assets/images/product/2.png",
+        img: "/assets/images/product/2.png",
       },
       {
-        img: "./assets/images/product/3.png",
+        img: "/assets/images/product/3.png",
       },
       {
-        img: "./assets/images/product/4.png",
+        img: "/assets/images/product/4.png",
       },
       {
-        img: "./assets/images/product/5.png",
+        img: "/assets/images/product/5.png",
       },
     ],
     desc: "Eicher Pro 1059, is a light truck that offers more payload and loading space compared to other light trucks in the category, small",
@@ -330,19 +330,19 @@ export const productData = [
     title: "PRO 1055 C DSD",
     multiImg: [
       {
-        img: "./assets/images/product/3.png",
+        img: "/assets/images/product/3.png",
       },
       {
-        img: "./assets/images/product/2.png",
+        img: "/assets/images/product/2.png",
       },
       {
-        img: "./assets/images/product/3.png",
+        img: "/assets/images/product/3.png",
       },
       {
-        img: "./assets/images/product/4.png",
+        img: "/assets/images/product/4.png",
       },
       {
-        img: "./assets/images/product/5.png",
+        img: "/assets/images/product/5.png",
       },
     ],
     desc: "Eicher Pro 1055 is one of the most profitable, reliable multi-business city trucks in Eicher Pro 1000 LCV Range",
@@ -351,19 +351,103 @@ export const productData = [
     title: "PRO 1114 XP TRUCK",
     multiImg: [
       {
-        img: "./assets/images/product/4.png",
+        img: "/assets/images/product/4.png",
       },
       {
-        img: "./assets/images/product/2.png",
+        img: "/assets/images/product/2.png",
       },
       {
-        img: "./assets/images/product/3.png",
+        img: "/assets/images/product/3.png",
       },
       {
-        img: "./assets/images/product/4.png",
+        img: "/assets/images/product/4.png",
       },
       {
-        img: "./assets/images/product/5.png",
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    desc: "Eicher Pro 1114XP is one of the most profitable product of the Eicher PRO philosophy. It has the highest rated payload in its category",
+  },
+  {
+    title: "PRO 1049 C FSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+  },
+  {
+    title: "PRO 1059 C HSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    desc: "Eicher Pro 1059, is a light truck that offers more payload and loading space compared to other light trucks in the category, small",
+  },
+  {
+    title: "PRO 1055 C DSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    desc: "Eicher Pro 1055 is one of the most profitable, reliable multi-business city trucks in Eicher Pro 1000 LCV Range",
+  },
+  {
+    title: "PRO 1114 XP TRUCK",
+    multiImg: [
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
       },
     ],
     desc: "Eicher Pro 1114XP is one of the most profitable product of the Eicher PRO philosophy. It has the highest rated payload in its category",

@@ -183,6 +183,8 @@
     }
   }
 
+ 
+
   .products-tab .react-tabs__tab--selected {
     @apply text-primary underline
   }
@@ -520,5 +522,9 @@ figure {
   img {
     height: 100%;
     width: 100%;
+  }
+} .react-tabs__tab--selected {
+  &:focus-visible {
+    outline: none !important;
   }
 }

@@ -67,7 +67,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="navbar-bottom bg-light-grey bg-opacity-80">
+          <div className="navbar-bottom bg-light-grey bg-opacity-80 [box-shadow:0px_12px_13px_0px_rgba(0,_0,_0,_0.19)]">
             <div className="container mx-auto flex flex-row flex-wrap items-center justify-between">
               <ul className="navbar-group flex">
                 {NavbarMenu.map((item, index) => (

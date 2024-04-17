@@ -10,7 +10,7 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
     dots: true,
     arrows: false,
     infinite: false,
-    autoplay: false,
+    autoplay: false,fade: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,

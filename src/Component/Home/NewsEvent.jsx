@@ -24,7 +24,7 @@ const NewsEvent = () => {
     infinite: true,
     autoplay: false,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 1,fade: true,
     slidesToScroll: 1,
     nextArrow: <CustomNextArrow/>,
     prevArrow: <CustomPrevArrow />

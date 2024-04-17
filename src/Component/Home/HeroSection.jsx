@@ -11,7 +11,7 @@ const HeroSection = () => {
     autoplay:true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToScroll: 1,fade: true,
   };
   return (
     <section className="hero-section relative">
