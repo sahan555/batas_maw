@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import Map from "../../Component/Global/Map";
+import { MapData } from "../../Global/Datas/MapData";
 
 const Branches = () => {
+  const mapData = MapData;
+  const [province, setProvince] = useState("");
+  const [district, setDistrict] = useState([]);
+  const foundItem = mapData.find((item) => item.province === province);
+
+  const handleProvinceChange = (e) => {
+    setProvince(e.target.value);
+    setDistrict(foundItem)
+  };
+console.log(province)
+console.log(district)
+
   return (
     <>
       <Breadcrumbs />
@@ -27,30 +40,41 @@ const Branches = () => {
               <form action="">
                 <div className="-mx-5 flex flex-row">
                   <div className="form-group w-1/3 px-5">
-                    <select name="province" className="form-control" id="">
-                      <option value="" disabled selected>
-                        Select Province
-                      </option>
-                      <option value="">1</option>
-                      <option value="">2</option>
+                    <select
+                      name="province"
+                      className="form-control"
+                      onChange={handleProvinceChange}
+                    >
+                      <option value="">Select Province</option>
+                      {mapData?.map((item, index) => (
+                        <option value={item.province} key={index}>
+                          {item.province}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div className="form-group w-1/3 px-5">
-                    <select name="province" className="form-control" id="">
-                      <option value="" disabled selected>
-                        select District
-                      </option>
-                      <option value="">1</option>
-                      <option value="">2</option>
+                    <select
+                      name="district"
+                      className="form-control"
+                    >
+                    
+                      <option value="">Select District</option>
+                      {district?.district?.map((item, index) => (
+                          <option value={item.name} key={index}>
+                            {item.name}
+                          </option>
+                        ))}
                     </select>
                   </div>
                   <div className="form-group w-1/3 px-5">
-                    <select name="province" className="form-control" id="">
-                      <option value="" disabled selected>
-                        Select city
-                      </option>
-                      <option value="">Bhaktapur</option>
-                      <option value="">Kathmandu</option>
+                    <select
+                      name="city"
+                      className="form-control"
+                    >
+                      <option value="">Select City</option>
+                      <option value="Bhaktapur">Bhaktapur</option>
+                      <option value="Kathmandu">Kathmandu</option>
                     </select>
                   </div>
                 </div>

@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { useCallback } from "react";
 import { useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 const Map = () => {
   const center = [51.505, -0.09];
