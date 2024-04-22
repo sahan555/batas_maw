@@ -5,16 +5,61 @@ import { MapData } from "../../Global/Datas/MapData";
 
 const Branches = () => {
   const mapData = MapData;
-  const [province, setProvince] = useState("");
-  const [district, setDistrict] = useState([]);
-  const foundItem = mapData.find((item) => item.province === province);
+  const [selectedLocation, setSelectedLocation] = useState({
+    province: "",
+    districtList: [],
+    district: "",
+    cityList: [],
+    city: "",
+  });
+  const handleLocationSelect = (key, value) => {
+    setSelectedLocation((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
 
-  const handleProvinceChange = (e) => {
-    setProvince(e.target.value);
-    setDistrict(foundItem)
+    if (key === "province") {
+      const provinceData = mapData.find((item) => item.province === value);
+      if (provinceData) {
+        setSelectedLocation((prevState) => ({
+          ...prevState,
+          districtList: provinceData.district,
+          district: "",
+          cityList: [],
+        }));
+      } else {
+        setSelectedLocation((prevState) => ({
+          ...prevState,
+          districtList: [],
+          district: "",
+          cityList: [],
+        }));
+      }
+    } else if (key === "district") {
+      const selectedDistrict = selectedLocation.districtList.find(
+        (item) => item.name === value,
+      );
+      if (selectedDistrict) {
+        setSelectedLocation((prevState) => ({
+          ...prevState,
+          cityList: selectedDistrict.city,
+          city: "",
+        }));
+      } else {
+        setSelectedLocation((prevState) => ({
+          ...prevState,
+          cityList: [],
+          city: "",
+        }));
+      }
+    } else if (key === "city") {
+      // Update city selection
+      setSelectedLocation((prevState) => ({
+        ...prevState,
+        city: value,
+      }));
+    }
   };
-console.log(province)
-console.log(district)
 
   return (
     <>
@@ -43,10 +88,13 @@ console.log(district)
                     <select
                       name="province"
                       className="form-control"
-                      onChange={handleProvinceChange}
+                      onChange={(e) =>
+                        handleLocationSelect("province", e.target.value)
+                      }
+                      value={selectedLocation.province}
                     >
                       <option value="">Select Province</option>
-                      {mapData?.map((item, index) => (
+                      {mapData.map((item, index) => (
                         <option value={item.province} key={index}>
                           {item.province}
                         </option>
@@ -57,24 +105,36 @@ console.log(district)
                     <select
                       name="district"
                       className="form-control"
+                      onChange={(e) =>
+                        handleLocationSelect("district", e.target.value)
+                      }
+                      value={selectedLocation.district}
+                      disabled={!selectedLocation.province}
                     >
-                    
                       <option value="">Select District</option>
-                      {district?.district?.map((item, index) => (
-                          <option value={item.name} key={index}>
-                            {item.name}
-                          </option>
-                        ))}
+                      {selectedLocation.districtList.map((item, index) => (
+                        <option value={item.name} key={index}>
+                          {item.name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div className="form-group w-1/3 px-5">
                     <select
                       name="city"
                       className="form-control"
+                      value={selectedLocation.city}
+                      disabled={!selectedLocation.district}
+                      onChange={(e) =>
+                        handleLocationSelect("city", e.target.value)
+                      }
                     >
                       <option value="">Select City</option>
-                      <option value="Bhaktapur">Bhaktapur</option>
-                      <option value="Kathmandu">Kathmandu</option>
+                      {selectedLocation.cityList.map((item, index) => (
+                        <option value={item.name} key={index}>
+                          {item.name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -82,7 +142,8 @@ console.log(district)
             </div>
           </div>
           <div className="branch-map">
-            <Map />
+            {console.log(selectedLocation)}
+            <Map city={selectedLocation.city} />
           </div>
         </div>
       </section>

@@ -6,10 +6,13 @@ export const MapData = [
         name: "Kathmandu",
         city: [
             {
-              name: "A",
+              name: "Kathmandu",
             },
             {
-              name: "B",
+              name: "Ktm",
+            },
+            {
+              name: "Bhaktapur",
             },
           ],
       },
@@ -17,7 +20,7 @@ export const MapData = [
         name: "Lalitpur",
         city: [
           {
-            name: "A",
+            name: "London",
           },
           {
             name: "B",
