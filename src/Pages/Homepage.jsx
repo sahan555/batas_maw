@@ -10,6 +10,7 @@ import VideoSection from "../Component/Home/VideoSection";
 import Gallery from "../Component/Home/Gallery";
 import FaqFeedBackSection from "../Component/Home/FaqFeedBackSection";
 import { testiData } from "../Global/Datas/HomeData";
+import MapSection from "../Component/Home/MapSection";
 
 const Homepage = () => {
   return (
@@ -18,6 +19,7 @@ const Homepage = () => {
       <HeroSection/>
       <ProductsTab/>
       <HelpSection/>
+      <MapSection/>
       <NewsEvent/>
       <ClientSection/>
       <Testimonials heading='Testimonials' data={testiData} slider={true} right={false}/>

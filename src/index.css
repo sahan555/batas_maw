@@ -183,7 +183,7 @@
     }
   }
 
- 
+
 
   .products-tab .react-tabs__tab--selected {
     @apply text-primary underline
@@ -492,6 +492,32 @@
       margin-left: 10px;
     }
   }
+
+  .branch-tabs {
+    .tab {
+      display: flex;
+      justify-content: space-between;
+      svg{
+        transition: 0.3s all ease
+      }
+    }
+    .react-tabs__tab--selected {
+      @apply text-primary;
+      svg {
+        @apply rotate-90 
+      }
+    }
+    .tabs-content {
+      ul li {
+        position: relative;
+        padding-left: 90px;
+        span {
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
 }
 
 body {
@@ -523,7 +549,9 @@ figure {
     height: 100%;
     width: 100%;
   }
-} .react-tabs__tab--selected {
+}
+
+.react-tabs__tab--selected {
   &:focus-visible {
     outline: none !important;
   }
