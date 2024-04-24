@@ -5,7 +5,7 @@ const HelpSection = () => {
   return (
     <section className="h-help bg-[#bcbcbe]">
       <div className="container mx-auto">
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-6 gap-[0.35rem]">
           <div className="col-span-4">
             <figure>
               <img src="./assets/images/flow.png" alt="" />

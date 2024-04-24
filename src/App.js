@@ -7,12 +7,14 @@ import Error from "./Pages/Error";
 import Navbar from "./Component/Navbar/Navbar";
 import Footer from "./Component/Footer/Footer";
 import { routes } from "./Global/Datas/RoutesData";
+import ScrollToTop from "./Component/Global/ScrollToTop";
 
 const App = () => {
   // const Homepage = lazy(() => import('./Pages/Homepage'));
 
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Suspense fallback={<Loading />}>
         <Routes>

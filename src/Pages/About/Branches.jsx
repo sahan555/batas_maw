@@ -12,7 +12,7 @@ const Branches = () => {
     cityList: [],
     city: "",
   });
-  console.log(coordinate)
+  // console.log(coordinate)
   return (
     <>
       <Breadcrumbs />

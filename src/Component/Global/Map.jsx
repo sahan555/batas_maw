@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, Marker, Popup, TileLayer, GeoJSON } from "react-leaflet";
-import 'leaflet/dist/leaflet.css';
-import markerIconPng from "leaflet/dist/images/marker-icon.png"
-import {Icon} from 'leaflet'
+import "leaflet/dist/leaflet.css";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import { Icon } from "leaflet";
 
 import axios from "axios";
 
-const Map = ({ city, coordinate }) => {
+const Map = ({ city,setCity, coordinate, setCoordinate }) => {
   const [position, setPosition] = useState([28.3780464, 83.9999901]); // Default position
   const [zoom, setZoom] = useState(7.5);
   const [samsungStores, setSamsungStores] = useState([]);
-  const [cityBoundary, setCityBoundary] = useState(null);
+  // const [cityBoundary, setCityBoundary] = useState(null);
   const mapRef = useRef(null);
-  console.log(position);
+  // console.log(position);
   useEffect(() => {
     const fetchGeocode = async () => {
       try {
@@ -35,7 +35,7 @@ const Map = ({ city, coordinate }) => {
 
     const fetchSamsungStores = async (lat, lon) => {
       try {
-        console.log(lat);
+        // console.log(lat);
         const response = await axios.get(
           `https://overpass-api.de/api/interpreter?data=[out:json];(node["shop"="electronics"]["name"="Samsung"](${lat - 0.1},${lon - 0.2},${lat + 0.1},${lon + 0.2}););out;`,
         );
@@ -53,15 +53,17 @@ const Map = ({ city, coordinate }) => {
         console.error("Error fetching Samsung stores:", error);
       }
     };
-
-    if (city) {
-      fetchGeocode();
-    }
     if (coordinate) {
       setPosition(coordinate.coordinates);
       setZoom(13);
+    }else if(city) {
+      fetchGeocode();
+    }  
+    else {
+      setPosition([28.3780464, 83.9999901]);
+      setZoom(7.5);
     }
-  }, [city,coordinate]);
+  }, [city, coordinate]);
 
   useEffect(() => {
     if (mapRef.current) {
@@ -82,14 +84,35 @@ const Map = ({ city, coordinate }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {coordinate && (
-        <Marker position={coordinate.coordinates} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41],popupAnchor: [0, -30]})}>
+        <Marker
+          position={coordinate.coordinates}
+          icon={
+            new Icon({
+              iconUrl: markerIconPng,
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              popupAnchor: [0, -30],
+            })
+          }
+        >
           <Popup position={coordinate.coordinates}>{coordinate.name}</Popup>
         </Marker>
       )}
 
       {/* Markers for Samsung stores */}
       {samsungStores.map((store) => (
-        <Marker key={store.id} position={store.location} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41],popupAnchor: [0, -30]})}>
+        <Marker
+          key={store.id}
+          position={store.location}
+          icon={
+            new Icon({
+              iconUrl: markerIconPng,
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              popupAnchor: [0, -30],
+            })
+          }
+        >
           <Popup>Eicher</Popup>
         </Marker>
       ))}
