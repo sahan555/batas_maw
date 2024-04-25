@@ -1,14 +1,15 @@
 import React from "react";
 import { MapData } from "../../Global/Datas/MapData";
+import { useLayoutData } from "../../Global/Context/Layout";
 const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
   const mapData = MapData;
-
+  const { coordinate, setCoordinate } = useLayoutData();
   const handleLocationSelect = (key, value) => {
     setSelectedLocation((prevState) => ({
       ...prevState,
       [key]: value,
     }));
-
+    setCoordinate("");
     if (key === "province") {
       const provinceData = mapData.find((item) => item.province === value);
       if (provinceData) {
@@ -52,12 +53,12 @@ const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
     }
   };
   return (
-    <form action="" className="max-w-[1000px] mx-auto">
+    <form action="" className="mx-auto max-w-[1000px]">
       <div className="-mx-8 flex flex-row">
         <div className="form-group w-1/3 px-8">
           <select
             name="province"
-            className="form-control border border-grey border-solid capitalize w-full py-2 px-2 outline-0"
+            className="form-control w-full border border-solid border-grey px-2 py-2 capitalize outline-0"
             onChange={(e) => handleLocationSelect("province", e.target.value)}
             value={selectedLocation.province}
           >
@@ -72,7 +73,7 @@ const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
         <div className="form-group w-1/3 px-5">
           <select
             name="district"
-            className="form-control border border-grey border-solid capitalize w-full py-2 px-2 outline-0"
+            className="form-control w-full border border-solid border-grey px-2 py-2 capitalize outline-0"
             onChange={(e) => handleLocationSelect("district", e.target.value)}
             value={selectedLocation.district}
             disabled={!selectedLocation.province}
@@ -88,7 +89,7 @@ const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
         <div className="form-group w-1/3 px-5">
           <select
             name="city"
-            className="form-control border border-grey border-solid capitalize w-full py-2 px-2 outline-0"
+            className="form-control w-full border border-solid border-grey px-2 py-2 capitalize outline-0"
             value={selectedLocation.city}
             disabled={!selectedLocation.district}
             onChange={(e) => handleLocationSelect("city", e.target.value)}

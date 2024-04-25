@@ -10,9 +10,7 @@ const Map = ({ city,setCity, coordinate, setCoordinate }) => {
   const [position, setPosition] = useState([28.3780464, 83.9999901]); // Default position
   const [zoom, setZoom] = useState(7.5);
   const [samsungStores, setSamsungStores] = useState([]);
-  // const [cityBoundary, setCityBoundary] = useState(null);
   const mapRef = useRef(null);
-  // console.log(position);
   useEffect(() => {
     const fetchGeocode = async () => {
       try {
@@ -35,7 +33,6 @@ const Map = ({ city,setCity, coordinate, setCoordinate }) => {
 
     const fetchSamsungStores = async (lat, lon) => {
       try {
-        // console.log(lat);
         const response = await axios.get(
           `https://overpass-api.de/api/interpreter?data=[out:json];(node["shop"="electronics"]["name"="Samsung"](${lat - 0.1},${lon - 0.2},${lat + 0.1},${lon + 0.2}););out;`,
         );

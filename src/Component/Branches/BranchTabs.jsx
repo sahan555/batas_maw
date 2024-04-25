@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { MapData, serviceCenter } from "../../Global/Datas/MapData";
+import { MapData } from "../../Global/Datas/MapData";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
 

@@ -3,21 +3,23 @@ import Map from "../Global/Map";
 import { IoIosSearch } from "react-icons/io";
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md";
 import { MapData } from "../../Global/Datas/MapData";
-import { HiArrowLongRight } from "react-icons/hi2";
 import { Link } from "react-router-dom";
+import { useLayoutData } from "../../Global/Context/Layout";
 
 const MapSection = () => {
-  const [city, setCity] = useState();
-  const [coordinate, setCoordinate] = useState();
+  const { city, setCity, coordinate, setCoordinate } = useLayoutData();
 
   const handleCityInput = (event) => {
-    setCity(event.target.value);
+    setCity(event.target.value.toLowerCase());
     setCoordinate("");
   };
 
   const handleCitySearch = (event) => {
     event.preventDefault();
-    console.log("Searching for city:", city);
+    const cityValue = event.target.elements.searchCity.value.toLowerCase();
+    setCity(cityValue);
+    setCoordinate("");
+    // console.log("Searching for city:", city);
   };
   const renderServiceCenter = (item, index) => (
     <div
@@ -75,7 +77,7 @@ const MapSection = () => {
           />
         </div>
         <div className="col-span-4">
-          <div className="dealer-wrapper pb-13 relative w-full h-full max-w-[508px]">
+          <div className="dealer-wrapper pb-13 relative h-full w-full max-w-[508px]">
             <div className="heading-wrapper p-10 pb-5">
               <h4 className="heading">
                 <span className="text-primary">locate</span> a dealer
@@ -108,7 +110,9 @@ const MapSection = () => {
                 <div key={index} className="dealer-box-wrapper  ">
                   {city
                     ? item?.servicecenter
-                        ?.filter((item) => item?.city.includes(city))
+                        ?.filter((item) =>
+                          item?.city.toLowerCase().includes(city),
+                        )
                         .map((item, index) => renderServiceCenter(item, index))
                     : item?.servicecenter?.map((item, index) =>
                         renderServiceCenter(item, index),

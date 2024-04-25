@@ -3,8 +3,9 @@ import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import Map from "../../Component/Global/Map";
 import BranchForm from "../../Component/Branches/BranchForm";
 import BranchTabs from "../../Component/Branches/BranchTabs";
+import { useLayoutData } from "../../Global/Context/Layout";
 const Branches = () => {
-  const [coordinate,setCoordinate] =useState();
+  const { coordinate, setCoordinate } = useLayoutData();
   const [selectedLocation, setSelectedLocation] = useState({
     province: "",
     districtList: [],
@@ -12,7 +13,6 @@ const Branches = () => {
     cityList: [],
     city: "",
   });
-  // console.log(coordinate)
   return (
     <>
       <Breadcrumbs />
@@ -34,13 +34,16 @@ const Branches = () => {
                   Covering Expanse: Our Branch Network
                 </h4>
               </div>
-             <BranchForm selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation}/>
+              <BranchForm
+                selectedLocation={selectedLocation}
+                setSelectedLocation={setSelectedLocation}
+              />
             </div>
           </div>
           <div className="branch-map">
             <Map city={selectedLocation.city} coordinate={coordinate} />
           </div>
-          <BranchTabs setCoordinate={setCoordinate}/>
+          <BranchTabs setCoordinate={setCoordinate} />
         </div>
       </section>
     </>
