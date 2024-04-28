@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
+@font-face {
   font-family: HermesFB-BoldItalic;
   src: url(../public/assets/fonts/hermesfb-bolditalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-bolditalic.otf) format('opentype'), url(../public/assets/fonts/hermesfb-bolditalic.woff) format('woff'), url(../public/assets/fonts/hermesfb-bolditalic.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-bolditalic.svg#HermesFB-BoldItalic) format('svg');
   font-weight: 900;
@@ -42,7 +42,7 @@
   src: url(../public/assets/fonts/hermesfb-regular.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-regular.otf) format('opentype'), url(../public/assets/fonts/hermesfb-regular.woff) format('woff'), url(../public/assets/fonts/hermesfb-regular.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-regular.svg#HermesFB-Regular) format('svg');
   font-weight: 400;
   font-style: normal
-} */
+}
 
 @layer base {
   body {
@@ -60,6 +60,7 @@
 
 @layer utilities {
   body {
+    font-family: Arial, Helvetica, sans-serif;
     @apply font-hermes;
   }
 
