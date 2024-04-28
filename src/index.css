@@ -4,42 +4,42 @@
 
 @font-face {
   font-family: HermesFB-BoldItalic;
-  src: url(../public/assets/fonts//HermesFB-BoldItalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-BoldItalic.otf) format('opentype'), url(../public/assets/fonts//HermesFB-BoldItalic.woff) format('woff'), url(../public/assets/fonts//HermesFB-BoldItalic.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-BoldItalic.svg#HermesFB-BoldItalic) format('svg');
+  src: url(../public/assets/fonts/hermesfb-bolditalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-bolditalic.otf) format('opentype'), url(../public/assets/fonts/hermesfb-bolditalic.woff) format('woff'), url(../public/assets/fonts/hermesfb-bolditalic.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-bolditalic.svg#HermesFB-BoldItalic) format('svg');
   font-weight: 900;
   font-style: italic
 }
 
 @font-face {
   font-family: HermesFB-Bold;
-  src: url(../public/assets/fonts//HermesFB-Bold.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-Bold.otf) format('opentype'), url(../public/assets/fonts//HermesFB-Bold.woff) format('woff'), url(../public/assets/fonts//HermesFB-Bold.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-Bold.svg#HermesFB-Bold) format('svg');
+  src: url(../public/assets/fonts/hermesfb-bold.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-bold.otf) format('opentype'), url(../public/assets/fonts/hermesfb-bold.woff) format('woff'), url(../public/assets/fonts/hermesfb-bold.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-bold.svg#HermesFB-Bold) format('svg');
   font-weight: 900;
   font-style: normal
 }
 
 @font-face {
   font-family: HermesFB-ThinItalic;
-  src: url(../public/assets/fonts//HermesFB-ThinItalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-ThinItalic.otf) format('opentype'), url(../public/assets/fonts//HermesFB-ThinItalic.woff) format('woff'), url(../public/assets/fonts//HermesFB-ThinItalic.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-ThinItalic.svg#HermesFB-ThinItalic) format('svg');
+  src: url(../public/assets/fonts/hermesfb-thinitalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-thinitalic.otf) format('opentype'), url(../public/assets/fonts/hermesfb-thinitalic.woff) format('woff'), url(../public/assets/fonts/hermesfb-thinitalic.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-thinitalic.svg#HermesFB-ThinItalic) format('svg');
   font-weight: 300;
   font-style: italic
 }
 
 @font-face {
   font-family: HermesFB-Thin;
-  src: url(../public/assets/fonts//HermesFB-Thin.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-Thin.otf) format('opentype'), url(../public/assets/fonts//HermesFB-Thin.woff) format('woff'), url(../public/assets/fonts//HermesFB-Thin.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-Thin.svg#HermesFB-Thin) format('svg');
+  src: url(../public/assets/fonts/hermesfb-thin.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-thin.otf) format('opentype'), url(../public/assets/fonts/hermesfb-thin.woff) format('woff'), url(../public/assets/fonts/hermesfb-thin.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-thin.svg#HermesFB-Thin) format('svg');
   font-weight: 300;
   font-style: normal
 }
 
 @font-face {
   font-family: HermesFB-RegularItalic;
-  src: url(../public/assets/fonts//HermesFB-RegularItalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-RegularItalic.otf) format('opentype'), url(../public/assets/fonts//HermesFB-RegularItalic.woff) format('woff'), url(../public/assets/fonts//HermesFB-RegularItalic.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-RegularItalic.svg#HermesFB-RegularItalic) format('svg');
+  src: url(../public/assets/fonts/hermesfb-regularitalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-regularitalic.otf) format('opentype'), url(../public/assets/fonts/hermesfb-regularitalic.woff) format('woff'), url(../public/assets/fonts/hermesfb-regularitalic.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-regularitalic.svg#HermesFB-RegularItalic) format('svg');
   font-weight: 400;
   font-style: italic
 }
 
 @font-face {
   font-family: HermesFB-Regular;
-  src: url(../public/assets/fonts//HermesFB-Regular.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-Regular.otf) format('opentype'), url(../public/assets/fonts//HermesFB-Regular.woff) format('woff'), url(../public/assets/fonts//HermesFB-Regular.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-Regular.svg#HermesFB-Regular) format('svg');
+  src: url(../public/assets/fonts/hermesfb-regular.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts/hermesfb-regular.otf) format('opentype'), url(../public/assets/fonts/hermesfb-regular.woff) format('woff'), url(../public/assets/fonts/hermesfb-regular.ttf) format('truetype'), url(../public/assets/fonts/hermesfb-regular.svg#HermesFB-Regular) format('svg');
   font-weight: 400;
   font-style: normal
 }
