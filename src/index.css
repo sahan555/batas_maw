@@ -1,212 +1,174 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-@font-face {
-  font-family: HermesFB-BoldItalic;
-  src: url(../public/assets/fonts//HermesFB-BoldItalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-BoldItalic.otf) format('opentype'), url(../public/assets/fonts//HermesFB-BoldItalic.woff) format('woff'), url(../public/assets/fonts//HermesFB-BoldItalic.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-BoldItalic.svg#HermesFB-BoldItalic) format('svg');
-  font-weight: 900;
-  font-style: italic
-}
-
-@font-face {
-  font-family: HermesFB-Bold;
-  src: url(../public/assets/fonts//HermesFB-Bold.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-Bold.otf) format('opentype'), url(../public/assets/fonts//HermesFB-Bold.woff) format('woff'), url(../public/assets/fonts//HermesFB-Bold.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-Bold.svg#HermesFB-Bold) format('svg');
-  font-weight: 900;
-  font-style: normal
-}
-
-@font-face {
-  font-family: HermesFB-ThinItalic;
-  src: url(../public/assets/fonts//HermesFB-ThinItalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-ThinItalic.otf) format('opentype'), url(../public/assets/fonts//HermesFB-ThinItalic.woff) format('woff'), url(../public/assets/fonts//HermesFB-ThinItalic.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-ThinItalic.svg#HermesFB-ThinItalic) format('svg');
-  font-weight: 300;
-  font-style: italic
-}
-
-@font-face {
-  font-family: HermesFB-Thin;
-  src: url(../public/assets/fonts//HermesFB-Thin.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-Thin.otf) format('opentype'), url(../public/assets/fonts//HermesFB-Thin.woff) format('woff'), url(../public/assets/fonts//HermesFB-Thin.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-Thin.svg#HermesFB-Thin) format('svg');
-  font-weight: 300;
-  font-style: normal
-}
-
-@font-face {
-  font-family: HermesFB-RegularItalic;
-  src: url(../public/assets/fonts//HermesFB-RegularItalic.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-RegularItalic.otf) format('opentype'), url(../public/assets/fonts//HermesFB-RegularItalic.woff) format('woff'), url(../public/assets/fonts//HermesFB-RegularItalic.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-RegularItalic.svg#HermesFB-RegularItalic) format('svg');
-  font-weight: 400;
-  font-style: italic
-}
-
-@font-face {
-  font-family: HermesFB-Regular;
-  src: url(../public/assets/fonts//HermesFB-Regular.eot?#iefix) format('embedded-opentype'), url(../public/assets/fonts//HermesFB-Regular.otf) format('opentype'), url(../public/assets/fonts//HermesFB-Regular.woff) format('woff'), url(../public/assets/fonts//HermesFB-Regular.ttf) format('truetype'), url(../public/assets/fonts//HermesFB-Regular.svg#HermesFB-Regular) format('svg');
-  font-weight: 400;
-  font-style: normal
-}
-
-@layer base {
-  body {
-    @apply text-black
+  @font-face {
+    font-family: HermesFB-BoldItalic;
+    src: url(./fonts/hermesfb-bolditalic.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-bolditalic.otf) format('opentype'), url(./fonts/hermesfb-bolditalic.woff) format('woff'), url(./fonts/hermesfb-bolditalic.ttf) format('truetype'), url(./fonts/hermesfb-bolditalic.svg#HermesFB-BoldItalic) format('svg');
+    font-weight: 900;
+    font-style: italic
   }
 
-  h1 {
-    @apply text-2xl;
+  @font-face {
+    font-family: HermesFB-Bold;
+    src: url(./fonts/hermesfb-bold.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-bold.otf) format('opentype'), url(./fonts/hermesfb-bold.woff) format('woff'), url(./fonts/hermesfb-bold.ttf) format('truetype'), url(./fonts/hermesfb-bold.svg#HermesFB-Bold) format('svg');
+    font-weight: 900;
+    font-style: normal
   }
 
-  h2 {
-    @apply text-xl;
-  }
-}
-
-@layer utilities {
-  body {
-    @apply font-hermes;
+  @font-face {
+    font-family: HermesFB-ThinItalic;
+    src: url(./fonts/hermesfb-thinitalic.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-thinitalic.otf) format('opentype'), url(./fonts/hermesfb-thinitalic.woff) format('woff'), url(./fonts/hermesfb-thinitalic.ttf) format('truetype'), url(./fonts/hermesfb-thinitalic.svg#HermesFB-ThinItalic) format('svg');
+    font-weight: 300;
+    font-style: italic
   }
 
-  .skew-btn {
-    @apply before:-skew-x-[20deg] before:transform
+  @font-face {
+    font-family: HermesFB-Thin;
+    src: url(./fonts/hermesfb-thin.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-thin.otf) format('opentype'), url(./fonts/hermesfb-thin.woff) format('woff'), url(./fonts/hermesfb-thin.ttf) format('truetype'), url(./fonts/hermesfb-thin.svg#HermesFB-Thin) format('svg');
+    font-weight: 300;
+    font-style: normal
   }
 
-  .skew-image {
-    clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
-
+  @font-face {
+    font-family: HermesFB-RegularItalic;
+    src: url(./fonts/hermesfb-regularitalic.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-regularitalic.otf) format('opentype'), url(./fonts/hermesfb-regularitalic.woff) format('woff'), url(./fonts/hermesfb-regularitalic.ttf) format('truetype'), url(./fonts/hermesfb-regularitalic.svg#HermesFB-RegularItalic) format('svg');
+    font-weight: 400;
+    font-style: italic
   }
 
-  .stripe-wrapper {
-    @apply relative;
+  @font-face {
+    font-family: HermesFB-Regular;
+    src: url(./fonts/hermesfb-regular.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-regular.otf) format('opentype'), url(./fonts/hermesfb-regular.woff) format('woff'), url(./fonts/hermesfb-regular.ttf) format('truetype'), url(./fonts/hermesfb-regular.svg#HermesFB-Regular) format('svg');
+    font-weight: 400;
+    font-style: normal
+  }
 
-    &::before {
-      @apply absolute content-[''] inset-0 w-[50px] left-full right-auto;
-      clip-path: polygon(0 0, 0% 100%, 27% 0);
-
+  @layer base {
+    body {
+      @apply text-black
     }
 
-    &::after {
-      @apply absolute content-[''] inset-0 left-auto right-0 w-[170%];
+    h1 {
+      @apply text-2xl;
+    }
+
+    h2 {
+      @apply text-xl;
     }
   }
 
-  .stripe-wrapper-opp {
-    @apply relative;
-
-    &::before {
-      @apply absolute content-[''] inset-0 w-[50px] right-full left-auto;
-      clip-path: polygon(100% 0, 100% 100%, 73% 0);
+  @layer utilities {
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      @apply font-hermes;
     }
 
-    &::after {
-      @apply absolute content-[''] inset-0 left-0 right-auto w-[170%];
-    }
-  }
-
-  .stripe {
-    @apply relative;
-
-    &::before,
-    &::after {
-      @apply absolute content-[''] bg-white transform -skew-x-12 w-[20px] h-full top-0 bottom-0 z-[1];
+    .skew-btn {
+      @apply before:-skew-x-[20deg] before:transform
     }
 
-    &::before {
-      @apply right-5;
+    .skew-image {
+      clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+
     }
 
-    &::after {
-      @apply right-[50px];
-    }
-  }
+    .stripe-wrapper {
+      @apply relative;
 
-  .error {
-    @apply border-red-500;
-  }
+      &::before {
+        @apply absolute content-[''] inset-0 w-[50px] left-full right-auto;
+        clip-path: polygon(0 0, 0% 100%, 27% 0);
 
-  .stripe-opp {
-    @apply relative;
-
-    &::before,
-    &::after {
-      @apply absolute content-[''] bg-white transform skew-x-12 w-[20px] h-full top-0 bottom-0;
-    }
-
-    &::before {
-      @apply left-5;
-    }
-
-    &::after {
-      @apply left-[50px];
-    }
-  }
-
-  .btn-full {
-    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] text-white transition-all ease-linear duration-300 before:pointer-events-none;
-  }
-
-  .btn-transparent {
-    @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] before:border before:border-solid transition-all ease-linear duration-300 before:pointer-events-none;
-  }
-
-  .section-break {
-    @apply py-16
-  }
-
-  .heading {
-    @apply text-black font-medium text-2xl uppercase
-  }
-
-  .navbar-bottom .navbar-group .active {
-    @apply text-white relative z-0;
-  }
-
-  .navbar-bottom .navbar-group .active::before {
-    @apply bg-primary text-white absolute content-[''] inset-0 -z-[1] transform -skew-x-[20deg];
-  }
-
-  .hero-slider .slick-dots {
-    @apply bottom-8;
-
-    li {
-      @apply w-[60px] h-2 mx-3;
-
-      &.slick-active {
-        button::before {
-          @apply bg-primary opacity-100;
-        }
       }
 
-      button {
-        @apply w-full h-full;
-
-        &::before {
-          @apply bg-white content-[''] opacity-100 w-full h-full transform -skew-x-[30deg] shadow-md;
-        }
+      &::after {
+        @apply absolute content-[''] inset-0 left-auto right-0 w-[170%];
       }
     }
-  }
 
+    .stripe-wrapper-opp {
+      @apply relative;
 
+      &::before {
+        @apply absolute content-[''] inset-0 w-[50px] right-full left-auto;
+        clip-path: polygon(100% 0, 100% 100%, 73% 0);
+      }
 
-  .products-tab .react-tabs__tab--selected {
-    @apply text-primary underline
-  }
-
-  .product-slider {
-    .slick-slide {
-      padding: 0 12px;
+      &::after {
+        @apply absolute content-[''] inset-0 left-0 right-auto w-[170%];
+      }
     }
 
-    .slick-list {
-      margin: 0 -12px;
+    .stripe {
+      @apply relative;
+
+      &::before,
+      &::after {
+        @apply absolute content-[''] bg-white transform -skew-x-12 w-[20px] h-full top-0 bottom-0 z-[1];
+      }
+
+      &::before {
+        @apply right-5;
+      }
+
+      &::after {
+        @apply right-[50px];
+      }
     }
 
-    .slick-dots {
-      bottom: -30px;
+    .error {
+      @apply border-red-500;
+    }
+
+    .stripe-opp {
+      @apply relative;
+
+      &::before,
+      &::after {
+        @apply absolute content-[''] bg-white transform skew-x-12 w-[20px] h-full top-0 bottom-0;
+      }
+
+      &::before {
+        @apply left-5;
+      }
+
+      &::after {
+        @apply left-[50px];
+      }
+    }
+
+    .btn-full {
+      @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] text-white transition-all ease-linear duration-300 before:pointer-events-none;
+    }
+
+    .btn-transparent {
+      @apply relative z-0 font-medium before:absolute before:inset-0 before:z-[-1] before:content-[''] before:border before:border-solid transition-all ease-linear duration-300 before:pointer-events-none;
+    }
+
+    .section-break {
+      @apply py-16
+    }
+
+    .heading {
+      @apply text-black font-medium text-2xl uppercase
+    }
+
+    .navbar-bottom .navbar-group .active {
+      @apply text-white relative z-0;
+    }
+
+    .navbar-bottom .navbar-group .active::before {
+      @apply bg-primary text-white absolute content-[''] inset-0 -z-[1] transform -skew-x-[20deg];
+    }
+
+    .hero-slider .slick-dots {
+      @apply bottom-8;
 
       li {
-        @apply w-[12px] h-[12px] mx-1.5 transition-[width] duration-1000 ease-in-out;
+        @apply !w-[60px] h-2 mx-3;
 
         &.slick-active {
-          @apply w-[40px];
-
           button::before {
             @apply bg-primary opacity-100;
           }
@@ -216,148 +178,63 @@
           @apply w-full h-full;
 
           &::before {
-            @apply bg-gray-400 bg-opacity-30 content-[''] opacity-100 w-full h-full rounded-full;
+            @apply bg-white !content-[''] opacity-100 w-full h-full transform -skew-x-[30deg] shadow-md;
           }
         }
       }
     }
-  }
 
-  .news-slider {
-    .slick-dots {
-      bottom: 48%;
-      left: -30%;
-      right: auto;
 
-      li {
-        @apply w-[12px] h-[12px] mx-1.5 transition-[width] duration-1000 ease-in-out;
 
-        &.slick-active {
-          @apply w-[40px];
-
-          button::before {
-            @apply bg-primary;
-          }
-        }
-
-        button {
-          @apply w-full h-full;
-
-          &::before {
-            @apply bg-white bg-opacity-100 content-[''] !opacity-100 w-full h-full rounded-full;
-          }
-        }
-      }
-    }
-  }
-
-  .news-section .event-group {
-    height: calc(100% - 6.5px);
-
-    &::before {
-      height: 100%;
-      right: calc(99% + 7px);
-      left: auto;
-      z-index: 1;
-      width: 100%;
-    }
-  }
-
-  .testimonals-section .slick-list,
-  .gallery-slider .slick-list {
-    overflow: visible;
-    overflow-x: clip;
-  }
-
-  .clip-pol {
-    &::before {
-      clip-path: polygon(100% 0, 100% 0, 100% 100%, 89% 100%);
-    }
-  }
-
-  .accordion {
-    .accordion-panel {
-      font-weight: 500;
-
+    .products-tab .react-tabs__tab--selected {
+      @apply text-primary underline
     }
 
-    .accordion-title {
-      &.active {}
-    }
-
-    .accordion-content {}
-
-  }
-
-  .testimonals-section {
-    .slick-arrow {
-      @apply text-primary w-[30px] h-[30px] hover:text-primary;
-
-      &::before {
-        @apply hidden
-      }
-    }
-
-    .slick-prev {
-      @apply left-[-60px];
-    }
-
-    .slick-disabled {
-      @apply opacity-0 pointer-events-none
-    }
-  }
-
-  .news-section {
-    .slick-arrow {
-      @apply text-primary w-[40px] h-[40px] p-1 hover:bg-primary hover:text-white transition-all duration-300 ease-linear [box-shadow:0px_4px_4px_0px_#00000040] bg-white z-[1] rounded-full right-[21px];
-    }
-
-    .slick-prev {
-      @apply !hidden;
-    }
-  }
-
-  .vehicles-page {
-    .product-tab-slider {
+    .product-slider {
       .slick-slide {
         padding: 0 12px;
       }
 
       .slick-list {
-        margin: 0 -5px;
+        margin: 0 -12px;
       }
 
-      .slick-arrow {
-        @apply text-primary w-[30px] h-[30px] hover:text-primary;
+      .slick-dots {
+        bottom: -30px;
 
-        &::before {
-          @apply hidden
+        li {
+          @apply w-[12px] h-[12px] mx-1.5 transition-[width] duration-1000 ease-in-out;
+
+          &.slick-active {
+            @apply w-[40px];
+
+            button::before {
+              @apply bg-primary opacity-100;
+            }
+          }
+
+          button {
+            @apply w-full h-full;
+
+            &::before {
+              @apply bg-gray-400 bg-opacity-30 content-[''] opacity-100 w-full h-full rounded-full;
+            }
+          }
         }
-      }
-
-      .slick-prev {
-        @apply left-[-30px];
-      }
-
-      .slick-next {
-        @apply right-[-30px]
-      }
-
-      .slick-disabled {
-        @apply opacity-0 pointer-events-none
       }
     }
 
-    .product-slider-img {
+    .news-slider {
       .slick-dots {
-        bottom: 10%;
-
+        bottom: 48%;
+        left: -30%;
+        right: auto;
 
         li {
-          @apply w-[10px] h-[10px] mx-1.5 transition-[width] duration-1000 ease-in-out;
+          @apply w-[12px] h-[12px] mx-1.5 transition-[width] duration-1000 ease-in-out;
 
           &.slick-active {
-            @apply w-[30px];
+            @apply w-[40px];
 
             button::before {
               @apply bg-primary;
@@ -368,18 +245,54 @@
             @apply w-full h-full;
 
             &::before {
-              @apply bg-white bg-opacity-100 content-[''] opacity-100 w-full h-full rounded-full;
+              @apply bg-white bg-opacity-100 content-[''] !opacity-100 w-full h-full rounded-full;
             }
           }
         }
       }
     }
-  }
 
-  .about-page {
-    .history-slider {
+    .news-section .event-group {
+      height: 100%;
+
+      &::before {
+        height: 100%;
+        right: calc(99% + 4px);
+        left: auto;
+        z-index: 1;
+        width: 100%;
+      }
+    }
+
+    .testimonals-section .slick-list,
+    .gallery-slider .slick-list {
+      overflow: visible;
+      overflow-x: clip;
+    }
+
+    .clip-pol {
+      &::before {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 89% 100%);
+      }
+    }
+
+    .accordion {
+      .accordion-panel {
+        font-weight: 500;
+
+      }
+
+      .accordion-title {
+        &.active {}
+      }
+
+      .accordion-content {}
+
+    }
+
+    .testimonals-section {
       .slick-arrow {
-        @apply text-secondary w-[30px] h-[30px] hover:text-secondary top-full;
+        @apply text-primary w-[30px] h-[30px] hover:text-primary;
 
         &::before {
           @apply hidden
@@ -387,76 +300,180 @@
       }
 
       .slick-prev {
-        @apply left-0;
-      }
-
-      .slick-next {
-        @apply right-0
+        @apply left-[-60px];
       }
 
       .slick-disabled {
         @apply opacity-0 pointer-events-none
       }
     }
-  }
 
-  .career-gallery .gallery-slider {
-    .slick-slide {
-      padding: 0 12px;
+    .news-section {
+      .slick-arrow {
+        @apply text-primary w-[40px] h-[40px] p-1 hover:bg-primary hover:text-white transition-all duration-300 ease-linear [box-shadow:0px_4px_4px_0px_#00000040] bg-white z-[1] rounded-full right-[21px];
+      }
+
+      .slick-prev {
+        @apply !hidden;
+      }
     }
 
-    .slick-list {
-      margin: 0 -12px;
-    }
+    .vehicles-page {
+      .product-tab-slider {
+        .slick-slide {
+          padding: 0 12px;
+        }
 
-    .slick-arrow {
-      @apply text-primary w-[40px] h-[40px] p-1 hover:bg-primary hover:text-white transition-all duration-300 ease-linear [box-shadow:0px_4px_4px_0px_#00000040] bg-white z-[1] rounded-full;
-    }
+        .slick-list {
+          margin: 0 -5px;
+        }
 
-    .slick-disabled {
-      @apply !hidden;
-    }
+        .slick-arrow {
+          @apply text-primary w-[30px] h-[30px] hover:text-primary;
 
-    .slick-next {
-      @apply right-[-20px];
-    }
-
-    .slick-prev {
-      @apply left-[-20px];
-    }
-
-    a {
-      height: 500px;
-    }
-  }
-
-  .pswp--custom {
-    .pswp__img {
-      object-fit: contain !important;
-      object-position: center;
-    }
-
-  }
-
-  .career-form {
-    .photo-group {
-      position: relative;
-
-      .form-control {
-        opacity: 0;
-        width: 176px;
-        height: 41px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-
-        &:hover {
-          cursor: pointer;
-
-          ~.btn-group .photo-btn {
-            opacity: 0.9;
+          &::before {
+            @apply hidden
           }
+        }
+
+        .slick-prev {
+          @apply left-[-30px];
+        }
+
+        .slick-next {
+          @apply right-[-30px]
+        }
+
+        .slick-disabled {
+          @apply opacity-0 pointer-events-none
+        }
+      }
+
+      .product-slider-img {
+        .slick-dots {
+          bottom: 10%;
+
+
+          li {
+            @apply w-[10px] h-[10px] mx-1.5 transition-[width] duration-1000 ease-in-out;
+
+            &.slick-active {
+              @apply w-[30px];
+
+              button::before {
+                @apply bg-primary;
+              }
+            }
+
+            button {
+              @apply w-full h-full;
+
+              &::before {
+                @apply bg-white bg-opacity-100 content-[''] opacity-100 w-full h-full rounded-full;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .about-page {
+      .history-slider {
+        .slick-arrow {
+          @apply text-secondary w-[30px] h-[30px] hover:text-secondary top-full;
+
+          &::before {
+            @apply hidden
+          }
+        }
+
+        .slick-prev {
+          @apply left-0;
+        }
+
+        .slick-next {
+          @apply right-0
+        }
+
+        .slick-disabled {
+          @apply opacity-0 pointer-events-none
+        }
+      }
+    }
+
+    .career-gallery .gallery-slider {
+      .slick-slide {
+        padding: 0 12px;
+      }
+
+      .slick-list {
+        margin: 0 -12px;
+      }
+
+      .slick-arrow {
+        @apply text-primary w-[40px] h-[40px] p-1 hover:bg-primary hover:text-white transition-all duration-300 ease-linear [box-shadow:0px_4px_4px_0px_#00000040] bg-white z-[1] rounded-full;
+      }
+
+      .slick-disabled {
+        @apply !hidden;
+      }
+
+      .slick-next {
+        @apply right-[-20px];
+      }
+
+      .slick-prev {
+        @apply left-[-20px];
+      }
+
+      a {
+        height: 500px;
+      }
+    }
+
+    .pswp--custom {
+      .pswp__img {
+        object-fit: contain !important;
+        object-position: center;
+      }
+
+    }
+
+    .career-form {
+      .photo-group {
+        position: relative;
+
+        .form-control {
+          opacity: 0;
+          width: 176px;
+          height: 41px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+
+          &:hover {
+            cursor: pointer;
+
+            ~.btn-group .photo-btn {
+              opacity: 0.9;
+            }
+          }
+        }
+
+        .photo-btn {
+          background: #484848;
+          padding: 10px 20px;
+          font-size: 14px;
+          display: inline-flex;
+          gap: 10px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+
+        #imageName {
+          font-size: 14px;
+          margin-left: 10px;
         }
       }
 
@@ -465,9 +482,10 @@
         padding: 10px 20px;
         font-size: 14px;
         display: inline-flex;
-        gap: 10px;
+        gap: 20px;
         font-weight: 500;
         cursor: pointer;
+        pointer-events: none;
       }
 
       #imageName {
@@ -476,111 +494,115 @@
       }
     }
 
-    .photo-btn {
-      background: #484848;
-      padding: 10px 20px;
-      font-size: 14px;
-      display: inline-flex;
-      gap: 20px;
-      font-weight: 500;
-      cursor: pointer;
-      pointer-events: none;
-    }
+    .branch-tabs {
+      .tab {
+        display: flex;
+        justify-content: space-between;
 
-    #imageName {
-      font-size: 14px;
-      margin-left: 10px;
-    }
-  }
-
-  .branch-tabs {
-    .tab {
-      display: flex;
-      justify-content: space-between;
-
-      svg {
-        transition: 0.3s all ease
+        svg {
+          transition: 0.3s all ease
+        }
       }
-    }
 
-    .react-tabs__tab--selected {
-      @apply text-primary;
+      .react-tabs__tab--selected {
+        @apply text-primary;
 
-      svg {
-        @apply rotate-90
+        svg {
+          @apply rotate-90
+        }
       }
-    }
 
-    .tabs-content {
-      ul li {
-        position: relative;
-        padding-left: 90px;
+      .tabs-content {
+        ul li {
+          position: relative;
+          padding-left: 90px;
 
-        span {
-          position: absolute;
-          left: 0;
+          span {
+            position: absolute;
+            left: 0;
+          }
         }
       }
     }
+
+    .map-section .dealer-group {
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 2px grey;
+        border-radius: 10px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+      @apply bg-primary;
+        border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        @apply bg-primary bg-opacity-80;
+      }
+    }
   }
 
-  .map-section .dealer-group {
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    /* Track */
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 2px grey;
-      border-radius: 10px;
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-     @apply bg-primary;
-      border-radius: 10px;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-      @apply bg-primary bg-opacity-80;
-    }
-  }
-}
-
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
-  max-width: 2000px;
-  width: 100%;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
-
-#root {
-  overflow-x: hidden;
-
-}
-
-a {
-  text-decoration: none;
-  transition: 0.3s all ease-in-out;
-}
-
-figure {
-  overflow: hidden;
-  margin-bottom: 0;
-
-  img {
-    height: 100%;
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    max-width: 2000px;
     width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
   }
-}
 
-.react-tabs__tab--selected {
-  &:focus-visible {
-    outline: none !important;
+  #root {
+    overflow-x: hidden;
+
   }
-}
+
+  a {
+    text-decoration: none;
+    transition: 0.3s all ease-in-out;
+  }
+
+  figure {
+    overflow: hidden;
+    margin-bottom: 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .react-tabs__tab--selected {
+    &:focus-visible {
+      outline: none !important;
+    }
+  }
+  .slick-dots{
+    display: none !important;
+  }
+  .news-section .event-group{
+    height: 100%;
+  }
+  .news-slider {
+    height: 100%;
+     .slick-track, .slick-list,.slick-slide {
+      height: 100%;
+     }
+     .slick-slide div {
+      height: 100%;
+     }
+     .news-box {
+      figure {
+        height: 100%;
+      }
+     }
+   
+  }
