@@ -35,7 +35,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 autofill:bg-none focus:border-grey ${
                       formik.errors.name &&
                       formik.touched.name
-                        ? "error"
+                        ? "border-red-500"
                         : ""}`}
                   />
                 </div>
@@ -49,7 +49,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 autofill:bg-none focus:border-grey ${
                       formik.errors.email &&
                       formik.touched.email
-                        ? "error"
+                        ? "border-red-500"
                         : ""}`}
                     
                   />
@@ -64,7 +64,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 autofill:bg-none focus:border-grey ${
                       formik.errors.phone &&
                       formik.touched.phone
-                        ? "error"
+                        ? "border-red-500"
                         : ""}`}
                     
                   />
@@ -80,7 +80,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 focus:border-grey visited:bg-white ${
                       formik.errors.message &&
                       formik.touched.message
-                        ? "error"
+                        ? "border-red-500"
                         : ""}`}
                     
                   />
@@ -90,7 +90,7 @@ const ContactForm = () => {
                 <div className="form-group">
                   <label className="text-sm">
                     <Field type="checkbox" name="recive_mail" />
-                    <span className=" ml-2">
+                    <span className="align-text-bottom ml-2">
                       I agree to receive Mail on my email address from batas Maw
                       or its authorized associates to assist me further.
                     </span>
