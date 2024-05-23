@@ -3,11 +3,12 @@ import { galleryData } from "../../Global/Datas/HomeData";
 
 import { Link } from "react-router-dom";
 import SliderNGallery from "../Global/SliderNGallery";
-const Gallery = () => {
+import { CustomNextArrow, CustomPrevArrow } from "../Global/SliderArrows";
+const GalleryPage = () => {
   // Slider settings
   const gallerySliderSettings = {
     dots: false,
-    arrows: false,
+    arrows: true,
     infinite: true,
     autoplay: true,
     speed: 500,
@@ -17,6 +18,8 @@ const Gallery = () => {
     autoplaySpeed: 3000,
     draggable:false,
     cssEase: 'linear',
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
   };
   
 
@@ -39,4 +42,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default GalleryPage;

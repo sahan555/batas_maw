@@ -1,6 +1,6 @@
 import React from "react";
-import { MapData } from "../../Global/Datas/MapData";
-import { useLayoutData } from "../../Global/Context/Layout";
+import { MapData } from "../../../Global/Datas/MapData";
+import { useLayoutData } from "../../../Global/Context/Layout";
 const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
   const mapData = MapData;
   const { coordinate, setCoordinate } = useLayoutData();

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import Map from "../../Component/Global/Map";
-import BranchForm from "../../Component/Branches/BranchForm";
-import BranchTabs from "../../Component/Branches/BranchTabs";
+import BranchForm from "../../Component/About/Branches/BranchForm";
+import BranchTabs from "../../Component/About/Branches/BranchTabs";
 import { useLayoutData } from "../../Global/Context/Layout";
 const Branches = () => {
   const { coordinate, setCoordinate } = useLayoutData();

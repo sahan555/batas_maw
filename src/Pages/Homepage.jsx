@@ -7,10 +7,10 @@ import ClientSection from "../Component/Home/ClientSection";
 import Testimonials from "../Component/Global/Testimonials";
 import EmiCalculator from "../Component/Global/EmiCalculator";
 import VideoSection from "../Component/Home/VideoSection";
-import Gallery from "../Component/Home/Gallery";
 import FaqFeedBackSection from "../Component/Home/FaqFeedBackSection";
 import { testiData } from "../Global/Datas/HomeData";
 import MapSection from "../Component/Home/MapSection";
+import GalleryPage from "../Component/Home/GalleryPage";
 
 const Homepage = () => {
   return (
@@ -25,7 +25,7 @@ const Homepage = () => {
       <Testimonials heading='Testimonials' data={testiData} slider={true} right={false}/>
       <EmiCalculator/>
       <VideoSection/>
-      <Gallery/>
+      <GalleryPage/>
       <FaqFeedBackSection/>
     </main>
     </>

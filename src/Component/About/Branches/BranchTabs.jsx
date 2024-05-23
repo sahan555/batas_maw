@@ -1,8 +1,8 @@
 import React from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { MapData } from "../../Global/Datas/MapData";
+import { MapData } from "../../../Global/Datas/MapData";
 import { HiArrowLongRight } from "react-icons/hi2";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 const BranchTabs = ({setCoordinate}) => {
   return (
@@ -13,7 +13,8 @@ const BranchTabs = ({setCoordinate}) => {
             <div className="col-span-1">
               <TabList className='border border-solid border-light-grey'>
                 {MapData.map((item, index) => (
-                  <Tab key={index} className='[&:not(:last-child)]:border-b border-solid border-light-grey px-4 py-3 uppercase tab'>{item.province}<IoIosArrowForward /></Tab>
+                  <Tab key={index} className='[&:not(:last-child)]:border-b border-solid border-light-grey px-4 py-3 uppercase tab'>{item.province}<IoIosArrowDown />
+                  </Tab>
                 ))}
               </TabList>
             </div>

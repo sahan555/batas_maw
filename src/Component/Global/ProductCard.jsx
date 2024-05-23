@@ -66,7 +66,7 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
                 <ul className="flex items-start justify-between">
                   <li className="w-1/3 px-2">
                     <div className="info-wrapper text-center">
-                      <Link to="/" className="hover:text-primary cursor-pointer">
+                      <Link to="/vehicles/vehicle-details" className="hover:text-primary cursor-pointer">
                         <LiaLongArrowAltRightSolid className="mx-auto mb-3 text-2xl" />
                         <span>Learn More</span>
                       </Link>

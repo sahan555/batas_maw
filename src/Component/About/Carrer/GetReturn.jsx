@@ -1,5 +1,5 @@
 import React from "react";
-import { careerReturn } from "../../Global/Datas/CareerData";
+import { careerReturn } from "../../../Global/Datas/CareerData";
 
 const GetReturn = () => {
   return (

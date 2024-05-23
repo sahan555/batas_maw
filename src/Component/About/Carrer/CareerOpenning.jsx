@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { careerPost } from "../../Global/Datas/CareerData";
+import { careerPost } from "../../../Global/Datas/CareerData";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import CareerForm from "../Global/CareerForm";
+import CareerForm from "../../Global/CareerForm";
 
 const CareerOpenning = () => {
   const [jobName, setJobName] = useState("");

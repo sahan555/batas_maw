@@ -3,8 +3,8 @@ import Article from "../../Component/Global/Article";
 import { careerArticle, careerGallery } from "../../Global/Datas/CareerData";
 import SliderNGallery from "../../Component/Global/SliderNGallery";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import GetReturn from "../../Component/Carrer/GetReturn";
-import CareerOpenning from "../../Component/Carrer/CareerOpenning";
+import GetReturn from "../../Component/About/Carrer/GetReturn";
+import CareerOpenning from "../../Component/About/Carrer/CareerOpenning";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 
 const Career = () => {

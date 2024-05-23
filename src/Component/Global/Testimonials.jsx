@@ -1,25 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { CustomNextArrow, CustomPrevArrow } from "./SliderArrows";
 
 const Testimonials = ({ right, heading, data, slider }) => {
-  const CustomPrevArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <div onClick={onClick} className={props.className}>
-        <IoIosArrowBack className="slick-arrow slick-prev text-primary" />
-      </div>
-    );
-  };
-
-  const CustomNextArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <div onClick={onClick} className={props.className}>
-        <IoIosArrowForward className="slick-arrow slick-next text-primary" />
-      </div>
-    );
-  };
+  
   var testiSlider = {
     dots: false,
     arrows: true,
