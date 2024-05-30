@@ -40,7 +40,7 @@ export const vehicleLinks = [
   {
     icon: "/assets/images/icons/compare.svg",
     name: "Compare",
-    link: "#!",
+    link: "/vehicles/compare",
   },
   {
     icon: "/assets/images/icons/pin.svg",
@@ -86,39 +86,890 @@ export const vehicleTabs = [
 ];
 export const vehicleReviews = [
   {
-    image:'/assets/images/dummy.png',
+    image: "/assets/images/dummy.png",
     rating: 5,
     title: "John Doe",
     desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,  ",
   },
   {
-    image:'/assets/images/dummy.png',
+    image: "/assets/images/dummy.png",
     rating: 5,
     title: "John Doe",
     desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,  ",
   },
   {
-    image:'/assets/images/dummy.png',
+    image: "/assets/images/dummy.png",
     rating: 5,
     title: "John Doe",
     desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,  ",
   },
   {
-    image:'/assets/images/dummy.png',
+    image: "/assets/images/dummy.png",
     rating: 4,
     title: "John Doe",
     desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,  ",
   },
   {
-    image:'/assets/images/dummy.png',
+    image: "/assets/images/dummy.png",
     rating: 3,
     title: "John Doe",
     desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,  ",
   },
   {
-    image:'/assets/images/dummy.png',
+    image: "/assets/images/dummy.png",
     rating: 2,
     title: "John Doe",
     desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,  ",
+  },
+];
+
+export const vehicleDetails = [
+  {
+    title: "PRO 1059 C HSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "Pro 1080 XP Truck",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "PRO 1049 C FSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+  },
+  {
+    title: "PRO 1059 C HSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "Pro 1080 XP Truck",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "PRO 1049 C FSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+  },
+  {
+    title: "PRO 1059 C HSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "Pro 1080 XP Truck",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "PRO 1049 C FSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+  },
+  {
+    title: "PRO 1059 C HSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "Pro 1080 XP Truck",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
+    pros: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+    cons: [
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+      {
+        li: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorelorem ipsum dolor sit amet, consectetur adipiscing elit.loremm",
+      },
+    ],
+  },
+  {
+    title: "PRO 1049 C FSD",
+    multiImg: [
+      {
+        img: "/assets/images/product/1.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    rating: "5",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor ",
+    performance: {
+      power: "Lorem ipsum dolor sit amet",
+      tank: "Lorem ipsum dolor sit amet",
+      engine: "Lorem ipsum dolor sit amet",
+      fuel: "Lorem ipsum dolor sit amet",
+      torque: "Lorem ipsum dolor sit amet",
+    },
+    dimensions: {
+      length: "Lorem ipsum dolor sit amet",
+      width: "Lorem ipsum dolor sit amet",
+      height: "Lorem ipsum dolor sit amet",
+      wheelbase: "Lorem ipsum dolor sit amet",
+      clearance: "Lorem ipsum dolor sit amet",
+      turning: "Lorem ipsum dolor sit amet",
+    },
+    transmission: {
+      transmission: "Lorem ipsum dolor sit amet",
+      payload: "Lorem ipsum dolor sit amet",
+      gvw: "Lorem ipsum dolor sit amet",
+      kerb: "Lorem ipsum dolor sit amet",
+    },
+    brake: {
+      brake: "Lorem ipsum dolor sit amet",
+      parking: "Lorem ipsum dolor sit amet",
+      axle: "Lorem ipsum dolor sit amet",
+    },
   },
 ];

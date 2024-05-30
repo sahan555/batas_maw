@@ -35,7 +35,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 autofill:bg-none focus:border-grey ${
                       formik.errors.name &&
                       formik.touched.name
-                        ? "border-red-500"
+                        ? "!border-red-500"
                         : ""}`}
                   />
                 </div>
@@ -49,7 +49,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 autofill:bg-none focus:border-grey ${
                       formik.errors.email &&
                       formik.touched.email
-                        ? "border-red-500"
+                        ? "!border-red-500"
                         : ""}`}
                     
                   />
@@ -64,7 +64,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 autofill:bg-none focus:border-grey ${
                       formik.errors.phone &&
                       formik.touched.phone
-                        ? "border-red-500"
+                        ? "!border-red-500"
                         : ""}`}
                     
                   />
@@ -80,7 +80,7 @@ const ContactForm = () => {
                     className={`w-full border border-white px-5 transition-[border] duration-300 py-2.5 outline-0 focus:border-grey visited:bg-white ${
                       formik.errors.message &&
                       formik.touched.message
-                        ? "border-red-500"
+                        ? "!border-red-500"
                         : ""}`}
                     
                   />

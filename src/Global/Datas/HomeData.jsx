@@ -94,29 +94,25 @@ export const testiData = [
   {
     name: "mr. john cha",
     post: "CEO of auto mobile enterprise ",
-    desc:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "/assets/images/testi/1.jfif",
   },
   {
     name: "mr. john ji",
     post: "CEO of auto mobile enterprise ",
-    desc:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "/assets/images/testi/1.jfif",
   },
   {
     name: "mr. john chha",
     post: "CEO of auto mobile enterprise ",
-    desc:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "/assets/images/testi/1.jfif",
   },
   {
     name: "mr. john doe",
     post: "CEO of auto mobile enterprise ",
-    desc:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
+    desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur ",
     img: "/assets/images/testi/1.jfif",
   },
 ];
@@ -366,6 +362,7 @@ export const productData = [
         img: "/assets/images/product/5.png",
       },
     ],
+
     desc: "Eicher Pro 1114XP is one of the most profitable product of the Eicher PRO philosophy. It has the highest rated payload in its category",
   },
   {
@@ -452,4 +449,27 @@ export const productData = [
     ],
     desc: "Eicher Pro 1114XP is one of the most profitable product of the Eicher PRO philosophy. It has the highest rated payload in its category",
   },
+  {
+    title: "PRO 1114 XP TRUCK",
+    multiImg: [
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/2.png",
+      },
+      {
+        img: "/assets/images/product/3.png",
+      },
+      {
+        img: "/assets/images/product/4.png",
+      },
+      {
+        img: "/assets/images/product/5.png",
+      },
+    ],
+    desc: "Eicher Pro 1114XP is one of the most profitable product of the Eicher PRO philosophy. It has the highest rated payload in its category",
+  },
 ];
+
+

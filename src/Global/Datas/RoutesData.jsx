@@ -2,6 +2,7 @@ import SupportForm from "../../Component/Global/Forms/SupportForm";
 import About from "../../Pages/About/About";
 import Branches from "../../Pages/About/Branches";
 import Career from "../../Pages/About/Career";
+import Compare from "../../Pages/Compare";
 import Form from "../../Pages/Form";
 import Homepage from "../../Pages/Homepage";
 import VehicleDetails from "../../Pages/VehicleDetails";
@@ -13,7 +14,12 @@ export const routes = [
   {
     path: "/vehicles/vehicle-details",
     element: < VehicleDetails/>,
-    breadcrumb: "Vehicles Detail",
+    breadcrumb: "Detail",
+  },
+  {
+    path: "/vehicles/compare",
+    element: < Compare/>,
+    breadcrumb: "Compare",
   },
   { path: "/about", element: <About />, breadcrumb: "About Us" },
   { path: "/about/careers", element: <Career />, breadcrumb: "Career" },

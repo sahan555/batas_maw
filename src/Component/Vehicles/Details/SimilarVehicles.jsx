@@ -15,20 +15,25 @@ const SimilarVehicles = () => {
         </div>
         <div className="-mx-4 flex flex-wrap gap-y-8">
           {productData.slice(0, 4).map((item, index) => (
-            <ProductCard
-              index={index}
-              col={true}
-              slider={true}
-              title={item.title}
-              image={item.multiImg}
-              desc={item.desc}
-            />
+            <React.Fragment key={index}>
+              <ProductCard
+                index={index}
+                col={true}
+                slider={true}
+                title={item.title}
+                image={item.multiImg}
+                desc={item.desc}
+              />
+            </React.Fragment>
           ))}
         </div>
         <div className="view-all pt-8">
-          <Link to="" className="group inline-flex gap-3 items-center text-secondary">
+          <Link
+            to=""
+            className="group inline-flex items-center gap-3 text-secondary"
+          >
             View all products
-            <HiOutlineArrowLongRight className="duration-300 group-hover:ml-2 text-2xl" />
+            <HiOutlineArrowLongRight className="text-2xl duration-300 group-hover:ml-2" />
           </Link>
         </div>
       </div>

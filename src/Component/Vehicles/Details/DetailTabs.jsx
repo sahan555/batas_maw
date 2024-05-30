@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import Table from "../../Global/Table";
 import { vehicleTabs } from "../../../Global/Datas/VehicleData";
+import ObjectTable from "../../Global/ObjectTable";
 
 const DetailTabs = () => {
   return (
@@ -17,7 +17,7 @@ const DetailTabs = () => {
         <div className="tab-content-wrapper border">
           <TabPanel>
             <div className="tab-panel-content">
-              <Table
+              <ObjectTable
                 data={
                   vehicleTabs.filter(
                     (item) => item.name === "specifications",

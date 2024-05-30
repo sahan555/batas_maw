@@ -28,6 +28,7 @@ const VehicleBrief = () => {
                     asNavFor={smallNav}
                     ref={(slider) => (bigSliderRef = slider)}
                     draggable={false}
+                    dots={true}
                   >
                     {galleryData.map((item, index) => (
                       <GalleryBox key={index}>

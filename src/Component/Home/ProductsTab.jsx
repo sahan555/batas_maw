@@ -15,6 +15,7 @@ const ProductsTab = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    draggable:false,
   };
   return (
     <>
@@ -49,11 +50,13 @@ const ProductsTab = () => {
                           <Slider {...ProductSlider} className="product-slider">
                             {productData.map((item, index) => (
                               <div key={index}>
+                                <Link to='/vehicles/vehicle-details'>
                                 <ProductCard
                                   heading={true}
                                   title={item.title}
                                   image={item.multiImg}
                                 />
+                                </Link>
                               </div>
                             ))}
                           </Slider>
@@ -70,7 +73,7 @@ const ProductsTab = () => {
           <div className="btn-wrapper pt-6 text-center">
             <Link
               className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-              to="/"
+              to="/vehicles"
             >
               View All Products
             </Link>

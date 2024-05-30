@@ -20,11 +20,13 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
+import FixedSideLinks from "../Global/FixedSideLinks";
 
 const Footer = () => {
   return (
     <>
-      <footer className="bg-secondary pt-[80px] text-white text-sm">
+      <FixedSideLinks />
+      <footer className="bg-secondary pt-[80px] text-sm text-white">
         <div className="container mx-auto pb-[80px]">
           <div className="grid grid-cols-5 gap-8">
             <div className="col-span-2">
@@ -84,7 +86,9 @@ const Footer = () => {
                   <span>Tangal Chowk, Laxmi Narayan Temple , Kathmandu</span>
                 </li>
                 <li className="relative py-2 pl-[40px]">
-                  <span className="capitalize text-green">open time: 09:30 am to 5:30 pm</span>
+                  <span className="capitalize text-green">
+                    open time: 09:30 am to 5:30 pm
+                  </span>
                 </li>
               </ul>
             </div>
@@ -161,7 +165,7 @@ const Footer = () => {
               <div className={`footer-links mb-[30px]`}>
                 <ul>
                   {extralink2?.map((item, index) => (
-                    <li className="mb-3 uppercase text-base" key={index}>
+                    <li className="mb-3 text-base uppercase" key={index}>
                       <Link
                         to={item.slug}
                         className={`relative inline-block pb-0.5 pr-3 hover:underline`}
@@ -173,9 +177,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="affiliated">
-                <h4 className=" mb-2 uppercase text-base ">
-                  AFFILIATED WITH:
-                </h4>
+                <h4 className=" mb-2 text-base uppercase ">AFFILIATED WITH:</h4>
                 <ul>
                   {footerAffiliated.map((item, index) => (
                     <li key={index} className="mb-5 last:mb-0">
@@ -194,9 +196,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="copyright bg-white text-secondary">
-          <div className="container mx-auto flex justify-between items-center">
-            <div className="socials flex items-center gap-6 max-w-[356px] w-full">
-              <p className="uppercase font-medium">Get in Touch</p>
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="socials flex w-full max-w-[356px] items-center gap-6">
+              <p className="font-medium uppercase">Get in Touch</p>
               <ul className="flex flex-wrap gap-8 text-xl">
                 <li>
                   <Link to="/" className="hover:text-primary">
@@ -220,13 +222,22 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="makecall  bg-green text-white hover:opacity-90 text-xl transition-all duration-300">
-              <Link to="tel:0000000" className="flex px-20 py-4 items-center h-full gap-2 ">
+            <div className="makecall  bg-green text-xl text-white transition-all duration-300 hover:opacity-90">
+              <Link
+                to="tel:0000000"
+                className="flex h-full items-center gap-2 px-20 py-4 "
+              >
                 <IoLogoWhatsapp className="text-2xl" /> Make a Call
               </Link>
             </div>
             <div className="copyright-wrap text-sm">
-              <p>© 2024 <Link to='/' className="hover:underline">BATASMAW Commercial Vehicle</Link> All right reserved </p>
+              <p>
+                © 2024{" "}
+                <Link to="/" className="hover:underline">
+                  BATASMAW Commercial Vehicle
+                </Link>{" "}
+                All right reserved{" "}
+              </p>
               <p>By Onviro Tech</p>
             </div>
           </div>

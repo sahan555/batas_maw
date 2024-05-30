@@ -6,9 +6,12 @@ import { TabList, TabPanel, Tabs } from "react-tabs";
 import { CustomTab } from "../Global/CustomTab";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Pagination from "../Global/Pagination";
 
 const VehicleTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
+  const [dataFromChild, setDataFromChild] = useState([]);
+
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -38,6 +41,7 @@ const VehicleTabs = () => {
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
   };
+
   return (
     <div className="product-wrapper">
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
@@ -56,34 +60,29 @@ const VehicleTabs = () => {
             </Slider>
           </TabList>
         </div>
-        <div className="tab-content pb-10">
-          {
-            // Using a for loop to iterate over items
-            (() => {
-              const jsxElements = [];
-              for (let i = 0; i < SubMenu.length; i++) {
-                jsxElements.push(
-                  <>
-                    <TabPanel key={i}>
-                      <div className="-mx-4 flex flex-wrap gap-y-8">
-                        {productData.map((item, index) => (
-                          <ProductCard
-                            index={index}
-                            col={true}
-                            slider={true}
-                            title={item.title}
-                            image={item.multiImg}
-                            desc={item.desc}
-                          />
-                        ))}
-                      </div>
-                    </TabPanel>
-                  </>,
-                );
-              }
-              return jsxElements;
-            })()
-          }
+        <div className="tab-content">
+          {SubMenu.map((_, index) => (
+            <TabPanel key={index}>
+              <div className="-mx-4 flex flex-wrap gap-y-8">
+                {dataFromChild.map((item, idx) => (
+                  <ProductCard
+                    key={idx}
+                    index={idx}
+                    col={true}
+                    slider={true}
+                    title={item.title}
+                    image={item.multiImg}
+                    desc={item.desc}
+                  />
+                ))}
+              </div>
+              <Pagination
+                data={productData}
+                view={8}
+                setDataFromChild={setDataFromChild}
+              />
+            </TabPanel>
+          ))}
         </div>
       </Tabs>
     </div>

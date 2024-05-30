@@ -14,7 +14,6 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
   };
   return (
     <>
@@ -67,25 +66,25 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
                   <li className="w-1/3 px-2">
                     <div className="info-wrapper text-center">
                       <Link to="/vehicles/vehicle-details" className="hover:text-primary cursor-pointer">
-                        <LiaLongArrowAltRightSolid className="mx-auto mb-3 text-2xl" />
-                        <span>Learn More</span>
+                        <LiaLongArrowAltRightSolid className="mx-auto text-2xl" />
+                        <span className="pt-3 inline-block">Learn More</span>
                       </Link>
                     </div>
                   </li>
                   <li className="w-1/3 px-2">
                     <div className="info-wrapper text-center">
                       <Link to="/" className="hover:text-primary cursor-pointer">
-                        <TfiGallery className="mx-auto mb-3 text-2xl" />
+                        <TfiGallery className="mx-auto text-2xl" />
 
-                        <span>Photos</span>
+                        <span className="pt-3 inline-block">Photos</span>
                       </Link>
                     </div>
                   </li>
                   <li className="w-1/3 px-2">
                     <div className="info-wrapper text-center">
                       <Link to="/" className="hover:text-primary cursor-pointer">
-                        <BsFiletypePdf className="mx-auto mb-3 text-2xl" />
-                        <span>Download Brochure</span>
+                        <BsFiletypePdf className="mx-auto text-2xl" />
+                        <span className="pt-3 inline-block">Download Brochure</span>
                       </Link>
                     </div>
                   </li>
