@@ -40,19 +40,39 @@ const VehicleTabs = () => {
     draggable: false,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div className="product-wrapper">
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <div className="product-tabs mb-8">
+        <div className="product-tabs mb-8 px-5 lg:px-0">
           <TabList>
             <Slider {...ProductTab} className="product-tab-slider">
               {SubMenu.map((item, index) => (
                 <CustomTab
                   onClick={() => setTabIndex(index)}
                   key={item.id}
-                  className={`skew-btn btn-transparent cursor-pointer px-4 py-2 text-center uppercase text-grey transition-all duration-300 ease-linear before:border-grey ${index === tabIndex ? "text-white transition-all duration-300 ease-linear before:border-primary before:bg-primary" : ""}`}
+                  className={`skew-btn btn-transparent cursor-pointer px-4 py-2 text-center uppercase text-grey transition-all duration-300 ease-linear before:border-grey  ${index === tabIndex ? "text-white transition-all duration-300 ease-linear before:border-primary before:bg-primary " : ""}`}
                 >
                   {item.name}
                 </CustomTab>

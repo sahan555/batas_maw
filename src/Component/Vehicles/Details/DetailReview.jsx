@@ -32,7 +32,7 @@ const DetailReview = () => {
         <h2 className="heading">Reviews</h2>
       </div>
       <div className="grid grid-cols-5 gap-8">
-        <div className="col-span-3">
+        <div className="lg:col-span-3 col-span-full">
           <div className="total-reviews mb-2">
             <h3 className="flex items-baseline text-4xl">
               <span className="mr-4 text-[#FFB157]">
@@ -72,7 +72,7 @@ const DetailReview = () => {
             ))}
           </div>
         </div>
-        <div className="col-span-2">
+        <div className="lg:col-span-2 col-span-full">
           <div className="review-form border p-6 mt-[53px]">
             <div className="heading-wrapper relative mb-6">
               <h3 className="heading">Write Review</h3>

@@ -25,7 +25,7 @@ const Accordion = ({ defaultIcon, expandIcon }) => {
             className={`accordion-title flex gap-4 items-center pr-6 uppercase  ${isActive(item.id) ? "active" : ""}`}
             onClick={() => togglePanel(item.id)}
           >
-            {item.title}
+            <h4 className="text-base">{item.title}</h4>
             <span className="accordion-icon">
               {isActive(item.id) ? expandIcon : defaultIcon}
             </span>

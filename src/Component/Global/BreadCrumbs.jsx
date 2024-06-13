@@ -35,13 +35,17 @@ const Breadcrumbs = () => {
 
   return (
     <div className="bg-black bg-opacity-55 py-3">
-      <div className="container mx-auto text-white font-hermes text-sm">
-        {breadcrumbs.map((breadcrumb, index) => (
-          <span key={breadcrumb.path} className="[&:not(:last-child)]:mr-2">
-            <Link to={breadcrumb.path} className=" pr-2">{breadcrumb.breadcrumb}</Link>
-            {index < breadcrumbs.length - 1 && " / "}
-          </span>
-        ))}
+      <div className="side-padding">
+        <div className="container mx-auto font-hermes text-sm text-white">
+          {breadcrumbs.map((breadcrumb, index) => (
+            <span key={breadcrumb.path} className="[&:not(:last-child)]:mr-2">
+              <Link to={breadcrumb.path} className=" pr-2">
+                {breadcrumb.breadcrumb}
+              </Link>
+              {index < breadcrumbs.length - 1 && " / "}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

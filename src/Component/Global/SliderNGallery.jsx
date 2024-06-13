@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "photoswipe/style.css";
 import { Gallery, GalleryBox, GalleryLink } from "./Gallery";
-const SliderNGallery = ({ Slidersetting, data, transition }) => {
+const SliderNGallery = ({ Slidersetting, data, transition,classname }) => {
 
   return (
     <>
@@ -11,9 +11,9 @@ const SliderNGallery = ({ Slidersetting, data, transition }) => {
         {data?.map((item, index) => (
             <GalleryBox
               key={index}
-              classname={`${transition && "pr-4 transition-all duration-500 ease-out hover:-mt-6 "}`}
+              classname={`${transition && "px-4 sm:pl-0 sm:pr-4 transition-all duration-500 ease-out hover:-mt-6 "}`}
             >
-              <GalleryLink data={item} index={index} classname={`inline-block h-[300px] w-full focus:outline-none`}/>
+              <GalleryLink data={item} index={index} classname={`inline-block h-[300px] w-full focus:outline-none `}/>
             </GalleryBox>
           ))}
         </Slider>

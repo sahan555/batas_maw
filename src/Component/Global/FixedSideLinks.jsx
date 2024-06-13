@@ -42,7 +42,7 @@ const FixedSideLinks = () => {
     },
   ];
   return (
-    <div className="side-links fixed inset-y-0 right-0 flex items-center text-sm text-white z-10">
+    <div className="side-links fixed top-[50%] translate-y-[-50%] right-0 flex items-center text-sm text-white z-10">
       <ul
         className="
       group ml-auto w-[50px] max-w-[280px] bg-[#363636] hover:w-full"

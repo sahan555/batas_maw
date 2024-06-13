@@ -11,11 +11,13 @@ const VehicleDetails = () => {
     <>
       <Breadcrumbs />
       <section className="details-page pt-16">
-        <div className="container mx-auto">
-          <VehicleBrief />
-          <DetailTabs />
-          <DetailReview />
-          <MapSection />
+        <div className="side-padding">
+          <div className="container mx-auto">
+            <VehicleBrief />
+            <DetailTabs />
+            <DetailReview />
+            <MapSection />
+          </div>
         </div>
         <SimilarVehicles />
       </section>

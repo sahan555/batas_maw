@@ -14,7 +14,7 @@ const FooterLinks = ({ title, data, showList, className }) => {
           <li className="mb-3 uppercase text-[rgba(240,_240,_240,_0.75)]" key={index}>
             <Link
               to={item.slug}
-              className={`hover:underline ${title === false ? "text-white relative inline-block pb-0.5 pr-3 text-base before:absolute before:bottom-0 before:left-0 before:right-0 before:h-[1px] before:bg-green before:content-[''] hover:pr-5 hover:no-underline" : ""}`}
+              className={`hover:underline ${title === false ? "text-white relative inline-block pb-0.5 xl:pr-3 text-base before:absolute before:bottom-0 before:left-0 before:right-0 before:h-[1px] before:bg-green before:content-[''] hover:xl:pr-5 hover:no-underline" : ""}`}
             >
               {item.name}
             </Link>

@@ -19,7 +19,7 @@ const VehicleBrief = () => {
 
   return (
       <div className="details-brief pb-20">
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
           <div className="col-span-1">
             <div className="details-slider">
               <div className="big-slide-wrapper mb-6">
@@ -35,7 +35,7 @@ const VehicleBrief = () => {
                         <GalleryLink
                           data={item}
                           index={index}
-                          classname="h-[400px] block outline-0"
+                          classname="h-[300px] md:h-[400px] block outline-0"
                         />
                       </GalleryBox>
                     ))}
@@ -53,6 +53,14 @@ const VehicleBrief = () => {
                   infinite={false}
                   nextArrow={<CustomNextArrow />}
                   prevArrow={<CustomPrevArrow />}
+                  responsive={[
+                    {
+                      breakpoint: 768, // For devices with width <= 768px
+                      settings: {
+                        slidesToShow: 3,
+                      },
+                    },
+                  ]}
                 >
                   {galleryData.map((item, index) => (
                     <div key={index}>
@@ -65,20 +73,20 @@ const VehicleBrief = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-1">
+          <div className="col-span-1 -order-1 lg:-order-none">
             <div className="details-info">
               <div className="heading-wrapper">
-                <h1 className="heading">PRO 1055 C DSD</h1>
+                <h1 className="heading pb-4 md:pb-0">PRO 1055 C DSD</h1>
               </div>
               <div className="details-vehicle pb-8">
                 <h5 className="bg-[#D5D5D5] px-4 py-3">Vehicle Data</h5>
                 <div className="grid grid-cols-2 gap-6 border-4 border-solid border-[#D5D5D5] p-4">
                   {vehicleData?.map((item, index) => (
                     <div
-                      className="col-span-auto flex items-center gap-5"
+                      className="col-span-auto flex xl:flex-row flex-col xl:items-center xl:gap-5"
                       key={index}
                     >
-                      <div className="data-li flex w-[140px] items-center gap-2">
+                      <div className="data-li xl:flex w-[140px] items-center gap-2">
                         <figure className="h-[40px] w-[40px] flex-none text-left">
                           <img
                             src={item?.icon}
@@ -107,17 +115,18 @@ const VehicleBrief = () => {
                 </p>
               </div>
               <div className="details-link">
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                   {vehicleLinks?.map((item, index) => (
                     <div className="col-span-1" key={index}>
-                      <Link to={item?.link} className="group flex gap-3">
+                      <Link to={item?.link} className="group flex gap-3 ">
+                      
                         <figure className="h-[20px] w-[20px]">
                           <img src={item?.icon} alt={item?.name} />
                         </figure>
                         <p className="duration-200 group-hover:text-primary">
                           {item?.name}
                         </p>
-                        <figure className="duration-200 group-hover:ml-2">
+                        <figure className="duration-200 group-hover:ml-2 flex-none">
                           <img src="/assets/images/icons/arrow.svg" alt="" />
                         </figure>
                       </Link>

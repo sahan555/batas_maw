@@ -179,7 +179,7 @@ const CareerForm = ({ jobname }) => {
                       }}
                     />
 
-                    <div className="btn-group flex items-center">
+                    <div className="btn-group flex flex-wrap gap-y-2 items-center">
                       <span
                         className={`photo-btn rounded-lg uppercase text-white `}
                       >

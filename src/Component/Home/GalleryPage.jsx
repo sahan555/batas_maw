@@ -16,27 +16,58 @@ const GalleryPage = () => {
     centerMode: true,
     slidesToScroll: 1,
     autoplaySpeed: 3000,
-    draggable:false,
-    cssEase: 'linear',
+    draggable: false,
+    cssEase: "linear",
+    pauseOnHover: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 3.25,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2.25,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1.25,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          centerMode: false,
+        },
+      },
+    ],
   };
-  
 
   return (
     <>
-    <section className="gallery-section bg-light-grey pt-4 pb-12">
-      <SliderNGallery Slidersetting={gallerySliderSettings} data={galleryData} transition={true}/>
-      <div className="container mx-auto">
-        <div className="btn-wrapper pt-8 text-center">
-          <Link
-            className="btn-transparent skew-btn inline-block px-8 py-2 text-primary before:border-primary hover:text-white hover:before:bg-primary uppercase"
-            to="/"
-          >
-            View All Gallery
-          </Link>
+      <section className="gallery-section bg-light-grey pb-12 pt-4">
+        <SliderNGallery
+          Slidersetting={gallerySliderSettings}
+          data={galleryData}
+          transition={true}
+        />
+        <div className="container mx-auto">
+          <div className="btn-wrapper pt-8 text-center">
+            <Link
+              className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
+              to="/"
+            >
+              View All Gallery
+            </Link>
+          </div>
         </div>
-      </div>
       </section>
     </>
   );

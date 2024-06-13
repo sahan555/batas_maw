@@ -54,8 +54,8 @@ const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
   };
   return (
     <form action="" className="mx-auto max-w-[1000px]">
-      <div className="-mx-8 flex flex-row">
-        <div className="form-group w-1/3 px-8">
+      <div className="lg:-mx-8 -mx-2 flex md:flex-nowrap flex-wrap gap-y-4 flex-row">
+        <div className="form-group w-full md:w-1/3 lg:px-8 px-2">
           <select
             name="province"
             className="form-control w-full border border-solid border-grey px-2 py-2 capitalize outline-0"
@@ -70,7 +70,7 @@ const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
             ))}
           </select>
         </div>
-        <div className="form-group w-1/3 px-5">
+        <div className="form-group w-full md:w-1/3 lg:px-8 px-2">
           <select
             name="district"
             className="form-control w-full border border-solid border-grey px-2 py-2 capitalize outline-0"
@@ -86,7 +86,7 @@ const BranchForm = ({ selectedLocation, setSelectedLocation }) => {
             ))}
           </select>
         </div>
-        <div className="form-group w-1/3 px-5">
+        <div className="form-group w-full md:w-1/3 lg:px-8 px-2">
           <select
             name="city"
             className="form-control w-full border border-solid border-grey px-2 py-2 capitalize outline-0"

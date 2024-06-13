@@ -3,7 +3,7 @@ import { object } from "yup";
 
 export const CompareTable = ({ children }) => {
   return (
-    <div className="compare-table relative w-full overflow-x-auto">
+    <div className="compare-table relative w-full overflow-x-auto whitespace-nowrap">
       <table className="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
         <tbody>{children}</tbody>
       </table>

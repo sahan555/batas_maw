@@ -23,7 +23,7 @@ const MapSection = () => {
   };
   const renderServiceCenter = (item, index) => (
     <div
-      className="dealer-box  border-b border-solid border-light-grey p-10"
+      className="dealer-box  border-b border-solid border-light-grey 2xl:p-10 md:p-6 py-4 px-6"
       key={index}
     >
       <div className="heading-wrapper mb-3">
@@ -34,8 +34,8 @@ const MapSection = () => {
           </span>
         </h6>
       </div>
-      <div className="dealer-info flex items-center justify-between">
-        <ul className="w-[70%] break-all leading-8 text-grey">
+      <div className="dealer-info flex flex-col justify-between gap-3 2xl:items-center">
+        <ul className="break-all leading-8 text-grey xl:w-[70%]">
           <li className="relative pl-8 ">
             <MdLocationOn className="absolute left-0 top-[6px] text-xl" />
             {item?.address}
@@ -53,7 +53,7 @@ const MapSection = () => {
             opens until {item?.closingtime}
           </li>
         </ul>
-        <div className="btn-wrapper w-[30%]">
+        <div className="btn-wrapper 2xl:w-[30%]">
           <button
             className="skew-btn btn-transparent flex w-full items-center justify-center gap-2 px-4 py-2 text-sm uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
             onClick={() => setCoordinate(item)}
@@ -66,9 +66,9 @@ const MapSection = () => {
   );
 
   return (
-    <section className="map-section">
+    <section className="map-section ">
       <div className="grid grid-cols-11">
-        <div className="col-span-7">
+        <div className="col-span-full lg:col-span-7">
           <Map
             city={city}
             coordinate={coordinate}
@@ -76,14 +76,14 @@ const MapSection = () => {
             setCity={setCity}
           />
         </div>
-        <div className="col-span-4">
-          <div className="dealer-wrapper pb-13 relative h-full w-full max-w-[508px]">
-            <div className="heading-wrapper p-10 pb-5">
+        <div className="col-span-full lg:col-span-4">
+          <div className="dealer-wrapper pb-13 relative h-full w-full lg:max-w-[508px]">
+            <div className="heading-wrapper 2xl:p-10 p-6 pb-5">
               <h4 className="heading">
                 <span className="text-primary">locate</span> a dealer
               </h4>
             </div>
-            <div className="form-wrapper mb-4 px-10">
+            <div className="form-wrapper mb-4 2xl:px-10 px-6">
               <form onSubmit={handleCitySearch} className="flex">
                 <div className="form-group w-full">
                   <input
@@ -105,7 +105,7 @@ const MapSection = () => {
                 </div>
               </form>
             </div>
-            <div className="dealer-group h-[600px] overflow-y-auto">
+            <div className="dealer-group xl:h-[600px] md:h-[500px] h-[360px] overflow-y-auto">
               {MapData?.map((item, index) => (
                 <div key={index} className="dealer-box-wrapper  ">
                   {city
@@ -123,7 +123,7 @@ const MapSection = () => {
             <div className="btn-wrapper absolute bottom-0 left-0 right-0">
               <Link
                 to="/about/branches"
-                className="btn-full block w-full w-full py-2 text-center capitalize before:bg-primary"
+                className="btn-full block w-full  py-2 text-center capitalize before:bg-primary"
               >
                 View ALl
               </Link>

@@ -4,27 +4,38 @@ import { AtaGlanceData } from "../../Global/Datas/AboutData";
 const AtaGlance = () => {
   return (
     <section className="ataglance-section py-20">
-      <div className="container mx-auto">
-        <div className="heading-wrapper text-center mb-16">
-          <h2 className="heading">
-            <b className="text-secondary font-normal">Batas MAw</b> at a glance
-          </h2>
-        </div>
-        <div className="ataglance-group max-w-[1200px] w-full mx-auto text-center">
-          <div className="grid grid-cols-3">
-            {AtaGlanceData.map((item, index) => (
-              <div className="col-span-1" key={index}>
-                <div className={`ataglance-box p-8 ${index % 2 === 0?"bg-[rgba(219,_237,_255,_0.5)]  max-w-[260px] w-full mx-auto":""} `}>
-                  <figure className="w-[100px] h-[100px] mx-auto mb-5">
-                    <img src={item.img} alt={item.title} className="object-scale-down object-center" />
-                  </figure>
-                  <article>
-                    <h2 className="font-hermes-bold text-2xl mb-2">{item.title}</h2>
-                    <p className="text-grey uppercase text-lg">{item.desc}</p>
-                  </article>
+      <div className="side-padding">
+        <div className="container mx-auto">
+          <div className="heading-wrapper mb-16 text-center">
+            <h2 className="heading">
+              <b className="font-normal text-secondary">Batas MAw</b> at a
+              glance
+            </h2>
+          </div>
+          <div className="ataglance-group mx-auto w-full max-w-[1200px] text-center">
+            <div className="grid sm:grid-cols-3 grid-cols-1">
+              {AtaGlanceData.map((item, index) => (
+                <div className="col-span-1" key={index}>
+                  <div
+                    className={`ataglance-box h-full p-4 lg:p-8 ${index % 2 === 0 ? "mx-auto  w-full max-w-[260px] bg-[rgba(219,_237,_255,_0.5)]" : ""} `}
+                  >
+                    <figure className="mx-auto mb-5 h-[100px] w-[100px]">
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="object-scale-down object-center"
+                      />
+                    </figure>
+                    <article>
+                      <h2 className="mb-2 font-hermes-bold text-2xl">
+                        {item.title}
+                      </h2>
+                      <p className="text-lg uppercase text-grey">{item.desc}</p>
+                    </article>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

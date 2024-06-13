@@ -39,37 +39,52 @@ const Career = () => {
     cssEase: "linear",
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
   return (
     <>
-    <Breadcrumbs/>
+      <Breadcrumbs />
       <section className="career-page">
-        <div className="container mx-auto pt-16">
-          <Article
-            title={careerArticle.title}
-            headClass="!text-primary"
-            desc={careerArticle.desc}
-            slug={careerArticle.slug}
-            btnName="Current openings"
-            grey={true}
-          />
+        <div className="side-padding">
+          <div className="container mx-auto pt-16">
+            <Article
+              title={careerArticle.title}
+              headClass="!text-primary"
+              desc={careerArticle.desc}
+              slug={careerArticle.slug}
+              btnName="Current openings"
+              grey={true}
+            />
+          </div>
         </div>
         <div className="career-gallery pb-16">
-          <div className="container mx-auto">
-            <div className="heading-wrapper">
-              <h3 className="heading mb-4">Life At Batas</h3>
+          <div className="side-padding">
+            <div className="container mx-auto">
+              <div className="heading-wrapper">
+                <h3 className="heading mb-4">Life At Batas</h3>
+              </div>
             </div>
           </div>
           <div className="gallery-wrapper section-break bg-grey">
-            <div className="container mx-auto">
-              <div className="heading-wrapper mb-6 text-center">
-                <h4 className="heading !text-white">Annual Program</h4>
+            <div className="side-padding">
+              <div className="container mx-auto">
+                <div className="heading-wrapper mb-6 text-center">
+                  <h4 className="heading !text-white">Annual Program</h4>
+                </div>
+                <SliderNGallery
+                  Slidersetting={sliderCareer}
+                  data={careerGallery}
+                  transition={false}
+                  classname={"xl:h-[300px] lg:h-[200px]"}
+                />
               </div>
-              <SliderNGallery
-                Slidersetting={sliderCareer}
-                data={careerGallery}
-                transition={false}
-              />
             </div>
           </div>
         </div>

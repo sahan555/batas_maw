@@ -34,6 +34,20 @@ const HistoryTab = () => {
     draggable: false,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 6,
+        },
+      },
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+    ],
   };
   return (
     <Tabs

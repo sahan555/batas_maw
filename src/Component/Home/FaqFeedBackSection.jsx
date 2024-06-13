@@ -7,46 +7,50 @@ import ContactForm from "../Global/ContactForm";
 const FaqFeedBackSection = () => {
   return (
     <>
-      <section className="faq-feed-section section-break bg-[linear-gradient(90deg,_rgba(255,255,255,1)_0%,_rgba(255,255,255,1)_50%,_rgba(232,232,233,1)_50%,_rgba(232,232,233,1)_100%)]">
-        <div className="container mx-auto">
+      <section className="faq-feed-section xl:section-break xl:bg-[linear-gradient(90deg,_rgba(255,255,255,1)_0%,_rgba(255,255,255,1)_50%,_rgba(232,232,233,1)_50%,_rgba(232,232,233,1)_100%)]">
+        <div className="mx-auto xl:container">
           <div className="flex flex-wrap">
-            <div className="w-1/2 pr-8">
-              <div className="heading-wrapper mb-5">
-                <h2 className="heading">faqs</h2>
-              </div>
-              <Accordion defaultIcon={<FaPlus />} expandIcon={<FaMinus />} />
-              <div className="faq-ques py-6">
-                <h4 className="mb-4">Feel free to ask your question</h4>
-                <form action="">
-                  <div className="form-control flex justify-between border-b border-light-grey pb-2 ">
-                    <input
-                      type="text"
-                      placeholder="Type here"
-                      className="w-full outline-0 pr-4"
-                    />
-                    <button
-                      type="submit"
-                      className="btn-full px-6 py-1 text-sm font-normal before:bg-secondary hover:opacity-90"
-                    >
-                      Ask
-                    </button>
-                  </div>
-                </form>
-              </div>
-              <div className="btn-wrapper">
-                <Link
-                  className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-                  to="/"
-                >
-                  View All FAQs
-                </Link>
+            <div className="side-padding w-full py-10 xl:w-1/2 xl:py-0 xl:pr-8">
+              <div className="container mx-auto">
+                <div className="heading-wrapper mb-5">
+                  <h2 className="heading">faqs</h2>
+                </div>
+                <Accordion defaultIcon={<FaPlus />} expandIcon={<FaMinus />} />
+                <div className="faq-ques py-6">
+                  <h4 className="mb-4">Feel free to ask your question</h4>
+                  <form action="">
+                    <div className="form-control flex justify-between border-b border-light-grey pb-2 ">
+                      <input
+                        type="text"
+                        placeholder="Type here"
+                        className="w-full pr-4 outline-0"
+                      />
+                      <button
+                        type="submit"
+                        className="btn-full px-6 py-1 text-sm font-normal before:bg-secondary hover:opacity-90"
+                      >
+                        Ask
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div className="btn-wrapper">
+                  <Link
+                    className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
+                    to="/"
+                  >
+                    View All FAQs
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="w-1/2 pl-8">
-              <div className="heading-wrapper mb-5">
-                <h2 className="heading">Feedback form</h2>
+            <div className="side-padding w-full bg-[#e8e8e9] py-10 xl:w-1/2 xl:bg-transparent xl:py-0 xl:pl-8">
+              <div className="container mx-auto">
+                <div className="heading-wrapper mb-5">
+                  <h2 className="heading">Feedback form</h2>
+                </div>
+                <ContactForm />
               </div>
-              <ContactForm/>
             </div>
           </div>
         </div>

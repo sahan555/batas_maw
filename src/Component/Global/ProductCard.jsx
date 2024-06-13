@@ -17,11 +17,11 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
   };
   return (
     <>
-      <div className={col ? "w-1/4 px-4" : ""} key={index}>
+      <div className={col ? "xl:w-1/4 lg:w-1/3 sm:w-1/2 w-full px-4" : "w-full 2xl:px-4"} key={index}>
         <div className={`product-box`}>
           {heading && (
             <article>
-              <h4 className="bg-light-grey bg-opacity-65 px-2 py-3 text-center text-xl font-medium text-black">
+              <h4 className="bg-light-grey bg-opacity-65 px-2 py-3 text-center text-xl font-medium text-black line-clamp-1">
                 {title}
               </h4>
             </article>
@@ -54,7 +54,7 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
               className={`product-details border border-light-grey bg-white p-7 ${slider ? "-mt-[7px]" : ""}`}
             >
               <article className="mb-6 text-center">
-                <h4 className="mb-2 text-2xl font-medium text-black">
+                <h4 className="mb-2 text-2xl font-medium text-black line-clamp-1">
                   {title}
                 </h4>
                 <p className="line-clamp-3 text-sm tracking-wide text-grey">

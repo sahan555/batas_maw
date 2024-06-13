@@ -6,7 +6,7 @@ import { Icon } from "leaflet";
 
 import axios from "axios";
 
-const Map = ({ city,setCity, coordinate, setCoordinate }) => {
+const Map = ({ city, setCity, coordinate, setCoordinate }) => {
   const [position, setPosition] = useState([28.3780464, 83.9999901]); // Default position
   const [zoom, setZoom] = useState(7.5);
   const [samsungStores, setSamsungStores] = useState([]);
@@ -53,10 +53,9 @@ const Map = ({ city,setCity, coordinate, setCoordinate }) => {
     if (coordinate) {
       setPosition(coordinate.coordinates);
       setZoom(13);
-    }else if(city) {
+    } else if (city) {
       fetchGeocode();
-    }  
-    else {
+    } else {
       setPosition([28.3780464, 83.9999901]);
       setZoom(7.5);
     }
@@ -73,7 +72,7 @@ const Map = ({ city,setCity, coordinate, setCoordinate }) => {
       center={position}
       zoom={zoom}
       scrollWheelZoom={false}
-      style={{ height: "800px" }}
+      className="h-full min-h-[400px] lg:min-h-[600px] xl:min-h-[800px]"
       ref={mapRef}
     >
       <TileLayer

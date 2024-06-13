@@ -32,11 +32,11 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                     {item?.multiImg?.length > 1 ? (
                       <Slider
                         {...CompareSlider}
-                        className="product-slider-img w-[400px]"
+                        className="product-slider-img xl:w-[400px] lg:w-[300px] w-[200px]"
                       >
                         {item?.multiImg?.map((imgItem, index) => (
                           <div key={index}>
-                            <figure className="h-[298px]">
+                            <figure className="h-[160px] lg:h-[298px]">
                               <img
                                 src={imgItem.img}
                                 alt={item?.title}

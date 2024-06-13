@@ -18,7 +18,7 @@ const Branches = () => {
       <Breadcrumbs />
       <section className="branches-page">
         <div className="branches-banner">
-          <figure className="h-[500px]">
+          <figure className="h-[400px] md:h-[500px]">
             <img
               src="/assets/images/hero/1.png"
               className="h-full object-cover object-center"
@@ -28,16 +28,18 @@ const Branches = () => {
         </div>
         <div className="branches-wrapper section-break">
           <div className="branch-form pb-8">
-            <div className="container mx-auto">
-              <div className="heading-wrapper mb-7 text-center">
-                <h4 className="heading">
-                  Covering Expanse: Our Branch Network
-                </h4>
+            <div className="side-padding">
+              <div className="container mx-auto">
+                <div className="heading-wrapper mb-7 text-center">
+                  <h4 className="heading">
+                    Covering Expanse: Our Branch Network
+                  </h4>
+                </div>
+                <BranchForm
+                  selectedLocation={selectedLocation}
+                  setSelectedLocation={setSelectedLocation}
+                />
               </div>
-              <BranchForm
-                selectedLocation={selectedLocation}
-                setSelectedLocation={setSelectedLocation}
-              />
             </div>
           </div>
           <div className="branch-map">

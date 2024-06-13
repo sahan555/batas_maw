@@ -4,14 +4,15 @@ import { MissionVision } from "../../Global/Datas/AboutData";
 const Mission = () => {
   return (
     <section className="mission-section bg-light-grey bg-opacity-30 relative section-break overflow-hidden z-0">
+      <div className="side-padding">
       <div className="container mx-auto">
         {MissionVision.filter((item) => item.title === "our mission").map(
           (item, index) => (
             <div
               key={index}
-              className=" flex items-center justify-between"
+              className=" flex items-center justify-between lg:flex-row flex-col"
             >
-              <div className="figure-wrapper ml-16">
+              <div className="figure-wrapper ml-16 lg:block hidden">
                 <figure>
                   <img src={item.img} alt={item.title} />
                 </figure>
@@ -21,7 +22,7 @@ const Mission = () => {
               </div>
               <div className="mission-title">
                 <div className="heading-wrapper">
-                  <h4 className="heading w-1/2 -indent-5 font-hermes-bold !text-secondary first-line:text-primary">{item.title}</h4>
+                  <h4 className="heading lg:w-1/2 lg:-indent-5 font-hermes-bold !text-secondary first-line:text-primary lg:mb-0 mb-5">{item.title}</h4>
                 </div>
               </div>
               <div className="mission-list">
@@ -44,7 +45,7 @@ const Mission = () => {
             </div>
           ),
         )}
-      </div>
+      </div></div>  
     </section>
   );
 };
