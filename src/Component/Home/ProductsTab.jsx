@@ -1,24 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { SubMenu } from "../../Global/Datas/SubMenu";
 import ProductCard from "../Global/ProductCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import { productData } from "../../Global/Datas/HomeData";
 import useMediaQuery from "../../Global/Hooks/useMediaQuery";
 import { FaChevronDown } from "react-icons/fa6";
+import useGet from "../../Global/Apis/useGet";
+import useGetById from "../../Global/Apis/useGetById";
 
 const ProductsTab = () => {
+  const { data: cate } = useGet("categories");
+  const [activeTabName, setActiveTabName] = useState("Featured");
   const isMobileDevice = useMediaQuery("(max-width: 1023px)");
   const [mobileNav, setMobileNav] = useState(false);
   const toggleMobileNav = () => {
     setMobileNav((prevMobileNav) => !prevMobileNav);
   };
-  console.log(mobileNav);
+  const handleTab = (name) => {
+    if (isMobileDevice) {
+      setMobileNav(false);
+
+      setActiveTabName(name);
+    }
+  };
+  useEffect(() => {
+    if (isMobileDevice) {
+      setActiveTabName(SubMenu[0].name);
+    }
+  }, [isMobileDevice]);
   var ProductSlider = {
     dots: true,
     arrows: false,
-    infinite: true,
+    infinite: false,
     autoplay: false,
     speed: 500,
     slidesToShow: 4,
@@ -45,20 +59,21 @@ const ProductsTab = () => {
       },
     ],
   };
+
   return (
     <>
       <section className="h-products section-break">
         <div className="side-padding">
           <div className="container mx-auto">
-            <h2 className="heading pb-2 lg:lb-0">products</h2>
+            <h2 className="heading lg:lb-0 pb-2">products</h2>
             <div className="products-tab">
               <Tabs>
                 <div className="tab-headings transfrom  relative mb-5 flex flex-row flex-wrap items-center justify-between bg-light-grey bg-opacity-50 lg:mx-[9px] lg:-skew-x-[20deg]">
                   <h4
-                    className={`transfrom before:transfrom relative z-0 px-8 py-2.5 text-white before:absolute before:inset-0 before:-z-[1] before:bg-primary before:content-[''] lg:skew-x-[20deg] lg:px-10 lg:before:-skew-x-[20deg] xl:px-20 ${isMobileDevice && "relative block w-full"}`}
+                    className={`transfrom before:transfrom relative z-0 px-8 py-2.5 capitalize text-white before:absolute before:inset-0 before:-z-[1] before:bg-primary before:content-[''] lg:skew-x-[20deg] lg:px-10 lg:before:-skew-x-[20deg] xl:px-20 ${isMobileDevice && "relative block w-full"}`}
                     onClick={toggleMobileNav}
                   >
-                    Featured
+                    {activeTabName}
                     {isMobileDevice && (
                       <>
                         <span className="absolute inset-y-0 right-0 flex w-[50px] items-center justify-center">
@@ -68,49 +83,37 @@ const ProductsTab = () => {
                     )}
                   </h4>
                   <TabList
-                    className={`transfrom hidden lg:flex lg:skew-x-[20deg]   ${isMobileDevice && mobileNav && "absolute inset-x-0 bottom-auto top-full z-10 !block flex-col bg-[#e8e8e9]"}`}
+                    className={`transfrom hidden lg:flex lg:skew-x-[20deg] ${isMobileDevice && mobileNav && "absolute inset-x-0 bottom-auto top-full z-10 !block flex-col bg-[#e8e8e9]"}`}
                   >
-                    {SubMenu.map((item) => (
+                    {cate?.map((item) => (
                       <Tab
-                        key={item.id}
+                        key={item?.id}
                         className={`cursor-pointer px-3 font-medium uppercase focus:outline-none xl:px-4 xl:last:pr-8 ${isMobileDevice && "px-8 py-4"} `}
-                        onClick={toggleMobileNav}
+                        onClick={() => handleTab(item?.name)}
                       >
-                        {item.name}
+                        {item?.name}
                       </Tab>
                     ))}
                   </TabList>
                 </div>
                 <div className="tab-content pb-10">
-                  {
-                    // Using a for loop to iterate over items
-                    (() => {
-                      const jsxElements = [];
-                      for (let i = 0; i < SubMenu.length; i++) {
-                        jsxElements.push(
-                          <TabPanel key={i}>
-                            <Slider
-                              {...ProductSlider}
-                              className="product-slider"
-                            >
-                              {productData.map((item, index) => (
-                                <div key={index}>
-                                  <Link to="/vehicles/vehicle-details">
-                                    <ProductCard
-                                      heading={true}
-                                      title={item.title}
-                                      image={item.multiImg}
-                                    />
-                                  </Link>
-                                </div>
-                              ))}
-                            </Slider>
-                          </TabPanel>,
-                        );
-                      }
-                      return jsxElements;
-                    })()
-                  }
+                  {cate?.map((item) => (
+                    <TabPanel>
+                      <Slider {...ProductSlider} className="product-slider">
+                        {item?.products?.map((product, index) => (
+                          <div key={index}>
+                            <Link to={`/product-details/${product?.slug}`}>
+                              <ProductCard
+                                heading={true}
+                                title={product?.name}
+                                image={product?.image}
+                              />
+                            </Link>
+                          </div>
+                        ))}
+                      </Slider>
+                    </TabPanel>
+                  ))}
                 </div>
               </Tabs>
             </div>

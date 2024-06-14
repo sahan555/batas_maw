@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { TfiGallery } from "react-icons/tfi";
 import { BsFiletypePdf } from "react-icons/bs";
 
-const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
+const ProductCard = ({ heading, title, image, slider, col, index, desc,slug }) => {
   var ProductSlider = {
     dots: true,
     arrows: false,
@@ -28,11 +28,11 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
           )}
           {slider ? (
             <Slider {...ProductSlider} className="product-slider-img">
-              {image.map((item, index) => (
+              {image?.map((item, index) => (
                 <div key={index}>
                   <figure className="h-[298px]">
                     <img
-                      src={item.img}
+                      src={item?.image}
                       alt={title}
                       className="object-cover object-center"
                     />
@@ -41,9 +41,9 @@ const ProductCard = ({ heading, title, image, slider, col, index, desc }) => {
               ))}
             </Slider>
           ) : (
-            <figure className="h-[298px]">
+            <figure className="h-[298px] asdsa">
               <img
-                src={image[0].img}
+                src={image}
                 alt={title}
                 className="object-cover object-center"
               />

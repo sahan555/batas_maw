@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ProductCard from "../Global/ProductCard";
 import { productData } from "../../Global/Datas/HomeData";
 import { SubMenu } from "../../Global/Datas/SubMenu";
@@ -11,7 +11,7 @@ import Pagination from "../Global/Pagination";
 const VehicleTabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [dataFromChild, setDataFromChild] = useState([]);
-
+  const productsRef = useRef(null);
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -63,7 +63,7 @@ const VehicleTabs = () => {
   };
 
   return (
-    <div className="product-wrapper">
+    <div className="product-wrapper" ref={productsRef}>
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="product-tabs mb-8 px-5 lg:px-0">
           <TabList>
@@ -97,6 +97,7 @@ const VehicleTabs = () => {
                 ))}
               </div>
               <Pagination
+                ref={productsRef}
                 data={productData}
                 view={8}
                 setDataFromChild={setDataFromChild}

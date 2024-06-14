@@ -1,6 +1,11 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { forwardRef, useEffect, useMemo, useState } from "react";
 
-const Pagination = ({ data, view, setDataFromChild }) => {
+const Pagination = forwardRef(({ data, view, setDataFromChild }, ref) => {
+  const executeScroll = () => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   const [viewProduct, setViewProduct] = useState(view);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -23,7 +28,10 @@ const Pagination = ({ data, view, setDataFromChild }) => {
       <button
         className="skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 hover:text-white hover:before:bg-primary"
         onClick={() => {
-          currentPage > 1 && setCurrentPage(currentPage - 1);
+          if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+            executeScroll();
+          }
         }}
       >
         Prev
@@ -40,13 +48,16 @@ const Pagination = ({ data, view, setDataFromChild }) => {
       <button
         className="skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 hover:text-white hover:before:bg-primary"
         onClick={() => {
-          currentPage < totalViewInPage && setCurrentPage(currentPage + 1);
+          if (currentPage < totalViewInPage) {
+            setCurrentPage(currentPage + 1);
+            executeScroll();
+          }
         }}
       >
         Next
       </button>
     </div>
   );
-};
+});
 
 export default Pagination;

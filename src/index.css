@@ -317,7 +317,7 @@
 
   .clip-pol {
     &::before {
-      clip-path: polygon(100% 0, 100% 0, 100% 100%, 89% 100%);
+      clip-path: polygon(99% 0, 100% 0, 100% 100%, 89% 100%);
     }
   }
 
@@ -839,6 +839,9 @@
           left: -17px;
         }
       }
+    }
+    .detail-tabs .react-tabs__tab--selected {
+      @apply text-primary underline bg-transparent;
     }
   }
 

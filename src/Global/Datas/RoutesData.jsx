@@ -12,7 +12,7 @@ export const routes = [
   { path: "/", element: <Homepage />, breadcrumb: "Home" },
   { path: "/vehicles", element: <Vehicles />, breadcrumb: "Vehicles" },
   {
-    path: "/vehicles/vehicle-details",
+    path: "/product-details",
     element: < VehicleDetails/>,
     breadcrumb: "Detail",
   },
