@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { faqData } from "../../Global/Datas/HomeData";
+import useGet from "../../Global/Apis/useGet";
+import HtmlParse from "./HtmlParse";
 
 const Accordion = ({ defaultIcon, expandIcon }) => {
   const [expandedPanel, setExpandedPanel] = useState(null);
+  const { data: faqs } = useGet("faqs");
   const togglePanel = (panelId) => {
     if (expandedPanel === panelId) {
       setExpandedPanel(null);
@@ -19,20 +22,23 @@ const Accordion = ({ defaultIcon, expandIcon }) => {
 
   return (
     <div className="accordion">
-      {faqData.slice(0,4).map((item, index) => (
-        <div className="accordion-panel border-b border-light-grey py-3" key={index}>
+      {(faqs ? faqs : faqData)?.slice(0, 4)?.map((item, index) => (
+        <div
+          className="accordion-panel border-b border-light-grey py-3"
+          key={index}
+        >
           <div
-            className={`accordion-title flex gap-4 items-center pr-6 uppercase  ${isActive(item.id) ? "active" : ""}`}
-            onClick={() => togglePanel(item.id)}
+            className={`accordion-title flex items-center gap-4 pr-6 text-base uppercase  ${isActive(item?.id) ? "active" : ""}`}
+            onClick={() => togglePanel(item?.id)}
           >
-            <h4 className="text-base">{item.title}</h4>
+            <HtmlParse data={item?.question} />
             <span className="accordion-icon">
-              {isActive(item.id) ? expandIcon : defaultIcon}
+              {isActive(item?.id) ? expandIcon : defaultIcon}
             </span>
           </div>
-          {isActive(item.id) && (
-            <div className="accordion-content text-grey tracking-wide text-sm pt-2">
-              <p> {item.content}</p>
+          {isActive(item?.id) && (
+            <div className="accordion-content pt-2 text-sm tracking-wide text-grey">
+              <HtmlParse data={item?.answer} />
             </div>
           )}
         </div>

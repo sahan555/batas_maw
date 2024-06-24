@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { CustomNextArrow, CustomPrevArrow } from "./SliderArrows";
+import HtmlParse from "./HtmlParse";
 
 const Testimonials = ({ right, heading, data, slider }) => {
   var testiSlider = {
@@ -54,18 +55,18 @@ const Testimonials = ({ right, heading, data, slider }) => {
                               {item?.name}
                             </h4>
                             <p className="mb-5 font-medium uppercase text-grey">
-                              {item?.post}
+                              {item?.designation}
                             </p>
                           </article>
                           <div className="client-testi text-grey">
-                            <p>{item?.desc}</p>
+                            <HtmlParse data={item?.description} />
                           </div>
                         </div>
                       </div>
                       <div className="-order-1 col-span-full pt-4 md:-order-none md:col-span-3 md:pt-0">
                         <figure className="md:skew-image h-[300px] w-full max-w-[300px] rounded-[20px] shadow-md md:h-[341px] md:max-w-[512px] md:rounded-none lg:-mt-20 lg:ml-20">
                           <img
-                            src={item?.img}
+                            src={item?.image}
                             alt={item?.name}
                             className="object-cover object-center md:object-contain lg:object-cover"
                           />
@@ -77,29 +78,25 @@ const Testimonials = ({ right, heading, data, slider }) => {
               </Slider>
             ) : (
               <>
-                <div className="client-box grid grid-cols-7 gap-4 text-left py-6 md:py-0">
+                <div className="client-box grid grid-cols-7 gap-4 py-6 text-left md:py-0">
                   <div
                     className={`col-span-full md:col-span-4 ${right === true ? "order-2" : ""}`}
                   >
                     <div className="client-content flex h-full flex-col flex-wrap justify-center">
                       <article>
                         <h4 className="mb-1 font-medium uppercase">
-                          {data[0]?.name}
+                          {data?.chairman_name}
                         </h4>
-                        <p className="mb-5 font-medium uppercase text-grey">
-                          {data[0]?.post}
-                        </p>
                       </article>
                       <div className="client-testi text-grey">
-                        <p>{data[0]?.desc}</p>
-                      </div>
+                      <HtmlParse data={data?.chairman_message}/>                      </div>
                     </div>
                   </div>
                   <div className="col-span-full md:col-span-3">
-                  <figure className="md:skew-image h-[300px] w-full max-w-[300px] rounded-[20px] shadow-md md:h-[341px] md:max-w-[512px] md:rounded-none lg:-mt-20 lg:ml-20">
-                  <img
-                        src={data[0]?.img}
-                        alt={data[0]?.name}
+                    <figure className="md:skew-image h-[300px] w-full max-w-[300px] rounded-[20px] shadow-md md:h-[341px] md:max-w-[512px] md:rounded-none lg:-mt-20 lg:ml-20">
+                      <img
+                        src={data?.chairman_image}
+                        alt={data?.chairman_name}
                         className="object-cover object-center md:object-contain lg:object-cover"
                       />
                     </figure>

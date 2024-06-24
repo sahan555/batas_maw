@@ -9,7 +9,7 @@ const HeroSection = () => {
   var heroSilder = {
     dots: true,
     arrows: false,
-    infinite: false,
+    infinite: true,
     autoplay: true,
     speed: 500,
     slidesToShow: 1,
@@ -22,7 +22,7 @@ const HeroSection = () => {
         <Slider {...heroSilder} className="hero-slider">
           {banners?.length > 0 ? (
             banners?.map((item) => (
-              <div>
+              <div key={item?.id}>
                 <figure className=" h-[400px] lg:h-[600px]">
                   <img
                     src={item?.image}

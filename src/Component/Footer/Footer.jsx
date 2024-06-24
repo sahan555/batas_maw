@@ -21,10 +21,17 @@ import {
 } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
 import FixedSideLinks from "../Global/FixedSideLinks";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+      />
       <FixedSideLinks />
       <footer className="bg-secondary pt-[80px] text-sm text-white">
         <div className="side-padding">

@@ -98,11 +98,11 @@ const ProductsTab = () => {
                 </div>
                 <div className="tab-content pb-10">
                   {cate?.map((item) => (
-                    <TabPanel>
+                    <TabPanel key={item?.id}>
                       <Slider {...ProductSlider} className="product-slider">
                         {item?.products?.map((product, index) => (
                           <div key={index}>
-                            <Link to={`/product-details/${product?.slug}`}>
+                            <Link to={`/vehicles/${product?.slug}`}>
                               <ProductCard
                                 heading={true}
                                 title={product?.name}

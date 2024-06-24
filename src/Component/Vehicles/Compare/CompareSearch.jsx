@@ -10,7 +10,7 @@ const CompareSearch = ({ data, slug, compare }) => {
               <label>Compare:</label>
               <input
                 type="text"
-                value={slug?.title}
+                value={slug?.name}
                 disabled
                 className="flex-grow border border-gray-300 bg-white py-2 pl-2"
               />

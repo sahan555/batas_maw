@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const VideoSection = () => {
+const VideoSection = ({ data: video }) => {
   return (
     <section className="video-section section-break">
       <div className="side-padding">
@@ -16,46 +16,30 @@ const VideoSection = () => {
             </p>
           </div>
           <div className="video-wrapper">
-            <div className="mx-auto grid w-full max-w-[1200px] grid-flow-col sm:grid-cols-2 grid-cols-1 sm:grid-rows-2 md:gap-5 gap-2">
-              <div className="sm:col-span-8 sm:row-span-2 col-span-full">
-                <div className="iframe-wrapper sm:h-full w-full h-[220px]">
-                  <iframe
-                    src="https://www.youtube.com/embed/oumUXgQGAe8?si=78nbr5Dwd7Qh3Kcf"
-                    title="YouTube video player"
-                    className="h-full w-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-              <div className="sm:col-span-1 col-span-full">
-                <div className="iframe-wrapper h-[220px] w-full">
-                  <iframe
-                    src="https://www.youtube.com/embed/RriGBtqoaG8?si=hZ2WcfDn7fgunXkO"
-                    title="YouTube video player"
-                    className="h-full w-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-              <div className="sm:col-span-1 sm:row-span-1 col-span-full">
-                <div className="iframe-wrapper h-[220px] w-full">
-                  <iframe
-                    src="https://www.youtube.com/embed/6J3qa-LuHE8?si=JJuT0QNWBA7ozrXJ"
-                    title="YouTube video player"
-                    className="h-full w-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
+            <div className="mx-auto grid w-full max-w-[1200px] grid-flow-col grid-cols-1 gap-2 sm:grid-cols-2 sm:grid-rows-2 md:gap-5">
+              {video
+                ?.find((item) => item?.name === "VIDEOS")
+                ?.type?.slice(0, 3)
+                ?.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`col-span-full ${index % 3 === 0 ? "  sm:col-span-8 sm:row-span-2" : index % 2 === 0 ? "sm:col-span-1" : "sm:col-span-1 sm:row-span-1"}`}
+                  >
+                    <div
+                      className={`iframe-wrapper h-[220px] w-full ${index % 3 === 0 && "sm:h-full "}  `}
+                    >
+                      <iframe
+                        src={item}
+                        title="YouTube video player"
+                        className="h-full w-full"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </div>
+                ))}
             </div>
             <div className="btn-wrapper pt-8 text-center">
               <Link

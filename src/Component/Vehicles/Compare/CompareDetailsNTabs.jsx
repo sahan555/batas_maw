@@ -10,6 +10,7 @@ const CompareDetailsNTabs = ({ compareWith, compareTo }) => {
       compareWith,
     ]);
   };
+  console.log(compareAll,'both')
   useEffect(handleCompareUpdate, [compareTo, compareWith]);
   return (
     <>
@@ -18,9 +19,9 @@ const CompareDetailsNTabs = ({ compareWith, compareTo }) => {
         compareTo={compareTo}
         compareAll={compareAll}
       />
-      <ConTabs
+      {/* <ConTabs
         compareAll={compareAll}
-      />
+      /> */}
     </>
   );
 };

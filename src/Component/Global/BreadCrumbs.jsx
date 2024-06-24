@@ -2,9 +2,10 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { routes } from "../../Global/Datas/RoutesData";
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ data }) => {
   const location = useLocation();
 
+  // Function to generate breadcrumbs
   const generateBreadcrumbs = (pathname) => {
     const pathSegments = pathname
       .split("/")
@@ -14,16 +15,23 @@ const Breadcrumbs = () => {
 
     breadcrumbs.push({ path: "/", breadcrumb: "Home" });
 
-    for (let segment of pathSegments) {
-      cumulativePath += `/${segment}`;
-      const matchedRoute = routes.find(
-        (route) => route.path === cumulativePath,
-      );
+    for (let i = 0; i < pathSegments.length; i++) {
+      cumulativePath += `/${pathSegments[i]}`;
+      let matchedRoute = routes.find((route) => {
+        // Check if route.path matches cumulativePath
+        return route.path === cumulativePath;
+      });
 
       if (matchedRoute) {
         breadcrumbs.push({
           path: matchedRoute.path,
           breadcrumb: matchedRoute.breadcrumb,
+        });
+      } else {
+        // Handle cases where no exact match is found (optional)
+        breadcrumbs.push({
+          path: cumulativePath,
+          breadcrumb: data ? data : pathSegments[i],
         });
       }
     }
@@ -38,8 +46,11 @@ const Breadcrumbs = () => {
       <div className="side-padding">
         <div className="container mx-auto font-hermes text-sm text-white">
           {breadcrumbs.map((breadcrumb, index) => (
-            <span key={breadcrumb.path} className="[&:not(:last-child)]:mr-2">
-              <Link to={breadcrumb.path} className=" pr-2">
+            <span
+              key={breadcrumb.path}
+              className={`${index !== 0 ? "ml-2" : ""}`}
+            >
+              <Link to={breadcrumb.path} className="pr-2">
                 {breadcrumb.breadcrumb}
               </Link>
               {index < breadcrumbs.length - 1 && " / "}

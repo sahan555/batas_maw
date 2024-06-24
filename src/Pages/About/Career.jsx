@@ -6,8 +6,16 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import GetReturn from "../../Component/About/Carrer/GetReturn";
 import CareerOpenning from "../../Component/About/Carrer/CareerOpenning";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
+import { useRef } from "react";
+import useGet from "../../Global/Apis/useGet";
+import useScrollToElement from "../../Global/Hooks/useScrollToElement";
 
 const Career = () => {
+  const { data: galleries, isLoading: galleriesLoading } = useGet("galleries");
+
+  const careerOpeningRef = useRef(null);
+  const scrollToCareerOpening = useScrollToElement(careerOpeningRef);
+
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -58,13 +66,14 @@ const Career = () => {
               title={careerArticle.title}
               headClass="!text-primary"
               desc={careerArticle.desc}
-              slug={careerArticle.slug}
+              slug="#careerOpening"
               btnName="Current openings"
               grey={true}
+              onButtonClick={scrollToCareerOpening}
             />
           </div>
         </div>
-        <div className="career-gallery pb-16">
+        <div className="career-gallery">
           <div className="side-padding">
             <div className="container mx-auto">
               <div className="heading-wrapper">
@@ -80,7 +89,12 @@ const Career = () => {
                 </div>
                 <SliderNGallery
                   Slidersetting={sliderCareer}
-                  data={careerGallery}
+                  data={
+                    galleries
+                      ? galleries?.gallery?.find((item) => item?.name === "ALL GALLERY")
+                          ?.images
+                      : careerGallery
+                  }
                   transition={false}
                   classname={"xl:h-[300px] lg:h-[200px]"}
                 />
@@ -88,7 +102,7 @@ const Career = () => {
             </div>
           </div>
         </div>
-        <CareerOpenning />
+        <CareerOpenning ref={careerOpeningRef} />
         <GetReturn />
       </section>
     </>

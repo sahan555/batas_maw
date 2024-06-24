@@ -33,15 +33,15 @@ const SearchField = ({ data, slug, compare, title }) => {
 
   const filteredData = useMemo(() => {
     const searchTerms = compareSelected.toLowerCase().split(" ");
-    return data.filter(
+    return data?.filter(
       (item) =>
-        item.title !== slug?.title &&
-        searchTerms.every((term) => item.title.toLowerCase().includes(term)),
+        item?.name !== slug?.name &&
+        searchTerms.every((term) => item?.name.toLowerCase().includes(term)),
     );
   }, [data, compareSelected, slug]);
 
   const handleClickOutside = useCallback(() => {
-    if (!filteredData.some((item) => item.title === compareSelected)) {
+    if (!filteredData.some((item) => item.name === compareSelected)) {
       setCompareSelected("");
       compare("");
       setHighlightedIndex(-1);
@@ -79,7 +79,7 @@ const SearchField = ({ data, slug, compare, title }) => {
           case "Enter":
             if (highlightedIndex >= 0) {
               const selectedItem = filteredData[highlightedIndex];
-              newCompareSelected = selectedItem.title;
+              newCompareSelected = selectedItem.name;
               compare(selectedItem);
               newShowDropdown = false;
               updateNeeded = true;
@@ -179,9 +179,9 @@ const SearchField = ({ data, slug, compare, title }) => {
               <li
                 key={index}
                 onClick={() => {
-                  setCompareSelected(item?.title);
+                  setCompareSelected(item?.name);
                   compare(
-                    filteredData.find((all) => all?.title === item?.title),
+                    filteredData.find((all) => all?.name === item?.name),
                   );
                   setShowDropdown(false);
                 }}
@@ -189,7 +189,7 @@ const SearchField = ({ data, slug, compare, title }) => {
                 onMouseEnter={() => setHighlightedIndex(index)}
                 ref={highlightedIndex === index ? highlightedItemRef : null}
               >
-                {item?.title}
+                {item?.name}
               </li>
             ))}
           </ul>

@@ -54,14 +54,14 @@ export const GalleryBox = ({ key, classname, children }) => {
 export const GalleryLink = ({data,index,classname}) => {
   return (
     <a
-      href={data?.img}
+      href={data?.image}
       data-index={index}
       target="_blank"
       rel="noreferrer"
       className={classname}
     >
       <img
-        src={data?.img}
+        src={data?.image}
         alt={`${data?.title ? data?.title : `gallery-${index}`}`}
         className="h-full w-full object-cover object-center"
         onLoad={(event) => handleImageLoad(index, event)}

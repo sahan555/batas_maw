@@ -51,7 +51,7 @@ const Map = ({ city, setCity, coordinate, setCoordinate }) => {
       }
     };
     if (coordinate) {
-      setPosition(coordinate.coordinates);
+      setPosition([parseFloat(coordinate?.lat), parseFloat(coordinate?.lang)]);
       setZoom(13);
     } else if (city) {
       fetchGeocode();
@@ -81,7 +81,7 @@ const Map = ({ city, setCity, coordinate, setCoordinate }) => {
       />
       {coordinate && (
         <Marker
-          position={coordinate.coordinates}
+          position={[parseFloat(coordinate?.lat), parseFloat(coordinate?.lang)]}
           icon={
             new Icon({
               iconUrl: markerIconPng,
@@ -91,7 +91,7 @@ const Map = ({ city, setCity, coordinate, setCoordinate }) => {
             })
           }
         >
-          <Popup position={coordinate.coordinates}>{coordinate.name}</Popup>
+          <Popup position={[parseFloat(coordinate?.lat), parseFloat(coordinate?.lang)]}>{coordinate?.name}</Popup>
         </Marker>
       )}
 

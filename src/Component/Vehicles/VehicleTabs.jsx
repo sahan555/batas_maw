@@ -1,14 +1,13 @@
 import React, { useRef, useState } from "react";
 import ProductCard from "../Global/ProductCard";
-import { productData } from "../../Global/Datas/HomeData";
-import { SubMenu } from "../../Global/Datas/SubMenu";
 import { TabList, TabPanel, Tabs } from "react-tabs";
 import { CustomTab } from "../Global/CustomTab";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Pagination from "../Global/Pagination";
 
-const VehicleTabs = () => {
+const VehicleTabs = ({data:cate}) => {
+
   const [tabIndex, setTabIndex] = useState(0);
   const [dataFromChild, setDataFromChild] = useState([]);
   const productsRef = useRef(null);
@@ -68,37 +67,45 @@ const VehicleTabs = () => {
         <div className="product-tabs mb-8 px-5 lg:px-0">
           <TabList>
             <Slider {...ProductTab} className="product-tab-slider">
-              {SubMenu.map((item, index) => (
+              {cate?.map((item, index) => (
                 <CustomTab
                   onClick={() => setTabIndex(index)}
-                  key={item.id}
+                  key={item?.id}
                   className={`skew-btn btn-transparent cursor-pointer px-4 py-2 text-center uppercase text-grey transition-all duration-300 ease-linear before:border-grey  ${index === tabIndex ? "text-white transition-all duration-300 ease-linear before:border-primary before:bg-primary " : ""}`}
                 >
-                  {item.name}
+                  {item?.name}
                 </CustomTab>
               ))}
             </Slider>
           </TabList>
         </div>
         <div className="tab-content">
-          {SubMenu.map((_, index) => (
+          {cate?.map((item, index) => (
             <TabPanel key={index}>
               <div className="-mx-4 flex flex-wrap gap-y-8">
-                {dataFromChild.map((item, idx) => (
-                  <ProductCard
-                    key={idx}
-                    index={idx}
-                    col={true}
-                    slider={true}
-                    title={item.title}
-                    image={item.multiImg}
-                    desc={item.desc}
-                  />
-                ))}
+                {dataFromChild?.length > 0 ? (
+                  dataFromChild?.map((item, idx) => (
+                    <ProductCard
+                      key={idx}
+                      index={idx}
+                      col={true}
+                      slider={true}
+                      title={item?.name}
+                      image={item?.images ? item?.images : item?.image}
+                      desc={item?.description}
+                      slug={item?.slug}
+                      download={item?.pdf}
+                    />
+                  ))
+                ) : (
+                  <div className="text-center w-full">
+                    <p>No Data found</p>
+                  </div>
+                )}
               </div>
               <Pagination
                 ref={productsRef}
-                data={productData}
+                data={item?.products}
                 view={8}
                 setDataFromChild={setDataFromChild}
               />

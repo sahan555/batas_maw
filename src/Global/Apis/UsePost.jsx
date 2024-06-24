@@ -14,11 +14,11 @@ const usePost = (url) => {
 
     try {
       const response = await axios.post(`${baseUrl}${url}`, values);
-      const responseData = response?.data?.data;
-
+      const responseData = response?.data;
+      console.log(response)
       setPostData(responseData);
-      if (response?.status === 200) {
-        if (responseData?.length > 0) {
+      if (response?.status === 201|| response?.status === 200) {
+        if (Object.keys(responseData).length > 0) {
           toast.success(`${name} added successfully!`, {
             position: "top-center",
             autoClose: 5000,
@@ -60,7 +60,7 @@ const usePost = (url) => {
     }
   };
 
-  return { post, isLoading, error, postData ,setPostData};
+  return { post, isLoading, error, postData };
 };
 
 export default usePost;

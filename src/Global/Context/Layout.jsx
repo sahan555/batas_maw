@@ -6,8 +6,9 @@ const LayoutData = createContext();
 export const Layout = ({ children }) => {
   const [city, setCity] = useState("");
   const [coordinate, setCoordinate] = useState("");
+  // const [loader, setLoader] = useState(false);
   return (
-    <LayoutData.Provider value={{ city, setCity, coordinate, setCoordinate }}>
+    <LayoutData.Provider value={{ city, setCity, coordinate, setCoordinate}}>
       {children}
     </LayoutData.Provider>
   );

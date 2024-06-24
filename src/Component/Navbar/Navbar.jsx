@@ -6,8 +6,10 @@ import { NavbarMenu } from "../../Global/Datas/NavbarMenu";
 import Search from "../Global/Search";
 import TopContact from "./TopContact";
 import { IoClose } from "react-icons/io5";
+import useMediaQuery from "../../Global/Hooks/useMediaQuery";
 
 const Navbar = () => {
+  const isMobileDevice = useMediaQuery("(max-width: 1023px)");
   const navbar = useRef(null);
   const newDiv = document.createElement("div");
   newDiv.classList.add("overflow-background");
@@ -23,23 +25,25 @@ const Navbar = () => {
   };
 
   const handleClose = () => {
-    if (navbar.current) {
-      if (document.body.contains(newDiv)) {
-        document.body.removeChild(newDiv);
+    if (isMobileDevice) {
+      if (navbar.current) {
+        if (document.body.contains(newDiv)) {
+          document.body.removeChild(newDiv);
+        }
+        navbar.current.classList.toggle("menu-show");
+        document.body.classList.toggle("height-fixed");
       }
-      navbar.current.classList.toggle("menu-show");
-      document.body.classList.toggle("height-fixed");
+      newDiv.addEventListener("click", function () {
+        if (navbar.current) {
+          if (document.body.contains(newDiv)) {
+            document.body.removeChild(newDiv);
+          }
+          navbar.current.classList.toggle("menu-show");
+          document.body.classList.toggle("height-fixed");
+        }
+      });
     }
   };
-  newDiv.addEventListener("click", function () {
-    if (navbar.current) {
-      if (document.body.contains(newDiv)) {
-        document.body.removeChild(newDiv);
-      }
-      navbar.current.classList.toggle("menu-show");
-      document.body.classList.toggle("height-fixed");
-    }
-  });
   return (
     <>
       <header>
@@ -78,34 +82,53 @@ const Navbar = () => {
           </div>
           <div
             ref={navbar}
-            className="navbar-bottom hidden bg-light-grey bg-opacity-80 [box-shadow:0px_12px_13px_0px_rgba(0,_0,_0,_0.19)] lg:block scroll-smooth overflow-y-scroll lg:overflow-auto"
+            className="navbar-bottom hidden overflow-y-auto scroll-smooth bg-light-grey bg-opacity-80 [box-shadow:0px_12px_13px_0px_rgba(0,_0,_0,_0.19)] lg:block lg:overflow-visible"
           >
             <div className="md:side-padding">
-              <div className="container mx-auto flex h-full flex-col flex-wrap lg:h-auto lg:flex-row lg:items-center lg:justify-between ">
-                <figure className="mobile-logo order-1 block h-[80px] border-b border-solid border-[#dddddd] px-4 py-2 lg:hidden">
+              <div className="container relative mx-auto flex h-full flex-col flex-wrap lg:h-auto lg:flex-row lg:items-center lg:justify-between">
+                <figure className="mobile-logo order-1 block h-[80px] border-b border-solid border-[#dddddd] py-2 pr-4 lg:hidden">
                   <img
                     src="/assets/images/logo.png"
                     alt="Batas Maw"
-                    className="object-cover object-center"
+                    className="object-contain object-left"
                   />
                 </figure>
                 <ul className="navbar-group order-3 mb-2 flex flex-col border-b  border-solid border-[#dddddd] pb-2 lg:-order-none lg:m-0 lg:flex-row lg:border-0 lg:p-0">
                   {NavbarMenu.map((item, index) => (
-                    <li key={index}>
+                    <li key={index} className="group relative">
                       <NavLink
                         activeclassname="is-active"
                         className="block px-[15px] py-4 uppercase  hover:text-primary lg:inline-block lg:text-sm  xl:px-6 xl:text-base"
                         to={item.slug}
+                        onClick={handleClose}
                       >
                         {item.title}
                       </NavLink>
+                      {item?.children && (
+                        <>
+                          <ul className="dropdown-menu absolute -left-3 top-full z-20 hidden w-[200px] max-w-[200px] bg-[#ededed] group-hover:block">
+                            {item?.children?.map((item, index) => (
+                              <li key={index}>
+                                <NavLink
+                                  activeclassname="is-active"
+                                  className="block w-full px-[15px] py-3  uppercase hover:text-primary lg:inline-block  lg:text-sm xl:px-6 xl:text-base"
+                                  to={item.slug}
+                                  onClick={handleClose}
+                                >
+                                  {item.name}
+                                </NavLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
                     </li>
                   ))}
                 </ul>
                 <TopContact classname={"lg:hidden block order-4"} />
                 <Search classname={"lg:-order-none order-2"} />
                 <div
-                  className="btn-wrapper absolute -left-11 top-2 block rounded-[50%] bg-primary p-[1px] text-3xl text-white lg:hidden"
+                  className="btn-wrapper absolute right-0 top-5 block rounded-[50%] bg-primary p-[1px] text-3xl text-white lg:hidden"
                   onClick={handleClose}
                 >
                   <IoClose />

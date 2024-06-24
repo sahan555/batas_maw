@@ -162,6 +162,12 @@
     @apply bg-primary text-white absolute content-[''] inset-0 -z-[1] transform -skew-x-[20deg];
   }
 
+  .navbar-bottom .navbar-group .dropdown-menu .active::before {
+    @apply -skew-x-[0deg];
+  }
+
+
+
   .hero-slider .slick-dots {
     @apply bottom-8;
 
@@ -194,6 +200,43 @@
 
   .products-tab .react-tabs__tab--selected {
     @apply text-primary underline
+  }
+
+  .custom-slider {
+    .slick-dots {
+      bottom: -30px;
+
+      li {
+        @apply w-[12px] h-[12px] mx-1.5 transition-[width] duration-1000 ease-in-out;
+
+
+
+
+      }
+
+      button {
+        width: 100%;
+        height: 100%;
+
+        &::before {
+          @apply bg-gray-400 bg-opacity-30;
+          opacity: 100% !important;
+          width: 100%;
+          height: 100%;
+          border-radius: 50px;
+          content: '';
+        }
+      }
+
+      .slick-active {
+        width: 40px;
+
+        button::before {
+          @apply bg-primary;
+          opacity: 100% !important;
+        }
+      }
+    }
   }
 
   .product-slider {
@@ -521,41 +564,24 @@
 
   }
 
-  .career-form {
-    .photo-group {
-      position: relative;
+  .photo-group {
+    position: relative;
 
-      .form-control {
-        opacity: 0;
-        width: 176px;
-        height: 41px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
+    .form-control {
+      opacity: 0;
+      width: 176px;
+      height: 41px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
 
-        &:hover {
-          cursor: pointer;
-
-          ~.btn-group .photo-btn {
-            opacity: 0.9;
-          }
-        }
-      }
-
-      .photo-btn {
-        background: #484848;
-        padding: 10px 20px;
-        font-size: 14px;
-        display: inline-flex;
-        gap: 10px;
-        font-weight: 500;
+      &:hover {
         cursor: pointer;
-      }
 
-      #imageName {
-        font-size: 14px;
-        margin-left: 10px;
+        ~.btn-group .photo-btn {
+          opacity: 0.9;
+        }
       }
     }
 
@@ -574,7 +600,9 @@
       font-size: 14px;
       margin-left: 10px;
     }
+  
   }
+
 
   .branch-tabs {
     .tab {
@@ -752,6 +780,25 @@
     }
   }
 
+  .history-slider {
+    .slick-track {
+      position: relative;
+
+      &::before {
+        @apply bg-grey;
+        content: '';
+        opacity: 0.3;
+        position: absolute;
+        height: 2px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        top: 11px;
+        z-index: -1;
+      }
+    }
+  }
+
   @media only screen and (max-width: 1439px) {
     .career-gallery .gallery-slider a {
       height: 400px;
@@ -840,8 +887,23 @@
         }
       }
     }
+
     .detail-tabs .react-tabs__tab--selected {
       @apply text-primary underline bg-transparent;
+    }
+
+    .height-fixed {
+      height: 100dvh;
+      overflow: hidden;
+      position: relative;
+
+      .overflow-background {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        content: '';
+        z-index: 9;
+      }
     }
   }
 
@@ -855,33 +917,22 @@
         margin: 0 6px;
       }
     }
+
     .details-page {
       .small-slider-wrapper {
         .slick-slide {
           padding: 0 6px;
         }
-  
+
         .slick-list {
           margin: 0 -6px;
         }
-     
-    }
-  }
 
-  .height-fixed {
-    height: 100dvh;
-    overflow: hidden;
-    position: relative;
-
-    .overflow-background {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      content: '';
-      z-index: 9;
+      }
     }
+
+
   }
-}
 }
 
 
@@ -946,4 +997,118 @@ figure {
     }
   }
 
+}
+
+.slick-dots li button {
+  filter: drop-shadow(0px 0px 4px rgb(0 0 0 / 10%));
+}
+
+.loader {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader .truckWrapper {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  overflow-x: hidden;
+}
+
+/* truck upper body */
+.loader .truckBody {
+  width: 130px;
+  height: fit-content;
+  margin-bottom: 6px;
+  animation: motion 1s linear infinite;
+}
+
+/* truck suspension animation*/
+@keyframes motion {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* truck's tires */
+.loader .truckTires {
+  width: 130px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px 0px 15px;
+  position: absolute;
+  bottom: 0;
+}
+
+.loader .truckTires svg {
+  width: 24px;
+}
+
+.loader .road {
+  width: 100%;
+  height: 1.5px;
+  background-color: #282828;
+  position: relative;
+  bottom: 0;
+  align-self: flex-end;
+  border-radius: 3px;
+}
+
+.loader .road::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  background-color: #282828;
+  right: -50%;
+  border-radius: 3px;
+  animation: roadAnimation 1.4s linear infinite;
+  border-left: 10px solid white;
+}
+
+.loader .road::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  background-color: #282828;
+  right: -65%;
+  border-radius: 3px;
+  animation: roadAnimation 1.4s linear infinite;
+  border-left: 4px solid white;
+}
+
+.loader .lampPost {
+  position: absolute;
+  bottom: 0;
+  right: -90%;
+  height: 90px;
+  animation: roadAnimation 1.4s linear infinite;
+}
+
+@keyframes roadAnimation {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(-350px);
+  }
 }

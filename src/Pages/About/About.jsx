@@ -5,9 +5,12 @@ import OurValues from "../../Component/About/OurValues";
 import Vision from "../../Component/About/Vision";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import Testimonials from "../../Component/Global/Testimonials";
+import useGet from "../../Global/Apis/useGet";
 import { CeoWords } from "../../Global/Datas/AboutData";
 
 const About = () => {
+  const { data: about } = useGet("static-about");
+  const { data: counters } = useGet("counters");
   return (
     <>
       <Breadcrumbs />
@@ -63,14 +66,14 @@ const About = () => {
         </section>
         <Testimonials
           heading="Chairman Message"
-          data={CeoWords}
+          data={about}
           slider={false}
           right={true}
         />
-        <AtaGlance />
+        <AtaGlance data={counters} />
         <Mission />
-        <Vision />
-        <OurValues />
+        <Vision data={about} />
+        <OurValues data={counters} />
       </main>
     </>
   );

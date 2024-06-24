@@ -13,7 +13,9 @@ const SupportForm = () => {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("required"),
     email: Yup.string().email("Invalid email address").required("required"),
-    phone: Yup.number().positive().required("required"),
+    phone: Yup.string()
+      .required("required")
+      .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits"),
     subject: Yup.string().required("required"),
     message: Yup.string().required("required"),
   });
@@ -35,7 +37,7 @@ const SupportForm = () => {
               >
                 {(formik) => (
                   <Form onSubmit={formik.handleSubmit}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       <div className="col-span-full">
                         <div className="form-group">
                           <label

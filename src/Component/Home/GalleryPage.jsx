@@ -4,7 +4,7 @@ import { galleryData } from "../../Global/Datas/HomeData";
 import { Link } from "react-router-dom";
 import SliderNGallery from "../Global/SliderNGallery";
 import { CustomNextArrow, CustomPrevArrow } from "../Global/SliderArrows";
-const GalleryPage = () => {
+const GalleryPage = ({ data }) => {
   // Slider settings
   const gallerySliderSettings = {
     dots: false,
@@ -55,7 +55,11 @@ const GalleryPage = () => {
       <section className="gallery-section bg-light-grey pb-12 pt-4">
         <SliderNGallery
           Slidersetting={gallerySliderSettings}
-          data={galleryData}
+          data={
+            data
+              ? data?.find((item) => item?.name === "ALL GALLERY")?.images
+              : galleryData
+          }
           transition={true}
         />
         <div className="container mx-auto">

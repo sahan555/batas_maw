@@ -5,7 +5,6 @@ import useGet from "../../Global/Apis/useGet";
 
 const ClientSection = () => {
   const { data: clients } = useGet("clients");
-  console.log(clients)
   var clientSlider = {
     dots: false,
     arrows: false,
@@ -14,6 +13,7 @@ const ClientSection = () => {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
+    draggable: false,
     responsive: [
       {
         breakpoint: 1279,
@@ -56,7 +56,7 @@ const ClientSection = () => {
           </article>
           <div className="client-slider mx-auto max-w-[1500px]">
             <Slider {...clientSlider}>
-              {clients?.map((item, index) => (
+              {(clients ? clients : clientData)?.map((item, index) => (
                 <div key={index}>
                   <figure className="mx-auto h-[120px] w-[120px] rounded-full">
                     <img

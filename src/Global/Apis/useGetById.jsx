@@ -27,7 +27,7 @@ const useGetById = (url,id) => {
     }
   }, [fetchDataById, id, url]);
 
-  return { fetchDataById, data, isLoading, error };
+  return { data, isLoading, error };
 };
 
 export default useGetById;

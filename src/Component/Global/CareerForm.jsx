@@ -1,26 +1,30 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
-const CareerForm = ({ jobname }) => {
+import usePost from "../../Global/Apis/UsePost";
+const CareerForm = ({ jobid }) => {
   const [imageName, setImageName] = useState("No Files Selected");
-  const validFileExtensions = {
-    image: ["jpg", "gif", "png", "jpeg", "svg", "webp"],
-  };
+  const [loader, setLoader] = useState(false);
 
-  function isValidFileType(fileName, fileType) {
-    return (
-      fileName &&
-      validFileExtensions[fileType].indexOf(fileName.split(".").pop()) > -1
-    );
-  }
-  const MAX_FILE_SIZE = 102400;
+  const { post } = usePost("career-applications");
+  // const validFileExtensions = {
+  //   image: ["jpg", "gif", "png", "jpeg", "svg", "webp"],
+  // };
+
+  // function isValidFileType(fileName, fileType) {
+  //   return (
+  //     fileName &&
+  //     validFileExtensions[fileType].indexOf(fileName.split(".").pop()) > -1
+  //   );
+  // }
+  const MAX_FILE_SIZE = 1024000;
 
   const initialValues = {
     name: "",
     email: "",
     phone: "",
-    coverletter: "",
-    resume: "",
+    cover_letter: "",
+    file: "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -28,13 +32,14 @@ const CareerForm = ({ jobname }) => {
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
-    phone: Yup.string().required("Phone number is required"),
-    coverletter: Yup.string().required("Cover letter is required"),
-    resume: Yup.mixed()
-      .required("required")
-      .test("is-valid-type", "Not a valid image type", (value) =>
-        isValidFileType(value && value.name.toLowerCase(), "image"),
-      )
+    phone: Yup.string()
+      .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits")
+      .required(),
+    cover_letter: Yup.string().required("Cover Letter is required"),
+    file: Yup.mixed()
+      // .test("is-valid-type", "Not a valid image type", (value) =>
+      //   isValidFileType(value && value.name.toLowerCase(), "image"),
+      // )
       .test(
         "is-valid-size",
         "Max allowed size is 100KB",
@@ -44,13 +49,28 @@ const CareerForm = ({ jobname }) => {
 
   // const handleFileChange = (event, setFieldValue) => {
   //   const file = event.target.files[0];
-  //   setFieldValue("resume", file);
+  //   setFieldValue("file", file);
   //   setImageName(file ? file.name : "No Files Selected");
   // };
+  const handleSubmit = async (values, { resetForm }) => {
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, entry]) => {
+      if (key === "file" && entry) {
+        formData.set("file", entry);
+      } else {
+        formData.append(
+          key,
+          Array.isArray(entry) ? JSON.stringify(entry) : entry || "",
+        );
+      }
+    });
+    formData.append("career_id", jobid);
 
-  const handleSubmit = (values) => {
-    console.log({ ...values, jobname });
-    // Here you can handle form submission, e.g., make an API call
+    setLoader(true);
+    await post(formData, "Application");
+    setLoader(false);
+    resetForm();
+    setImageName("No Files Selected");
   };
   return (
     <>
@@ -68,7 +88,9 @@ const CareerForm = ({ jobname }) => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={(values, { resetForm }) =>
+            handleSubmit(values, { resetForm })
+          }
         >
           {(formik) => (
             <Form onSubmit={formik.handleSubmit}>
@@ -144,7 +166,8 @@ const CareerForm = ({ jobname }) => {
                   <div className="form-group">
                     <label
                       className={`form-label mb-1 block text-sm uppercase ${
-                        formik.errors.coverletter && formik.touched.coverletter
+                        formik.errors.cover_letter &&
+                        formik.touched.cover_letter
                           ? "text-primary"
                           : ""
                       }`}
@@ -153,11 +176,12 @@ const CareerForm = ({ jobname }) => {
                     </label>
                     <Field
                       as="textarea"
-                      name="coverletter"
+                      name="cover_letter"
                       rows="4"
                       placeholder="Type Here"
                       className={`w-full border border-white px-5 py-2.5 outline-0 transition-[border] duration-300 visited:bg-white focus:border-grey ${
-                        formik.errors.coverletter && formik.touched.coverletter
+                        formik.errors.cover_letter &&
+                        formik.touched.cover_letter
                           ? "error"
                           : ""
                       }`}
@@ -168,18 +192,22 @@ const CareerForm = ({ jobname }) => {
                   <div className="form-group photo-group">
                     <input
                       type="file"
-                      name="resume"
-                      accept=".svg"
+                      name="file"
                       className={`form-control `}
                       onChange={(event) => {
                         formik.setFieldValue(
-                          "resume",
+                          "file",
                           event.currentTarget.files[0],
+                        );
+                        setImageName(
+                          event.currentTarget.files[0]
+                            ? event.currentTarget.files[0].name
+                            : "No Files Selected",
                         );
                       }}
                     />
 
-                    <div className="btn-group flex flex-wrap gap-y-2 items-center">
+                    <div className="btn-group flex flex-wrap items-center gap-y-2">
                       <span
                         className={`photo-btn rounded-lg uppercase text-white `}
                       >
@@ -189,7 +217,16 @@ const CareerForm = ({ jobname }) => {
                           alt="upload"
                         />
                       </span>
-                      <p id="imageName">{imageName}</p>
+                      <p
+                        id="imageName"
+                        className={`${
+                          formik.errors.file && formik.touched.file
+                            ? "text-primary"
+                            : ""
+                        }`}
+                      >
+                        {imageName}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -197,9 +234,9 @@ const CareerForm = ({ jobname }) => {
                   <div className="btn-wrapper">
                     <button
                       type="submit"
-                      className="btn-full skew-btn inline-block px-8 py-2 uppercase text-white before:bg-primary hover:opacity-90"
+                      className={` ${loader && "pointer-events-none"} btn-full skew-btn inline-block px-8 py-2 uppercase text-white before:bg-primary hover:opacity-90`}
                     >
-                      Submit
+                      {loader ? "Submitting..." : "Submit"}
                     </button>
                   </div>
                 </div>

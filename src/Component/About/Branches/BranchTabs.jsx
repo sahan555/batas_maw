@@ -3,8 +3,10 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { MapData } from "../../../Global/Datas/MapData";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
+import useGet from "../../../Global/Apis/useGet";
 
 const BranchTabs = ({ setCoordinate }) => {
+  const {data} =useGet('')
   return (
     <div className="branch-tabs py-12">
       <div className="side-padding">
@@ -25,7 +27,7 @@ const BranchTabs = ({ setCoordinate }) => {
                 </TabList>
               </div>
               <div className="tabs-content lg:col-span-3 md:col-span-2 col-span-full">
-                {MapData.map((item, index) => (
+                {MapData?.map((item, index) => (
                   <TabPanel key={index}>
                     <div className="grid grid-cols-1 gap-8 gap-y-10 lg:grid-cols-2 xl:grid-cols-3">
                       {item.servicecenter

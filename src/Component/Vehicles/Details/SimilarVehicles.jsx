@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { productData } from "../../../Global/Datas/HomeData";
 import ProductCard from "../../Global/ProductCard";
 import { Link } from "react-router-dom";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import Slider from "react-slick";
+import useGet from "../../../Global/Apis/useGet";
 
-const SimilarVehicles = () => {
+const SimilarVehicles = ({ data }) => {
+  const { data: cate } = useGet("categories");
+  const similarItems = useMemo(() => {
+    if (!cate || !data) return [];
+
+    return cate.find((item) => item?.name === data);
+  }, [cate, data]);
   var ProductSlider = {
     dots: true,
     arrows: false,
@@ -46,24 +53,27 @@ const SimilarVehicles = () => {
             </h4>
           </div>
           <div className="flex w-full flex-wrap gap-y-8">
-            <Slider {...ProductSlider} className="product-slider w-full">
-              {productData.map((item, index) => (
+            <Slider {...ProductSlider} className="custom-slider w-full">
+              {similarItems?.products?.map((item, index) => (
                 <React.Fragment key={index}>
-                  <ProductCard
-                    index={index}
-                    col={false}
-                    slider={true}
-                    title={item.title}
-                    image={item.multiImg}
-                    desc={item.desc}
-                  />
+                   <ProductCard
+                      key={index}
+                      index={index}
+                      col={false}
+                      slider={true}
+                      title={item?.name}
+                      image={item?.images ? item?.images : item?.image}
+                      desc={item?.description}
+                      slug={item?.slug}
+                      download={item?.pdf}
+                    />
                 </React.Fragment>
               ))}
             </Slider>
           </div>
           <div className="view-all mt-8 pt-8 text-center">
             <Link
-              to=""
+              to="/vehicles/"
               className="group inline-flex items-center gap-3 text-secondary"
             >
               View all products

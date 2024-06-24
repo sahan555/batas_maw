@@ -20,7 +20,7 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
         <div className="container mx-auto">
           <div className="heading-wrapper stripe-wrapper mb-3 max-w-[600px] before:bg-primary after:bg-primary">
             <h2 className="heading stripe z-[1] flex items-center gap-4 py-2 pr-[60px] uppercase !text-white">
-              {compareTo?.title} VS {compareWith?.title}
+              {compareTo?.name} VS {compareWith?.name}
             </h2>
           </div>
           <div className="brief-table">
@@ -29,47 +29,47 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                 <td className="w-1/3"></td>
                 {compareAll?.map((item, index) => (
                   <td key={index} className="w-1/3">
-                    {item?.multiImg?.length > 1 ? (
+                    {item?.images ? (
                       <Slider
                         {...CompareSlider}
                         className="product-slider-img xl:w-[400px] lg:w-[300px] w-[200px]"
                       >
-                        {item?.multiImg?.map((imgItem, index) => (
+                        {item?.images?.map((imgItem, index) => (
                           <div key={index}>
                             <figure className="h-[160px] lg:h-[298px]">
                               <img
-                                src={imgItem.img}
-                                alt={item?.title}
+                                src={imgItem?.image}
+                                alt={item?.name}
                                 className="object-cover object-center"
                               />
                             </figure>
                           </div>
                         ))}
                       </Slider>
-                    ) : item?.length > 0 ? (
+                    ) : item?.image ? (
                       <figure className="h-[298px]">
                         <img
-                          src={item?.multiImg?.[0]?.img}
-                          alt={item?.title}
+                          src={item?.image}
+                          alt={item?.name}
                           className="object-cover object-center"
                         />
                       </figure>
                     ) : (
-                      ""
+                     ""
                     )}
                   </td>
                 ))}
               </CompareTr>
-              <CompareTr
+              {/* <CompareTr
                 name={`Model`}
                 data={compareAll}
-                innerdata={`title`}
-              ></CompareTr>
+                innerdata={`name`}
+              ></CompareTr> */}
               <CompareTr>
                 <td>Ratings</td>
                 {compareAll?.map((item, index) => (
                   <React.Fragment key={index}>
-                    {item && (
+                    {item ? (
                       <td key={index}>
                         <div className="rating flex items-start gap-3">
                           <ul className="flex gap-2 text-base">
@@ -89,7 +89,7 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                           <p>{item?.rating} Rating</p>
                         </div>
                       </td>
-                    )}
+                    ) : <td></td>}
                   </React.Fragment>
                 ))}
               </CompareTr>
@@ -100,7 +100,7 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
               </CompareTr>
             </CompareTable>
           </div>
-          <div className="performance-table pt-10">
+          {/* <div className="performance-table pt-10">
             <div className="heading-wrapper bg-secondary bg-opacity-10 p-3">
               <h3 className="heading flex items-center gap-4 !text-xl !text-secondary">
                 <img
@@ -263,7 +263,7 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                 vitraData={`axle`}
               />
             </CompareTable>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

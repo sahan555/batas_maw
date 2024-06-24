@@ -31,33 +31,7 @@ export const vehicleData = [
   },
 ];
 
-export const vehicleLinks = [
-  {
-    icon: "/assets/images/icons/download.svg",
-    name: "Download Brochure",
-    link: "#!",
-  },
-  {
-    icon: "/assets/images/icons/compare.svg",
-    name: "Compare",
-    link: "/vehicles/compare",
-  },
-  {
-    icon: "/assets/images/icons/pin.svg",
-    name: "Find a dealer",
-    link: "#!",
-  },
-  {
-    icon: "/assets/images/icons/Inquiry.svg",
-    name: "Inquiry",
-    link: "#!",
-  },
-  {
-    icon: "/assets/images/icons/star.svg",
-    name: "Reviews",
-    link: "#!",
-  },
-];
+
 
 export const vehicleTabs = [
   {

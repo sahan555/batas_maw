@@ -1,18 +1,32 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { IoStar } from "react-icons/io5";
-import { vehicleReviews } from "../../../Global/Datas/VehicleData";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
+import useGetById from "../../../Global/Apis/useGetById";
+import usePost from "../../../Global/Apis/UsePost";
 
-const DetailReview = () => {
-  const [rating, setRating] = useState(1);
-  const [hover, setHover] = useState(1);
+const DetailReview = forwardRef((id, ref) => {
+  const [imageName, setImageName] = useState("No Files Selected");
+  const [loader, setLoader] = useState(false);
+
+  const { data: review } = useGetById("review", id?.id);
+  const { post } = usePost("review-store");
+  console.log(review);
+  const totalReview = review?.reduce(
+    (accumulator, currentValue) =>
+      accumulator + parseFloat(currentValue.rating),
+    0,
+  );
+  console.log(totalReview);
+  const [rating, setRating] = useState(4);
+  const [hover, setHover] = useState(4);
 
   const initialValues = {
-    rating: 1,
-    review: "",
+    rating: 4,
+    review_message: "",
     name: "",
     email: "",
+    image: "",
   };
   const validationSchema = Yup.object().shape({
     rating: Yup.number().required("required"),
@@ -20,19 +34,40 @@ const DetailReview = () => {
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
-    review: Yup.string().required("required"),
+    review_message: Yup.string().required("required"),
+    // image: Yup.mixed(),
+    // .test("is-valid-type", "Not a valid image type", (value) =>
+    //   isValidFileType(value && value.name.toLowerCase(), "image"),
+    // )
   });
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values, { resetForm }) => {
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, entry]) => {
+      if (key === "file" && entry) {
+        formData.set("file", entry);
+      } else {
+        formData.append(
+          key,
+          Array.isArray(entry) ? JSON.stringify(entry) : entry || "",
+        );
+      }
+    });
+    formData.append("product_id", id?.id);
+
+    setLoader(true);
+    await post(formData, "Review");
+    setLoader(false);
+    resetForm();
+    setImageName("No Files Selected");
   };
   return (
-    <div className="detail-review py-14">
+    <div className="detail-review py-14" ref={ref}>
       <div className="heading-wrapper mb-3">
         <h2 className="heading">Reviews</h2>
       </div>
       <div className="grid grid-cols-5 gap-8">
-        <div className="lg:col-span-3 col-span-full">
+        <div className="col-span-full lg:col-span-3">
           <div className="total-reviews mb-2">
             <h3 className="flex items-baseline text-4xl">
               <span className="mr-4 text-[#FFB157]">
@@ -41,39 +76,59 @@ const DetailReview = () => {
               4.6 <small className="ml-1 text-xl">Overall</small>
             </h3>
           </div>
-          <div className="review-group h-[600px] overflow-y-auto pr-2">
-            {vehicleReviews?.map((item, index) => (
-              <div
-                className="review-box flex gap-6 bg-[#EEEEEE] px-8 py-6 [&:not(:last-child)]:mb-2"
-                key={index}
-              >
-                <figure className="h-[80px] w-[80px] flex-none">
-                  <img src={item?.image} alt={item?.title} />
-                </figure>
-                <article>
-                  <div className="rating mb-3">
-                    <ul className="flex gap-2">
-                      {Array.from({ length: 5 }, (_, index) => (
-                        <li
-                          key={index}
-                          className={
-                            index < item.rating ? "text-[#FFB157]" : "text-grey"
-                          }
-                        >
-                          <IoStar />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <h2 className="mb-2 text-base">{item?.title}</h2>
-                  <p className=" leading-7 text-grey">{item?.desc}</p>
-                </article>
-              </div>
-            ))}
+          <div className="review-group h-[628px] overflow-y-auto pr-2">
+            {review?.length > 0 ? (
+              review?.map((item) => (
+                <div
+                  className="review-box flex gap-6 bg-[#EEEEEE] px-8 py-6 [&:not(:last-child)]:mb-2"
+                  key={item?.id}
+                >
+                  {item?.image ? (
+                    <figure className="h-[80px] w-[80px] flex-none">
+                      <img src={item?.image} alt={item?.title} />
+                    </figure>
+                  ) : (
+                    <div className="h-[80px] w-[80px] flex-none flex  justify-center items-center bg-[#fafafa] text-7xl">
+                      {item?.name.charAt(0)}
+                    </div>
+                  )}
+
+                  <article>
+                    <div className="rating mb-3">
+                      <ul className="flex gap-2">
+                        {Array.from({ length: 5 }, (_, index) => (
+                          <li
+                            key={index}
+                            className={
+                              index < item.rating
+                                ? "text-[#FFB157]"
+                                : "text-grey"
+                            }
+                          >
+                            <IoStar />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <h2 className="mb-2 text-base">{item?.name}</h2>
+                    <p className=" leading-7 text-grey">
+                      {item?.review_message}
+                    </p>
+                  </article>
+                </div>
+              ))
+            ) : (
+              <>
+                <div className="flex h-full items-center justify-center bg-[#EEEEEE]">
+                  <p>No reviews Found</p>
+                </div>
+              </>
+            )}
+            {}
           </div>
         </div>
-        <div className="lg:col-span-2 col-span-full">
-          <div className="review-form border p-6 mt-[53px]">
+        <div className="col-span-full lg:col-span-2">
+          <div className="review-form mt-[53px] border p-6">
             <div className="heading-wrapper relative mb-6">
               <h3 className="heading">Write Review</h3>
               <figure className="absolute right-0 top-0 h-[66px] w-[66px]">
@@ -109,7 +164,7 @@ const DetailReview = () => {
                         return (
                           <span
                             key={index}
-                            className={`star text-[#dddddd] cursor-pointer ${starValue <= (hover || rating) ? "!text-[#FFB157]" : ""}`}
+                            className={`star cursor-pointer text-[#dddddd] ${starValue <= (hover || rating) ? "!text-[#FFB157]" : ""}`}
                             onClick={() => {
                               setRating(starValue);
                               formik.setFieldValue("rating", starValue);
@@ -124,28 +179,7 @@ const DetailReview = () => {
                       })}
                     </div>
                   </div>
-                  <div className="form-group mb-2">
-                    <label
-                      className={`form-label mb-1 block capitalize ${
-                        formik.errors.review && formik.touched.review
-                          ? "text-primary"
-                          : ""
-                      }`}
-                    >
-                      Your Review <span className="text-primary">*</span>
-                    </label>
-                    <Field
-                      as="textarea"
-                      name="review"
-                      rows="4"
-                      placeholder="Write Something"
-                      className={`w-full border border-white bg-[#EEEEEE] px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
-                        formik.errors.review && formik.touched.review
-                          ? "error"
-                          : ""
-                      }`}
-                    />
-                  </div>
+
                   <div className="form-group mb-4">
                     <label
                       className={`form-label mb-1 block capitalize ${
@@ -186,12 +220,71 @@ const DetailReview = () => {
                       }`}
                     />
                   </div>
+                  <div className="form-group photo-group mb-4">
+                    <label className={`form-label mb-1 block capitalize `}>
+                      Your Photo
+                    </label>
+                    <input
+                      type="file"
+                      name="image"
+                      className={`form-control `}
+                      onChange={(event) => {
+                        formik.setFieldValue(
+                          "image",
+                          event.currentTarget.files[0],
+                        );
+                        setImageName(
+                          event.currentTarget.files[0]
+                            ? event.currentTarget.files[0].name
+                            : "No Files Selected",
+                        );
+                      }}
+                    />
+
+                    <div className="btn-group flex flex-wrap items-center gap-y-2">
+                      <span
+                        className={`photo-btn rounded-lg uppercase text-white `}
+                      >
+                        Upload Photo
+                        <img
+                          src="/assets/images/icons/upload.svg"
+                          alt="upload"
+                        />
+                      </span>
+                      <p id="imageName">{imageName}</p>
+                    </div>
+                  </div>
+                  <div className="form-group mb-2">
+                    <label
+                      className={`form-label mb-4 block capitalize ${
+                        formik.errors.review_message &&
+                        formik.touched.review_message
+                          ? "text-primary"
+                          : ""
+                      }`}
+                    >
+                      Your Review <span className="text-primary">*</span>
+                    </label>
+                    <Field
+                      as="textarea"
+                      name="review_message"
+                      rows="4"
+                      placeholder="Write Something"
+                      className={`w-full border border-white bg-[#EEEEEE] px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
+                        formik.errors.review_message &&
+                        formik.touched.review_message
+                          ? "error"
+                          : ""
+                      }`}
+                    />
+                  </div>
+
                   <div className="btn-wrapper">
                     <button
                       type="submit"
-                      className="btn-full skew-btn inline-block px-8 py-2 uppercase text-white before:bg-primary hover:opacity-90"
-                    >
-                      Submit
+                      className={`${loader && 'pointer-events-none'} btn-full skew-btn inline-block px-8 py-2 uppercase text-white before:bg-primary hover:opacity-90`}
+                      >
+                  {loader ? "Submitting..." : "Submit"}
                     </button>
                   </div>
                 </Form>
@@ -202,6 +295,6 @@ const DetailReview = () => {
       </div>
     </div>
   );
-};
+});
 
 export default DetailReview;

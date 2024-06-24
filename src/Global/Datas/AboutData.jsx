@@ -1,47 +1,47 @@
 export const AboutHistory = [
   {
-    heading: "Exploring Our History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring Our History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2022",
   },
   {
-    heading: "Exploring  History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring  History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2023",
   },
   {
-    heading: "Exploring Our ",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring Our ",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2024",
   },
   {
-    heading: " Our History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: " Our History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2025",
   },
   {
-    heading: "Exploring Our History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring Our History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2026",
   },
   {
-    heading: "Exploring Our History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring Our History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2027",
   },
   {
-    heading: "Exploring Our History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring Our History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2028",
   },
   {
-    heading: "Exploring Our History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring Our History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2029",
   },
   {
-    heading: "Exploring Our History",
-    desc: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
+    title: "Exploring Our History",
+    description: "BATASMAW Commercial Vehicles was established in 2023 as the exclusive sole distributorship for Volvo-Eicher commercial vehicles in Nepal. Eicher Motors Limited has a joint venture with Volvo Group which has been manufacturing commercial vehicles for over 80 years and is the global leader in this segment.",
     year: "2030",
   },
 ];
@@ -55,19 +55,19 @@ export const CeoWords = [
 ];
 export const AtaGlanceData = [
   {
-    img: "./assets/images/icons/truck.svg",
-    title: "4500 +",
-    desc: "sold Vehicles",
+    image: "./assets/images/icons/truck.svg",
+    value: "4500 +",
+    name: "sold Vehicles",
   },
   {
-    img: "./assets/images/icons/users.svg",
-    title: "170 +",
-    desc: "professionals employees ",
+    image: "./assets/images/icons/users.svg",
+    value: "170 +",
+    name: "professionals employees ",
   },
   {
-    img: "./assets/images/icons/yr.svg",
-    title: "2023",
-    desc: "established year",
+    image: "./assets/images/icons/yr.svg",
+    value: "2023",
+    name: "established year",
   },
 ];
 export const MissionVision = [
@@ -105,14 +105,14 @@ export const MissionVision = [
   },
 ];
 export const ourValuesData = [
-  { title: "Ownership", img: "./assets/images/icons/own.svg" },
-  { title: "Fair and transparent", img: "./assets/images/icons/fair.svg" },
-  { title: "Sustanability", img: "./assets/images/icons/sustan.svg" },
-  { title: "Professionalism", img: "./assets/images/icons/pro.svg" },
-  { title: "Integrity", img: "./assets/images/icons/integrity.svg" },
-  { title: "Innovative", img: "./assets/images/icons/inno.svg" },
-  { title: "Ethical corporate governance", img: "./assets/images/icons/ethical.svg" },
-  { title: "Community Responsive", img: "./assets/images/icons/community.svg" },
-  { title: "Diversity", img: "./assets/images/icons/diversity.svg" },
-  { title: "Rich in commitment", img: "./assets/images/icons/rich.svg" },
+  { name: "Ownership", image: "./assets/images/icons/own.svg" },
+  { name: "Fair and transparent", image: "./assets/images/icons/fair.svg" },
+  { name: "Sustanability", image: "./assets/images/icons/sustan.svg" },
+  { name: "Professionalism", image: "./assets/images/icons/pro.svg" },
+  { name: "Integrity", image: "./assets/images/icons/integrity.svg" },
+  { name: "Innovative", image: "./assets/images/icons/inno.svg" },
+  { name: "Ethical corporate governance", image: "./assets/images/icons/ethical.svg" },
+  { name: "Community Responsive", image: "./assets/images/icons/community.svg" },
+  { name: "Diversity", image: "./assets/images/icons/diversity.svg" },
+  { name: "Rich in commitment", image: "./assets/images/icons/rich.svg" },
 ];

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import Map from "../Global/Map";
 import { IoIosSearch } from "react-icons/io";
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md";
 import { MapData } from "../../Global/Datas/MapData";
 import { Link } from "react-router-dom";
 import { useLayoutData } from "../../Global/Context/Layout";
+import useGet from "../../Global/Apis/useGet";
 
-const MapSection = () => {
+const MapSection = forwardRef((props,ref) => {
+  const { data: map } = useGet("services");
   const { city, setCity, coordinate, setCoordinate } = useLayoutData();
 
   const handleCityInput = (event) => {
@@ -23,7 +25,7 @@ const MapSection = () => {
   };
   const renderServiceCenter = (item, index) => (
     <div
-      className="dealer-box  border-b border-solid border-light-grey 2xl:p-10 md:p-6 py-4 px-6"
+      className="dealer-box  border-b border-solid border-light-grey px-6 py-4 md:p-6 2xl:p-10"
       key={index}
     >
       <div className="heading-wrapper mb-3">
@@ -34,11 +36,11 @@ const MapSection = () => {
           </span>
         </h6>
       </div>
-      <div className="dealer-info flex flex-col justify-between gap-3 2xl:items-center">
+      <div className="dealer-info flex flex-col justify-between gap-3 xl:flex-row 2xl:items-center">
         <ul className="break-all leading-8 text-grey xl:w-[70%]">
           <li className="relative pl-8 ">
             <MdLocationOn className="absolute left-0 top-[6px] text-xl" />
-            {item?.address}
+            {item?.city}
           </li>
           <li className="relative pl-8 ">
             <MdPhone className="absolute left-0 top-[6px] text-xl" />
@@ -50,7 +52,7 @@ const MapSection = () => {
           </li>
           <li className="relative pl-8 ">website</li>
           <li className="relative pl-8 text-secondary">
-            opens until {item?.closingtime}
+            opens until {item?.time}
           </li>
         </ul>
         <div className="btn-wrapper 2xl:w-[30%]">
@@ -66,7 +68,7 @@ const MapSection = () => {
   );
 
   return (
-    <section className="map-section ">
+    <section className="map-section " ref={ref}>
       <div className="grid grid-cols-11">
         <div className="col-span-full lg:col-span-7">
           <Map
@@ -78,12 +80,12 @@ const MapSection = () => {
         </div>
         <div className="col-span-full lg:col-span-4">
           <div className="dealer-wrapper pb-13 relative h-full w-full lg:max-w-[508px]">
-            <div className="heading-wrapper 2xl:p-10 p-6 pb-5">
+            <div className="heading-wrapper p-6 pb-5 2xl:p-10">
               <h4 className="heading">
                 <span className="text-primary">locate</span> a dealer
               </h4>
             </div>
-            <div className="form-wrapper mb-4 2xl:px-10 px-6">
+            <div className="form-wrapper mb-4 px-6 2xl:px-10">
               <form onSubmit={handleCitySearch} className="flex">
                 <div className="form-group w-full">
                   <input
@@ -105,20 +107,20 @@ const MapSection = () => {
                 </div>
               </form>
             </div>
-            <div className="dealer-group xl:h-[600px] md:h-[500px] h-[360px] overflow-y-auto">
-              {MapData?.map((item, index) => (
-                <div key={index} className="dealer-box-wrapper  ">
-                  {city
-                    ? item?.servicecenter
-                        ?.filter((item) =>
-                          item?.city.toLowerCase().includes(city),
-                        )
-                        .map((item, index) => renderServiceCenter(item, index))
-                    : item?.servicecenter?.map((item, index) =>
-                        renderServiceCenter(item, index),
-                      )}
-                </div>
-              ))}
+            <div className="dealer-group h-[360px] overflow-y-auto md:h-[500px] xl:h-[600px]">
+              {city
+                ? map
+                    ?.filter((item) => item?.city.toLowerCase().includes(city))
+                    ?.map((item, index) => (
+                      <div key={index} className="dealer-box-wrapper  ">
+                        {renderServiceCenter(item, index)}
+                      </div>
+                    ))
+                : map?.map((item, index) => (
+                    <div key={index} className="dealer-box-wrapper  ">
+                      {renderServiceCenter(item, index)}
+                    </div>
+                  ))}
             </div>
             <div className="btn-wrapper absolute bottom-0 left-0 right-0">
               <Link
@@ -133,6 +135,6 @@ const MapSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default MapSection;

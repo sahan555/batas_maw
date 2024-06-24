@@ -6,27 +6,27 @@ export const careerArticle = {
 export const careerGallery = [
   {
     title: "PRO 1049 C FSD",
-    img: "/assets/images/career/1.png",
+    image: "/assets/images/career/1.png",
   },
   {
     title: "PRO 1059 C HSD",
-    img: "/assets/images/career/2.png",
+    image: "/assets/images/career/2.png",
   },
   {
     title: "PRO 1049 C FSD",
-    img: "/assets/images/career/1.png",
+    image: "/assets/images/career/1.png",
   },
   {
     title: "PRO 1059 C HSD",
-    img: "/assets/images/career/2.png",
+    image: "/assets/images/career/2.png",
   },
   {
     title: "PRO 1049 C FSD",
-    img: "/assets/images/career/1.png",
+    image: "/assets/images/career/1.png",
   },
   {
     title: "PRO 1059 C HSD",
-    img: "/assets/images/career/2.png",
+    image: "/assets/images/career/2.png",
   },
 ];
 export const careerPost = [

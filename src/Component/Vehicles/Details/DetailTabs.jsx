@@ -4,14 +4,13 @@ import { vehicleTabs } from "../../../Global/Datas/VehicleData";
 import ObjectTable from "../../Global/ObjectTable";
 import useMediaQuery from "../../../Global/Hooks/useMediaQuery";
 import { FaChevronDown } from "react-icons/fa6";
+import SimpleTable from "../../Global/SimpleTable";
 
-const DetailTabs = () => {
+const DetailTabs = ({ data }) => {
   const [activeTabName, setActiveTabName] = useState("");
   const [mobileNav, setMobileNav] = useState(false);
 
   const isMobileDevice = useMediaQuery("(max-width: 1023px)");
-  console.log(mobileNav, "nav");
-  console.log(isMobileDevice, "asda");
   const toggleMobileNav = () => {
     setMobileNav((prevMobileNav) => !prevMobileNav);
   };
@@ -62,23 +61,23 @@ const DetailTabs = () => {
         <div className="tab-content-wrapper border">
           <TabPanel>
             <div className="tab-panel-content">
-              <ObjectTable
-                data={
-                  vehicleTabs.filter(
-                    (item) => item.name === "specifications",
-                  )[0].data
-                }
-              />
+              <SimpleTable data={data?.product_specification} />
             </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="tab-panel-content">
+              <SimpleTable data={data?.product_application} />
+            </div>{" "}
           </TabPanel>
           <TabPanel>
-            <h2>Any content 3</h2>
+            <div className="tab-panel-content">
+              <SimpleTable data={data?.product_technology} />
+            </div>{" "}
           </TabPanel>
           <TabPanel>
-            <h2>Any content 4</h2>
+            <div className="tab-panel-content">
+              <SimpleTable data={data?.product_benifits} />
+            </div>{" "}
           </TabPanel>
         </div>
       </Tabs>
