@@ -7,6 +7,7 @@ export const NavbarMenu = [
     title: "ABOUT US",
     slug: "/about",
     children: [
+      { name: "company", slug: "/about" },
       { name: "career", slug: "/about/careers" },
       { name: "branches", slug: "/about/branches" },
     ],

@@ -7,25 +7,28 @@ import { LiaClock } from "react-icons/lia";
 import { Link } from "react-router-dom";
 
 import ContactForm from "../Component/Contact/ContactForm";
+import useGet from "../Global/Apis/useGet";
 
 const Contact = () => {
+  const { data: settings } = useGet("settings");
+
   const contactData = [
     {
       name: "Call Us",
-      value: ["01 - 4520025", "4541031", "4536532", "9802311655"],
+      value: ["01 - 4520025", "4541031", "4536532", settings?.phone],
       icon: <FiPhone />,
       path: "tel:",
     },
     {
       name: "Address",
-      value: "Tangal Chowk, Laxmi Narayan Temple, Kathmandu",
+      value: settings?.location,
       icon: <TfiLocationPin />,
     },
     {
       name: "Email",
-      value: "info@batasmaw.com",
+      value: settings?.email,
       icon: <HiOutlineEnvelope />,
-      path: "mailto:",
+      path: `mailto:${settings?.email}`,
     },
     {
       name: "Open Time",
@@ -50,7 +53,7 @@ const Contact = () => {
         </div>
         <div className="side-padding">
           <div className="section-break mx-auto max-w-[1000px]">
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="col-span-1">
                 <ul className="contact-info">
                   {contactData?.map((item, index) => (
@@ -65,13 +68,17 @@ const Contact = () => {
                         <h4 className="text-lg">{item?.name}</h4>
                         {Array.isArray(item?.value) ? (
                           item?.value?.map((phone, index) => (
-                            <Link
-                              key={index}
-                              to={`${item?.path}${phone}`}
-                              className="text-sm text-black opacity-75 duration-200 hover:text-primary hover:underline [&:not(:last-child)]:after:mx-2 [&:not(:last-child)]:after:content-['/']"
-                            >
-                              {phone}
-                            </Link>
+                            <>
+                              <Link
+                                key={index}
+                                to={`${item?.path}${phone}`}
+                                className="text-sm text-black opacity-75 duration-200 hover:text-primary hover:underline inline-block"
+                              >
+                                {phone}
+                              </Link>
+                              {console.log(phone?.length)}
+                              {(item?.value?.length ) > (index + 1) && <span className="mx-2 text-black opacity-75">/</span>}
+                            </>
                           ))
                         ) : (
                           <Link

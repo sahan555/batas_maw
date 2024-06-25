@@ -210,18 +210,18 @@ export const footerLinks = [
   {
     title: "media",
     list: [
-      { name: "EVENT & NEWS", slug: "/" },
+      { name: "EVENT & NEWS", slug: "/events" },
       { name: "PRESS AND MEDIA", slug: "/" },
-      { name: "Blogs", slug: "/" },
+      { name: "Blogs", slug: "/blog" },
     ],
   },
   {
     title: "about us",
     list: [
-      { name: "COMPANY", slug: "/" },
-      { name: "BRANCES", slug: "/" },
-      { name: "MISSION VISSION", slug: "/" },
-      { name: "CAREER", slug: "/" },
+      { name: "COMPANY", slug: "/about" },
+      { name: "BRANCES", slug: "/about/branches" },
+      { name: "MISSION VISSION", slug: "/about#mission" },
+      { name: "CAREER", slug: "/about/careers" },
     ],
   },
 ];
@@ -242,7 +242,7 @@ export const extralink = [
 export const extralink2 = [
   {
     name: "CONTACT",
-    slug: "/",
+    slug: "/contact",
   },
   {
     name: "SPARE SERVICES",
@@ -254,11 +254,11 @@ export const extralink2 = [
   },
   {
     name: "EMI CALCULATOR",
-    slug: "/",
+    slug: "/#emi_calc",
   },
   {
     name: "LOCATE A DEALER",
-    slug: "/",
+    slug: "/about/branches",
   },
   {
     name: "SCHEMES",

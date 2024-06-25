@@ -17,29 +17,26 @@ const VideoSection = ({ data: video }) => {
           </div>
           <div className="video-wrapper">
             <div className="mx-auto grid w-full max-w-[1200px] grid-flow-col grid-cols-1 gap-2 sm:grid-cols-2 sm:grid-rows-2 md:gap-5">
-              {video
-                ?.find((item) => item?.name === "VIDEOS")
-                ?.type?.slice(0, 3)
-                ?.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`col-span-full ${index % 3 === 0 ? "  sm:col-span-8 sm:row-span-2" : index % 2 === 0 ? "sm:col-span-1" : "sm:col-span-1 sm:row-span-1"}`}
-                  >
+                  {video?.[0]?.type?.slice(0, 3)?.map((item, index) => (
                     <div
-                      className={`iframe-wrapper h-[220px] w-full ${index % 3 === 0 && "sm:h-full "}  `}
+                      key={index}
+                      className={`col-span-full ${index % 3 === 0 ? "  sm:col-span-8 sm:row-span-2" : index % 2 === 0 ? "sm:col-span-1" : "sm:col-span-1 sm:row-span-1"}`}
                     >
-                      <iframe
-                        src={item}
-                        title="YouTube video player"
-                        className="h-full w-full"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
-                      ></iframe>
+                      <div
+                        className={`iframe-wrapper h-[220px] w-full ${index % 3 === 0 && "sm:h-full  sm:min-h-[400px]"}  `}
+                      >
+                        <iframe
+                          src={item}
+                          title="YouTube video player"
+                          className="h-full w-full"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
             </div>
             <div className="btn-wrapper pt-8 text-center">
               <Link

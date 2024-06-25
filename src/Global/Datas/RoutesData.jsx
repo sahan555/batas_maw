@@ -17,6 +17,9 @@ const SupportForm = lazy(
 const Contact = lazy(() => import("../../Pages/Contact"));
 const Resale = lazy(() => import("../../Pages/Resale"));
 const Blogs = lazy(() => import("../../Pages/Media/Blogs"));
+const BlogDetails = lazy(() => import("../../Pages/Media/BlogDetails"));
+const Events = lazy(() => import("../../Pages/Media/Events"));
+const EventDetails = lazy(() => import("../../Pages/Media/EventDetails"));
 
 export const routes = [
   { path: "/", element: <Homepage />, breadcrumb: "Home" },
@@ -25,14 +28,14 @@ export const routes = [
     path: "/vehicles/:slug",
     element: <VehicleDetails />,
   },
-  {
-    path: "/vehicles/compare/:slug",
-    element: <Compare />,
-    breadcrumb: "Compare",
-  },
+  // {
+  //   path: "/vehicles/compare/:slug",
+  //   element: <Compare />,
+  //   breadcrumb: "Compare",
+  // },
   { path: "/about", element: <About />, breadcrumb: "About Us" },
   { path: "/about/careers", element: <Career />, breadcrumb: "Career" },
-  { path: "/about/branches", element: <Branches />, breadcrumb: "Branches" },
+  // { path: "/about/branches", element: <Branches />, breadcrumb: "Branches" },
   { path: "/forms", element: <Form />, breadcrumb: "Forms" },
   {
     path: "/forms/support",
@@ -42,4 +45,7 @@ export const routes = [
   { path: "/contact", element: <Contact />, breadcrumb: "Contact" },
   { path: "/resale", element: <Resale />, breadcrumb: "Resale" },
   { path: "/blog", element: <Blogs />, breadcrumb: "Blog" },
+  { path: "/blog/:slug", element: <BlogDetails /> },
+  { path: "/events", element: <Events />, breadcrumb: "Events" },
+  { path: "/events/:slug", element: <EventDetails /> },
 ];

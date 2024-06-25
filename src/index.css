@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+html {
+  scroll-behavior: smooth;
+}
 @font-face {
   font-family: HermesFB-BoldItalic;
   src: url(./fonts/hermesfb-bolditalic.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-bolditalic.otf) format('opentype'), url(./fonts/hermesfb-bolditalic.woff) format('woff'), url(./fonts/hermesfb-bolditalic.ttf) format('truetype'), url(./fonts/hermesfb-bolditalic.svg#HermesFB-BoldItalic) format('svg');
@@ -161,15 +163,15 @@
   .navbar-bottom .navbar-group .active::before {
     @apply bg-primary text-white absolute content-[''] inset-0 -z-[1] transform -skew-x-[20deg];
   }
-
+  .navbar-bottom .navbar-group .dropdown-menu .active {
+    @apply text-black hover:text-primary;
+  }
   .navbar-bottom .navbar-group .dropdown-menu .active::before {
-    @apply -skew-x-[0deg];
+    @apply -skew-x-[0deg] bg-transparent !text-black;
   }
 
-
-
   .hero-slider .slick-dots {
-    @apply bottom-8;
+    @apply top-[34rem] bottom-auto;
 
     li {
       @apply !w-[60px] !h-2 mx-3;
@@ -905,6 +907,12 @@
         z-index: 9;
       }
     }
+    .hero-slider .slick-dots {
+      top: 22rem;
+    }
+    .navbar-bottom .navbar-group .dropdown-menu .active::before{
+      background: #ededed;
+    }
   }
 
   @media only screen and (max-width: 767px) {
@@ -915,6 +923,8 @@
         width: 30px !important;
         height: 0.3rem !important;
         margin: 0 6px;
+      }button{
+        padding: 0;
       }
     }
 

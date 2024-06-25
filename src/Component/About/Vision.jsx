@@ -4,7 +4,7 @@ import HtmlParse from "../Global/HtmlParse";
 
 const Vision = ({ data }) => {
   return (
-    <section className="vision-section relative z-0 overflow-hidden bg-primary bg-opacity-15">
+    <section className="vision-section relative z-0 overflow-hidden bg-primary bg-opacity-15" id="vision">
       <div className="side-padding">
         <div className="container mx-auto">
           <div className=" flex flex-wrap items-center justify-between md:flex-nowrap">

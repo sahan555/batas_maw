@@ -7,6 +7,7 @@ import Search from "../Global/Search";
 import TopContact from "./TopContact";
 import { IoClose } from "react-icons/io5";
 import useMediaQuery from "../../Global/Hooks/useMediaQuery";
+import { FaChevronDown } from "react-icons/fa6";
 
 const Navbar = () => {
   const isMobileDevice = useMediaQuery("(max-width: 1023px)");
@@ -58,9 +59,12 @@ const Navbar = () => {
                 </div>
                 <div className="nbar-top-links ml-20 mr-auto hidden xl:block">
                   <ul className="flex flex-wrap gap-6">
-                    {SubMenu.slice(0, 3).map((item, index) => (
+                    {SubMenu?.slice(0, 3).map((item, index) => (
                       <li key={index}>
-                        <Link to="/" className="uppercase  hover:text-primary">
+                        <Link
+                          to="/vehicles"
+                          className="uppercase  hover:text-primary"
+                        >
                           {item.name}
                         </Link>
                       </li>
@@ -86,7 +90,7 @@ const Navbar = () => {
           >
             <div className="md:side-padding">
               <div className="container relative mx-auto flex h-full flex-col flex-wrap lg:h-auto lg:flex-row lg:items-center lg:justify-between">
-                <figure className="mobile-logo order-1 block h-[80px] border-b border-solid border-[#dddddd] py-2 pr-4 lg:hidden">
+                <figure className="mobile-logo order-1 block h-[80px] border-b border-solid border-[#dddddd] px-4 py-2 lg:hidden">
                   <img
                     src="/assets/images/logo.png"
                     alt="Batas Maw"
@@ -98,19 +102,29 @@ const Navbar = () => {
                     <li key={index} className="group relative">
                       <NavLink
                         activeclassname="is-active"
-                        className="block px-[15px] py-4 uppercase  hover:text-primary lg:inline-block lg:text-sm  xl:px-6 xl:text-base"
-                        to={item.slug}
-                        onClick={handleClose}
+                        className={`block px-[15px] py-4 uppercase  hover:text-primary lg:inline-block lg:text-sm  xl:px-6 xl:text-base ${item?.children && isMobileDevice &&'flex justify-between items-center'}`}
+                        to={item?.slug ? item?.slug : "#!"}
+                        onClick={
+                          item?.children
+                            ? (e) => {
+                                e.preventDefault();
+                              }
+                            : handleClose
+                        }
                       >
                         {item.title}
+                        {item?.children && isMobileDevice ? (
+                          <FaChevronDown />
+                        ) : (
+                          ""
+                        )}
                       </NavLink>
                       {item?.children && (
                         <>
-                          <ul className="dropdown-menu absolute -left-3 top-full z-20 hidden w-[200px] max-w-[200px] bg-[#ededed] group-hover:block">
+                          <ul className="dropdown-menu -left-3 top-full z-20 hidden bg-[#ededed] group-hover:block lg:absolute lg:w-[200px] lg:max-w-[200px] ">
                             {item?.children?.map((item, index) => (
                               <li key={index}>
                                 <NavLink
-                                  activeclassname="is-active"
                                   className="block w-full px-[15px] py-3  uppercase hover:text-primary lg:inline-block  lg:text-sm xl:px-6 xl:text-base"
                                   to={item.slug}
                                   onClick={handleClose}
@@ -125,10 +139,10 @@ const Navbar = () => {
                     </li>
                   ))}
                 </ul>
-                <TopContact classname={"lg:hidden block order-4"} />
+                <TopContact classname={"lg:hidden block order-4 pb-11"} />
                 <Search classname={"lg:-order-none order-2"} />
                 <div
-                  className="btn-wrapper absolute right-0 top-5 block rounded-[50%] bg-primary p-[1px] text-3xl text-white lg:hidden"
+                  className="btn-wrapper absolute right-[10px] top-5 block rounded-[50%] bg-primary p-[1px] text-3xl text-white lg:hidden"
                   onClick={handleClose}
                 >
                   <IoClose />

@@ -8,8 +8,8 @@ import HtmlParse from "../Global/HtmlParse";
 import { Logo } from "../../Global/Datas/Images";
 
 const NewsEvent = () => {
-  const { data:blogs } = useGet("blogs");
-  const { data:events } = useGet("events");
+  const { data: blogs } = useGet("blogs");
+  const { data: events } = useGet("events");
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -34,7 +34,6 @@ const NewsEvent = () => {
     autoplay: false,
     speed: 500,
     slidesToShow: 1,
-    fade: true,
     slidesToScroll: 1,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
@@ -43,40 +42,42 @@ const NewsEvent = () => {
     <section className="news-section bg-light-grey">
       <div className="mx-auto w-full">
         <div className="grid grid-cols-5">
-          <div className="relative col-span-full  h-[500px] lg:h-[520px] xl:h-[500px] xl:col-span-3 xl:min-h-0">
+          <div className="relative col-span-full   md:h-[500px] lg:h-[532px] xl:col-span-3 xl:min-h-0">
             <Slider {...newsSilder} className="news-slider">
-              {blogs?.map((item, index) => (
-                <div key={index}>
-                  <Link to={`/blogs/${item?.slug}`}>
-                    <div className="news-box relative">
-                      <figure className="w-full ">
+              {blogs?.map((blog, index) => (
+                <div key={blog?.id}>
+                  <div className="news-box relative">
+                    <Link to={`/blog/${blog?.slug}`} className="block">
+                      <figure className="w-full !h-[500px] md:!h-auto">
                         <img
                           className="object-cover"
-                          src={item?.image}
-                          alt={item?.name}
+                          src={blog?.image}
+                          alt={blog?.name}
                         />
                       </figure>
-                      <div className="side-padding absolute inset-x-0 bottom-0 !h-auto bg-light-grey bg-opacity-65 py-6  xl:pl-[16%] xl:pr-[70px]">
+                      <div className="side-padding md:absolute inset-x-0 bottom-0 !h-auto bg-white md:bg-light-grey md:bg-opacity-65 py-6  xl:pl-[16%] xl:pr-[70px]">
                         <article className="container mx-auto ">
                           <h3 className="text-lg font-medium uppercase text-primary">
-                            {item?.name}
+                            {blog?.name}
                           </h3>
                           <span className="inline-block text-[13px] font-medium uppercase text-gray-700">
-                            {item?.created_at}
+                            {blog?.created_at}
                           </span>
-                          <div className="[&>p]:line-clamp-2 font-medium">
-                            <HtmlParse data={item?.description && item?.description}/>
+                          <div className="font-medium [&>p]:line-clamp-2">
+                            <HtmlParse
+                              data={blog?.description && blog?.description}
+                            />
                           </div>
                         </article>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </div>
               ))}
             </Slider>
             <div className="absolute right-5 top-10 lg:right-12">
               <Link
-                to="/"
+                to="/blog"
                 className="skew-btn btn-full border border-white px-8 py-2 lg:border-0 lg:before:bg-primary lg:hover:opacity-90"
               >
                 View All News
@@ -92,7 +93,7 @@ const NewsEvent = () => {
                 <h3 className="mb-6 flex flex-wrap items-center justify-between gap-y-2 text-xl uppercase sm:flex-nowrap md:mb-10">
                   upcoming events
                   <Link
-                    to="/"
+                    to="/events"
                     className="sm:skew-btn btn-full px-8 py-2 text-sm before:bg-primary hover:opacity-90"
                   >
                     View all events
@@ -110,8 +111,8 @@ const NewsEvent = () => {
                       key={item?.id}
                     >
                       <Link
-                        to={item?.slug}
-                        className="flex flex-wrap justify-between gap-3 md:flex-nowrap"
+                        to={`/events/${item?.slug}`}
+                        className="flex flex-wrap items-end justify-between gap-3 md:flex-nowrap"
                       >
                         <article>
                           <h6 className="mb-2 font-hermes-thin-italic text-sm uppercase text-grey">
@@ -120,17 +121,20 @@ const NewsEvent = () => {
                             </span>
                             {item?.day}
                           </h6>
-                          <p className="line-clamp-3 font-hermes-italic text-sm font-medium">
+                          <h2 className="line-clamp-1 text-base duration-200 hover:text-primary hover:underline">
                             {item?.name}
-                          </p>
+                          </h2>
+                          <div className="line-clamp-2 font-hermes-thin-italic text-sm text-grey">
+                            <HtmlParse data={item?.description} />
+                          </div>
                         </article>
                         <figure
-                          className="md:skew-image -order-1 h-[200px] max-w-full rounded-[20px] md:-order-none md:max-h-20
-                       md:max-w-40 md:rounded-none"
+                          className="md:skew-image -order-1 h-[200px] max-w-full flex-none rounded-[20px] bg-white md:-order-none
+                       md:max-h-24 md:max-w-40 md:rounded-none"
                         >
                           <img
                             className="object-cover object-center"
-                            src={item?.image ? item?.image: Logo}
+                            src={item?.image ? item?.image : Logo}
                             alt={item?.name}
                           />
                         </figure>

@@ -12,11 +12,13 @@ import { testiData } from "../Global/Datas/HomeData";
 import MapSection from "../Component/Home/MapSection";
 import GalleryPage from "../Component/Home/GalleryPage";
 import useGet from "../Global/Apis/useGet";
+import useScrollToHash from "../Global/Hooks/useScrollToHash";
 
 const Homepage = () => {
   const { data: testimonals, isLoading: testimonalsLoading } =
     useGet("testimonials");
   const { data: galleries, isLoading: galleriesLoading } = useGet("galleries");
+  useScrollToHash(200);
   return (
     <>
       <main className="home">

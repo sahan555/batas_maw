@@ -57,7 +57,7 @@ const GalleryPage = ({ data }) => {
           Slidersetting={gallerySliderSettings}
           data={
             data
-              ? data?.find((item) => item?.name === "ALL GALLERY")?.images
+              ? data?.[0]?.images
               : galleryData
           }
           transition={true}

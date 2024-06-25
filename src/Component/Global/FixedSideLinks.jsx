@@ -5,7 +5,7 @@ import { BiSupport } from "react-icons/bi";
 import { BsTruck } from "react-icons/bs";
 import { MdFacebook } from "react-icons/md";
 
-const FixedSideLinks = () => {
+const FixedSideLinks = ({ settings }) => {
   const sideLinksData = [
     {
       name: "Locate a dealer",
@@ -13,36 +13,36 @@ const FixedSideLinks = () => {
       icon: <ImLocation className="mx-auto h-full w-[26px]" />,
     },
     {
-      name: "Inquiry",
-      link: "/forms/support",
+      name: settings?.phone,
+      link: `tel:${settings?.phone}`,
       icon: <BiSupport className="mx-auto h-full w-[26px]" />,
     },
     {
-      name: "Service Van",
-      link: "/",
+      name: settings?.phone,
+      link: `tel:${settings?.phone}`,
       icon: <BsTruck className="mx-auto h-full w-[26px]" />,
     },
   ];
   const socialData = [
     {
-      link: "#!",
+      link: settings?.facebook,
       icon: "/assets/images/icons/social/fb.svg",
     },
     {
-      link: "#!",
+      link: settings?.twitter,
       icon: "/assets/images/icons/social/x.svg",
     },
     {
-      link: "#!",
+      link: `tel:${settings?.whatapps}`,
       icon: "/assets/images/icons/social/whatsapp.svg",
     },
     {
-      link: "#!",
+      link:settings?.linkedin,
       icon: "/assets/images/icons/social/linkedin.svg",
     },
   ];
   return (
-    <div className="side-links fixed top-[50%] translate-y-[-50%] right-0 flex items-center text-sm text-white z-10">
+    <div className="side-links fixed right-0 top-[50%] z-10 flex translate-y-[-50%] items-center text-sm text-white">
       <ul
         className="
       group ml-auto w-[50px] max-w-[280px] bg-[#363636] hover:w-full"
@@ -69,6 +69,7 @@ const FixedSideLinks = () => {
               <li key={index}>
                 <Link
                   to={item?.link}
+                  target="_blank"
                   className="inline-flex h-[30px] w-[30px] items-center  justify-center rounded-[50%] bg-white duration-300"
                 >
                   <img src={item?.icon} alt="socials" />

@@ -16,6 +16,7 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll }) => {
       icon: "/assets/images/icons/download.svg",
       name: "Download Brochure",
       link: data?.pdf,
+      target:'_blank'
     },
     {
       icon: "/assets/images/icons/compare.svg",
@@ -145,6 +146,7 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll }) => {
                       to={item?.link}
                       className="group flex gap-3"
                       onClick={item?.onclick}
+                      target={item?.target}
                     >
                       <figure className="h-[20px] w-[20px]">
                         <img src={item?.icon} alt={item?.name} />

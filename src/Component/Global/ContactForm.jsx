@@ -4,12 +4,12 @@ import { Formik, Form, Field } from "formik";
 import usePost from "../../Global/Apis/UsePost";
 const ContactForm = () => {
   const [loader, setLoader] = useState(false);
-  const { post, postData } = usePost("contacts");
+  const { post, postData } = usePost("feedback-store");
   const initialValues = {
     name: "",
     email: "",
     phone: "",
-    message: "",
+    feedback_message: "",
     // recive_mail: false,
   };
   const schema = Yup.object().shape({
@@ -18,13 +18,13 @@ const ContactForm = () => {
     phone: Yup.string()
       // .matches(/^\+?(\d|\s|\(|\)){10,}$/, "Must be only digits") // Only digits allowed
       .required("Phone number is required"),
-    message: Yup.string().required("required"),
+    feedback_message: Yup.string().required("required"),
     // recive_mail: Yup.boolean(),
   });
   const handleSubmit = async (values, { resetForm }) => {
     setLoader(true);
 
-    await post({ ...values, type: "feedback" }, "Feedback");
+    await post(values, "Feedback");
     setLoader(false);
     resetForm();
   };
@@ -86,11 +86,11 @@ const ContactForm = () => {
                 <div className="form-group">
                   <Field
                     as="textarea"
-                    name="message"
+                    name="feedback_message"
                     rows="4"
                     placeholder="Message"
                     className={`w-full border border-white px-5 py-2.5 outline-0 transition-[border] duration-300 visited:bg-white focus:border-grey ${
-                      formik.errors.message && formik.touched.message
+                      formik.errors.feedback_message && formik.touched.feedback_message
                         ? "!border-red-500"
                         : ""
                     }`}

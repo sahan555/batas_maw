@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import AtaGlance from "../../Component/About/AtaGlance";
 import HistoryTab from "../../Component/About/HistoryTab";
 import Mission from "../../Component/About/Mission";
@@ -6,11 +7,13 @@ import Vision from "../../Component/About/Vision";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import Testimonials from "../../Component/Global/Testimonials";
 import useGet from "../../Global/Apis/useGet";
-import { CeoWords } from "../../Global/Datas/AboutData";
+import { useEffect } from "react";
+import useScrollToHash from "../../Global/Hooks/useScrollToHash";
 
 const About = () => {
   const { data: about } = useGet("static-about");
   const { data: counters } = useGet("counters");
+  useScrollToHash(100);
   return (
     <>
       <Breadcrumbs />
@@ -71,7 +74,9 @@ const About = () => {
           right={true}
         />
         <AtaGlance data={counters} />
-        <Mission />
+        <section id="mission">
+          <Mission />
+        </section>
         <Vision data={about} />
         <OurValues data={counters} />
       </main>

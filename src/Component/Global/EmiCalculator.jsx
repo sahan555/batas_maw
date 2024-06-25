@@ -34,7 +34,7 @@ const EmiCalculator = () => {
     setEmiCalculate({ Result, initialPrincipal, DownPayment });
   };
   return (
-    <section className="emi-section ">
+    <section className="emi-section " id='emi_calc'>
       <div className="section-break bg-secondary">
         <div className="side-padding">
           <div className="container mx-auto">

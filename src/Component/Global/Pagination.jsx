@@ -9,12 +9,12 @@ const Pagination = forwardRef(({ data, view, setDataFromChild }, ref) => {
   const [viewProduct, setViewProduct] = useState(view);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalProduct = data.length;
+  const totalProduct = data?.length;
   const totalViewInPage = Math.ceil(totalProduct / viewProduct);
 
   const currentProducts = useMemo(() => {
     const start = (currentPage - 1) * viewProduct;
-    return data.slice(start, start + viewProduct);
+    return data?.slice(start, start + viewProduct);
   }, [currentPage, viewProduct, data]);
   useEffect(() => {
     setDataFromChild(currentProducts);

@@ -75,7 +75,7 @@ const ProductCard = ({
                   to={`/vehicles/${slug}`}
                   className="cursor-pointer hover:text-primary"
                 >
-                  <h4 className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black">
+                  <h4 className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black  hover:text-primary hover:underline duration-200">
                     {title}
                   </h4>
                 </Link>
@@ -112,6 +112,7 @@ const ProductCard = ({
                     <div className="info-wrapper text-center">
                       <Link
                         to={download}
+                        target="_blank"
                         className="cursor-pointer hover:text-primary"
                       >
                         <BsFiletypePdf className="mx-auto text-2xl" />
