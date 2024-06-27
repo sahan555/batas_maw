@@ -27,7 +27,7 @@ const FaqFeedBackSection = () => {
                 <div className="heading-wrapper mb-5">
                   <h2 className="heading">faqs</h2>
                 </div>
-                <Accordion defaultIcon={<FaPlus />} expandIcon={<FaMinus />} />
+                <Accordion defaultIcon={<FaPlus />} expandIcon={<FaMinus />} view={4} />
                 <div className="faq-ques py-6">
                   <h4 className="mb-4">Feel free to ask your question</h4>
                   <Formik
@@ -64,7 +64,7 @@ const FaqFeedBackSection = () => {
                 <div className="btn-wrapper">
                   <Link
                     className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-                    to="/"
+                    to="/faq"
                   >
                     View All FAQs
                   </Link>

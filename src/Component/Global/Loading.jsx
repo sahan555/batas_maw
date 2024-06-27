@@ -1,6 +1,7 @@
 import React from "react";
 
 const Loading = () => {
+  
   return (
     <div className="container mx-auto flex justify-center py-20 flex-col items-center h-[90vh] lg:h-auto">
       <div className="loader">

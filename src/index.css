@@ -1,47 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html {
   scroll-behavior: smooth;
 }
+
 @font-face {
   font-family: HermesFB-BoldItalic;
-  src: url(./fonts/hermesfb-bolditalic.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-bolditalic.otf) format('opentype'), url(./fonts/hermesfb-bolditalic.woff) format('woff'), url(./fonts/hermesfb-bolditalic.ttf) format('truetype'), url(./fonts/hermesfb-bolditalic.svg#HermesFB-BoldItalic) format('svg');
+  src: url(./Assets/fonts/hermesfb-bolditalic.eot?#iefix) format('embedded-opentype'), url(./Assets/fonts/hermesfb-bolditalic.otf) format('opentype'), url(./Assets/fonts/hermesfb-bolditalic.woff) format('woff'), url(./Assets/fonts/hermesfb-bolditalic.ttf) format('truetype'), url(./Assets/fonts/hermesfb-bolditalic.svg#HermesFB-BoldItalic) format('svg');
   font-weight: 900;
   font-style: italic
 }
 
 @font-face {
   font-family: HermesFB-Bold;
-  src: url(./fonts/hermesfb-bold.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-bold.otf) format('opentype'), url(./fonts/hermesfb-bold.woff) format('woff'), url(./fonts/hermesfb-bold.ttf) format('truetype'), url(./fonts/hermesfb-bold.svg#HermesFB-Bold) format('svg');
+  src: url(./Assets/fonts/hermesfb-bold.eot?#iefix) format('embedded-opentype'), url(./Assets/fonts/hermesfb-bold.otf) format('opentype'), url(./Assets/fonts/hermesfb-bold.woff) format('woff'), url(./Assets/fonts/hermesfb-bold.ttf) format('truetype'), url(./Assets/fonts/hermesfb-bold.svg#HermesFB-Bold) format('svg');
   font-weight: 900;
   font-style: normal
 }
 
 @font-face {
   font-family: HermesFB-ThinItalic;
-  src: url(./fonts/hermesfb-thinitalic.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-thinitalic.otf) format('opentype'), url(./fonts/hermesfb-thinitalic.woff) format('woff'), url(./fonts/hermesfb-thinitalic.ttf) format('truetype'), url(./fonts/hermesfb-thinitalic.svg#HermesFB-ThinItalic) format('svg');
+  src: url(./Assets/fonts/hermesfb-thinitalic.eot?#iefix) format('embedded-opentype'), url(./Assets/fonts/hermesfb-thinitalic.otf) format('opentype'), url(./Assets/fonts/hermesfb-thinitalic.woff) format('woff'), url(./Assets/fonts/hermesfb-thinitalic.ttf) format('truetype'), url(./Assets/fonts/hermesfb-thinitalic.svg#HermesFB-ThinItalic) format('svg');
   font-weight: 300;
   font-style: italic
 }
 
 @font-face {
   font-family: HermesFB-Thin;
-  src: url(./fonts/hermesfb-thin.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-thin.otf) format('opentype'), url(./fonts/hermesfb-thin.woff) format('woff'), url(./fonts/hermesfb-thin.ttf) format('truetype'), url(./fonts/hermesfb-thin.svg#HermesFB-Thin) format('svg');
+  src: url(./Assets/fonts/hermesfb-thin.eot?#iefix) format('embedded-opentype'), url(./Assets/fonts/hermesfb-thin.otf) format('opentype'), url(./Assets/fonts/hermesfb-thin.woff) format('woff'), url(./Assets/fonts/hermesfb-thin.ttf) format('truetype'), url(./Assets/fonts/hermesfb-thin.svg#HermesFB-Thin) format('svg');
   font-weight: 300;
   font-style: normal
 }
 
 @font-face {
   font-family: HermesFB-RegularItalic;
-  src: url(./fonts/hermesfb-regularitalic.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-regularitalic.otf) format('opentype'), url(./fonts/hermesfb-regularitalic.woff) format('woff'), url(./fonts/hermesfb-regularitalic.ttf) format('truetype'), url(./fonts/hermesfb-regularitalic.svg#HermesFB-RegularItalic) format('svg');
+  src: url(./Assets/fonts/hermesfb-regularitalic.eot?#iefix) format('embedded-opentype'), url(./Assets/fonts/hermesfb-regularitalic.otf) format('opentype'), url(./Assets/fonts/hermesfb-regularitalic.woff) format('woff'), url(./Assets/fonts/hermesfb-regularitalic.ttf) format('truetype'), url(./Assets/fonts/hermesfb-regularitalic.svg#HermesFB-RegularItalic) format('svg');
   font-weight: 400;
   font-style: italic
 }
 
 @font-face {
   font-family: HermesFB-Regular;
-  src: url(./fonts/hermesfb-regular.eot?#iefix) format('embedded-opentype'), url(./fonts/hermesfb-regular.otf) format('opentype'), url(./fonts/hermesfb-regular.woff) format('woff'), url(./fonts/hermesfb-regular.ttf) format('truetype'), url(./fonts/hermesfb-regular.svg#HermesFB-Regular) format('svg');
+  src: url(./Assets/fonts/hermesfb-regular.eot?#iefix) format('embedded-opentype'), url(./Assets/fonts/hermesfb-regular.otf) format('opentype'), url(./Assets/fonts/hermesfb-regular.woff) format('woff'), url(./Assets/fonts/hermesfb-regular.ttf) format('truetype'), url(./Assets/fonts/hermesfb-regular.svg#HermesFB-Regular) format('svg');
   font-weight: 400;
   font-style: normal
 }
@@ -163,9 +165,11 @@ html {
   .navbar-bottom .navbar-group .active::before {
     @apply bg-primary text-white absolute content-[''] inset-0 -z-[1] transform -skew-x-[20deg];
   }
+
   .navbar-bottom .navbar-group .dropdown-menu .active {
-    @apply text-black hover:text-primary;
+    @apply text-white;
   }
+
   .navbar-bottom .navbar-group .dropdown-menu .active::before {
     @apply -skew-x-[0deg] bg-transparent !text-black;
   }
@@ -602,7 +606,7 @@ html {
       font-size: 14px;
       margin-left: 10px;
     }
-  
+
   }
 
 
@@ -907,11 +911,23 @@ html {
         z-index: 9;
       }
     }
+
     .hero-slider .slick-dots {
       top: 22rem;
     }
-    .navbar-bottom .navbar-group .dropdown-menu .active::before{
-      background: #ededed;
+
+    .navbar-bottom .navbar-group .dropdown-menu {
+      background: #e8e8e8;
+      color: #1c1c1c;
+
+    }
+
+    .navbar-bottom .navbar-group .dropdown-menu .active {
+      color: #1c1c1c;
+    }
+
+    .navbar-bottom .navbar-group .dropdown-menu .active::before {
+      background: #e8e8e8;
     }
   }
 
@@ -923,7 +939,9 @@ html {
         width: 30px !important;
         height: 0.3rem !important;
         margin: 0 6px;
-      }button{
+      }
+
+      button {
         padding: 0;
       }
     }

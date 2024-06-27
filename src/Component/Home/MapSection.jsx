@@ -1,13 +1,12 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import Map from "../Global/Map";
 import { IoIosSearch } from "react-icons/io";
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md";
-import { MapData } from "../../Global/Datas/MapData";
 import { Link } from "react-router-dom";
 import { useLayoutData } from "../../Global/Context/Layout";
 import useGet from "../../Global/Apis/useGet";
 
-const MapSection = forwardRef((props,ref) => {
+const MapSection = forwardRef((props, ref) => {
   const { data: map } = useGet("services");
   const { city, setCity, coordinate, setCoordinate } = useLayoutData();
 
@@ -58,7 +57,9 @@ const MapSection = forwardRef((props,ref) => {
         <div className="btn-wrapper 2xl:w-[30%]">
           <button
             className="skew-btn btn-transparent flex w-full items-center justify-center gap-2 px-4 py-2 text-sm uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-            onClick={() => setCoordinate(item)}
+            onClick={() => {
+              setCoordinate(item);
+            }}
           >
             View on Map
           </button>

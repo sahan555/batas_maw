@@ -3,7 +3,7 @@ import { faqData } from "../../Global/Datas/HomeData";
 import useGet from "../../Global/Apis/useGet";
 import HtmlParse from "./HtmlParse";
 
-const Accordion = ({ defaultIcon, expandIcon }) => {
+const Accordion = ({ defaultIcon, expandIcon, view }) => {
   const [expandedPanel, setExpandedPanel] = useState(null);
   const { data: faqs } = useGet("faqs");
   const togglePanel = (panelId) => {
@@ -22,7 +22,7 @@ const Accordion = ({ defaultIcon, expandIcon }) => {
 
   return (
     <div className="accordion">
-      {(faqs ? faqs : faqData)?.slice(0, 4)?.map((item, index) => (
+      {(faqs ? faqs : faqData)?.slice(0, view)?.map((item, index) => (
         <div
           className="accordion-panel border-b border-light-grey py-3"
           key={index}

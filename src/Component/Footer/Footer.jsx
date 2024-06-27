@@ -116,7 +116,7 @@ const Footer = () => {
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">
                 {cate
-                  ?.filter((item) => item?.name === "TRUCKS")
+                  ?.slice(0,3)
                   ?.map((item, index) => (
                     <FooterLinks
                       title={item?.name}
@@ -127,30 +127,7 @@ const Footer = () => {
                       slug={"/vehicles/"}
                     />
                   ))}
-                {cate
-                  ?.filter((item) => item?.name === "Buses")
-                  ?.map((item, index) => (
-                    <FooterLinks
-                      title={item?.name}
-                      data={item?.products}
-                      showList={3}
-                      className="mb-5"
-                      key={index}
-                      slug={"/vehicles/"}
-                    />
-                  ))}
-                {cate
-                  ?.filter((item) => item?.name === "Light Duty Tripper")
-                  ?.map((item, index) => (
-                    <FooterLinks
-                      title={item?.name}
-                      data={item?.products}
-                      showList={3}
-                      className="mb-5"
-                      key={index}
-                      slug={"/vehicles/"}
-                    />
-                  ))}
+                
                 {/* <FooterLinks data={extralink} title={false} /> */}
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">

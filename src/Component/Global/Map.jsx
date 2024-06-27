@@ -1,60 +1,66 @@
-import React, { useState, useEffect, useRef } from "react";
-import { MapContainer, Marker, Popup, TileLayer, GeoJSON } from "react-leaflet";
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 
-import axios from "axios";
+const filterProvincesWithServices = (mapData) => {
+  return (
+    mapData
+      ?.map((province) => ({
+        ...province,
+        districts: province.districts
+          .map((district) => ({
+            ...district,
+            cities: district.cities.filter(
+              (city) => city.branchcity && city.branchcity.length > 0
+            ),
+          }))
+          .filter((district) => district.cities.length > 0),
+      }))
+      .filter((province) => province.districts.length > 0) || []
+  );
+};
 
-const Map = ({ city, setCity, coordinate, setCoordinate }) => {
-  const [position, setPosition] = useState([28.3780464, 83.9999901]); // Default position
+const getAllBranches = (allMarker) => {
+  return allMarker
+    ?.flatMap((province) =>
+      province.districts.flatMap((district) =>
+        district.cities.flatMap((city) =>
+          city.branchcity.map((branchCity) => ({
+            id: branchCity?.id,
+            lat: branchCity?.branch.lat,
+            long: branchCity?.branch.long,
+            name: branchCity?.branch.name,
+          }))
+        )
+      )
+    )
+    .filter((branch) => branch.lat && branch.long && branch.name) || [];
+};
+
+const Map = ({ city, coordinate, mapData }) => {
+  const [position, setPosition] = useState([28.3780464, 83.9999901]);
   const [zoom, setZoom] = useState(7.5);
-  const [samsungStores, setSamsungStores] = useState([]);
   const mapRef = useRef(null);
+
+  const allMarker = useMemo(() => filterProvincesWithServices(mapData), [
+    mapData,
+  ]);
+
+  const branches = useMemo(() => getAllBranches(allMarker), [allMarker]);
+
   useEffect(() => {
-    const fetchGeocode = async () => {
-      try {
-        const response = await axios.get(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${city}`,
-        );
-
-        if (response.data && response.data.length > 0) {
-          const { lat, lon, osm_type, osm_id } = response.data[0];
-          setPosition([parseFloat(lat), parseFloat(lon)]);
-          setZoom(13);
-          fetchSamsungStores(parseFloat(lat), parseFloat(lon));
-        } else {
-          throw new Error("Location not found");
-        }
-      } catch (error) {
-        console.error("Error geocoding location:", error);
-      }
-    };
-
-    const fetchSamsungStores = async (lat, lon) => {
-      try {
-        const response = await axios.get(
-          `https://overpass-api.de/api/interpreter?data=[out:json];(node["shop"="electronics"]["name"="Samsung"](${lat - 0.1},${lon - 0.2},${lat + 0.1},${lon + 0.2}););out;`,
-        );
-        if (response.data && response.data.elements) {
-          const stores = response.data.elements.map((element) => ({
-            id: element.id,
-            name: element.tags.name,
-            location: [element.lat, element.lon],
-          }));
-          setSamsungStores(stores);
-        } else {
-          throw new Error("Failed to fetch Samsung stores");
-        }
-      } catch (error) {
-        console.error("Error fetching Samsung stores:", error);
-      }
-    };
     if (coordinate) {
-      setPosition([parseFloat(coordinate?.lat), parseFloat(coordinate?.lang)]);
+      setPosition([parseFloat(coordinate.lat), parseFloat(coordinate.lang)]);
       setZoom(13);
     } else if (city) {
-      fetchGeocode();
+      const cityGeo = getCitygeo(city);
+      console.log(cityGeo)
+      if (cityGeo?.city) {
+        setPosition([cityGeo.city.lat, cityGeo.city.long]);
+        setZoom(13);
+      }
     } else {
       setPosition([28.3780464, 83.9999901]);
       setZoom(7.5);
@@ -63,9 +69,22 @@ const Map = ({ city, setCity, coordinate, setCoordinate }) => {
 
   useEffect(() => {
     if (mapRef.current) {
-      mapRef.current.setView(position, zoom); // Set map position and zoom
+      mapRef.current.setView(position, zoom);
     }
   }, [position, zoom]);
+
+  const getCitygeo = (city) => {
+    return allMarker.reduce((filteredCities, province) => {
+      province.districts.forEach((district) => {
+        district.cities.forEach((item) => {
+          if (item.name === city) {
+            filteredCities.city = item;
+          }
+        });
+      });
+      return filteredCities;
+    }, {});
+  };
 
   return (
     <MapContainer
@@ -81,7 +100,7 @@ const Map = ({ city, setCity, coordinate, setCoordinate }) => {
       />
       {coordinate && (
         <Marker
-          position={[parseFloat(coordinate?.lat), parseFloat(coordinate?.lang)]}
+          position={[parseFloat(coordinate.lat), parseFloat(coordinate.lang)]}
           icon={
             new Icon({
               iconUrl: markerIconPng,
@@ -91,15 +110,17 @@ const Map = ({ city, setCity, coordinate, setCoordinate }) => {
             })
           }
         >
-          <Popup position={[parseFloat(coordinate?.lat), parseFloat(coordinate?.lang)]}>{coordinate?.name}</Popup>
+          <Popup position={[parseFloat(coordinate.lat), parseFloat(coordinate.lang)]}>
+            {coordinate.name}
+          </Popup>
         </Marker>
       )}
 
-      {/* Markers for Samsung stores */}
-      {samsungStores.map((store) => (
+      {/* Markers for all branches */}
+      {branches.map((branch) => (
         <Marker
-          key={store.id}
-          position={store.location}
+          key={branch.id}
+          position={[branch.lat, branch.long]}
           icon={
             new Icon({
               iconUrl: markerIconPng,
@@ -109,7 +130,7 @@ const Map = ({ city, setCity, coordinate, setCoordinate }) => {
             })
           }
         >
-          <Popup>Eicher</Popup>
+          <Popup>{branch.name}</Popup>
         </Marker>
       ))}
     </MapContainer>

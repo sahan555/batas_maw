@@ -250,7 +250,7 @@ export const extralink2 = [
   },
   {
     name: "FAQS",
-    slug: "/",
+    slug: "/faq",
   },
   {
     name: "EMI CALCULATOR",
@@ -266,7 +266,7 @@ export const extralink2 = [
   },
   {
     name: "TESTIMONIAL",
-    slug: "/",
+    slug: "/testimonials",
   },
 ];
 export const footerAffiliated = [

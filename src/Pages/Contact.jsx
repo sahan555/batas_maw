@@ -44,7 +44,7 @@ const Contact = () => {
         <div className="map-wrapper h-[400px]">
           <iframe
             title="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56511.94459089053!2d85.25536254863277!3d27.717393199999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19bfe24eb713%3A0xd52e521d069297c8!2sBATAS%20Organization!5e0!3m2!1sen!2snp!4v1719207595256!5m2!1sen!2snp"
+            src={settings?.map_url}
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
