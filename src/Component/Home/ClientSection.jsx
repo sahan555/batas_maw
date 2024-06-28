@@ -2,8 +2,10 @@ import React from "react";
 import Slider from "react-slick";
 import { clientData } from "../../Global/Datas/HomeData";
 import useGet from "../../Global/Apis/useGet";
+import HtmlParse from "../Global/HtmlParse";
 
-const ClientSection = () => {
+const ClientSection = ({staticData}) => {
+
   const { data: clients } = useGet("clients");
   var clientSlider = {
     dots: false,
@@ -47,12 +49,9 @@ const ClientSection = () => {
         <div className="container mx-auto">
           <article className="mb-16">
             <h2 className="heading mb-4">Our Clients</h2>
-            <p className="mx-auto max-w-[900px] font-medium text-grey">
-              We are proud to work with a diverse range of clients who trust us
-              for our exceptional products and services. Our clients span
-              various industries and we are committed to delivering the highest
-              quality to meet their unique needs.
-            </p>
+            <div className="mx-auto max-w-[900px] font-medium text-grey">
+              <HtmlParse data={staticData?.home_client_desc} />
+            </div>
           </article>
           <div className="client-slider mx-auto max-w-[1500px]">
             <Slider {...clientSlider}>

@@ -7,6 +7,8 @@ import useGet from "../../Global/Apis/useGet";
 
 const Vehicles = () => {
   const { data: cate } = useGet("categories");
+  const { data: staticData} = useGet("static-content");
+
 
   return (
     <>
@@ -16,7 +18,7 @@ const Vehicles = () => {
           <div className="container mx-auto">
             <Article
               title={vehicleArticle.title}
-              desc={vehicleArticle.desc}
+              desc={staticData?.vehicle_page_desc}
               headClass={""}
             />
             <VehicleTabs  data={cate}/>

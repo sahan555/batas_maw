@@ -19,6 +19,7 @@ const Homepage = () => {
   const { data: testimonals, isLoading: testimonalsLoading } =
     useGet("testimonials");
   const { data: galleries } = useGet("galleries");
+  const { data: staticData } = useGet("static-content");
   useScrollToHash(200);
 
   return (
@@ -29,7 +30,7 @@ const Homepage = () => {
         <HelpSection />
         <MapSection />
         <NewsEvent />
-        <ClientSection />
+        <ClientSection staticData={staticData}/>
         {testimonalsLoading ? (
           ""
         ) : (
@@ -41,7 +42,7 @@ const Homepage = () => {
           />
         )}
         <EmiCalculator />
-        <VideoSection data={galleries?.video} />
+        <VideoSection data={galleries?.video}  staticData={staticData}/>
         <GallerySection data={galleries?.gallery} />
         <FaqFeedBackSection />
       </main>

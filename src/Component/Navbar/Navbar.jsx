@@ -50,12 +50,14 @@ const Navbar = () => {
   };
 
   const handleNavbar = () => {
-    if (!navbar.current) return;
+    if (isMobileDevice) {
+      if (!navbar.current) return;
 
-    if (navbar.current.classList.contains("menu-show")) {
-      closeNavbar();
-    } else {
-      openNavbar();
+      if (navbar.current.classList.contains("menu-show")) {
+        closeNavbar();
+      } else {
+        openNavbar();
+      }
     }
   };
   return (

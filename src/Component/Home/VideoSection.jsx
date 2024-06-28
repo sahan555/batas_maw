@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import HtmlParse from "../Global/HtmlParse";
 
-const VideoSection = ({ data: video }) => {
+const VideoSection = ({ data: video,staticData }) => {
   return (
     <section className="video-section section-break">
       <div className="side-padding">
         <div className="container mx-auto">
           <div className="heading-wrapper pb-[50px] text-center">
             <h2 className="heading mb-2">videos</h2>
-            <p className=" mx-auto max-w-[850px] text-grey">
-              Welcome to our video gallery! Explore a selection of videos
-              showcasing our products, their features, and customer
-              testimonials. Discover the quality and performance that Batas Maw
-              offers.
-            </p>
+            <div className=" mx-auto max-w-[850px] text-grey">
+             <HtmlParse data={staticData?.home_videos_desc}/>
+            </div>
           </div>
           <div className="video-wrapper">
             <div className="mx-auto grid w-full max-w-[1200px] grid-flow-col grid-cols-1 gap-2 sm:grid-cols-2 sm:grid-rows-2 md:gap-5">

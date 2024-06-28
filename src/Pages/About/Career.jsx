@@ -11,7 +11,9 @@ import useGet from "../../Global/Apis/useGet";
 import useScrollToElement from "../../Global/Hooks/useScrollToElement";
 
 const Career = () => {
-  const { data: galleries, isLoading: galleriesLoading } = useGet("galleries");
+  const { data: about} = useGet("static-content");
+
+  const { data: galleries } = useGet("galleries");
 
   const careerOpeningRef = useRef(null);
   const scrollToCareerOpening = useScrollToElement(careerOpeningRef);
@@ -65,7 +67,7 @@ const Career = () => {
             <Article
               title={careerArticle.title}
               headClass="!text-primary"
-              desc={careerArticle.desc}
+              desc={about?.about_career_team_desc}
               slug="#careerOpening"
               btnName="Current openings"
               grey={true}
@@ -90,9 +92,7 @@ const Career = () => {
                 <SliderNGallery
                   Slidersetting={sliderCareer}
                   data={
-                    galleries
-                      ? galleries?.gallery?.[0]?.images
-                      : careerGallery
+                    galleries ? galleries?.gallery?.[0]?.images : careerGallery
                   }
                   transition={false}
                 />
