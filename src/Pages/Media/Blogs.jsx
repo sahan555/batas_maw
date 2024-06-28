@@ -1,16 +1,18 @@
 import React, { useRef, useState } from "react";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import useGet from "../../Global/Apis/useGet";
-import HtmlParse from "../../Component/Global/HtmlParse";
-import { Link } from "react-router-dom";
 import Article from "../../Component/Global/Article";
 import Pagination from "../../Component/Global/Pagination";
 import BlogCard from "../../Component/Global/BlogCard";
+import Loading from "../../Component/Global/Loading";
 
 const Blogs = () => {
-  const { data } = useGet("blogs");
+  const { data ,isLoading} = useGet("blogs");
   const [dataFromChild, setDataFromChild] = useState([]);
   const blogRef = useRef(null);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <Breadcrumbs />

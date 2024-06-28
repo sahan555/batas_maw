@@ -3,7 +3,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
-import useGet from "../../Global/Apis/useGet";
+
 const filterProvincesWithServices = (mapData) => {
   return (
     mapData
@@ -12,63 +12,52 @@ const filterProvincesWithServices = (mapData) => {
         districts: province.districts
           .map((district) => ({
             ...district,
-            services: district.services.filter((service) => service),
+            cities: district.cities.filter(
+              (city) => city.branchcity && city.branchcity.length > 0
+            ),
           }))
-          .filter((district) => district.services.length > 0),
+          .filter((district) => district.cities.length > 0),
       }))
       .filter((province) => province.districts.length > 0) || []
   );
 };
 
 const getAllBranches = (allMarker) => {
-  return (
-    allMarker
-      ?.flatMap((province) =>
-        province.districts.flatMap((district) =>
-          district.services.map((service) => ({
-            id: service?.id,
-            lat: service?.lat,
-            long: service?.lang,
-            name: service?.name,
-          })),
-        ),
+  return allMarker
+    ?.flatMap((province) =>
+      province.districts.flatMap((district) =>
+        district.cities.flatMap((city) =>
+          city.branchcity.map((branchCity) => ({
+            id: branchCity?.id,
+            lat: branchCity?.branch.lat,
+            long: branchCity?.branch.long,
+            name: branchCity?.branch.name,
+          }))
+        )
       )
-      .filter((service) => service.lat && service.long && service.name) || []
-  );
+    )
+    .filter((branch) => branch.lat && branch.long && branch.name) || [];
 };
 
-const Map = ({ city, coordinate }) => {
-  const { data: servicesData } = useGet("provinces-services");
+const Map = ({ city, coordinate, mapData }) => {
   const [position, setPosition] = useState([28.3780464, 83.9999901]);
   const [zoom, setZoom] = useState(7.5);
   const mapRef = useRef(null);
-  
-  const provincesWithServices = useMemo(
-    () => filterProvincesWithServices(servicesData),
-    [servicesData],
-  );
-  const mapData = provincesWithServices;
-  const branches = useMemo(() => getAllBranches(mapData), [mapData]);
-  const getCitygeo = (city) => {
-    return mapData.reduce((filteredService, province) => {
-      province.districts.forEach((district) => {
-        district.services.forEach((service) => {
-          if (service.city === city) {
-            filteredService.service = service;
-          }
-        });
-      });
-      return filteredService;
-    }, {});
-  };
-  const cityGeo = getCitygeo(city);
+
+  const allMarker = useMemo(() => filterProvincesWithServices(mapData), [
+    mapData,
+  ]);
+
+  const branches = useMemo(() => getAllBranches(allMarker), [allMarker]);
+
   useEffect(() => {
     if (coordinate) {
       setPosition([parseFloat(coordinate.lat), parseFloat(coordinate.lang)]);
       setZoom(13);
     } else if (city) {
-      if (cityGeo?.service) {
-        setPosition([cityGeo?.service.lat, cityGeo?.service?.lang]);
+      const cityGeo = getCitygeo(city);
+      if (cityGeo?.city) {
+        setPosition([cityGeo.city.lat, cityGeo.city.long]);
         setZoom(13);
       }
     } else {
@@ -82,6 +71,19 @@ const Map = ({ city, coordinate }) => {
       mapRef.current.setView(position, zoom);
     }
   }, [position, zoom]);
+
+  const getCitygeo = (city) => {
+    return allMarker.reduce((filteredCities, province) => {
+      province.districts.forEach((district) => {
+        district.cities.forEach((item) => {
+          if (item.name === city) {
+            filteredCities.city = item;
+          }
+        });
+      });
+      return filteredCities;
+    }, {});
+  };
 
   return (
     <MapContainer
@@ -107,9 +109,7 @@ const Map = ({ city, coordinate }) => {
             })
           }
         >
-          <Popup
-            position={[parseFloat(coordinate.lat), parseFloat(coordinate.lang)]}
-          >
+          <Popup position={[parseFloat(coordinate.lat), parseFloat(coordinate.lang)]}>
             {coordinate.name}
           </Popup>
         </Marker>

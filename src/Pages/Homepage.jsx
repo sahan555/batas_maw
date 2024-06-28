@@ -10,19 +10,21 @@ import VideoSection from "../Component/Home/VideoSection";
 import FaqFeedBackSection from "../Component/Home/FaqFeedBackSection";
 import { testiData } from "../Global/Datas/HomeData";
 import MapSection from "../Component/Home/MapSection";
-import GalleryPage from "../Component/Home/GalleryPage";
 import useGet from "../Global/Apis/useGet";
 import useScrollToHash from "../Global/Hooks/useScrollToHash";
+import GallerySection from "../Component/Home/GallerySection";
 
 const Homepage = () => {
+  const { data: banners } = useGet("banners");
   const { data: testimonals, isLoading: testimonalsLoading } =
     useGet("testimonials");
-  const { data: galleries, isLoading: galleriesLoading } = useGet("galleries");
+  const { data: galleries } = useGet("galleries");
   useScrollToHash(200);
+
   return (
     <>
       <main className="home">
-        <HeroSection />
+        <HeroSection banners={banners} />
         <ProductsTab />
         <HelpSection />
         <MapSection />
@@ -40,7 +42,7 @@ const Homepage = () => {
         )}
         <EmiCalculator />
         <VideoSection data={galleries?.video} />
-        <GalleryPage data={galleries?.gallery} />
+        <GallerySection data={galleries?.gallery} />
         <FaqFeedBackSection />
       </main>
     </>

@@ -1,6 +1,6 @@
 export const vehicleArticle = {
   title: "Vehicles",
-  desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet",
+  desc: "Our buses, trucks, and tippers are built for durability and efficiency. Whether for mass transport, heavy hauling, or construction, our vehicles deliver top performance and reliability. Each model integrates advanced technology and exceptional craftsmanship to meet the toughest demands.",
 };
 
 export const vehicleData = [

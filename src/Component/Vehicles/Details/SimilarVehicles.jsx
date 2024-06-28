@@ -16,7 +16,7 @@ const SimilarVehicles = ({ data }) => {
   var ProductSlider = {
     dots: true,
     arrows: false,
-    infinite: true,
+    infinite: false,
     autoplay: true,
     speed: 500,
     slidesToShow: 4,

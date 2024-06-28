@@ -5,11 +5,15 @@ import HtmlParse from "../../Component/Global/HtmlParse";
 import { Link } from "react-router-dom";
 import Article from "../../Component/Global/Article";
 import Pagination from "../../Component/Global/Pagination";
+import Loading from "../../Component/Global/Loading";
 
 const Events = () => {
-  const { data } = useGet("events");
+  const { data,isLoading } = useGet("events");
   const [dataFromChild, setDataFromChild] = useState([]);
   const eventRef = useRef(null);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <Breadcrumbs />

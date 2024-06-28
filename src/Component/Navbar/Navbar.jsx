@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SubMenu } from "../../Global/Datas/SubMenu";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -12,37 +12,50 @@ import { FaChevronDown } from "react-icons/fa6";
 const Navbar = () => {
   const isMobileDevice = useMediaQuery("(max-width: 1023px)");
   const navbar = useRef(null);
-  const newDiv = document.createElement("div");
-  newDiv.classList.add("overflow-background");
+  const newDiv = useRef(null);
 
-  const handleNavbar = () => {
-    if (navbar.current) {
-      if (!document.body.contains(newDiv)) {
-        document.body.appendChild(newDiv);
+  useEffect(() => {
+    newDiv.current = document.createElement("div");
+    newDiv.current.classList.add("overflow-background");
+    const handleOverflowClick = () => {
+      closeNavbar();
+    };
+    newDiv.current.addEventListener("click", handleOverflowClick);
+    return () => {
+      if (newDiv.current) {
+        newDiv.current.removeEventListener("click", handleOverflowClick);
+        if (document.body.contains(newDiv.current)) {
+          document.body.removeChild(newDiv.current);
+        }
       }
-      navbar.current.classList.toggle("menu-show");
-      document.body.classList.toggle("height-fixed");
+    };
+  }, []);
+
+  const openNavbar = () => {
+    if (!navbar.current) return;
+    if (!document.body.contains(newDiv.current)) {
+      document.body.appendChild(newDiv.current);
     }
+    navbar.current.classList.add("menu-show");
+    document.body.classList.add("height-fixed");
   };
 
-  const handleClose = () => {
-    if (isMobileDevice) {
-      if (navbar.current) {
-        if (document.body.contains(newDiv)) {
-          document.body.removeChild(newDiv);
-        }
-        navbar.current.classList.toggle("menu-show");
-        document.body.classList.toggle("height-fixed");
-      }
-      newDiv.addEventListener("click", function () {
-        if (navbar.current) {
-          if (document.body.contains(newDiv)) {
-            document.body.removeChild(newDiv);
-          }
-          navbar.current.classList.toggle("menu-show");
-          document.body.classList.toggle("height-fixed");
-        }
-      });
+  const closeNavbar = () => {
+    if (!navbar.current) return;
+    if (document.body.contains(newDiv.current)) {
+      document.body.removeChild(newDiv.current);
+    }
+    navbar.current.classList.remove("menu-show");
+    document.body.classList.remove("height-fixed");
+  };
+
+  const handleNavbar = () => {
+    if (!navbar.current) return;
+
+    if (navbar.current.classList.contains("menu-show")) {
+      closeNavbar();
+    } else {
+      openNavbar();
     }
   };
   return (
@@ -90,7 +103,7 @@ const Navbar = () => {
           >
             <div className="md:side-padding">
               <div className="container relative mx-auto flex h-full flex-col flex-wrap lg:h-auto lg:flex-row lg:items-center lg:justify-between">
-                <figure className="mobile-logo order-1 block h-[80px] border-b border-solid border-[#dddddd] md:px-0 px-4 py-2 lg:hidden">
+                <figure className="mobile-logo order-1 block h-[80px] border-b border-solid border-[#dddddd] px-4 py-2 md:px-0 lg:hidden">
                   <img
                     src="/assets/images/logo.png"
                     alt="Batas Maw"
@@ -102,14 +115,14 @@ const Navbar = () => {
                     <li key={index} className="group relative">
                       <NavLink
                         activeclassname="is-active"
-                        className={`block px-[15px] py-4 uppercase  hover:text-primary lg:inline-block lg:text-sm  xl:px-6 xl:text-base ${item?.children && isMobileDevice &&'flex justify-between items-center'}`}
+                        className={`block px-[15px] py-4 uppercase  hover:text-primary lg:inline-block lg:text-sm  xl:px-6 xl:text-base ${item?.children && isMobileDevice && "flex items-center justify-between"}`}
                         to={item?.slug ? item?.slug : "#!"}
                         onClick={
                           item?.children
                             ? (e) => {
                                 e.preventDefault();
                               }
-                            : handleClose
+                            : handleNavbar
                         }
                       >
                         {item.title}
@@ -127,7 +140,7 @@ const Navbar = () => {
                                 <NavLink
                                   className="block w-full px-[15px] py-3  uppercase hover:bg-black hover:bg-opacity-20 lg:inline-block  lg:text-sm xl:px-6 xl:text-base"
                                   to={item.slug}
-                                  onClick={handleClose}
+                                  onClick={handleNavbar}
                                 >
                                   {item.name}
                                 </NavLink>
@@ -142,8 +155,8 @@ const Navbar = () => {
                 <TopContact classname={"lg:hidden block order-4 pb-11"} />
                 <Search classname={"lg:-order-none order-2"} />
                 <div
-                  className="btn-wrapper absolute md:right-0 right-[10px] top-5 block rounded-[50%] bg-primary p-[1px] text-3xl text-white lg:hidden"
-                  onClick={handleClose}
+                  className="btn-wrapper absolute right-[10px] top-5 block rounded-[50%] bg-primary p-[1px] text-3xl text-white md:right-0 lg:hidden"
+                  onClick={handleNavbar}
                 >
                   <IoClose />
                 </div>

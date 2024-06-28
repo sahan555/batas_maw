@@ -32,7 +32,7 @@ const HistoryTab = () => {
     infinite: false,
     autoplay: false,
     speed: 500,
-    
+
     slidesToShow: 8,
     slidesToScroll: 1,
     draggable: false,
@@ -54,9 +54,10 @@ const HistoryTab = () => {
       },
     ],
   };
+ 
   return (
     <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-      {(history ? history : AboutHistory)?.map((item, index) => (
+      {history?.map((item, index) => (
         <TabPanel key={index}>
           <article className="heading-wrapper mb-20">
             <h2 className="heading mb-6">{item?.title}</h2>
@@ -68,7 +69,7 @@ const HistoryTab = () => {
       ))}
       <TabList className="relative">
         <Slider {...historySlider} className="history-slider pb-8">
-          {(history ? history : AboutHistory)?.map((item, index) => (
+          {(history)?.map((item, index) => (
             <CustomTab
               onClick={() => setTabIndex(index)}
               key={index}

@@ -1,26 +1,26 @@
 import React from "react";
-import { HiArrowLongRight } from "react-icons/hi2";
-import { Link } from "react-router-dom";
 import Breadcrumbs from "../Component/Global/BreadCrumbs";
+import WhiteBox from "../Component/Global/WhiteBox";
 
 const Form = () => {
+  const formLink = [
+    {
+      name: "Customer Support Form",
+      slug: "/forms/support",
+    },
+  ];
   return (
     <>
       <Breadcrumbs />
       <section className="form-page section-break">
         <div className="side-padding">
           <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:grid-cols-3 xl:grid-cols-4">
-              <div className="col-span-1">
-                <div className="opening-box relative border border-l-0 border-gray-300 p-6 before:absolute before:left-0 before:top-[-1px] before:h-[calc(100%+2px)] before:w-2.5 before:bg-secondary before:content-['']">
-                  <Link to="/forms/support">
-                    <h5 className="pb-6 text-xl uppercase">
-                      Customer Support Form
-                    </h5>
-                    <HiArrowLongRight className="ml-auto text-4xl text-secondary" />
-                  </Link>
+            <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {formLink?.map((item, index) => (
+                <div className="col-span-1" key={index}>
+                  <WhiteBox link={true} slug={item?.slug} name={item?.name} />
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

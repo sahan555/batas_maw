@@ -1,14 +1,31 @@
 import React, { useMemo, useEffect } from "react";
 import { useLayoutData } from "../../../Global/Context/Layout";
 
-const BranchForm = ({
-  selectedLocation,
-  setSelectedLocation,
-  coordinate,
-  mapData,
-}) => {
+const filterProvincesWithServices = (mapData) => {
+  return (
+    mapData?.map((province) => ({
+      ...province,
+      districts: province.districts
+        .map((district) => ({
+          ...district,
+          cities: district.cities.filter(
+            (city) => city.branchcity && city.branchcity.length > 0
+          ),
+        }))
+        .filter((district) => district.cities.length > 0),
+    }))?.filter((province) => province.districts.length > 0) || []
+  );
+};
+
+const BranchForm = ({ selectedLocation, setSelectedLocation, coordinate,mapData }) => {
+
   const { setCoordinate } = useLayoutData();
 
+  const provincesWithServices = useMemo(
+    () => filterProvincesWithServices(mapData),
+    [mapData]
+  );
+console.log(provincesWithServices)
   useEffect(() => {
     if (coordinate) {
       setSelectedLocation((prevState) => ({
@@ -30,7 +47,9 @@ const BranchForm = ({
     setCoordinate("");
 
     if (key === "province") {
-      const provinceData = mapData.find((item) => item.name === value);
+      const provinceData = provincesWithServices.find(
+        (item) => item.name === value
+      );
       setSelectedLocation((prevState) => ({
         ...prevState,
         districtList: provinceData?.districts || [],
@@ -40,34 +59,24 @@ const BranchForm = ({
       }));
     } else if (key === "district") {
       const selectedDistrict = selectedLocation.districtList?.find(
-        (item) => item.name === value,
+        (item) => item.name === value
       );
-
-      if (selectedDistrict) {
-        console.log(selectedDistrict.services, "services");
-        setSelectedLocation((prevState) => ({
-          ...prevState,
-          cityList: selectedDistrict.services || [],
-          city: "",
-        }));
-      } else {
-        setSelectedLocation((prevState) => ({
-          ...prevState,
-          cityList: [],
-          city: "",
-        }));
-      }
+      setSelectedLocation((prevState) => ({
+        ...prevState,
+        cityList: selectedDistrict?.cities || [],
+        city: "",
+      }));
     }
   };
 
   const provincesOptions = useMemo(
     () =>
-      mapData.map((item, index) => (
+      provincesWithServices.map((item, index) => (
         <option value={item.name} key={index}>
           {item.name}
         </option>
       )),
-    [mapData],
+    [provincesWithServices]
   );
 
   const districtsOptions = useMemo(
@@ -77,19 +86,18 @@ const BranchForm = ({
           {item.name}
         </option>
       )),
-    [selectedLocation.districtList],
+    [selectedLocation.districtList]
   );
 
-  const citiesOptions = useMemo(() => {
-    const uniqueCities = new Set(
-      selectedLocation.cityList?.map((item) => item?.city),
-    );
-    return [...uniqueCities].map((city, index) => (
-      <option value={city} key={index}>
-        {city}
-      </option>
-    ));
-  }, [selectedLocation.cityList]);
+  const citiesOptions = useMemo(
+    () =>
+      selectedLocation.cityList?.map((item, index) => (
+        <option value={item.name} key={index}>
+          {item.name}
+        </option>
+      )),
+    [selectedLocation.cityList]
+  );
 
   return (
     <form className="mx-auto max-w-[1000px]">

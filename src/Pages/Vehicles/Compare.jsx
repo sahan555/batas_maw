@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from "react";
-import Breadcrumbs from "../Component/Global/BreadCrumbs";
-import CompareSearch from "../Component/Vehicles/Compare/CompareSearch";
-import SimilarVehicles from "../Component/Vehicles/Details/SimilarVehicles";
-import CompareDetailsNTabs from "../Component/Vehicles/Compare/CompareDetailsNTabs";
+import Breadcrumbs from "../../Component/Global/BreadCrumbs";
+import CompareSearch from "../../Component/Vehicles/Compare/CompareSearch";
+import SimilarVehicles from "../../Component/Vehicles/Details/SimilarVehicles";
+import CompareDetailsNTabs from "../../Component/Vehicles/Compare/CompareDetailsNTabs";
 import { useParams } from "react-router-dom";
-import useGetById from "../Global/Apis/useGetById";
-import useGet from "../Global/Apis/useGet";
-import Loading from "../Component/Global/Loading";
+import useGetById from "../../Global/Apis/useGetById";
+import useGet from "../../Global/Apis/useGet";
+import Loading from "../../Component/Global/Loading";
 
 const Compare = () => {
   const { slug } = useParams();
@@ -14,6 +14,7 @@ const Compare = () => {
     "products-single",
     slug,
   );
+  console.log(details)
   const { data: cate, isLoading: cateLoading } = useGet("categories");
 
   const similarItems = useMemo(() => {

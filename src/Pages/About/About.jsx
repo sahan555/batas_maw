@@ -1,19 +1,21 @@
-import { useLocation } from "react-router-dom";
 import AtaGlance from "../../Component/About/AtaGlance";
 import HistoryTab from "../../Component/About/HistoryTab";
 import Mission from "../../Component/About/Mission";
 import OurValues from "../../Component/About/OurValues";
 import Vision from "../../Component/About/Vision";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
+import Loading from "../../Component/Global/Loading";
 import Testimonials from "../../Component/Global/Testimonials";
 import useGet from "../../Global/Apis/useGet";
-import { useEffect } from "react";
 import useScrollToHash from "../../Global/Hooks/useScrollToHash";
 
 const About = () => {
-  const { data: about } = useGet("static-about");
+  const { data: about,isLoading } = useGet("static-content");
   const { data: counters } = useGet("counters");
   useScrollToHash(100);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <Breadcrumbs />

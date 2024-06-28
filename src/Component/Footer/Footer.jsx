@@ -27,6 +27,7 @@ import useGet from "../../Global/Apis/useGet";
 const Footer = () => {
   const { data: cate } = useGet("categories");
   const { data: settings } = useGet("settings");
+
   return (
     <>
       <ToastContainer
@@ -41,7 +42,7 @@ const Footer = () => {
             <div className="grid grid-cols-7 gap-8 xl:grid-cols-5">
               <div className="col-span-full md:col-span-3 xl:col-span-2">
                 <div className="footer-logo mb-10 text-white">
-                  <figure className="w-full md:max-w-[300px] max-w-[200px]">
+                  <figure className="w-full max-w-[200px] md:max-w-[300px]">
                     <img
                       src="/assets/images/logo-white.png"
                       className="w-full object-contain object-center"
@@ -115,19 +116,17 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">
-                {cate
-                  ?.slice(0,3)
-                  ?.map((item, index) => (
-                    <FooterLinks
-                      title={item?.name}
-                      data={item?.products}
-                      showList={3}
-                      className="mb-5"
-                      key={index}
-                      slug={"/vehicles/"}
-                    />
-                  ))}
-                
+                {cate?.slice(0, 3)?.map((item, index) => (
+                  <FooterLinks
+                    title={item?.name}
+                    data={item?.products}
+                    showList={3}
+                    className="mb-5"
+                    key={index}
+                    slug={"/vehicles/"}
+                  />
+                ))}
+
                 {/* <FooterLinks data={extralink} title={false} /> */}
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">
@@ -140,6 +139,7 @@ const Footer = () => {
                       showList={3}
                       className="mb-5"
                       key={index}
+                      slug={"/resale/"}
                     />
                   ))}
                 {footerLinks

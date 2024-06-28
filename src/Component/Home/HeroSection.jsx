@@ -5,8 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import useGet from "../../Global/Apis/useGet";
 import HtmlParse from "../Global/HtmlParse";
 
-const HeroSection = () => {
-  const { data: banners } = useGet("banners");
+const HeroSection = ({banners}) => {
   var heroSilder = {
     dots: true,
     arrows: false,

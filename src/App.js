@@ -14,6 +14,7 @@ import { Helmet } from "react-helmet-async";
 const App = () => {
   return (
     <>
+      <ScrollToTop />
       <HelmetProvider>
         {/* <Helmet>
           <link
@@ -23,7 +24,6 @@ const App = () => {
             type="image/x-icon"
           />
         </Helmet> */}
-        <ScrollToTop />
         <Navbar />
         <Suspense fallback={<Loading />}>
           <Routes>

@@ -1,6 +1,6 @@
 export const careerArticle = {
   title: "Join our team",
-  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet, consectetur adipiscing elit.lorem ipsum dolor sit amet,  ",
+  desc: "Welcome to Batas Maw, where innovation meets opportunity! We are dedicated to fostering a culture of growth, creativity, and collaboration. Our mission is to revolutionize the industry with groundbreaking solutions while nurturing the personal and professional development of our team.",
   slug: "/",
 };
 export const careerGallery = [

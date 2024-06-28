@@ -6,6 +6,7 @@ import CareerForm from "../../Global/CareerForm";
 import { forwardRef } from "react";
 import useGet from "../../../Global/Apis/useGet";
 import HtmlParse from "../../Global/HtmlParse";
+import WhiteBox from "../../Global/WhiteBox";
 
 const CareerOpenning = forwardRef((_, ref) => {
   const { data: career } = useGet("careers");
@@ -17,20 +18,17 @@ const CareerOpenning = forwardRef((_, ref) => {
       careerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-  // Use useEffect to set jobName when careerPost changes
   useEffect(() => {
-    // Check if careerPost array has at least one item
     if (career?.length > 0) {
-      // Set jobName to the title of the first item in careerPost array
       setJobId(career[0]?.id);
     }
   }, [career]);
 
   const handleTabClick = (id) => {
-    // Update the jobName state with the clicked tab's title
     setJobId(id);
     scrollToCareerOpening();
   };
+ 
   return (
     <>
       {career?.length > 0 && (
@@ -47,15 +45,10 @@ const CareerOpenning = forwardRef((_, ref) => {
                     {career?.map((item, index) => (
                       <Tab key={index}>
                         <div
-                          className="group col-span-1 cursor-pointer"
+                          className=" col-span-1 cursor-pointer"
                           onClick={() => handleTabClick(item?.id)}
                         >
-                          <div className="opening-box relative border border-l-0 border-gray-300 p-6 outline-0 before:absolute before:left-0 before:top-[-1px] before:h-[calc(100%+2px)] before:w-2.5 before:bg-secondary before:content-['']">
-                            <h5 className="pb-6 text-xl uppercase">
-                              {item?.name}
-                            </h5>
-                            <HiArrowLongRight className="ml-auto text-4xl text-secondary duration-300 ease-in-out group-hover:mr-2" />
-                          </div>
+                          <WhiteBox details={item} />
                         </div>
                       </Tab>
                     ))}
@@ -75,8 +68,35 @@ const CareerOpenning = forwardRef((_, ref) => {
                           <TabPanel key={index}>
                             <div className="post-details">
                               <article>
-                                <h3 className="heading mb-4">{item?.name}</h3>
-                                <div className="text-grey [&>ul]:py-5 [&>ul]:list-disc [&>ul]:pl-8 [&>ul]:pt-2 [&_li:not(:last-child)]:mb-2">
+                                <h3 className="heading mb-0 !text-secondary">
+                                  {item?.name}
+                                </h3>
+                                <p className="mb-4">
+                                  <small className="text-grey">
+                                    {item?.created_at}
+                                  </small>
+                                </p>
+                                <ul className="text-grey text-base [&>li]:mb-2">
+                                  <li>
+                                    <p>
+                                      <span>Designation : </span>
+                                      {item?.designation}
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      <span>Salary : </span>
+                                      {item?.salary}
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      <span>Location : </span>
+                                      {item?.location}
+                                    </p>
+                                  </li>
+                                </ul>
+                                <div className="text-grey [&>ul]:list-disc [&>ul]:py-5 [&>ul]:pl-8 [&>ul]:pt-2 [&_li:not(:last-child)]:mb-2">
                                   <HtmlParse data={item?.description} />
                                 </div>
                               </article>

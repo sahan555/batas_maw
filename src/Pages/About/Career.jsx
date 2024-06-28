@@ -91,12 +91,10 @@ const Career = () => {
                   Slidersetting={sliderCareer}
                   data={
                     galleries
-                      ? galleries?.gallery?.find((item) => item?.name === "ALL GALLERY")
-                          ?.images
+                      ? galleries?.gallery?.[0]?.images
                       : careerGallery
                   }
                   transition={false}
-                  classname={"xl:h-[300px] lg:h-[200px]"}
                 />
               </div>
             </div>

@@ -4,7 +4,7 @@ import { galleryData } from "../../Global/Datas/HomeData";
 import { Link } from "react-router-dom";
 import SliderNGallery from "../Global/SliderNGallery";
 import { CustomNextArrow, CustomPrevArrow } from "../Global/SliderArrows";
-const GalleryPage = ({ data }) => {
+const GallerySection = ({ data }) => {
   // Slider settings
   const gallerySliderSettings = {
     dots: false,
@@ -66,7 +66,7 @@ const GalleryPage = ({ data }) => {
           <div className="btn-wrapper pt-8 text-center">
             <Link
               className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-              to="/"
+              to="/gallery"
             >
               View All Gallery
             </Link>
@@ -77,4 +77,4 @@ const GalleryPage = ({ data }) => {
   );
 };
 
-export default GalleryPage;
+export default GallerySection;

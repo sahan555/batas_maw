@@ -16,7 +16,7 @@ const Vehicles = lazyWithDelay(() => import("../../Pages/Vehicles/Vehicles"));
 const VehicleDetails = lazyWithDelay(
   () => import("../../Pages/Vehicles/VehicleDetails"),
 );
-const Compare = lazyWithDelay(() => import("../../Pages/Compare"));
+const Compare = lazyWithDelay(() => import("../../Pages/Vehicles/Compare"));
 const About = lazyWithDelay(() => import("../../Pages/About/About"));
 const Career = lazyWithDelay(() => import("../../Pages/About/Career"));
 const Branches = lazyWithDelay(() => import("../../Pages/About/Branches"));
@@ -36,6 +36,11 @@ const EventDetails = lazyWithDelay(
 );
 const Faq = lazyWithDelay(() => import("../../Pages/Faq"));
 const Testimonials = lazyWithDelay(() => import("../../Pages/Testimonials"));
+const GalleryPage = lazyWithDelay(() => import("../../Pages/GalleryPage"));
+const Media = lazyWithDelay(() => import("../../Pages/Media/Media"));
+const MediaDetails = lazyWithDelay(
+  () => import("../../Pages/Media/MediaDetails"),
+);
 
 export const routes = [
   { path: "/", element: <Homepage />, breadcrumb: "Home" },
@@ -64,6 +69,13 @@ export const routes = [
   { path: "/blog/:slug", element: <BlogDetails /> },
   { path: "/events", element: <Events />, breadcrumb: "Events" },
   { path: "/events/:slug", element: <EventDetails /> },
-  { path: "/faq", element: <Faq /> , breadcrumb: "Faq"},
-  { path: "/testimonials", element: <Testimonials /> , breadcrumb: "Testimonials"},
+  { path: "/media", element: <Media />, breadcrumb: "Media" },
+  { path: "/media/:slug", element: <MediaDetails /> },
+  { path: "/faq", element: <Faq />, breadcrumb: "Faq" },
+  {
+    path: "/testimonials",
+    element: <Testimonials />,
+    breadcrumb: "Testimonials",
+  },
+  { path: "/gallery", element: <GalleryPage />, breadcrumb: "Gallery" },
 ];

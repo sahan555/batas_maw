@@ -27,9 +27,9 @@ const Pagination = forwardRef(({ data, view, setDataFromChild }, ref) => {
   return (
     <>
       {totalProduct > viewProduct && (
-        <div className="pagination flex justify-center pt-10">
+        <div className="pagination flex justify-center pt-10 ">
           <button
-            className="skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 hover:text-white hover:before:bg-primary"
+            className="skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 before:bg-white hover:text-white hover:before:bg-primary"
             onClick={() => {
               if (currentPage > 1) {
                 setCurrentPage(currentPage - 1);
@@ -43,13 +43,13 @@ const Pagination = forwardRef(({ data, view, setDataFromChild }, ref) => {
             <button
               key={index}
               onClick={() => handleClick(index + 1)}
-              className={`skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 hover:text-white hover:before:bg-primary ${index + 1 === currentPage ? "text-white before:bg-primary" : ""}`}
+              className={`skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 before:bg-white hover:text-white hover:before:bg-primary ${index + 1 === currentPage ? "text-white before:!bg-primary" : ""}`}
             >
               {index + 1}
             </button>
           ))}
           <button
-            className="skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 hover:text-white hover:before:bg-primary"
+            className="skew-btn btn-transparent px-4 py-2 duration-75 before:border-gray-300 before:bg-white hover:text-white hover:before:bg-primary"
             onClick={() => {
               if (currentPage < totalViewInPage) {
                 setCurrentPage(currentPage + 1);

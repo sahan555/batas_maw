@@ -41,7 +41,7 @@ const VideoSection = ({ data: video }) => {
             <div className="btn-wrapper pt-8 text-center">
               <Link
                 className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-                to="/"
+                to="/gallery"
               >
                 View All Videos
               </Link>

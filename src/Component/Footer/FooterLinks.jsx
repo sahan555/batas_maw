@@ -24,7 +24,7 @@ const FooterLinks = ({ title, data, showList, className,slug }) => {
       {data.length > showList && (
         <div className="btn-wrapper">
           <Link
-            to="/"
+            to={slug}
             className="btn-transparent skew-btn inline-block w-full  max-w-[140px] py-1 text-center text-sm uppercase text-white hover:before:bg-white hover:text-secondary"
           >
             more

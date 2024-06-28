@@ -6,7 +6,9 @@ import "./index.css";
 import App from "./App";
 import { Layout } from "./Global/Context/Layout";
 import { BrowserRouter } from "react-router-dom";
+import smoothscroll from "smoothscroll-polyfill"; // Import the polyfill
 
+smoothscroll.polyfill();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,5 +18,5 @@ root.render(
         <App />
       </BrowserRouter>
     </Layout>
-   </React.StrictMode>
+  </React.StrictMode>,
 );

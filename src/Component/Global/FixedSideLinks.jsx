@@ -4,6 +4,7 @@ import { ImLocation } from "react-icons/im";
 import { BiSupport } from "react-icons/bi";
 import { BsTruck } from "react-icons/bs";
 import { MdFacebook } from "react-icons/md";
+import { FaArrowUp } from "react-icons/fa6";
 
 const FixedSideLinks = ({ settings }) => {
   const sideLinksData = [
@@ -37,10 +38,15 @@ const FixedSideLinks = ({ settings }) => {
       icon: "/assets/images/icons/social/whatsapp.svg",
     },
     {
-      link:settings?.linkedin,
+      link: settings?.linkedin,
       icon: "/assets/images/icons/social/linkedin.svg",
     },
   ];
+  const handleScrollUp = (e) => {
+    e.preventDefault();
+    window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="side-links fixed right-0 top-[50%] z-10 flex translate-y-[-50%] items-center text-sm text-white">
       <ul
@@ -63,7 +69,7 @@ const FixedSideLinks = ({ settings }) => {
             </div>
           </li>
         ))}
-        <li className="flex w-[50px] group-hover:w-full">
+        <li className="flex w-[50px] border-b border-white border-opacity-20 group-hover:w-full">
           <ul className="social-icon flex h-0 w-0 flex-grow gap-4 opacity-0 duration-0 group-hover:h-auto group-hover:w-auto group-hover:px-6 group-hover:py-2 group-hover:opacity-100">
             {socialData?.map((item, index) => (
               <li key={index}>
@@ -79,6 +85,18 @@ const FixedSideLinks = ({ settings }) => {
           </ul>
           <div className="icon  h-[50px] w-[50px] bg-[#1C1C1C] text-primary">
             <MdFacebook className="mx-auto h-full w-[26px]" />
+          </div>
+        </li>
+        <li className="relative z-[2] flex w-[50px] items-center group-hover:w-full">
+          <Link
+            to={""}
+            onClick={handleScrollUp}
+            className=" h-0 w-0 flex-grow capitalize opacity-0 duration-0 hover:text-primary group-hover:h-auto group-hover:w-auto group-hover:px-6 group-hover:py-3 group-hover:opacity-100"
+          >
+            Back To Top
+          </Link>
+          <div className="icon relative h-[50px] w-[50px] bg-[#1C1C1C] text-primary">
+            <FaArrowUp className="mx-auto h-full w-[18px]" />
           </div>
         </li>
       </ul>

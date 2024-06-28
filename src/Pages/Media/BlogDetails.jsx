@@ -58,7 +58,7 @@ const BlogDetails = () => {
                 <div className="btn-wrapper pt-6 text-center">
                     <Link
                       className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-                      to="/vehicles"
+                      to="/blog"
                     >
                       View All Blogs
                     </Link>

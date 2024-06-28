@@ -211,7 +211,7 @@ export const footerLinks = [
     title: "media",
     list: [
       { name: "EVENT & NEWS", slug: "/events" },
-      { name: "PRESS AND MEDIA", slug: "/" },
+      { name: "PRESS AND MEDIA", slug: "/media" },
       { name: "Blogs", slug: "/blog" },
     ],
   },
@@ -262,7 +262,7 @@ export const extralink2 = [
   },
   {
     name: "SCHEMES",
-    slug: "/",
+    slug: "/media",
   },
   {
     name: "TESTIMONIAL",
