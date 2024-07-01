@@ -5,10 +5,8 @@ import BranchForm from "../../Component/About/Branches/BranchForm";
 import BranchTabs from "../../Component/About/Branches/BranchTabs";
 import { useLayoutData } from "../../Global/Context/Layout";
 import useGet from "../../Global/Apis/useGet";
-import Loading from "../../Component/Global/Loading";
 const Branches = () => {
-  const { data: servicesData, isLoading: servicesLoading } =
-    useGet("provinces-services");
+  const { data: servicesData } = useGet("provinces-services");
   const mapRef = useRef(null);
   const { coordinate, setCoordinate } = useLayoutData();
   const [selectedLocation, setSelectedLocation] = useState({
@@ -37,9 +35,7 @@ const Branches = () => {
     () => filterProvincesWithServices(servicesData),
     [servicesData],
   );
-  if(servicesLoading){
-    return <Loading/>
-  }
+
   return (
     <>
       <Breadcrumbs />
@@ -58,9 +54,7 @@ const Branches = () => {
             <div className="side-padding">
               <div className="container mx-auto">
                 <div className="heading-wrapper mb-7 text-center">
-                  <h4 className="heading">
-                    Covering Expanse: Our Network
-                  </h4>
+                  <h4 className="heading">Covering Expanse: Our Network</h4>
                 </div>
                 <BranchForm
                   selectedLocation={selectedLocation}

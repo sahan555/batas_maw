@@ -1,21 +1,16 @@
 import React from "react";
 import useGetById from "../../Global/Apis/useGetById";
-import Loading from "../../Component/Global/Loading";
 import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
-import useGet from "../../Global/Apis/useGet";
-import BlogCard from "../../Component/Global/BlogCard";
+// import BlogCard from "../../Component/Global/BlogCard";
 import { CgSoftwareDownload } from "react-icons/cg";
+import useGet from "../../Global/Apis/useGet";
 
 const MediaDetails = () => {
   const { slug } = useParams();
-  const { data: details, isLoading } = useGetById("blogs", slug);
+  const { data: details } = useGetById("blogs", slug);
   const { data: recent } = useGet("recent-blogs");
-  console.log(details);
-  if (isLoading || !details) {
-    return <Loading />;
-  }
 
   return (
     <>

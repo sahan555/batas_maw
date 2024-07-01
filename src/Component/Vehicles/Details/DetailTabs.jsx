@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { vehicleTabs } from "../../../Global/Datas/VehicleData";
-import ObjectTable from "../../Global/ObjectTable";
+// import ObjectTable from "../../Global/ObjectTable";
 import useMediaQuery from "../../../Global/Hooks/useMediaQuery";
 import { FaChevronDown } from "react-icons/fa6";
 import SimpleTable from "../../Global/SimpleTable";

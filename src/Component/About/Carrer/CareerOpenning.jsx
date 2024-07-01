@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { careerPost } from "../../../Global/Datas/CareerData";
-import { HiArrowLongRight } from "react-icons/hi2";
+// import { careerPost } from "../../../Global/Datas/CareerData";
+// import { HiArrowLongRight } from "react-icons/hi2";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import CareerForm from "../../Global/CareerForm";
 import { forwardRef } from "react";
-import useGet from "../../../Global/Apis/useGet";
 import HtmlParse from "../../Global/HtmlParse";
 import WhiteBox from "../../Global/WhiteBox";
+import useGet from "../../../Global/Apis/useGet";
 
 const CareerOpenning = forwardRef((_, ref) => {
   const { data: career } = useGet("careers");

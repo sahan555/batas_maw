@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import useMediaQuery from "../../Global/Hooks/useMediaQuery";
 import { FaChevronDown } from "react-icons/fa6";
 import useGet from "../../Global/Apis/useGet";
-import useGetById from "../../Global/Apis/useGetById";
+// import useGetById from "../../Global/Apis/useGetById";
 
 const ProductsTab = () => {
   const { data: cate } = useGet("categories");

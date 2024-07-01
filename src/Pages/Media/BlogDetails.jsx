@@ -1,20 +1,15 @@
 import React from "react";
 import useGetById from "../../Global/Apis/useGetById";
-import Loading from "../../Component/Global/Loading";
 import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
-import useGet from "../../Global/Apis/useGet";
 import BlogCard from "../../Component/Global/BlogCard";
+import useGet from "../../Global/Apis/useGet";
 
 const BlogDetails = () => {
   const { slug } = useParams();
-  const { data: details, isLoading } = useGetById("blogs", slug);
+  const { data: details } = useGetById("blogs", slug);
   const { data: recent } = useGet("recent-blogs");
-  console.log(details);
-  if (isLoading || !details) {
-    return <Loading />;
-  }
 
   return (
     <>
@@ -49,20 +44,22 @@ const BlogDetails = () => {
                 </div>
                 <div className="blog-groups grid grid-cols-2 gap-6">
                   {recent?.slice(0, 2)?.map((item, index) => (
-                    <div className="col-span-full sm:col-span-1 lg:col-span-full" key={index}>
+                    <div
+                      className="col-span-full sm:col-span-1 lg:col-span-full"
+                      key={index}
+                    >
                       <BlogCard data={item} slug={"/blog/"} />
                     </div>
                   ))}
-                  
                 </div>
                 <div className="btn-wrapper pt-6 text-center">
-                    <Link
-                      className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
-                      to="/blog"
-                    >
-                      View All Blogs
-                    </Link>
-                  </div>
+                  <Link
+                    className="btn-transparent skew-btn inline-block px-8 py-2 uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
+                    to="/blog"
+                  >
+                    View All Blogs
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

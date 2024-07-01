@@ -1,6 +1,6 @@
 import React from "react";
 import { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 // import { lazy } from "react";
 import Loading from "./Component/Global/Loading";
 import Error from "./Pages/Error";

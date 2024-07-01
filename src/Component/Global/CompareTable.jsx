@@ -1,5 +1,5 @@
 import React from "react";
-import { object } from "yup";
+// import { object } from "yup";
 
 export const CompareTable = ({ children }) => {
   return (

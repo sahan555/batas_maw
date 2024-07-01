@@ -4,7 +4,7 @@ import { Formik, Form, Field } from "formik";
 import usePost from "../../Global/Apis/UsePost";
 const ContactForm = () => {
   const [loader, setLoader] = useState(false);
-  const { post, postData } = usePost("feedback-store");
+  const { post } = usePost("feedback-store");
   const initialValues = {
     name: "",
     email: "",

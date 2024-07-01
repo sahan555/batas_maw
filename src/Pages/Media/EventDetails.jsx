@@ -1,21 +1,15 @@
 import React from "react";
 import useGetById from "../../Global/Apis/useGetById";
-import Loading from "../../Component/Global/Loading";
 import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
-import useGet from "../../Global/Apis/useGet";
 import BlogCard from "../../Component/Global/BlogCard";
+import useGet from "../../Global/Apis/useGet";
 
 const EventDetails = () => {
   const { slug } = useParams();
-  const { data: details, isLoading } = useGetById("events", slug);
+  const { data: details } = useGetById("events", slug);
   const { data: recent } = useGet("recent-events");
-  console.log(details);
-  if (isLoading || !details) {
-    return <Loading />;
-  }
-
   return (
     <>
       <Breadcrumbs data={details?.name} />

@@ -6,28 +6,23 @@ import CompareDetailsNTabs from "../../Component/Vehicles/Compare/CompareDetails
 import { useParams } from "react-router-dom";
 import useGetById from "../../Global/Apis/useGetById";
 import useGet from "../../Global/Apis/useGet";
-import Loading from "../../Component/Global/Loading";
 
 const Compare = () => {
   const { slug } = useParams();
-  const { data: details, } = useGetById(
+  const { data: details } = useGetById(
     "products-single",
     slug,
   );
-  console.log(details)
-  const { data: cate, isLoading: cateLoading } = useGet("categories");
+  const { data: cate } = useGet("categories");
 
   const similarItems = useMemo(() => {
     if (!cate || !details) return [];
 
-    return cate.find((item) => item?.name === details?.category_name);
+    return cate?.find((item) => item?.name === details?.category_name);
   }, [cate, details]);
 
   const [compareWith, setCompareWith] = useState("");
 
-  if (cateLoading) {
-    return <Loading />;
-  }
 
   return (
     <>

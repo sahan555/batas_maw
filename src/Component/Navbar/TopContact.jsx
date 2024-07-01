@@ -1,7 +1,7 @@
 import React from "react";
 import { MdLocalPhone, MdOutlineMailOutline } from "react-icons/md";
-import useGet from "../../Global/Apis/useGet";
 import { Link } from "react-router-dom";
+import useGet from "../../Global/Apis/useGet";
 
 const TopContact = ({ classname }) => {
   const { data: settings } = useGet("settings");

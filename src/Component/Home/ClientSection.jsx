@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import { clientData } from "../../Global/Datas/HomeData";
-import useGet from "../../Global/Apis/useGet";
 import HtmlParse from "../Global/HtmlParse";
+import useGet from "../../Global/Apis/useGet";
 
 const ClientSection = ({staticData}) => {
 

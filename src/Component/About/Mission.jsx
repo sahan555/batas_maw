@@ -1,5 +1,5 @@
 import React from "react";
-import { MissionVision } from "../../Global/Datas/AboutData";
+// import { MissionVision } from "../../Global/Datas/AboutData";
 import useGet from "../../Global/Apis/useGet";
 
 const Mission = () => {

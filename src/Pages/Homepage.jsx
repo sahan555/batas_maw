@@ -10,9 +10,9 @@ import VideoSection from "../Component/Home/VideoSection";
 import FaqFeedBackSection from "../Component/Home/FaqFeedBackSection";
 import { testiData } from "../Global/Datas/HomeData";
 import MapSection from "../Component/Home/MapSection";
-import useGet from "../Global/Apis/useGet";
 import useScrollToHash from "../Global/Hooks/useScrollToHash";
 import GallerySection from "../Component/Home/GallerySection";
+import useGet from "../Global/Apis/useGet";
 
 const Homepage = () => {
   const { data: banners } = useGet("banners");
@@ -30,7 +30,7 @@ const Homepage = () => {
         <HelpSection />
         <MapSection />
         <NewsEvent />
-        <ClientSection staticData={staticData}/>
+        <ClientSection staticData={staticData} />
         {testimonalsLoading ? (
           ""
         ) : (
@@ -42,7 +42,7 @@ const Homepage = () => {
           />
         )}
         <EmiCalculator />
-        <VideoSection data={galleries?.video}  staticData={staticData}/>
+        <VideoSection data={galleries?.video} staticData={staticData} />
         <GallerySection data={galleries?.gallery} />
         <FaqFeedBackSection />
       </main>

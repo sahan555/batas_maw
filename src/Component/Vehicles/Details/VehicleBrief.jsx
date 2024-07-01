@@ -1,10 +1,10 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import { Gallery, GalleryBox, GalleryLink } from "../../Global/Gallery";
 import { CustomNextArrow, CustomPrevArrow } from "../../Global/SliderArrows";
 import { Link } from "react-router-dom";
 import HtmlParse from "../../Global/HtmlParse";
-import useScrollToElement from "../../../Global/Hooks/useScrollToElement";
+// import useScrollToElement from "../../../Global/Hooks/useScrollToElement";
 
 const VehicleBrief = ({ data, reviewScroll, mapScroll }) => {
   const [bigNav, setBigNav] = useState(null);
@@ -91,12 +91,18 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll }) => {
                       slidesToShow: 3,
                     },
                   },
+                  {
+                    breakpoint: 640, // For devices with width <= 768px
+                    settings: {
+                      slidesToShow: 2,
+                    },
+                  },
                 ]}
               >
                 {data?.images?.map((item, index) => (
                   <div key={index}>
-                    <figure className="border border-solid border-[#dddddd]">
-                      <img src={item?.image} alt={data?.name} />
+                    <figure className="border border-solid border-[#dddddd] h-[111px]">
+                      <img src={item?.image} alt={data?.name} className="object-scale-down object-center" />
                     </figure>
                   </div>
                 ))}
@@ -118,7 +124,7 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll }) => {
                       className="col-span-auto flex flex-col xl:flex-row xl:items-center xl:gap-5"
                       key={item?.id}
                     >
-                      <div className="data-li w-[140px] items-center gap-2 xl:flex">
+                      <div className="data-li w-[140px] items-center gap-2 xl:flex flex-none">
                         {/* <figure className="h-[40px] w-[40px] flex-none text-left">
                           <img
                             src={item?.icon}

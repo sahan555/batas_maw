@@ -7,7 +7,7 @@ const ScrollToTop = () => {
   useEffect(() => {
     const handleScroll = () => {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      console.log("Scrolled to top");
+      // console.log("Scrolled to top");
     };
 
     const timer = setTimeout(handleScroll, 100);

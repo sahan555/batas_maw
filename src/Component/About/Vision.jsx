@@ -1,5 +1,5 @@
 import React from "react";
-import { MissionVision } from "../../Global/Datas/AboutData";
+// import { MissionVision } from "../../Global/Datas/AboutData";
 import HtmlParse from "../Global/HtmlParse";
 
 const Vision = ({ data }) => {

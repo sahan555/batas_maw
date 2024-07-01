@@ -75,7 +75,7 @@ const Map = ({ city, coordinate }) => {
       setPosition([28.3780464, 83.9999901]);
       setZoom(7.5);
     }
-  }, [city, coordinate]);
+  }, [city, coordinate,cityGeo?.service]);
 
   useEffect(() => {
     if (mapRef.current) {

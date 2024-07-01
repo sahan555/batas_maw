@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import Breadcrumbs from "../Component/Global/BreadCrumbs";
-import useGet from "../Global/Apis/useGet";
 import HtmlParse from "../Component/Global/HtmlParse";
 import Pagination from "../Component/Global/Pagination";
+import useGet from "../Global/Apis/useGet";
 
 const Testimonials = () => {
   const [dataFromChild, setDataFromChild] = useState([]);

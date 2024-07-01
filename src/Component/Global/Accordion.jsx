@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { faqData } from "../../Global/Datas/HomeData";
-import useGet from "../../Global/Apis/useGet";
 import HtmlParse from "./HtmlParse";
+import useGet from "../../Global/Apis/useGet";
 
 const Accordion = ({ defaultIcon, expandIcon, view }) => {
   const [expandedPanel, setExpandedPanel] = useState(null);

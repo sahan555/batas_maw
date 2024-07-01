@@ -27,7 +27,11 @@ const FaqFeedBackSection = () => {
                 <div className="heading-wrapper mb-5">
                   <h2 className="heading">faqs</h2>
                 </div>
-                <Accordion defaultIcon={<FaPlus />} expandIcon={<FaMinus />} view={4} />
+                <Accordion
+                  defaultIcon={<FaPlus />}
+                  expandIcon={<FaMinus />}
+                  view={4}
+                />
                 <div className="faq-ques py-6">
                   <h4 className="mb-4">Feel free to ask your question</h4>
                   <Formik
@@ -52,9 +56,9 @@ const FaqFeedBackSection = () => {
                           />
                           <button
                             type="submit"
-                            className="btn-full px-6 py-1 text-sm font-normal before:bg-secondary hover:opacity-90"
+                            className={`${loader && "pointer-events-none"} btn-full px-6 py-1 text-sm font-normal before:bg-secondary hover:opacity-90`}
                           >
-                            Ask
+                            {loader ? "Submitting..." : "Ask"}
                           </button>
                         </div>
                       </Form>

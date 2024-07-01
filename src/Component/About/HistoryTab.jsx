@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { TabList, TabPanel, Tabs } from "react-tabs";
 import Slider from "react-slick";
-import { AboutHistory } from "../../Global/Datas/AboutData";
+// import { AboutHistory } from "../../Global/Datas/AboutData";
 import { HiArrowLongLeft, HiArrowLongRight } from "react-icons/hi2";
 import { CustomTab } from "../Global/CustomTab";
-import useGet from "../../Global/Apis/useGet";
 import HtmlParse from "../Global/HtmlParse";
+import useGet from "../../Global/Apis/useGet";
 const HistoryTab = () => {
   const { data: history } = useGet("histories");
   const [tabIndex, setTabIndex] = useState(0);

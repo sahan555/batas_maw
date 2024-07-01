@@ -1,11 +1,11 @@
 import React from "react";
 import Slider from "react-slick";
-import { NewsSlider, eventDatas } from "../../Global/Datas/HomeData";
+// import { NewsSlider, eventDatas } from "../../Global/Datas/HomeData";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import useGet from "../../Global/Apis/useGet";
 import HtmlParse from "../Global/HtmlParse";
 import { Logo } from "../../Global/Datas/Images";
+import useGet from "../../Global/Apis/useGet";
 
 const NewsEvent = () => {
   const { data: blogs } = useGet("blogs");

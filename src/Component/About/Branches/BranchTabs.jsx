@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
-import useGet from "../../../Global/Apis/useGet";
+// import useGet from "../../../Global/Apis/useGet";
 import { Link } from "react-router-dom";
 
 const filterProvincesWithServices = (mapData) => {

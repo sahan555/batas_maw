@@ -2,7 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
-import { TfiGallery } from "react-icons/tfi";
 import { BsFiletypePdf } from "react-icons/bs";
 import HtmlParse from "./HtmlParse";
 
@@ -21,7 +20,7 @@ const ProductCard = ({
     dots: true,
     arrows: false,
     infinite: false,
-    autoplay: false,
+    autoplay: true,
     fade: true,
     speed: 500,
     slidesToShow: 1,
@@ -37,26 +36,28 @@ const ProductCard = ({
       >
         <div className={`product-box h-full`}>
           {heading && (
-            <article className="py-3 bg-light-grey bg-opacity-65">
+            <article className="bg-light-grey bg-opacity-65 py-3">
               <h4 className="line-clamp-1 px-2 text-center text-xl font-medium text-black">
                 {title}
               </h4>
             </article>
           )}
           {slider ? (
-            <Slider {...ProductSlider} className="product-slider-img">
-              {image?.map((item, index) => (
-                <div key={index}>
-                  <figure className="h-[298px]">
-                    <img
-                      src={item?.image}
-                      alt={title}
-                      className="object-cover object-center"
-                    />
-                  </figure>
-                </div>
-              ))}
-            </Slider>
+            <Link to={`/vehicles/${slug}`}>
+              <Slider {...ProductSlider} className="product-slider-img">
+                {image?.map((item, index) => (
+                  <div key={index}>
+                    <figure className="h-[298px]">
+                      <img
+                        src={item?.image}
+                        alt={title}
+                        className="object-cover object-center"
+                      />
+                    </figure>
+                  </div>
+                ))}
+              </Slider>
+            </Link>
           ) : (
             <figure className="asdsa h-[298px]">
               <img
@@ -75,11 +76,11 @@ const ProductCard = ({
                   to={`/vehicles/${slug}`}
                   className="cursor-pointer hover:text-primary"
                 >
-                  <h4 className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black  hover:text-primary hover:underline duration-200">
+                  <h4 className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black  duration-200 hover:text-primary hover:underline">
                     {title}
                   </h4>
                 </Link>
-                <div className="line-clamp-3 text-sm tracking-wide text-grey min-h-[60px]">
+                <div className="line-clamp-3 min-h-[60px] text-sm tracking-wide text-grey">
                   <HtmlParse data={desc} />
                 </div>
               </article>

@@ -8,8 +8,6 @@ import useGet from "../../Global/Apis/useGet";
 const Vehicles = () => {
   const { data: cate } = useGet("categories");
   const { data: staticData} = useGet("static-content");
-
-
   return (
     <>
       <Breadcrumbs />

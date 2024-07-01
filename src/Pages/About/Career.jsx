@@ -7,11 +7,11 @@ import GetReturn from "../../Component/About/Carrer/GetReturn";
 import CareerOpenning from "../../Component/About/Carrer/CareerOpenning";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import { useRef } from "react";
-import useGet from "../../Global/Apis/useGet";
 import useScrollToElement from "../../Global/Hooks/useScrollToElement";
+import useGet from "../../Global/Apis/useGet";
 
 const Career = () => {
-  const { data: about} = useGet("static-content");
+  const { data: about } = useGet("static-content");
 
   const { data: galleries } = useGet("galleries");
 

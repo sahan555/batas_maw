@@ -1,19 +1,16 @@
 import React, { useRef, useState } from "react";
 import Breadcrumbs from "../Component/Global/BreadCrumbs";
-import useGet from "../Global/Apis/useGet";
 import { Gallery, GalleryBox, GalleryLink } from "../Component/Global/Gallery";
 import Pagination from "../Component/Global/Pagination";
-import Loading from "../Component/Global/Loading";
+import useGet from "../Global/Apis/useGet";
 
 const GalleryPage = () => {
   const [dataFromChild, setDataFromChild] = useState([]);
   const [dataVideo, setDataVideo] = useState([]);
   const videoRef = useRef(null);
   const galleryRef = useRef(null);
-  const { data: galleries ,isLoading} = useGet("galleries");
-  if(isLoading){
-    return <Loading/>
-  }
+  const { data: galleries} = useGet("galleries");
+
   return (
     <>
       <Breadcrumbs />

@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { productData } from "../../../Global/Datas/HomeData";
+// import { productData } from "../../../Global/Datas/HomeData";
 import ProductCard from "../../Global/ProductCard";
 import { Link } from "react-router-dom";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
@@ -56,17 +56,17 @@ const SimilarVehicles = ({ data }) => {
             <Slider {...ProductSlider} className="custom-slider w-full">
               {similarItems?.products?.map((item, index) => (
                 <React.Fragment key={index}>
-                   <ProductCard
-                      key={index}
-                      index={index}
-                      col={false}
-                      slider={true}
-                      title={item?.name}
-                      image={item?.images ? item?.images : item?.image}
-                      desc={item?.description}
-                      slug={item?.slug}
-                      download={item?.pdf}
-                    />
+                  <ProductCard
+                    key={index}
+                    index={index}
+                    col={false}
+                    slider={true}
+                    title={item?.name}
+                    image={item?.images ? item?.images : item?.image}
+                    desc={item?.description}
+                    slug={item?.slug}
+                    download={item?.pdf}
+                  />
                 </React.Fragment>
               ))}
             </Slider>

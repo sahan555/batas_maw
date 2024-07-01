@@ -6,7 +6,8 @@ const Pagination = forwardRef(({ data, view, setDataFromChild }, ref) => {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-  const [viewProduct, setViewProduct] = useState(view);
+  // const [viewProduct, setViewProduct] = useState(view);
+  const viewProduct = view;
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalProduct = data?.length;

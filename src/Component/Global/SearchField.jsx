@@ -137,7 +137,7 @@ const SearchField = ({ data, slug, compare, title }) => {
         }
       }
     }
-  }, [highlightedIndex]);
+  }, [highlightedIndex,filteredData?.length]);
 
   useEffect(() => {
     if (showDropdown) {
