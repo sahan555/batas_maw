@@ -1,7 +1,7 @@
 import { lazy } from "react";
 
 // Function to create a lazy-loaded component with a 300ms delay
-const lazyWithDelay = (importFunc, delay = 300) => {
+const lazyWithDelay = (importFunc, delay = 0) => {
   return lazy(() => {
     return Promise.all([
       importFunc(),

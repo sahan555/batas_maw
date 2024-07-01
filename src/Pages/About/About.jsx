@@ -18,7 +18,7 @@ const About = () => {
     <>
       <Breadcrumbs />
       <main className="about-page">
-        <section className="about-banner relative z-0  bg-primary">
+        <section className="about-banner relative z-0  bg-primary bg-opacity-15">
           <figure className="inset-0 z-[-1] h-[300px] lg:absolute lg:h-full">
             <img
               src={about?.about_company_overview_image}
