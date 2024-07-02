@@ -10,11 +10,11 @@ const HelpSection = ({ data }) => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 gap-[0.35rem] lg:grid-cols-6">
             <div className="col-span-full lg:col-span-4">
-              <figure className="h-full">
+              <figure className="lg:h-[424px] h-full">
                 <img
-                  src="./assets/images/flow.png"
+                  src={data?.home_helpline_static_image}
                   alt=""
-                  className="object-fill"
+                  className="object-contain object-center"
                 />
               </figure>
             </div>
@@ -25,13 +25,13 @@ const HelpSection = ({ data }) => {
                 </h4>
                 {help?.map((item, index) => (
                   <div
-                    className="help-group min-h-auto xl:min-h-[200px]  [&:not(:last-child)]:mb-2"
+                    className="help-group min-h-auto xl:min-h-[180px] [&:not(:last-child)]:mb-2"
                     key={index}
                   >
                     <h5 className="stripe bg-light-grey bg-opacity-85 p-6 py-1 font-medium text-secondary capitalize">
                       {item.title}
                     </h5>
-                    <div className="help-box p-6 ">
+                    <div className="help-box px-6 py-4 ">
                       <div className="flex flex-wrap justify-between font-medium capitalize ">
                         <div className="help-number">
                           <ul>

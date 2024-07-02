@@ -23,11 +23,16 @@ import FixedSideLinks from "../Global/FixedSideLinks";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useGet from "../../Global/Apis/useGet";
+import PopUp from "../Global/PopUp";
 
 const Footer = () => {
   const { data: cate } = useGet("categories");
   const { data: settings } = useGet("settings");
 
+  const phoneData = {
+    value: ["01 - 4520025", "4541031", "4536532", settings?.phone],
+    path: "tel:",
+  };
   return (
     <>
       <ToastContainer
@@ -35,6 +40,7 @@ const Footer = () => {
         autoClose={5000}
         hideProgressBar={false}
       />
+
       <FixedSideLinks settings={settings} />
       <footer className="bg-secondary pt-[80px] text-sm text-white">
         <div className="side-padding">
@@ -54,33 +60,19 @@ const Footer = () => {
                   <li className="relative py-2 pl-[40px]">
                     <MdLocalPhone className="absolute bottom-0 left-0 top-0 m-auto h-[30px] w-[30px] rounded-full bg-green p-1 text-center text-lg text-white" />
                     <div>
-                      <Link
-                        to="tel:+977014520025"
-                        className="mr-2 inline-block hover:underline"
-                      >
-                        01 - 4520025
-                      </Link>
-                      /
-                      <Link
-                        to="tel:+977014541031"
-                        className="mx-2 inline-block hover:underline"
-                      >
-                        4541031
-                      </Link>
-                      /
-                      <Link
-                        to="tel:+977014536532"
-                        className="mx-2 inline-block hover:underline"
-                      >
-                        4536532
-                      </Link>
-                      /
-                      <Link
-                        to={`tel:${settings?.phone}`}
-                        className="ml-2 inline-block hover:underline"
-                      >
-                        {settings?.phone}
-                      </Link>
+                      {phoneData?.value?.map((item, index) => (
+                        <React.Fragment key={index}>
+                          <Link
+                            to={`${phoneData?.path}${item}`}
+                            className="inline-block hover:underline"
+                          >
+                            {item}
+                          </Link>
+                          {phoneData?.value?.length > index + 1 && (
+                            <span className="mx-2 opacity-75">/</span>
+                          )}
+                        </React.Fragment>
+                      ))}
                     </div>
                   </li>
                   <li className="relative py-2 pl-[40px]">
@@ -117,14 +109,18 @@ const Footer = () => {
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">
                 {cate?.slice(0, 3)?.map((item, index) => (
-                  <FooterLinks
-                    title={item?.name}
-                    data={item?.products}
-                    showList={3}
-                    className="mb-5"
-                    key={index}
-                    slug={"/vehicles/"}
-                  />
+                  <React.Fragment key={index}>
+                    {item?.products.length > 0 && (
+                      <FooterLinks
+                        title={item?.name}
+                        data={item?.products}
+                        showList={3}
+                        className="mb-5"
+                        key={index}
+                        slug={"/vehicles/"}
+                      />
+                    )}
+                  </React.Fragment>
                 ))}
 
                 {/* <FooterLinks data={extralink} title={false} /> */}

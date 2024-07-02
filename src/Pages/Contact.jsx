@@ -76,7 +76,6 @@ const Contact = () => {
                               >
                                 {phone}
                               </Link>
-                              {console.log(phone?.length)}
                               {(item?.value?.length ) > (index + 1) && <span className="mx-2 text-black opacity-75">/</span>}
                             </>
                           ))

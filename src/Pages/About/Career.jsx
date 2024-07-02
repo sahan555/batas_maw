@@ -14,6 +14,7 @@ const Career = () => {
   const { data: about } = useGet("static-content");
 
   const { data: galleries } = useGet("galleries");
+  const { data: getReturn } = useGet("career-get-return");
 
   const careerOpeningRef = useRef(null);
   const scrollToCareerOpening = useScrollToElement(careerOpeningRef);
@@ -101,7 +102,7 @@ const Career = () => {
           </div>
         </div>
         <CareerOpenning ref={careerOpeningRef} />
-        <GetReturn />
+        <GetReturn data={getReturn} about={about} />
       </section>
     </>
   );

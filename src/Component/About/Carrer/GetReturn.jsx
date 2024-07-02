@@ -1,7 +1,8 @@
 import React from "react";
 import { careerReturn } from "../../../Global/Datas/CareerData";
+import HtmlParse from "../../Global/HtmlParse";
 
-const GetReturn = () => {
+const GetReturn = ({ data ,about}) => {
   return (
     <div className="career-return relative">
       <div className="side-padding">
@@ -13,14 +14,19 @@ const GetReturn = () => {
               </h3>
             </div>
             <div className="return-group flex flex-col gap-9">
-              {careerReturn.list.map((item, index) => (
-                <div className="return-box flex flex-col sm:flex-row gap-2 sm:gap-6" key={index}>
+              {data?.map((item, index) => (
+                <div
+                  className="return-box flex flex-col gap-2 sm:flex-row sm:gap-6"
+                  key={index}
+                >
                   <figure className="h-[60px] w-[60px] flex-none">
-                    <img src={item.img} alt={item.title} />
+                    <img src={item.image} alt={item.title} />
                   </figure>
                   <article>
                     <h5 className="heading mb-2 !text-lg">{item.title} </h5>
-                    <p className="text-sm leading-6 text-grey">{item.desc}</p>
+                    <div className="text-sm leading-6 text-grey first-letter:capitalize">
+                      <HtmlParse data={item.description} />
+                    </div>
                   </article>
                 </div>
               ))}
@@ -30,7 +36,7 @@ const GetReturn = () => {
       </div>
       <figure className=" absolute inset-0 z-[-1]">
         <img
-          src={careerReturn.banner}
+          src={about?.career_get_return_banner_image}
           alt="Career"
           className="object-cover object-center"
         />
