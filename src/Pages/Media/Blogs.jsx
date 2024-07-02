@@ -6,11 +6,11 @@ import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
 
 const Blogs = () => {
-  const {data} = useGet("blogs");
+  const { data } = useGet("blogs");
   const [dataFromChild, setDataFromChild] = useState([]);
   const blogRef = useRef(null);
 
-  console.log(data)
+  console.log(data);
   return (
     <>
       <Breadcrumbs />

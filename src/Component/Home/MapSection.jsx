@@ -5,9 +5,10 @@ import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useLayoutData } from "../../Global/Context/Layout";
 import useGet from "../../Global/Apis/useGet";
+import Loading from "../Global/Loading";
 
 const MapSection = forwardRef((props, ref) => {
-  const { data: map } = useGet("services");
+  const { data: map, isLoading } = useGet("services");
   const { city, setCity, coordinate, setCoordinate } = useLayoutData();
 
   const handleCityInput = (event) => {
@@ -67,7 +68,9 @@ const MapSection = forwardRef((props, ref) => {
       </div>
     </div>
   );
-
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
   return (
     <section className="map-section " ref={ref}>
       <div className="grid grid-cols-11">

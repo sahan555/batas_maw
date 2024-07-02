@@ -1,7 +1,9 @@
 import React from "react";
-import { Helpline } from "../../Global/Datas/HomeData";
+import useGet from "../../Global/Apis/useGet";
+import { LuPhoneCall } from "react-icons/lu";
 
-const HelpSection = () => {
+const HelpSection = ({ data }) => {
+  const { data: help } = useGet("helpline");
   return (
     <section className="h-help bg-[#bcbcbe]">
       <div className="side-padding">
@@ -21,12 +23,12 @@ const HelpSection = () => {
                 <h4 className="bg-primary p-6 py-2.5 font-medium text-white">
                   24x7 helpline
                 </h4>
-                {Helpline.map((item, index) => (
+                {help?.map((item, index) => (
                   <div
                     className="help-group min-h-auto xl:min-h-[200px]  [&:not(:last-child)]:mb-2"
                     key={index}
                   >
-                    <h5 className="stripe bg-light-grey bg-opacity-85 p-6 py-1 font-medium text-secondary">
+                    <h5 className="stripe bg-light-grey bg-opacity-85 p-6 py-1 font-medium text-secondary capitalize">
                       {item.title}
                     </h5>
                     <div className="help-box p-6 ">
@@ -39,7 +41,7 @@ const HelpSection = () => {
                                 className="flex flex-wrap items-center sm:flex-nowrap [&:not(:last-child)]:mb-2"
                               >
                                 <span className="mr-2 text-primary">
-                                  {number.icon}
+                                  <LuPhoneCall />
                                 </span>
                                 {number.name}
                                 <a

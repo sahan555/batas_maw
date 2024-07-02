@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { baseUrl } from "./BaseUrl";
 
+let requestMap = {};
+
 const useGet = (url) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -12,17 +14,21 @@ const useGet = (url) => {
     setError(null);
 
     try {
-      const response = await axios.get(`${baseUrl}${url}`);
-      const fetchedData = response?.data?.data;
-      setData((prevData) =>
-        JSON.stringify(prevData) !== JSON.stringify(fetchedData)
-          ? fetchedData
-          : prevData
-      );
+      if (requestMap[url]) {
+        // console.log(`Waiting for existing request for ${url}`);
+        const existingPromise = await requestMap[url];
+        setData(existingPromise.data.data);
+      } else {
+        const newPromise = axios.get(`${baseUrl}${url}`);
+        requestMap[url] = newPromise;
+        const response = await newPromise;
+        setData(response.data.data);
+      }
     } catch (err) {
       setError(err);
     } finally {
       setIsLoading(false);
+      delete requestMap[url];
     }
   }, [url]);
 
@@ -32,5 +38,4 @@ const useGet = (url) => {
 
   return { data, isLoading, error };
 };
-
 export default useGet;

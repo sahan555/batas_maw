@@ -27,7 +27,7 @@ const Homepage = () => {
       <main className="home">
         <HeroSection banners={banners} />
         <ProductsTab />
-        <HelpSection />
+        <HelpSection data={staticData} />
         <MapSection />
         <NewsEvent />
         <ClientSection staticData={staticData} />
