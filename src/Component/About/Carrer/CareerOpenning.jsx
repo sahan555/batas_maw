@@ -10,7 +10,6 @@ import useGet from "../../../Global/Apis/useGet";
 
 const CareerOpenning = forwardRef((_, ref) => {
   const { data: career } = useGet("careers");
-  console.log(career);
   const [jobId, setJobId] = useState("");
   const careerRef = useRef(null);
   const scrollToCareerOpening = () => {

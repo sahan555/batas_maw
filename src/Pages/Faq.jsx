@@ -2,10 +2,16 @@ import React from "react";
 import Breadcrumbs from "../Component/Global/BreadCrumbs";
 import Accordion from "../Component/Global/Accordion";
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import MetaHelmet from "../Component/Global/MetaHelmet";
+import { useLayoutData } from "../Global/Context/Layout";
 
 const Faq = () => {
+  const { settings } = useLayoutData();
+
   return (
     <>
+      <MetaHelmet title={`Frequently Asked Questions | ${settings?.meta_title}`} />
+
       <Breadcrumbs />
       <section className="faq-page section-break  bg-light-grey bg-opacity-40">
         <div className="side-padding">

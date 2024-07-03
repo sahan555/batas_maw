@@ -19,7 +19,7 @@ const ProductCard = ({
   var ProductSlider = {
     dots: true,
     arrows: false,
-    infinite: false,
+    infinite: true,
     autoplay: true,
     fade: true,
     speed: 500,
@@ -47,7 +47,7 @@ const ProductCard = ({
               <Slider {...ProductSlider} className="product-slider-img">
                 {image?.map((item, index) => (
                   <div key={index}>
-                    <figure className="h-[298px]">
+                    <figure className="bg-white h-[298px]">
                       <img
                         src={item?.image}
                         alt={title}
@@ -59,7 +59,7 @@ const ProductCard = ({
               </Slider>
             </Link>
           ) : (
-            <figure className="asdsa h-[298px]">
+            <figure className="bg-white h-[298px]">
               <img
                 src={image}
                 alt={title}

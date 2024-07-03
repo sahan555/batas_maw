@@ -3,16 +3,20 @@ import Breadcrumbs from "../Component/Global/BreadCrumbs";
 import { Gallery, GalleryBox, GalleryLink } from "../Component/Global/Gallery";
 import Pagination from "../Component/Global/Pagination";
 import useGet from "../Global/Apis/useGet";
+import { useLayoutData } from "../Global/Context/Layout";
+import MetaHelmet from "../Component/Global/MetaHelmet";
 
 const GalleryPage = () => {
   const [dataFromChild, setDataFromChild] = useState([]);
   const [dataVideo, setDataVideo] = useState([]);
   const videoRef = useRef(null);
   const galleryRef = useRef(null);
-  const { data: galleries} = useGet("galleries");
+  const { data: galleries } = useGet("galleries");
+  const { settings } = useLayoutData();
 
   return (
     <>
+      <MetaHelmet title={`Gallery | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <section className="gallery-page bg-light-grey bg-opacity-40">
         <div className="side-padding">
@@ -22,7 +26,7 @@ const GalleryPage = () => {
                 <div className="heading-wrapper pb-4">
                   <h2 className="heading !text-secondary">Our Videos</h2>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                   {dataVideo?.map((item) => (
                     <div className="col-span-1">
                       <div className="iframe-wrapper h-[400px] overflow-hidden rounded-lg">
@@ -46,35 +50,35 @@ const GalleryPage = () => {
                 />
               </div>
             )}
-              <>
-                <div className="gallery-section" ref={galleryRef}>
-                  <div className="heading-wrapper pb-4">
-                    <h2 className="heading !text-secondary">Our Gallery</h2>
-                  </div>
-                  <Gallery titleId="gallerypage">
-                    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-4 gap-6">
-                      {dataFromChild?.map((item, index) => (
-                        <GalleryBox
-                          key={index}
-                          classname={"bg-white rounded-lg overflow-hidden"}
-                        >
-                          <GalleryLink
-                            data={item}
-                            index={index}
-                            classname={`block h-[300px] w-full focus:outline-none `}
-                          />
-                        </GalleryBox>
-                      ))}
-                    </div>
-                    <Pagination
-                      ref={galleryRef}
-                      data={galleries?.gallery?.[0]?.images}
-                      view={8}
-                      setDataFromChild={setDataFromChild}
-                    />
-                  </Gallery>
+            <>
+              <div className="gallery-section" ref={galleryRef}>
+                <div className="heading-wrapper pb-4">
+                  <h2 className="heading !text-secondary">Our Gallery</h2>
                 </div>
-              </>
+                <Gallery titleId="gallerypage">
+                  <div className="grid grid-cols-1 gap-6  sm:grid-cols-2 xl:grid-cols-4">
+                    {dataFromChild?.map((item, index) => (
+                      <GalleryBox
+                        key={index}
+                        classname={"bg-white rounded-lg overflow-hidden"}
+                      >
+                        <GalleryLink
+                          data={item}
+                          index={index}
+                          classname={`block h-[300px] w-full focus:outline-none `}
+                        />
+                      </GalleryBox>
+                    ))}
+                  </div>
+                  <Pagination
+                    ref={galleryRef}
+                    data={galleries?.gallery?.[0]?.images}
+                    view={8}
+                    setDataFromChild={setDataFromChild}
+                  />
+                </Gallery>
+              </div>
+            </>
           </div>
         </div>
       </section>

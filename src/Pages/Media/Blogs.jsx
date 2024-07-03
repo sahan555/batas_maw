@@ -4,15 +4,18 @@ import Article from "../../Component/Global/Article";
 import Pagination from "../../Component/Global/Pagination";
 import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
+import { useLayoutData } from "../../Global/Context/Layout";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
 
 const Blogs = () => {
+  const { settings } = useLayoutData();
   const { data } = useGet("blogs");
   const [dataFromChild, setDataFromChild] = useState([]);
   const blogRef = useRef(null);
 
-  console.log(data);
   return (
     <>
+      <MetaHelmet title={`Blog | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <section className="blog-page bg-light-grey bg-opacity-40">
         <div className="side-padding">

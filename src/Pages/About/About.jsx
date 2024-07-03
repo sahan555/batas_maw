@@ -5,17 +5,22 @@ import OurValues from "../../Component/About/OurValues";
 import Vision from "../../Component/About/Vision";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Testimonials from "../../Component/Global/Testimonials";
 import useGet from "../../Global/Apis/useGet";
+import { useLayoutData } from "../../Global/Context/Layout";
 import useScrollToHash from "../../Global/Hooks/useScrollToHash";
 
 const About = () => {
+  const { settings } = useLayoutData();
+
   const { data: about } = useGet("static-content");
   const { data: counters } = useGet("counters");
   useScrollToHash(100);
 
   return (
     <>
+      <MetaHelmet title={`Company | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <main className="about-page">
         <section className="about-banner relative z-0  bg-primary bg-opacity-15">

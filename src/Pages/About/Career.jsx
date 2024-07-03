@@ -9,8 +9,11 @@ import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import { useRef } from "react";
 import useScrollToElement from "../../Global/Hooks/useScrollToElement";
 import useGet from "../../Global/Apis/useGet";
+import { useLayoutData } from "../../Global/Context/Layout";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
 
 const Career = () => {
+  const { settings } = useLayoutData();
   const { data: about } = useGet("static-content");
 
   const { data: galleries } = useGet("galleries");
@@ -61,6 +64,8 @@ const Career = () => {
   };
   return (
     <>
+      <MetaHelmet title={`Careers | ${settings?.meta_title}`} />
+
       <Breadcrumbs />
       <section className="career-page">
         <div className="side-padding">

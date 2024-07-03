@@ -5,14 +5,18 @@ import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
 import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
+import { useLayoutData } from "../../Global/Context/Layout";
 
 const BlogDetails = () => {
+  const { settings } = useLayoutData();
   const { slug } = useParams();
   const { data: details } = useGetById("blogs", slug);
   const { data: recent } = useGet("recent-blogs");
 
   return (
     <>
+      <MetaHelmet title={`Blog | ${settings?.meta_title}`} />
       <Breadcrumbs data={details?.name} />
       <section className="blog-details section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

@@ -3,8 +3,8 @@ import React from "react";
 
 export const CompareTable = ({ children }) => {
   return (
-    <div className="compare-table relative w-full overflow-x-auto whitespace-nowrap">
-      <table className="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+    <div className="compare-table relative w-full overflow-x-auto whitespace-normal">
+      <table className="w-full text-left text-sm text-[#484848] rtl:text-right dark:text-[#484848]">
         <tbody>{children}</tbody>
       </table>
     </div>

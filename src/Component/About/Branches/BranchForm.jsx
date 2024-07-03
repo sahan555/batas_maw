@@ -44,7 +44,6 @@ const BranchForm = ({
       );
 
       if (selectedDistrict) {
-        console.log(selectedDistrict.services, "services");
         setSelectedLocation((prevState) => ({
           ...prevState,
           cityList: selectedDistrict.services || [],

@@ -5,13 +5,19 @@ import { Link } from "react-router-dom";
 import Article from "../../Component/Global/Article";
 import Pagination from "../../Component/Global/Pagination";
 import useGet from "../../Global/Apis/useGet";
+import { useLayoutData } from "../../Global/Context/Layout";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
 
 const Events = () => {
+  const { settings } = useLayoutData();
+
   const { data } = useGet("events");
   const [dataFromChild, setDataFromChild] = useState([]);
   const eventRef = useRef(null);
   return (
     <>
+      <MetaHelmet title={`Event | ${settings?.meta_title}`} />
+
       <Breadcrumbs />
       <section className="event-page bg-light-grey bg-opacity-40">
         <div className="side-padding">

@@ -2,7 +2,11 @@ import React from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import Breadcrumbs from "../BreadCrumbs";
+import { useLayoutData } from "../../../Global/Context/Layout";
+import MetaHelmet from "../MetaHelmet";
 const SupportForm = () => {
+  const { settings } = useLayoutData();
+
   const initialValues = {
     name: "",
     email: "",
@@ -22,6 +26,7 @@ const SupportForm = () => {
 
   return (
     <>
+      <MetaHelmet title={`Support Form | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <section className="support-form section-break">
         <div className="side-padding">

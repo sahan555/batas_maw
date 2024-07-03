@@ -5,10 +5,11 @@ import BranchForm from "../../Component/About/Branches/BranchForm";
 import BranchTabs from "../../Component/About/Branches/BranchTabs";
 import { useLayoutData } from "../../Global/Context/Layout";
 import useGet from "../../Global/Apis/useGet";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
 const Branches = () => {
   const { data: servicesData } = useGet("provinces-services");
   const mapRef = useRef(null);
-  const { coordinate, setCoordinate } = useLayoutData();
+  const { coordinate, setCoordinate,settings } = useLayoutData();
   const [selectedLocation, setSelectedLocation] = useState({
     province: "",
     districtList: [],
@@ -38,6 +39,8 @@ const Branches = () => {
 
   return (
     <>
+          <MetaHelmet title={`Branches | ${settings?.meta_title}`} />
+
       <Breadcrumbs />
       <section className="branches-page">
         <div className="branches-banner">

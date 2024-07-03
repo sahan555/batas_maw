@@ -1,11 +1,14 @@
 import React from "react";
-import Breadcrumbs from "../Component/Global/BreadCrumbs";
 import { Link } from "react-router-dom";
+import MetaHelmet from "../Component/Global/MetaHelmet";
+import { useLayoutData } from "../Global/Context/Layout";
 
 const Error = () => {
+  const { settings } = useLayoutData();
+
   return (
     <>
-      <Breadcrumbs />
+      <MetaHelmet title={`Error | ${settings?.meta_title}`} />
       <div
         id="error-page"
         className=" section-break bg-light-grey bg-opacity-40"

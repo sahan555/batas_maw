@@ -22,7 +22,7 @@ const Accordion = ({ defaultIcon, expandIcon, view }) => {
 
   return (
     <div className="accordion">
-      {(!faqs ? faqs : faqData)?.slice(0, view)?.map((item, index) => (
+      {(faqs ? faqs : faqData)?.slice(0, view)?.map((item, index) => (
         <div
           className="accordion-panel border-b border-light-grey py-3"
           key={index}

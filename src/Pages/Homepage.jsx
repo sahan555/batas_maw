@@ -14,6 +14,8 @@ import useScrollToHash from "../Global/Hooks/useScrollToHash";
 import GallerySection from "../Component/Home/GallerySection";
 import useGet from "../Global/Apis/useGet";
 import PopUp from "../Component/Global/PopUp";
+import MetaHelmet from "./../Component/Global/MetaHelmet";
+import { useLayoutData } from "../Global/Context/Layout";
 
 const Homepage = () => {
   const { data: banners } = useGet("banners");
@@ -21,10 +23,12 @@ const Homepage = () => {
     useGet("testimonials");
   const { data: galleries } = useGet("galleries");
   const { data: staticData } = useGet("static-content");
+  const { settings } = useLayoutData();
   useScrollToHash(200);
 
   return (
     <>
+      <MetaHelmet title={settings?.meta_title} />
       <main className="home">
         <HeroSection banners={banners} />
         <ProductsTab />

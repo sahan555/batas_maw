@@ -9,7 +9,7 @@ const Breadcrumbs = ({ data }) => {
   const generateBreadcrumbs = (pathname) => {
     const pathSegments = pathname
       .split("/")
-      .filter((segment) => segment !== "");
+      .filter((segment) => segment !== "" && segment !== "compare"); // Skip the "compare" segment
     let cumulativePath = "";
     const breadcrumbs = [];
 

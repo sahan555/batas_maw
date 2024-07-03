@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 import useGet from "../../Global/Apis/useGet";
+import { Link } from "react-router-dom";
 const filterProvincesWithServices = (mapData) => {
   return (
     mapData
@@ -42,7 +43,7 @@ const Map = ({ city, coordinate }) => {
   const [position, setPosition] = useState([28.3780464, 83.9999901]);
   const [zoom, setZoom] = useState(7.5);
   const mapRef = useRef(null);
-  
+
   const provincesWithServices = useMemo(
     () => filterProvincesWithServices(servicesData),
     [servicesData],
@@ -75,7 +76,7 @@ const Map = ({ city, coordinate }) => {
       setPosition([28.3780464, 83.9999901]);
       setZoom(7.5);
     }
-  }, [city, coordinate,cityGeo?.service]);
+  }, [city, coordinate, cityGeo?.service]);
 
   useEffect(() => {
     if (mapRef.current) {
@@ -110,7 +111,14 @@ const Map = ({ city, coordinate }) => {
           <Popup
             position={[parseFloat(coordinate.lat), parseFloat(coordinate.lang)]}
           >
-            {coordinate.name}
+            <p className="!m-0">{coordinate.name}</p>
+            <Link
+              target="_blank"
+              className="block"
+              to={`https://www.google.com/maps/search/?api=1&query=${[parseFloat(coordinate.lat), parseFloat(coordinate.lang)]}`}
+            >
+              View
+            </Link>
           </Popup>
         </Marker>
       )}
@@ -129,7 +137,16 @@ const Map = ({ city, coordinate }) => {
             })
           }
         >
-          <Popup>{branch.name}</Popup>
+          <Popup>
+            <p className="!m-0">{branch.name}</p>
+            <Link
+              target="_blank"
+              className="block"
+              to={`https://www.google.com/maps/search/?api=1&query=${[branch.lat, branch.long]}`}
+            >
+              View
+            </Link>
+          </Popup>
         </Marker>
       ))}
     </MapContainer>

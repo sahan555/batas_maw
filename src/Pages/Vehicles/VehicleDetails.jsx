@@ -9,12 +9,11 @@ import SimilarVehicles from "../../Component/Vehicles/Details/SimilarVehicles";
 import useGetById from "../../Global/Apis/useGetById";
 import useScrollToElement from "../../Global/Hooks/useScrollToElement";
 import Loading from "../../Component/Global/Loading";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
 
 const VehicleDetails = () => {
   const { slug } = useParams();
   const { data: details, isLoading } = useGetById("products-single", slug);
-  console.log(details);
-
   const reviewRef = useRef(null);
   const mapRef = useRef(null);
   const scrollToReview = useScrollToElement(reviewRef);
@@ -26,6 +25,12 @@ const VehicleDetails = () => {
 
   return (
     <>
+      <MetaHelmet
+        title={`${details?.meta_title} | BatasMaw`}
+        description={details?.meta_description}
+        keyword={details?.meta_keywords}
+      />
+
       <Breadcrumbs data={details?.name} />
       <section className="details-page pt-16">
         <div className="side-padding">
@@ -36,7 +41,7 @@ const VehicleDetails = () => {
               mapScroll={scrollToMap}
             />
             <DetailTabs data={details} />
-            <DetailReview ref={reviewRef} id={details?.id}/>
+            <DetailReview ref={reviewRef} id={details?.id} />
             <MapSection ref={mapRef} />
           </div>
         </div>

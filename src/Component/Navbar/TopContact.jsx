@@ -1,10 +1,10 @@
 import React from "react";
 import { MdLocalPhone, MdOutlineMailOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
-import useGet from "../../Global/Apis/useGet";
+import { useLayoutData } from "../../Global/Context/Layout";
 
 const TopContact = ({ classname }) => {
-  const { data: settings } = useGet("settings");
+  const { settings } = useLayoutData();
   return (
     <div className={`top-contact  ${classname}`}>
       <ul className="flex-wrap gap-6 px-4 text-grey lg:flex lg:p-0">

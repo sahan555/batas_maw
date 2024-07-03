@@ -6,40 +6,41 @@ import CompareDetailsNTabs from "../../Component/Vehicles/Compare/CompareDetails
 import { useParams } from "react-router-dom";
 import useGetById from "../../Global/Apis/useGetById";
 import useGet from "../../Global/Apis/useGet";
+import Loading from "../../Component/Global/Loading";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
+import { useLayoutData } from "../../Global/Context/Layout";
 
 const Compare = () => {
+  const { settings } = useLayoutData();
   const { slug } = useParams();
-  const { data: details } = useGetById(
-    "products-single",
-    slug,
-  );
-  const { data: cate } = useGet("categories");
-
-  const similarItems = useMemo(() => {
-    if (!cate || !details) return [];
-
-    return cate?.find((item) => item?.name === details?.category_name);
-  }, [cate, details]);
-
+  const { data: details } = useGetById("products-single", slug);
+  const cateName = useMemo(() => details?.category_name, [details]);
+  const { data: cate } = useGetById("product-category", cateName);
   const [compareWith, setCompareWith] = useState("");
-
 
   return (
     <>
-      <Breadcrumbs />
-      <main className="compare-section">
-        <CompareSearch
-          data={similarItems?.products}
-          slug={details} 
-          compare={setCompareWith}
-        />
-        <CompareDetailsNTabs
-          compareWith={compareWith}
-          compareTo={details} 
-        />
-        {/* Pass details.category_name to SimilarVehicles */}
-        <SimilarVehicles data={details?.category_name} />
-      </main>
+      <MetaHelmet title={`Compare | ${settings?.meta_title}`} />
+      <Breadcrumbs data={details?.name} />
+      {details && cate ? (
+        <main className="compare-section">
+          <div className="side-padding">
+            <CompareSearch
+              data={cate}
+              slug={details}
+              compare={setCompareWith}
+            />
+            <CompareDetailsNTabs
+              compareWith={compareWith}
+              compareTo={details}
+            />
+            {/* Pass details.category_name to SimilarVehicles */}
+            <SimilarVehicles data={cateName} />
+          </div>
+        </main>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };

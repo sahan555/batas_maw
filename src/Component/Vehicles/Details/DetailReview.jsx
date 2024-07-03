@@ -11,13 +11,11 @@ const DetailReview = forwardRef((id, ref) => {
 
   const { data: review } = useGetById("review", id?.id);
   const { post } = usePost("review-store");
-  console.log(review);
   const totalReview = review?.reduce(
     (accumulator, currentValue) =>
       accumulator + parseFloat(currentValue.rating),
     0,
   );
-  console.log(totalReview);
   const [rating, setRating] = useState(4);
   const [hover, setHover] = useState(4);
 

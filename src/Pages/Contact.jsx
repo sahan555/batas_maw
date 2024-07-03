@@ -7,10 +7,11 @@ import { LiaClock } from "react-icons/lia";
 import { Link } from "react-router-dom";
 
 import ContactForm from "../Component/Contact/ContactForm";
-import useGet from "../Global/Apis/useGet";
+import { useLayoutData } from "../Global/Context/Layout";
+import MetaHelmet from "../Component/Global/MetaHelmet";
 
 const Contact = () => {
-  const { data: settings } = useGet("settings");
+  const { settings } = useLayoutData();
 
   const contactData = [
     {
@@ -39,6 +40,7 @@ const Contact = () => {
 
   return (
     <>
+      <MetaHelmet title={`Contact | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <section className="contact-page">
         <div className="map-wrapper h-[400px]">
@@ -53,7 +55,7 @@ const Contact = () => {
         </div>
         <div className="side-padding">
           <div className="section-break mx-auto max-w-[1000px]">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="col-span-1">
                 <ul className="contact-info">
                   {contactData?.map((item, index) => (
@@ -68,16 +70,20 @@ const Contact = () => {
                         <h4 className="text-lg">{item?.name}</h4>
                         {Array.isArray(item?.value) ? (
                           item?.value?.map((phone, index) => (
-                            <>
+                            <React.Fragment key={index}>
                               <Link
                                 key={index}
                                 to={`${item?.path}${phone}`}
-                                className="text-sm text-black opacity-75 duration-200 hover:text-primary hover:underline inline-block"
+                                className="inline-block text-sm text-black opacity-75 duration-200 hover:text-primary hover:underline"
                               >
                                 {phone}
                               </Link>
-                              {(item?.value?.length ) > (index + 1) && <span className="mx-2 text-black opacity-75">/</span>}
-                            </>
+                              {item?.value?.length > index + 1 && (
+                                <span className="mx-2 text-black opacity-75">
+                                  /
+                                </span>
+                              )}
+                            </React.Fragment>
                           ))
                         ) : (
                           <Link

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { CompareTr, CompareTable } from "../../Global/CompareTable";
 import Slider from "react-slick";
 import { IoStar } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
   var CompareSlider = {
@@ -14,9 +15,26 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  const getUniqueSpecs = (products, specKey) => {
+    const specSet = new Set();
+    products?.forEach((product) => {
+      if (product[specKey]) {
+        product[specKey].forEach((spec) => {
+          specSet.add(spec.name);
+        });
+      }
+    });
+    return Array.from(specSet);
+  };
+  const getSpecValue = (specifications, specName) => {
+    const spec = specifications?.find((spec) => spec.name === specName);
+    return spec ? spec.value : "-";
+  };
+  const productSpecification = useMemo(() => getUniqueSpecs(compareAll, "product_specification"), [compareAll]);
+
   return (
     <>
-      <section className="compare-details">
+      <section className="compare-details pb-16">
         <div className="container mx-auto">
           <div className="heading-wrapper stripe-wrapper mb-3 max-w-[600px] before:bg-primary after:bg-primary">
             <h2 className="heading stripe z-[1] flex items-center gap-4 py-2 pr-[60px] uppercase !text-white">
@@ -32,7 +50,7 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                     {item?.images ? (
                       <Slider
                         {...CompareSlider}
-                        className="product-slider-img xl:w-[400px] lg:w-[300px] w-[200px]"
+                        className="product-slider-img w-[200px] lg:w-[300px] xl:w-[400px]"
                       >
                         {item?.images?.map((imgItem, index) => (
                           <div key={index}>
@@ -55,17 +73,26 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                         />
                       </figure>
                     ) : (
-                     ""
+                      "-"
                     )}
                   </td>
                 ))}
               </CompareTr>
-              {/* <CompareTr
-                name={`Model`}
-                data={compareAll}
-                innerdata={`name`}
-              ></CompareTr> */}
               <CompareTr>
+                <td>Model</td>
+                {compareAll?.map((item, index) => (
+                  <React.Fragment key={index}>
+                    {item ? (
+                      <td key={index}>
+                        <h4 className="text-secondary">{item?.name}</h4>
+                      </td>
+                    ) : (
+                      <td>-</td>
+                    )}
+                  </React.Fragment>
+                ))}
+              </CompareTr>
+              {/* <CompareTr>
                 <td>Ratings</td>
                 {compareAll?.map((item, index) => (
                   <React.Fragment key={index}>
@@ -89,18 +116,43 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                           <p>{item?.rating} Rating</p>
                         </div>
                       </td>
-                    ) : <td></td>}
+                    ) : (
+                      <td>-</td>
+                    )}
+                  </React.Fragment>
+                ))}
+              </CompareTr> */}
+              <CompareTr>
+                <td>Brochure</td>
+                {compareAll?.map((item, index) => (
+                  <React.Fragment key={index}>
+                    {item ? (
+                      <td key={index}>
+                        <Link
+                          to={item?.pdf}
+                          className="group flex gap-3"
+                          target="_blank"
+                        >
+                          <figure className="h-[20px] w-[20px]">
+                            <img
+                              src="/assets/images/icons/download.svg"
+                              alt={item?.name}
+                            />
+                          </figure>
+                          <p className="duration-200 group-hover:text-primary">
+                            Download Brochure
+                          </p>
+                        </Link>
+                      </td>
+                    ) : (
+                      <td>-</td>
+                    )}
                   </React.Fragment>
                 ))}
               </CompareTr>
-              <CompareTr>
-                <td>Brochure</td>
-                <td></td>
-                <td></td>
-              </CompareTr>
             </CompareTable>
           </div>
-          {/* <div className="performance-table pt-10">
+          <div className="performance-table pt-16">
             <div className="heading-wrapper bg-secondary bg-opacity-10 p-3">
               <h3 className="heading flex items-center gap-4 !text-xl !text-secondary">
                 <img
@@ -108,42 +160,25 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                   className="h-[30px] w-[30px]"
                   alt=""
                 />
-                Performance
+                Specification
               </h3>
             </div>
             <CompareTable>
-              <CompareTr
-                name={`Max Power`}
-                data={compareAll}
-                innerdata={`performance`}
-                vitraData={`power`}
-              />
-              <CompareTr
-                name={`Fuel Tank (LItres)`}
-                data={compareAll}
-                innerdata={`performance`}
-                vitraData={`tank`}
-              />
-              <CompareTr
-                name={`Engine`}
-                data={compareAll}
-                innerdata={`performance`}
-                vitraData={`engine`}
-              />
-              <CompareTr
-                name={`Fuel Type`}
-                data={compareAll}
-                innerdata={`performance`}
-                vitraData={`fuel`}
-              />
-              <CompareTr
-                name={`max Torque`}
-                data={compareAll}
-                innerdata={`performance`}
-                vitraData={`torque`}
-              />
+              {productSpecification?.map((specName, index) => (
+                <React.Fragment key={index}>
+                  <CompareTr>
+                    <td className="w-1/3">{specName}</td>
+                    {compareAll?.map((item,idx) => (
+                      <td key={idx} className="w-1/3">
+                        {getSpecValue(item["product_specification"], specName)}
+                      </td>
+                    ))}
+                  </CompareTr>
+                </React.Fragment>
+              ))}
             </CompareTable>
           </div>
+          {/*
           <div className="dimension-table pt-10">
             <div className="heading-wrapper bg-secondary bg-opacity-10 p-3">
               <h3 className="heading flex items-center gap-4 !text-xl !text-secondary">

@@ -1,8 +1,12 @@
 import React from "react";
 import Breadcrumbs from "../Component/Global/BreadCrumbs";
 import WhiteBox from "../Component/Global/WhiteBox";
+import { useLayoutData } from "../Global/Context/Layout";
+import MetaHelmet from "../Component/Global/MetaHelmet";
 
 const Form = () => {
+  const { settings } = useLayoutData();
+
   const formLink = [
     {
       name: "Customer Support Form",
@@ -11,6 +15,7 @@ const Form = () => {
   ];
   return (
     <>
+      <MetaHelmet title={`Form | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <section className="form-page section-break">
         <div className="side-padding">

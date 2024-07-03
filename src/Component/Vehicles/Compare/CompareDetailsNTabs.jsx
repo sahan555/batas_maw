@@ -10,7 +10,6 @@ const CompareDetailsNTabs = ({ compareWith, compareTo }) => {
       compareWith,
     ]);
   };
-  console.log(compareAll,'both')
   useEffect(handleCompareUpdate, [compareTo, compareWith]);
   return (
     <>

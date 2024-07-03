@@ -5,13 +5,18 @@ import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
 import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
+import { useLayoutData } from "../../Global/Context/Layout";
 
 const EventDetails = () => {
+  const { settings } = useLayoutData();
+
   const { slug } = useParams();
   const { data: details } = useGetById("events", slug);
   const { data: recent } = useGet("recent-events");
   return (
     <>
+      <MetaHelmet title={`Event | ${settings?.meta_title}`} />
       <Breadcrumbs data={details?.name} />
       <section className="events-details section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

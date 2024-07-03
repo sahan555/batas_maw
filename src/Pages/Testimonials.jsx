@@ -3,14 +3,17 @@ import Breadcrumbs from "../Component/Global/BreadCrumbs";
 import HtmlParse from "../Component/Global/HtmlParse";
 import Pagination from "../Component/Global/Pagination";
 import useGet from "../Global/Apis/useGet";
+import MetaHelmet from "../Component/Global/MetaHelmet";
+import { useLayoutData } from "../Global/Context/Layout";
 
 const Testimonials = () => {
   const [dataFromChild, setDataFromChild] = useState([]);
   const testimonalRef = useRef(null);
   const { data: testimonals } = useGet("testimonials");
-
+  const { settings } = useLayoutData();
   return (
     <>
+      <MetaHelmet title={`Testimonials | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <section className="testi-page section-break  bg-light-grey bg-opacity-40">
         <div className="side-padding">
@@ -18,10 +21,13 @@ const Testimonials = () => {
             <div className="heading-wrapper pb-6">
               <h1 className="heading">What Our Clients Say About Us</h1>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6" ref={testimonalRef}>
+            <div
+              className="grid grid-cols-1 gap-6 lg:grid-cols-2"
+              ref={testimonalRef}
+            >
               {dataFromChild?.map((item) => (
                 <div className="col-span-1" key={item?.id}>
-                  <div className="testi-box flex md:flex-row flex-col gap-5 rounded-lg border bg-white p-4">
+                  <div className="testi-box flex flex-col gap-5 rounded-lg border bg-white p-4 md:flex-row">
                     <figure className="h-32 w-32 flex-none overflow-hidden rounded-lg">
                       <img src={item?.image} alt={item?.name} />
                     </figure>
@@ -39,14 +45,13 @@ const Testimonials = () => {
                   </div>
                 </div>
               ))}
-              
             </div>
             <Pagination
-                ref={testimonalRef}
-                data={testimonals}
-                view={8}
-                setDataFromChild={setDataFromChild}
-              />
+              ref={testimonalRef}
+              data={testimonals}
+              view={8}
+              setDataFromChild={setDataFromChild}
+            />
           </div>
         </div>
       </section>

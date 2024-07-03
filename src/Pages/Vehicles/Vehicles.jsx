@@ -4,12 +4,17 @@ import { vehicleArticle } from "../../Global/Datas/VehicleData";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import VehicleTabs from "../../Component/Vehicles/VehicleTabs";
 import useGet from "../../Global/Apis/useGet";
+import { useLayoutData } from "../../Global/Context/Layout";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
 
 const Vehicles = () => {
   const { data: cate } = useGet("categories");
-  const { data: staticData} = useGet("static-content");
+  const { data: staticData } = useGet("static-content");
+  const { settings } = useLayoutData();
+
   return (
     <>
+      <MetaHelmet title={`Vehicles | ${settings?.meta_title}`} />
       <Breadcrumbs />
       <section className="vehicles-page section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">
@@ -19,7 +24,7 @@ const Vehicles = () => {
               desc={staticData?.vehicle_page_desc}
               headClass={""}
             />
-            <VehicleTabs  data={cate}/>
+            <VehicleTabs data={cate} />
           </div>
         </div>
       </section>
