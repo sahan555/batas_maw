@@ -16,7 +16,7 @@ const GalleryPage = () => {
 
   return (
     <>
-      <MetaHelmet title={`Gallery | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Gallery | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="gallery-page bg-light-grey bg-opacity-40">
         <div className="side-padding">

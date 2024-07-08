@@ -14,7 +14,7 @@ const Vehicles = () => {
 
   return (
     <>
-      <MetaHelmet title={`Vehicles | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Vehicles | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="vehicles-page section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

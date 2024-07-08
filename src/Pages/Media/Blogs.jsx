@@ -15,7 +15,7 @@ const Blogs = () => {
 
   return (
     <>
-      <MetaHelmet title={`Blog | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Blog | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="blog-page bg-light-grey bg-opacity-40">
         <div className="side-padding">

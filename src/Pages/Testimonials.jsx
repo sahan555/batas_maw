@@ -13,7 +13,7 @@ const Testimonials = () => {
   const { settings } = useLayoutData();
   return (
     <>
-      <MetaHelmet title={`Testimonials | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Testimonials | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="testi-page section-break  bg-light-grey bg-opacity-40">
         <div className="side-padding">

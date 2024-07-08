@@ -6,17 +6,22 @@ import HtmlParse from "../../Component/Global/HtmlParse";
 import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
-import { useLayoutData } from "../../Global/Context/Layout";
 
 const EventDetails = () => {
-  const { settings } = useLayoutData();
-
   const { slug } = useParams();
   const { data: details } = useGetById("events", slug);
   const { data: recent } = useGet("recent-events");
   return (
     <>
-      <MetaHelmet title={`Event | ${settings?.meta_title}`} />
+      <MetaHelmet
+        title={
+          details?.meta_title !== undefined
+            ? `${details.meta_title} | BatasMaw`
+            : "BatasMaw"
+        }
+        description={details?.meta_description}
+        keyword={details?.meta_keywords}
+      />
       <Breadcrumbs data={details?.name} />
       <section className="events-details section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

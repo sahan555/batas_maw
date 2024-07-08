@@ -18,7 +18,9 @@ const MediaDetails = () => {
 
   return (
     <>
-      <MetaHelmet title={`Media | ${settings?.meta_title}`} />
+      <MetaHelmet   title={
+          details?.meta_title !== undefined ? `${details.meta_title} | BatasMaw` : "BatasMaw"
+        } />
       <Breadcrumbs data={details?.name} />
       <section className="media-details section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

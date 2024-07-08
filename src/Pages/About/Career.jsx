@@ -64,7 +64,7 @@ const Career = () => {
   };
   return (
     <>
-      <MetaHelmet title={`Careers | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Careers | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
 
       <Breadcrumbs />
       <section className="career-page">

@@ -26,7 +26,11 @@ const VehicleDetails = () => {
   return (
     <>
       <MetaHelmet
-        title={`${details?.meta_title} | BatasMaw`}
+        title={
+          details?.meta_title !== undefined
+            ? `${details.meta_title} | BatasMaw`
+            : "BatasMaw"
+        }
         description={details?.meta_description}
         keyword={details?.meta_keywords}
       />

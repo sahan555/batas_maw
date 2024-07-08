@@ -16,7 +16,7 @@ const Events = () => {
   const eventRef = useRef(null);
   return (
     <>
-      <MetaHelmet title={`Event | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Event | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
 
       <Breadcrumbs />
       <section className="event-page bg-light-grey bg-opacity-40">

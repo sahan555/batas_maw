@@ -16,7 +16,7 @@ const Media = () => {
 
   return (
     <>
-      <MetaHelmet title={`Media | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Media | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="media-page bg-light-grey bg-opacity-40">
         <div className="side-padding">

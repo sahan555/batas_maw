@@ -9,14 +9,18 @@ import MetaHelmet from "../../Component/Global/MetaHelmet";
 import { useLayoutData } from "../../Global/Context/Layout";
 
 const BlogDetails = () => {
-  const { settings } = useLayoutData();
   const { slug } = useParams();
   const { data: details } = useGetById("blogs", slug);
   const { data: recent } = useGet("recent-blogs");
 
   return (
     <>
-      <MetaHelmet title={`Blog | ${settings?.meta_title}`} />
+      <MetaHelmet
+  title={
+    details?.meta_title !== undefined ? `${details.meta_title} | BatasMaw` : "BatasMaw"
+  }        description={details?.meta_description}
+        keyword={details?.meta_keywords}
+      />
       <Breadcrumbs data={details?.name} />
       <section className="blog-details section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

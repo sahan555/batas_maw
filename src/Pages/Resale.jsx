@@ -13,7 +13,7 @@ const Resale = () => {
 
   return (
     <>
-      <MetaHelmet title={`Resale | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Resale | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="vehicles-page section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

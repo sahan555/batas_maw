@@ -20,7 +20,7 @@ const About = () => {
 
   return (
     <>
-      <MetaHelmet title={`Company | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Company | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <main className="about-page">
         <section className="about-banner relative z-0  bg-primary bg-opacity-15">

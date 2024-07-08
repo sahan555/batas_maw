@@ -40,7 +40,7 @@ const Contact = () => {
 
   return (
     <>
-      <MetaHelmet title={`Contact | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Contact | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="contact-page">
         <div className="map-wrapper h-[400px]">

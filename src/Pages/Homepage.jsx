@@ -28,7 +28,7 @@ const Homepage = () => {
 
   return (
     <>
-      <MetaHelmet title={settings?.meta_title} />
+      <MetaHelmet title={settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'} />
       <main className="home">
         <HeroSection banners={banners} />
         <ProductsTab />

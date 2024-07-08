@@ -15,7 +15,7 @@ const Form = () => {
   ];
   return (
     <>
-      <MetaHelmet title={`Form | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Form | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs />
       <section className="form-page section-break">
         <div className="side-padding">

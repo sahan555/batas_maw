@@ -20,7 +20,7 @@ const Compare = () => {
 
   return (
     <>
-      <MetaHelmet title={`Compare | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Compare | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <Breadcrumbs data={details?.name} />
       {details && cate ? (
         <main className="compare-section">

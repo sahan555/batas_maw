@@ -8,7 +8,7 @@ const Error = () => {
 
   return (
     <>
-      <MetaHelmet title={`Error | ${settings?.meta_title}`} />
+      <MetaHelmet title={`Error | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
       <div
         id="error-page"
         className=" section-break bg-light-grey bg-opacity-40"

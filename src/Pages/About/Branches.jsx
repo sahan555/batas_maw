@@ -39,7 +39,7 @@ const Branches = () => {
 
   return (
     <>
-          <MetaHelmet title={`Branches | ${settings?.meta_title}`} />
+          <MetaHelmet title={`Branches | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
 
       <Breadcrumbs />
       <section className="branches-page">
