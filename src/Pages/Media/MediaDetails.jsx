@@ -8,14 +8,17 @@ import { CgSoftwareDownload } from "react-icons/cg";
 import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 
 const MediaDetails = () => {
   const { settings } = useLayoutData();
 
   const { slug } = useParams();
-  const { data: details } = useGetById("blogs", slug);
+  const { data: details,isLoading } = useGetById("blogs", slug);
   const { data: recent } = useGet("recent-blogs");
-
+  if (isLoading || !details) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet   title={

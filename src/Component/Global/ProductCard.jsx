@@ -30,7 +30,7 @@ const ProductCard = ({
     <>
       <div
         className={
-          col ? "w-full px-4 sm:w-1/2 lg:w-1/3 xl:w-1/4" : "w-full 2xl:px-4"
+          col ? "w-full px-4 sm:w-1/2 lg:w-1/3 2xl:w-1/4" : "w-full md:px-4"
         }
         key={index}
       >
@@ -44,22 +44,36 @@ const ProductCard = ({
           )}
           {slider ? (
             <Link to={`/vehicles/${slug}`}>
-              <Slider {...ProductSlider} className="product-slider-img">
-                {image?.map((item, index) => (
-                  <div key={index}>
-                    <figure className="bg-white h-[298px]">
+              {Array.isArray(image) ? (
+                <Slider {...ProductSlider} className="product-slider-img">
+                  {image?.map((item, index) => (
+                    <div className="asdsa" key={index}>
+                      <figure className="h-[298px] bg-white">
+                        <img
+                          src={item?.image}
+                          alt={title}
+                          className="object-cover object-center"
+                        />
+                      </figure>
+                    </div>
+                  ))}
+                </Slider>
+              ) : (
+                <Slider {...ProductSlider} className="product-slider-img">
+                  <div>
+                    <figure className="h-[298px] bg-white">
                       <img
-                        src={item?.image}
+                        src={image}
                         alt={title}
                         className="object-cover object-center"
                       />
                     </figure>
                   </div>
-                ))}
-              </Slider>
+                </Slider>
+              )}
             </Link>
           ) : (
-            <figure className="bg-white h-[298px]">
+            <figure className="h-[298px] bg-white">
               <img
                 src={image}
                 alt={title}

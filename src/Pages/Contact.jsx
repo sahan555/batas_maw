@@ -56,7 +56,7 @@ const Contact = () => {
         <div className="side-padding">
           <div className="section-break mx-auto max-w-[1000px]">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="col-span-1">
+              <div className="col-span-1 self-[start] sticky top-0">
                 <ul className="contact-info">
                   {contactData?.map((item, index) => (
                     <li

@@ -11,10 +11,11 @@ import useScrollToElement from "../../Global/Hooks/useScrollToElement";
 import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 
 const Career = () => {
   const { settings } = useLayoutData();
-  const { data: about } = useGet("static-content");
+  const { data: about,isLoading } = useGet("static-content");
 
   const { data: galleries } = useGet("galleries");
   const { data: getReturn } = useGet("career-get-return");
@@ -62,6 +63,9 @@ const Career = () => {
       },
     ],
   };
+  if (isLoading || !about) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet title={`Careers | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />

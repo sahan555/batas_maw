@@ -5,12 +5,16 @@ import Pagination from "../Component/Global/Pagination";
 import useGet from "../Global/Apis/useGet";
 import MetaHelmet from "../Component/Global/MetaHelmet";
 import { useLayoutData } from "../Global/Context/Layout";
+import Loading from "../Component/Global/Loading";
 
 const Testimonials = () => {
   const [dataFromChild, setDataFromChild] = useState([]);
   const testimonalRef = useRef(null);
-  const { data: testimonals } = useGet("testimonials");
+  const { data: testimonals,isLoading } = useGet("testimonials");
   const { settings } = useLayoutData();
+  if (isLoading || !testimonals) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet title={`Testimonials | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />

@@ -5,6 +5,7 @@ import OurValues from "../../Component/About/OurValues";
 import Vision from "../../Component/About/Vision";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
+import Loading from "../../Component/Global/Loading";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Testimonials from "../../Component/Global/Testimonials";
 import useGet from "../../Global/Apis/useGet";
@@ -14,10 +15,12 @@ import useScrollToHash from "../../Global/Hooks/useScrollToHash";
 const About = () => {
   const { settings } = useLayoutData();
 
-  const { data: about } = useGet("static-content");
+  const { data: about,isLoading } = useGet("static-content");
   const { data: counters } = useGet("counters");
   useScrollToHash(100);
-
+  if (isLoading || !about) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet title={`Company | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />

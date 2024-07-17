@@ -15,11 +15,11 @@ const usePost = (url) => {
     try {
       const response = await axios.post(`${baseUrl}${url}`, values);
       const responseData = response?.data;
-      console.log(response)
+      console.log(response);
       setPostData(responseData);
-      if (response?.status === 201|| response?.status === 200) {
+      if (response?.status === 201 || response?.status === 200) {
         if (Object.keys(responseData).length > 0) {
-          toast.success(`${name} added successfully!`, {
+          toast.success(`${name ? `${name} added` : ""} successfully!`, {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -30,7 +30,7 @@ const usePost = (url) => {
             theme: "light",
           });
         } else {
-          toast.error(`No data found for ${name}.`, {
+          toast.error(`No data found ${name ? ` for ${name}` : ""}.`, {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -45,16 +45,19 @@ const usePost = (url) => {
     } catch (err) {
       setError(err);
 
-      toast.error(`Failed to add ${name}. Please try again later.`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error(
+        `Failed${name ? ` to add ${name}` : ""}. Please try again later.`,
+        {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        },
+      );
     } finally {
       setIsLoading(false);
     }

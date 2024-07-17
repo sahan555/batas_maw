@@ -6,19 +6,24 @@ import HtmlParse from "../../Component/Global/HtmlParse";
 import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
-import { useLayoutData } from "../../Global/Context/Layout";
+import Loading from "../../Component/Global/Loading";
 
 const BlogDetails = () => {
   const { slug } = useParams();
-  const { data: details } = useGetById("blogs", slug);
+  const { data: details, isLoading } = useGetById("blogs", slug);
   const { data: recent } = useGet("recent-blogs");
-
+  if (isLoading || !details) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet
-  title={
-    details?.meta_title !== undefined ? `${details.meta_title} | BatasMaw` : "BatasMaw"
-  }        description={details?.meta_description}
+        title={
+          details?.meta_title !== undefined
+            ? `${details.meta_title} | BatasMaw`
+            : "BatasMaw"
+        }
+        description={details?.meta_description}
         keyword={details?.meta_keywords}
       />
       <Breadcrumbs data={details?.name} />

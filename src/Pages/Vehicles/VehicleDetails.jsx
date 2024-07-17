@@ -50,7 +50,7 @@ const VehicleDetails = () => {
           </div>
         </div>
       </section>
-      <SimilarVehicles data={details?.category_name} />
+      <SimilarVehicles data={details?.category_name} exclude={slug} />
     </>
   );
 };

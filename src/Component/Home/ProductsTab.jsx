@@ -40,7 +40,7 @@ const ProductsTab = () => {
     draggable: false,
     responsive: [
       {
-        breakpoint: 1279,
+        breakpoint: 1441,
         settings: {
           slidesToShow: 3,
         },
@@ -99,19 +99,25 @@ const ProductsTab = () => {
                 <div className="tab-content pb-10">
                   {cate?.map((item) => (
                     <TabPanel key={item?.id}>
-                      <Slider {...ProductSlider} className="product-slider">
-                        {item?.products?.map((product, index) => (
-                          <div key={index}>
-                            <Link to={`/vehicles/${product?.slug}`}>
-                              <ProductCard
-                                heading={true}
-                                title={product?.name}
-                                image={product?.image}
-                              />
-                            </Link>
-                          </div>
-                        ))}
-                      </Slider>
+                      {item?.products?.length > 0 ? (
+                        <Slider {...ProductSlider} className="product-slider">
+                          {item?.products?.map((product, index) => (
+                            <div key={index}>
+                              <Link to={`/vehicles/${product?.slug}`}>
+                                <ProductCard
+                                  heading={true}
+                                  title={product?.name}
+                                  image={product?.image}
+                                />
+                              </Link>
+                            </div>
+                          ))}
+                        </Slider>
+                      ) : (
+                        <div className="w-full text-center">
+                          <p>No Data found</p>
+                        </div>
+                      )}
                     </TabPanel>
                   ))}
                 </div>

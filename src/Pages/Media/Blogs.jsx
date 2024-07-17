@@ -6,23 +6,28 @@ import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 
 const Blogs = () => {
   const { settings } = useLayoutData();
-  const { data } = useGet("blogs");
+  const { data, isLoading } = useGet("blogs");
   const [dataFromChild, setDataFromChild] = useState([]);
   const blogRef = useRef(null);
-
+  if (isLoading || !data) {
+    return <Loading />;
+  }
   return (
     <>
-      <MetaHelmet title={`Blog | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
+      <MetaHelmet
+        title={`Blog | ${settings?.meta_title !== undefined ? settings?.meta_title : "Batas Maw"}`}
+      />
       <Breadcrumbs />
       <section className="blog-page bg-light-grey bg-opacity-40">
         <div className="side-padding">
           <div className="section-break container mx-auto">
             <Article title={"Our Blogs"} headClass={""} />
             <div
-              className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
               ref={blogRef}
             >
               {dataFromChild?.map((item) => (

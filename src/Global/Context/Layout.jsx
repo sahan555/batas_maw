@@ -7,10 +7,11 @@ const LayoutData = createContext();
 export const Layout = ({ children }) => {
   const [city, setCity] = useState("");
   const [coordinate, setCoordinate] = useState("");
-  // const [loader, setLoader] = useState(false);
   const { data: settings } = useGet("settings");
+  const { data: popup } = useGet("schemes");
+
   return (
-    <LayoutData.Provider value={{ city, setCity, coordinate, setCoordinate,settings }}>
+    <LayoutData.Provider value={{ city, setCity, coordinate, setCoordinate,settings,popup }}>
       {children}
     </LayoutData.Provider>
   );

@@ -6,11 +6,15 @@ import HtmlParse from "../../Component/Global/HtmlParse";
 import BlogCard from "../../Component/Global/BlogCard";
 import useGet from "../../Global/Apis/useGet";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 
 const EventDetails = () => {
   const { slug } = useParams();
-  const { data: details } = useGetById("events", slug);
+  const { data: details,isLoading } = useGetById("events", slug);
   const { data: recent } = useGet("recent-events");
+  if (isLoading || !details) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet

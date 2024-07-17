@@ -15,12 +15,16 @@ const Compare = () => {
   const { slug } = useParams();
   const { data: details } = useGetById("products-single", slug);
   const cateName = useMemo(() => details?.category_name, [details]);
-  const { data: cate } = useGetById("product-category", cateName);
+  const { data: cate, isLoading } = useGetById("product-category", cateName);
   const [compareWith, setCompareWith] = useState("");
-
+  if (isLoading || !cate) {
+    return <Loading />;
+  }
   return (
     <>
-      <MetaHelmet title={`Compare | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
+      <MetaHelmet
+        title={`Compare | ${settings?.meta_title !== undefined ? settings?.meta_title : "Batas Maw"}`}
+      />
       <Breadcrumbs data={details?.name} />
       {details && cate ? (
         <main className="compare-section">

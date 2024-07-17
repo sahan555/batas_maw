@@ -6,12 +6,15 @@ import VehicleTabs from "../../Component/Vehicles/VehicleTabs";
 import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 
 const Vehicles = () => {
-  const { data: cate } = useGet("categories");
+  const { data: cate,isLoading } = useGet("categories");
   const { data: staticData } = useGet("static-content");
   const { settings } = useLayoutData();
-
+  if (isLoading || !cate) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet title={`Vehicles | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />

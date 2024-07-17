@@ -7,53 +7,6 @@ import { useLayoutData } from "../Global/Context/Layout";
 
 const Faq = () => {
   const { settings } = useLayoutData();
-  const products = [
-    {
-      name: "Product 1",
-      reviews: [
-        { user: "Alice", rating: 4 },
-        { user: "Bob", rating: 5 },
-      ],
-    },
-    {
-      name: "Product 2",
-      reviews: [
-        { user: "Charlie", rating: 3 },
-        { user: "Dave", rating: 4 },
-        { user: "Eve", rating: 5 },
-      ],
-    },
-    {
-      name: "Product 3",
-      reviews: [
-        { user: "Frank", rating: 2 },
-        { user: "Grace", rating: 3 },
-      ],
-    },
-  ];
-
-  const totalReview = products.reduce(
-    (acc, product) => {
-      const review = product.reviews.reduce((a, item) => a + item.rating, 0);
-      const numOfReviewer = product.reviews.length;
-      return {
-        rating: acc.rating + review,
-        count: acc.count + numOfReviewer,
-      };
-    },
-    { rating: 0, count: 0 },
-  );
-  const avgRating = totalReview.rating / totalReview.count;
-  console.log(avgRating.toFixed(2));
-  const productwithRating = products.map((item) => {
-    const totalRating = item.reviews.reduce(
-      (acc, product) => acc + product.rating,
-      0,
-    );
-    const avgRating = totalRating / item.reviews.length;
-    return { ...item, totalRating: avgRating };
-  });
-  console.log(productwithRating);
   return (
     <>
       <MetaHelmet

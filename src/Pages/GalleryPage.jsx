@@ -5,15 +5,18 @@ import Pagination from "../Component/Global/Pagination";
 import useGet from "../Global/Apis/useGet";
 import { useLayoutData } from "../Global/Context/Layout";
 import MetaHelmet from "../Component/Global/MetaHelmet";
+import Loading from "../Component/Global/Loading";
 
 const GalleryPage = () => {
   const [dataFromChild, setDataFromChild] = useState([]);
   const [dataVideo, setDataVideo] = useState([]);
   const videoRef = useRef(null);
   const galleryRef = useRef(null);
-  const { data: galleries } = useGet("galleries");
+  const { data: galleries,isLoading } = useGet("galleries");
   const { settings } = useLayoutData();
-
+  if (isLoading || !galleries) {
+    return <Loading />;
+  }
   return (
     <>
       <MetaHelmet title={`Gallery | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />

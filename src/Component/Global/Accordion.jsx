@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { faqData } from "../../Global/Datas/HomeData";
 import HtmlParse from "./HtmlParse";
 import useGet from "../../Global/Apis/useGet";
+import Loading from "./Loading";
 
 const Accordion = ({ defaultIcon, expandIcon, view }) => {
   const [expandedPanel, setExpandedPanel] = useState(null);
-  const { data: faqs } = useGet("faqs");
+  const { data: faqs,isLoading } = useGet("faqs");
   const togglePanel = (panelId) => {
     if (expandedPanel === panelId) {
       setExpandedPanel(null);
@@ -19,10 +20,9 @@ const Accordion = ({ defaultIcon, expandIcon, view }) => {
   if (expandIcon === null) {
     expandIcon = defaultIcon;
   }
-
   return (
     <div className="accordion">
-      {(faqs ? faqs : faqData)?.slice(0, view)?.map((item, index) => (
+      {(faqs)?.slice(0, view)?.map((item, index) => (
         <div
           className="accordion-panel border-b border-light-grey py-3"
           key={index}

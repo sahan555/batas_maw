@@ -1,4 +1,6 @@
 import { lazy } from "react";
+import ExchangeForm from "../../Pages/Form/ExchangeForm";
+
 // Function to create a lazy-loaded component with a 300ms delay
 const lazyWithDelay = (importFunc, delay = 0) => {
   return lazy(() => {
@@ -19,10 +21,8 @@ const Compare = lazyWithDelay(() => import("../../Pages/Vehicles/Compare"));
 const About = lazyWithDelay(() => import("../../Pages/About/About"));
 const Career = lazyWithDelay(() => import("../../Pages/About/Career"));
 const Branches = lazyWithDelay(() => import("../../Pages/About/Branches"));
-const Form = lazyWithDelay(() => import("../../Pages/Form"));
-const SupportForm = lazyWithDelay(
-  () => import("../../Component/Global/Forms/SupportForm"),
-);
+const Form = lazyWithDelay(() => import("../../Pages/Form/Form"));
+const SupportForm = lazyWithDelay(() => import("../../Pages/Form/SupportForm"));
 const Contact = lazyWithDelay(() => import("../../Pages/Contact"));
 const Resale = lazyWithDelay(() => import("../../Pages/Resale"));
 const Blogs = lazyWithDelay(() => import("../../Pages/Media/Blogs"));
@@ -40,6 +40,13 @@ const Media = lazyWithDelay(() => import("../../Pages/Media/Media"));
 const MediaDetails = lazyWithDelay(
   () => import("../../Pages/Media/MediaDetails"),
 );
+const VehicleInquiry = lazyWithDelay(
+  () => import("../../Pages/Vehicles/VehicleInquiry"),
+);
+const TestDriveForm = lazyWithDelay(
+  () => import("../../Pages/Form/TestDriveForm"),
+);
+const EventForm = lazyWithDelay(() => import("../../Pages/Form/EventForm"));
 export const routes = [
   {
     path: "/",
@@ -58,6 +65,10 @@ export const routes = [
   {
     path: "/vehicles/compare/:slug",
     element: <Compare />,
+  },
+  {
+    path: "/vehicles/inquiry/:slug",
+    element: <VehicleInquiry />,
   },
   {
     path: "/about",
@@ -83,6 +94,21 @@ export const routes = [
     path: "/forms/support",
     element: <SupportForm />,
     breadcrumb: "Support Form",
+  },
+  {
+    path: "/forms/event",
+    element: <EventForm />,
+    breadcrumb: "Event Form",
+  },
+  {
+    path: "/forms/testdrive",
+    element: <TestDriveForm />,
+    breadcrumb: "Test Drive Form",
+  },
+  {
+    path: "/forms/exchange",
+    element: <ExchangeForm />,
+    breadcrumb: "Vehicle Exchange Form",
   },
   {
     path: "/contact",

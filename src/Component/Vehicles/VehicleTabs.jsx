@@ -41,7 +41,7 @@ const VehicleTabs = ({data:cate}) => {
     prevArrow: <CustomPrevArrow />,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1441,
         settings: {
           slidesToShow: 3,
         },

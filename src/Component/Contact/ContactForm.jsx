@@ -1,147 +1,167 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { Formik, Form, Field } from "formik";
 import usePost from "../../Global/Apis/UsePost";
+import FormSection from "../Global/Forms/FormSection";
+import useGet from "../../Global/Apis/useGet";
+import { useRef } from "react";
 const ContactForm = () => {
   const [loader, setLoader] = useState(false);
-  const { post } = usePost("contact-store");
+  const { data: product } = useGet("select-products");
+  const { post } = usePost("contact-store", "Contact");
+  const productRef = useRef(null);
 
   const initialValues = {
     name: "",
-    email: "",
     phone: "",
+    email: "",
+    location: "",
+    sub_location: "",
+    occupation: "",
+    age: "",
+    inquiry: "",
     contact_message: "",
+    product_id: [],
   };
+
+  const customControl = [
+    {
+      label: true,
+      required: true,
+      name: "name",
+      type: "text",
+      cols: "2",
+      as: "input",
+      placeholder: "Name",
+    },
+    {
+      label: true,
+      name: "phone",
+      required: true,
+      type: "number",
+      cols: "1",
+      as: "input",
+      placeholder: "Phone No.",
+    },
+    {
+      label: true,
+      name: "email",
+      required: true,
+
+      type: "email",
+      cols: "1",
+      as: "input",
+      placeholder: "Email",
+    },
+    {
+      label: true,
+      name: "location",
+      type: "text",
+      cols: "1",
+      as: "input",
+      placeholder: "Location",
+    },
+    {
+      label: true,
+      labelName: "Sub Location",
+      name: "sub_location",
+      type: "text",
+      cols: "1",
+      as: "input",
+      placeholder: "Sub Location",
+    },
+    {
+      label: true,
+      name: "occupation",
+      type: "text",
+      cols: "1",
+      as: "input",
+      placeholder: "occupation",
+    },
+    {
+      label: true,
+      name: "age",
+      type: "number",
+      cols: "1",
+      as: "input",
+      placeholder: "Age",
+    },
+    {
+      label: true,
+      labelName: "Subject",
+      name: "inquiry",
+      type: "text",
+      cols: "2",
+      as: "input",
+      placeholder: "Subject",
+    },
+    {
+      label: true,
+      labelName: "messages",
+      name: "contact_message",
+      cols: "2",
+      as: "textarea",
+      placeholder: "Messages",
+    },
+    {
+      label: true,
+      labelName: "Product Model",
+      required: true,
+      name: "product_id",
+      cols: "2",
+      as: "select",
+      ref: productRef,
+      multiple: true,
+      option: product?.map((item) => ({
+        label: item?.name,
+        value: item?.id,
+      })),
+    },
+  ];
+
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("required"),
-    email: Yup.string().email("Invalid email address").required("required"),
+    name: Yup.string()
+      .required("Name is required")
+      .min(2, "Name must be at least 2 characters long"),
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
     phone: Yup.string()
-      .required("Phone number is required")
-      .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits"),
-    contact_message: Yup.string().required("required"),
+      .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
+      .required("Phone number is required"),
+    location: Yup.string(),
+    sub_location: Yup.string(),
+    occupation: Yup.string(),
+    age: Yup.number()
+      .positive("Age must be a positive number")
+      .integer("Age must be an integer"),
+    inquiry: Yup.string(),
+    contact_message: Yup.string(),
+    product_id: Yup.array()
+      .of(Yup.number().required("Product is required"))
+      .min(1, "At least one product must be selected"),
   });
+
   const handleSubmit = async (values, { resetForm }) => {
     setLoader(true);
     await post(values, "Contact");
-    setLoader(false);
+    if (productRef.current) {
+      productRef.current.clearValue();
+    }
     resetForm();
+    setLoader(false);
   };
   return (
     <div className="contact-form rounded-lg border bg-grey bg-opacity-10 px-6 py-6">
       <div className="heading-wrapper pb-6">
         <h1>Contact Us</h1>
       </div>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={(values, { resetForm }) => handleSubmit(values, { resetForm })}
-      >
-        {(formik) => (
-          <Form onSubmit={formik.handleSubmit}>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="col-span-full">
-                <div className="form-group">
-                  <label
-                    className={`form-label mb-1 block text-sm uppercase ${
-                      formik.errors.name && formik.touched.name
-                        ? "text-primary"
-                        : ""
-                    }`}
-                  >
-                    name <span className="text-primary">*</span>
-                  </label>
-                  <Field
-                    type="text"
-                    name="name"
-                    placeholder="Full name"
-                    className={`w-full border  border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
-                      formik.errors.name && formik.touched.name ? "error" : ""
-                    }`}
-                  />
-                </div>
-              </div>
-              <div className="col-span-1">
-                <div className="form-group">
-                  <label
-                    className={`form-label mb-1 block text-sm uppercase ${
-                      formik.errors.email && formik.touched.email
-                        ? "text-primary"
-                        : ""
-                    }`}
-                  >
-                    Email Address <span className="text-primary">*</span>
-                  </label>
-                  <Field
-                    type="text"
-                    name="email"
-                    placeholder="Email Address"
-                    className={`w-full border  border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
-                      formik.errors.email && formik.touched.email ? "error" : ""
-                    }`}
-                  />
-                </div>
-              </div>
-              <div className="col-span-1">
-                <div className="form-group">
-                  <label
-                    className={`form-label mb-1 block text-sm uppercase ${
-                      formik.errors.phone && formik.touched.phone
-                        ? "text-primary"
-                        : ""
-                    }`}
-                  >
-                    Phone no. <span className="text-primary">*</span>
-                  </label>
-                  <Field
-                    type="text"
-                    name="phone"
-                    placeholder="Phone no"
-                    className={`w-full border  border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
-                      formik.errors.phone && formik.touched.phone ? "error" : ""
-                    }`}
-                  />
-                </div>
-              </div>
-
-              <div className="col-span-full">
-                <div className="form-group">
-                  <label
-                    className={`form-label mb-1 block text-sm uppercase ${
-                      formik.errors.contact_message && formik.touched.contact_message
-                        ? "text-primary"
-                        : ""
-                    }`}
-                  >
-                    Message <span className="text-primary">*</span>
-                  </label>
-                  <Field
-                    as="textarea"
-                    type="text"
-                    name="contact_message"
-                    row="5"
-                    placeholder="Message"
-                    className={`w-full border  border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
-                      formik.errors.contact_message && formik.touched.contact_message
-                        ? "error"
-                        : ""
-                    }`}
-                  />
-                </div>
-              </div>
-              <div className="col-span-full">
-                <div className="btn-wrapper">
-                  <button
-                    type="submit"
-                    className={`${loader && 'pointer-events-none'} btn-full skew-btn inline-block px-8 py-2 uppercase text-white before:bg-primary hover:opacity-90`}
-                  >
-                  {loader ? "Submitting..." : "Submit"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </Form>
-        )}
-      </Formik>
+      <FormSection
+        initial={initialValues}
+        schema={validationSchema}
+        submit={handleSubmit}
+        settings={customControl}
+        loader={loader}
+      />
     </div>
   );
 };

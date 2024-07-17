@@ -6,13 +6,22 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import Slider from "react-slick";
 import useGet from "../../../Global/Apis/useGet";
 
-const SimilarVehicles = ({ data }) => {
+const SimilarVehicles = ({ data, exclude }) => {
   const { data: cate } = useGet("categories");
   const similarItems = useMemo(() => {
     if (!cate || !data) return [];
-
-    return cate.find((item) => item?.name === data);
-  }, [cate, data]);
+    const categories = cate.find((item) => item?.name === data);
+    if (!categories) return [];
+    const filterCate = categories.products.filter(
+      (item) => item.slug !== exclude,
+    );
+    const newCate = {
+      ...categories,
+      products: filterCate,
+    };
+    return newCate;
+  }, [cate, data, exclude]);
+  console.log(similarItems?.products);
   var ProductSlider = {
     dots: true,
     arrows: false,
@@ -24,7 +33,7 @@ const SimilarVehicles = ({ data }) => {
     draggable: false,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1441,
         settings: {
           slidesToShow: 3,
         },
@@ -36,7 +45,7 @@ const SimilarVehicles = ({ data }) => {
         },
       },
       {
-        breakpoint: 639,
+        breakpoint: 767,
         settings: {
           slidesToShow: 1,
         },
@@ -62,7 +71,9 @@ const SimilarVehicles = ({ data }) => {
                     col={false}
                     slider={true}
                     title={item?.name}
-                    image={item?.images ? item?.images : item?.image}
+                    image={
+                      item?.images?.length > 0 ? item?.images : item?.image
+                    }
                     desc={item?.description}
                     slug={item?.slug}
                     download={item?.pdf}

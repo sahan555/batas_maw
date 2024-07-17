@@ -6,17 +6,22 @@ import Pagination from "../../Component/Global/Pagination";
 import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 
 const Media = () => {
   const { settings } = useLayoutData();
 
-  const { data } = useGet("blogs");
+  const { data, isLoading } = useGet("blogs");
   const [dataFromChild, setDataFromChild] = useState([]);
   const mediaRef = useRef(null);
-
+  if (isLoading || !data) {
+    return <Loading />;
+  }
   return (
     <>
-      <MetaHelmet title={`Media | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
+      <MetaHelmet
+        title={`Media | ${settings?.meta_title !== undefined ? settings?.meta_title : "Batas Maw"}`}
+      />
       <Breadcrumbs />
       <section className="media-page bg-light-grey bg-opacity-40">
         <div className="side-padding">

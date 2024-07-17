@@ -64,7 +64,7 @@ const Testimonials = ({ right, heading, data, slider }) => {
                         </div>
                       </div>
                       <div className="-order-1 col-span-full pt-4 md:-order-none md:col-span-3 md:pt-0">
-                        <figure className="md:skew-image h-[300px] w-full max-w-[300px] rounded-[20px] shadow-md md:h-[341px] md:max-w-[512px] md:rounded-none lg:-mt-20 lg:ml-20">
+                        <figure className="md:skew-image h-[300px] w-full max-w-[300px] rounded-[20px] shadow-md md:h-[341px] md:max-w-[512px] md:rounded-none lg:-mt-20 2xl:ml-20">
                           <img
                             src={item?.image}
                             alt={item?.name}
@@ -93,7 +93,7 @@ const Testimonials = ({ right, heading, data, slider }) => {
                     </div>
                   </div>
                   <div className="col-span-full md:col-span-3">
-                    <figure className="md:skew-image h-[300px] w-full max-w-[300px] rounded-[20px] shadow-md md:h-[341px] md:max-w-[512px] md:rounded-none lg:-mt-20 lg:ml-20">
+                    <figure className="md:skew-image h-[300px] w-full max-w-[300px] rounded-[20px] shadow-md md:h-[341px] md:max-w-[512px] md:rounded-none lg:-mt-20 2xl:ml-20">
                       <img
                         src={data?.chairman_image}
                         alt={data?.chairman_name}

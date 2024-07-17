@@ -6,8 +6,9 @@ import BranchTabs from "../../Component/About/Branches/BranchTabs";
 import { useLayoutData } from "../../Global/Context/Layout";
 import useGet from "../../Global/Apis/useGet";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 const Branches = () => {
-  const { data: servicesData } = useGet("provinces-services");
+  const { data: servicesData ,isLoading} = useGet("provinces-services");
   const mapRef = useRef(null);
   const { coordinate, setCoordinate,settings } = useLayoutData();
   const [selectedLocation, setSelectedLocation] = useState({
@@ -36,7 +37,9 @@ const Branches = () => {
     () => filterProvincesWithServices(servicesData),
     [servicesData],
   );
-
+  if (isLoading || !servicesData) {
+    return <Loading />;
+  }
   return (
     <>
           <MetaHelmet title={`Branches | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />

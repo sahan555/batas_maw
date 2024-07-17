@@ -7,16 +7,22 @@ import Pagination from "../../Component/Global/Pagination";
 import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Loading from "../../Component/Global/Loading";
 
 const Events = () => {
   const { settings } = useLayoutData();
 
-  const { data } = useGet("events");
+  const { data, isLoading } = useGet("events");
   const [dataFromChild, setDataFromChild] = useState([]);
   const eventRef = useRef(null);
+  if (isLoading || !data) {
+    return <Loading />;
+  }
   return (
     <>
-      <MetaHelmet title={`Event | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
+      <MetaHelmet
+        title={`Event | ${settings?.meta_title !== undefined ? settings?.meta_title : "Batas Maw"}`}
+      />
 
       <Breadcrumbs />
       <section className="event-page bg-light-grey bg-opacity-40">

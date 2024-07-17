@@ -32,7 +32,7 @@ const HelpSection = ({ data }) => {
                       {item.title}
                     </h5>
                     <div className="help-box px-6 py-4 ">
-                      <div className="flex flex-wrap justify-between font-medium capitalize ">
+                      <div className="flex sm:flex-row flex-col gap-y-3 justify-between font-medium capitalize ">
                         <div className="help-number">
                           <ul>
                             {item.number.map((number, index) => (

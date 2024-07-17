@@ -79,11 +79,11 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                 ))}
               </CompareTr>
               <CompareTr>
-                <td>Model</td>
+                <td className="w-1/3">Model</td>
                 {compareAll?.map((item, index) => (
                   <React.Fragment key={index}>
                     {item ? (
-                      <td key={index}>
+                      <td className="w-1/3" key={index}>
                         <h4 className="text-secondary">{item?.name}</h4>
                       </td>
                     ) : (
@@ -123,11 +123,11 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                 ))}
               </CompareTr> */}
               <CompareTr>
-                <td>Brochure</td>
+                <td className="w-1/3">Brochure</td>
                 {compareAll?.map((item, index) => (
                   <React.Fragment key={index}>
                     {item ? (
-                      <td key={index}>
+                      <td className="w-1/3" key={index}>
                         <Link
                           to={item?.pdf}
                           className="group flex gap-3"

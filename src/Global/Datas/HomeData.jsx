@@ -260,10 +260,10 @@ export const extralink2 = [
     name: "LOCATE A DEALER",
     slug: "/about/branches",
   },
-  {
-    name: "SCHEMES",
-    slug: "/media",
-  },
+  // {
+  //   name: "SCHEMES",
+  //   slug: "/media",
+  // },
   {
     name: "TESTIMONIAL",
     slug: "/testimonials",
