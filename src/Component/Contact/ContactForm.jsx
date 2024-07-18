@@ -7,7 +7,7 @@ import { useRef } from "react";
 const ContactForm = () => {
   const [loader, setLoader] = useState(false);
   const { data: product } = useGet("select-products");
-  const { post } = usePost("contact-store", "Contact");
+  const { post } = usePost("contact-store");
   const productRef = useRef(null);
 
   const initialValues = {

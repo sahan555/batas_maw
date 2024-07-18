@@ -46,7 +46,7 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll }) => {
     setBigNav(bigSliderRef);
     setSmallNav(smallSliderRef);
   }, []);
-
+console.log(data)
   return (
     <div className="details-brief pb-20">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">

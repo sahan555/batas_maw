@@ -11,6 +11,7 @@ const VehicleGallery = ({data}) => {
   const [smallNav, setSmallNav] = useState(null);
   let bigSliderRef = useRef(null);
   let smallSliderRef = useRef(null);
+  
   useEffect(() => {
     setBigNav(bigSliderRef);
     setSmallNav(smallSliderRef);

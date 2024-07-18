@@ -13,16 +13,16 @@ const Form = () => {
       slug: "/forms/support",
     },
     {
-      name: "Event Form",
-      slug: "/forms/event",
-    },
-    {
       name: "Test Drive Form",
       slug: "/forms/testdrive",
     },
     {
       name: "Vehicle Exchange Form",
       slug: "/forms/exchange",
+    },
+    {
+      name: "Complaint Form",
+      slug: "/forms/complaint",
     },
   ];
   return (

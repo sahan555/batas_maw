@@ -5,7 +5,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import Select from "react-select";
 
-const FormSection = ({ initial, schema, submit, settings, loader }) => {
+const FormSection = ({
+  initial,
+  schema,
+  submit,
+  settings,
+  loader,
+  formControlClass,
+}) => {
   const [imageName, setImageName] = useState("No Files Selected");
   const handleFileChange = (event) => {
     const inputImage = event.target.files[0];
@@ -56,7 +63,7 @@ const FormSection = ({ initial, schema, submit, settings, loader }) => {
                                     // onChange={formik.handleChange}
                                     isClearable={true}
                                     options={item?.option}
-                                    className="basic-multi-select form-control border-green-400 border border-solid"
+                                    className={`basic-multi-select form-control border-green-400 border border-solid ${formControlClass ?? ""}`}
                                     classNamePrefix="select"
                                     onChange={(value) => {
                                       formik.setFieldValue(
@@ -70,7 +77,7 @@ const FormSection = ({ initial, schema, submit, settings, loader }) => {
                                 <Field
                                   as={item?.as || null}
                                   type={item?.type || null}
-                                  className={`w-full border border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
+                                  className={`w-full border border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${formControlClass ?? ""} ${
                                     formik.errors[item?.name] &&
                                     formik.touched[item?.name]
                                       ? "error"
@@ -95,7 +102,7 @@ const FormSection = ({ initial, schema, submit, settings, loader }) => {
                               <Field
                                 as={item?.as || null}
                                 type={item?.type || null}
-                                className={`w-full border border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${
+                                className={`w-full border border-white px-5 py-2.5 outline-0 transition-[border] duration-300 autofill:bg-none focus:border-grey ${formControlClass ?? ""} ${
                                   formik.errors[item?.name] &&
                                   formik.touched[item?.name]
                                     ? "error"
@@ -122,7 +129,7 @@ const FormSection = ({ initial, schema, submit, settings, loader }) => {
                                   <div className="form-check">
                                     <Field
                                       type={item?.type || null}
-                                      className="form-control border-green-400 border border-solid"
+                                      className={`form-control border-green-400 border border-solid ${formControlClass ?? ""}`}
                                       onChange={formik.handleChange}
                                       placeholder={
                                         item?.placeholder ?? item?.name
@@ -141,7 +148,7 @@ const FormSection = ({ initial, schema, submit, settings, loader }) => {
                                   <div className="form-radio">
                                     <Field
                                       type={item?.type || null}
-                                      className="form-control border-green-400 border border-solid"
+                                      className={`form-control border-green-400 border border-solid ${formControlClass ?? ""}`}
                                       onChange={() =>
                                         formik.setFieldValue(
                                           item.name,
@@ -171,7 +178,7 @@ const FormSection = ({ initial, schema, submit, settings, loader }) => {
                                 }
                                 dateFormat="dd/MM/yyyy"
                                 maxDate={new Date()}
-                                className="w-full rounded-md border border-slate-300 px-3 py-2"
+                                className={`w-full rounded-md border border-slate-300 px-3 py-2 ${formControlClass ?? ""}`}
                               />
                             )) ||
                             (item?.as === "file" && (

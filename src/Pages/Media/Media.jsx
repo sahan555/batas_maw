@@ -7,11 +7,12 @@ import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Loading from "../../Component/Global/Loading";
+import HtmlParse from "../../Component/Global/HtmlParse";
 
 const Media = () => {
   const { settings } = useLayoutData();
 
-  const { data, isLoading } = useGet("blogs");
+  const { data, isLoading } = useGet("medias");
   const [dataFromChild, setDataFromChild] = useState([]);
   const mediaRef = useRef(null);
   if (isLoading || !data) {
@@ -39,14 +40,14 @@ const Media = () => {
                       className="flex items-start gap-4"
                     >
                       <div className="media-date h-14  w-14 flex-none text-center ">
-                        <h3 className="text-xl">08</h3>
-                        <span>{"Mayasdfgh"?.slice(0, 3)}</span>
+                        <h3 className="text-xl">{item?.media_date_day}</h3>
+                        <span>{(item?.media_date_month)?.slice(0, 3)}</span>
                       </div>
                       <div className="media-brief">
                         <h2 className="mb-2 line-clamp-1 text-secondary hover:underline">
                           {item?.name}
                         </h2>
-                        <p className="line-clamp-3">{item?.excerpt}</p>
+                        <div className="line-clamp-3 leading-7"><HtmlParse data={item?.description}/></div>
                       </div>
                     </Link>
                   </div>

@@ -42,6 +42,7 @@ const ProductCard = ({
               </h4>
             </article>
           )}
+
           {slider ? (
             <Link to={`/vehicles/${slug}`}>
               {Array.isArray(image) ? (

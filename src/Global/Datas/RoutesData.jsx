@@ -1,5 +1,4 @@
 import { lazy } from "react";
-import ExchangeForm from "../../Pages/Form/ExchangeForm";
 
 // Function to create a lazy-loaded component with a 300ms delay
 const lazyWithDelay = (importFunc, delay = 0) => {
@@ -46,7 +45,13 @@ const VehicleInquiry = lazyWithDelay(
 const TestDriveForm = lazyWithDelay(
   () => import("../../Pages/Form/TestDriveForm"),
 );
-const EventForm = lazyWithDelay(() => import("../../Pages/Form/EventForm"));
+const ComplaintForm = lazyWithDelay(
+  () => import("../../Pages/Form/ComplaintForm"),
+);
+const ExchangeForm = lazyWithDelay(
+  () => import("../../Pages/Form/ExchangeForm"),
+);
+
 export const routes = [
   {
     path: "/",
@@ -96,11 +101,6 @@ export const routes = [
     breadcrumb: "Support Form",
   },
   {
-    path: "/forms/event",
-    element: <EventForm />,
-    breadcrumb: "Event Form",
-  },
-  {
     path: "/forms/testdrive",
     element: <TestDriveForm />,
     breadcrumb: "Test Drive Form",
@@ -109,6 +109,11 @@ export const routes = [
     path: "/forms/exchange",
     element: <ExchangeForm />,
     breadcrumb: "Vehicle Exchange Form",
+  },
+  {
+    path: "/forms/complaint",
+    element: <ComplaintForm />,
+    breadcrumb: "Complaint Form",
   },
   {
     path: "/contact",

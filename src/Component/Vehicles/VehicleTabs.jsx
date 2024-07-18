@@ -91,7 +91,7 @@ const VehicleTabs = ({data:cate}) => {
                       col={true}
                       slider={true}
                       title={item?.name}
-                      image={item?.images ? item?.images : item?.image}
+                      image={item?.images?.length >0 ? item?.images : item?.image}
                       desc={item?.description}
                       slug={item?.slug}
                       download={item?.pdf}

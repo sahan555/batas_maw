@@ -11,14 +11,14 @@ import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Loading from "../../Component/Global/Loading";
 
 const MediaDetails = () => {
-  const { settings } = useLayoutData();
 
   const { slug } = useParams();
-  const { data: details,isLoading } = useGetById("blogs", slug);
-  const { data: recent } = useGet("recent-blogs");
+  const { data: details,isLoading } = useGetById("medias", slug);
+  const { data: recent } = useGet("recent-medias");
   if (isLoading || !details) {
     return <Loading />;
   }
+  console.log(details)
   return (
     <>
       <MetaHelmet   title={
@@ -37,7 +37,7 @@ const MediaDetails = () => {
                     </div>
                     <div className="media-date flex text-center ">
                       <h3 className="rounded-lg bg-secondary px-3 py-1 text-white">
-                        08 <span>{"Mayasdfgh"?.slice(0, 3)}</span> 2024
+                        {details?.media_date}
                       </h3>
                     </div>
                   </div>
@@ -49,10 +49,10 @@ const MediaDetails = () => {
                       className="object-cover object-center"
                     />
                   </figure>
-                  <div className="leading-7 [&>*]:mb-2">
+                  <div className="leading-7 [&>*]:mb-4">
                     <HtmlParse data={details?.description} />
                   </div>
-                  <div className="btn-wrapper">
+                  {/* <div className="btn-wrapper">
                     <Link
                       target="_blank"
                       to={""}
@@ -61,7 +61,7 @@ const MediaDetails = () => {
                       <CgSoftwareDownload className="text-xl" />
                       Download
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="col-span-2 lg:col-span-1 ">
@@ -80,15 +80,15 @@ const MediaDetails = () => {
                           className="flex items-start gap-4"
                         >
                           <div className="media-date h-14  w-14 flex-none text-center ">
-                            <h3 className="text-xl">08</h3>
-                            <span>{"Mayasdfgh"?.slice(0, 3)}</span>
+                          <h3 className="text-xl">{item?.media_date_day}</h3>
+                          <span>{(item?.media_date_month)?.slice(0, 3)}</span>
                           </div>
                           <div className="media-brief">
                             <h2 className="mb-2 line-clamp-1 text-secondary hover:underline">
                               {item?.name}
                             </h2>
-                            <p className="line-clamp-3">{item?.excerpt}</p>
-                          </div>
+                            <div className="line-clamp-3 leading-7"><HtmlParse data={item?.description}/></div>
+                            </div>
                         </Link>
                       </div>
                     </div>
