@@ -21,7 +21,6 @@ const SimilarVehicles = ({ data, exclude }) => {
     };
     return newCate;
   }, [cate, data, exclude]);
-  console.log(similarItems?.products);
   var ProductSlider = {
     dots: true,
     arrows: false,

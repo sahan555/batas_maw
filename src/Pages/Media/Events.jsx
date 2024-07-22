@@ -40,7 +40,7 @@ const Events = () => {
                 >
                   <div className="event-box h-full overflow-hidden rounded-lg border bg-white">
                     <article className="border-b p-4 ">
-                      <h2 className="line-clamp-1 text-xl text-primary">
+                      <h2 className="line-clamp-1 text-xl text-primary" title={item?.name}>
                         <Link to={item?.slug} className="hover:underline">
                           {item?.name}
                         </Link>

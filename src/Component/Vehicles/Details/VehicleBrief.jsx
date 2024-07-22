@@ -1,7 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Slider from "react-slick";
-import { Gallery, GalleryBox, GalleryLink } from "../../Global/Gallery";
-import { CustomNextArrow, CustomPrevArrow } from "../../Global/SliderArrows";
 import { Link } from "react-router-dom";
 import HtmlParse from "../../Global/HtmlParse";
 import VehicleGallery from "./VehicleGallery";

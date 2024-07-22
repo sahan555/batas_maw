@@ -15,7 +15,9 @@ const EventDetails = () => {
   const { data: recent } = useGet("recent-events");
   const [leftRecent, setLeftRecent] = useState("");
   useEffect(() => {
-    setLeftRecent(recent?.filter((item) => item.id !== details.id));
+    if (details) {
+      setLeftRecent(recent?.filter((item) => item.id !== details.id));
+    }
   }, [recent, details]);
   if (isLoading || !details) {
     return <Loading />;
@@ -63,7 +65,7 @@ const EventDetails = () => {
                   </div>
                   {details?.event_registration_form && (
                     <>
-                      <div className="event-form pt-16 max-w-[600px]">
+                      <div className="event-form max-w-[600px] pt-16">
                         <EventForm id={details?.id} />
                       </div>
                     </>

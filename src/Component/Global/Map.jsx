@@ -5,6 +5,7 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 import useGet from "../../Global/Apis/useGet";
 import { Link } from "react-router-dom";
+import useMediaQuery from "../../Global/Hooks/useMediaQuery";
 const filterProvincesWithServices = (mapData) => {
   return (
     mapData
@@ -39,9 +40,11 @@ const getAllBranches = (allMarker) => {
 };
 
 const Map = ({ city, coordinate }) => {
+  const isMobileDevice = useMediaQuery("(max-width: 767px)");
+
   const { data: servicesData } = useGet("provinces-services");
   const [position, setPosition] = useState([28.3780464, 83.9999901]);
-  const [zoom, setZoom] = useState(7.5);
+  const [zoom, setZoom] = useState(isMobileDevice ? "7" : "7.5");
   const mapRef = useRef(null);
 
   const provincesWithServices = useMemo(
@@ -74,7 +77,7 @@ const Map = ({ city, coordinate }) => {
       }
     } else {
       setPosition([28.3780464, 83.9999901]);
-      setZoom(7.5);
+      setZoom(isMobileDevice ? "7" : "7.5");
     }
   }, [city, coordinate, cityGeo?.service]);
 
@@ -91,6 +94,7 @@ const Map = ({ city, coordinate }) => {
       scrollWheelZoom={false}
       className="h-full min-h-[400px] lg:min-h-[600px] xl:min-h-[800px]"
       ref={mapRef}
+      attributionControl={false}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

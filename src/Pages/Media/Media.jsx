@@ -44,7 +44,7 @@ const Media = () => {
                         <span>{(item?.media_date_month)?.slice(0, 3)}</span>
                       </div>
                       <div className="media-brief">
-                        <h2 className="mb-2 line-clamp-1 text-secondary hover:underline">
+                        <h2 className="mb-2 line-clamp-1 text-secondary hover:underline" title={item?.name}>
                           {item?.name}
                         </h2>
                         <div className="line-clamp-3 leading-7"><HtmlParse data={item?.description}/></div>

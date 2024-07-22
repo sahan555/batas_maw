@@ -1,16 +1,17 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import Map from "../Global/Map";
 import { IoIosSearch } from "react-icons/io";
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useLayoutData } from "../../Global/Context/Layout";
 import useGet from "../../Global/Apis/useGet";
-import Loading from "../Global/Loading";
+import useScrollToElement from "../../Global/Hooks/useScrollToElement";
 
 const MapSection = forwardRef((props, ref) => {
-  const { data: map, isLoading } = useGet("services");
+  const { data: map } = useGet("services");
+  const MapRef = useRef(null);
   const { city, setCity, coordinate, setCoordinate } = useLayoutData();
-
+  const scrollToCareerOpening = useScrollToElement(ref ??MapRef);
   const handleCityInput = (event) => {
     setCity(event.target.value.toLowerCase());
     setCoordinate("");
@@ -60,6 +61,7 @@ const MapSection = forwardRef((props, ref) => {
             className="skew-btn btn-transparent flex w-full items-center justify-center gap-2 px-4 py-2 text-sm uppercase text-primary before:border-primary hover:text-white hover:before:bg-primary"
             onClick={() => {
               setCoordinate(item);
+              scrollToCareerOpening();
             }}
           >
             View on Map
@@ -72,7 +74,7 @@ const MapSection = forwardRef((props, ref) => {
   //   return <Loading />;
   // }
   return (
-    <section className="map-section " ref={ref}>
+    <section className="map-section " ref={ref ?? MapRef}>
       <div className="grid grid-cols-11">
         <div className="col-span-full lg:col-span-7">
           <Map

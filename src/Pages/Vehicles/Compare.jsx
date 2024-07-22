@@ -13,8 +13,10 @@ import { useLayoutData } from "../../Global/Context/Layout";
 const Compare = () => {
   const { settings } = useLayoutData();
   const { slug } = useParams();
+  
   const { data: details } = useGetById("products-single", slug);
-  const cateName = useMemo(() => details?.category_name, [details]);
+  const cateName = useMemo(() => details?.category_slug, [details]);
+
   const { data: cate, isLoading } = useGetById("product-category", cateName);
   const [compareWith, setCompareWith] = useState("");
   if (isLoading || !cate) {

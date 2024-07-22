@@ -5,7 +5,7 @@ const PopUp = ({ children, onloadPop, delay }) => {
   const [show, setShow] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
-  const popupDuration = 30 * 60 * 1000;
+  const popupDuration = 0 * 60 * 1000;
 
   useEffect(() => {
     const lastPopupTime = sessionStorage.getItem("lastPopupTime");
@@ -31,14 +31,14 @@ const PopUp = ({ children, onloadPop, delay }) => {
       }
     }, 6000);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, [delay]);
 
   return (
     <>
       {showPopup ? (
         <div
-          className={`popup-wrapper fixed inset-0 z-20 flex items-center justify-center duration-300 ${show ? "" : "top-full"}`}
+          className={`popup-wrapper fixed inset-0  z-20 flex items-center justify-center duration-300 ${show ? "" : "top-[200%]"}`}
         >
           <div className="popup relative z-30 m-auto max-h-[800px] w-full max-w-[800px] p-4">
             {children}

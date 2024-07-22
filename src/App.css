@@ -683,7 +683,8 @@ html {
         }
     }
 
-    .details-page,.vehicle-inquiry {
+    .details-page,
+    .vehicle-inquiry {
         .small-slider-wrapper {
             .slick-slide {
                 padding: 0 12px;
@@ -947,14 +948,16 @@ html {
     }
 
     @media only screen and (max-width: 767px) {
-
+        .hero-slider .slick-dots {
+            top: 16rem;
+        }
 
         .hero-slider .slick-dots {
             li {
                 width: 30px !important;
                 height: 0.3rem !important;
                 margin: 0 6px;
-            }
+            } 
 
             button {
                 padding: 0;

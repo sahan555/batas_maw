@@ -33,11 +33,11 @@ const FormSection = ({
         >
           {(formik) => (
             <Form onSubmit={formik.handleSubmit}>
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 xl:gap-8 gap-6">
                 {settings?.map((item, index) => {
                   return (
                     <React.Fragment key={index}>
-                      <div className={`col-span-${item?.cols}`}>
+                      <div className={`col-span-full sm:col-span-${item?.cols}`}>
                         <div className="form-group" key={index}>
                           {item?.label && (
                             <label

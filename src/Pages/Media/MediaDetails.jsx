@@ -4,9 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import HtmlParse from "../../Component/Global/HtmlParse";
 // import BlogCard from "../../Component/Global/BlogCard";
-import { CgSoftwareDownload } from "react-icons/cg";
 import useGet from "../../Global/Apis/useGet";
-import { useLayoutData } from "../../Global/Context/Layout";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Loading from "../../Component/Global/Loading";
 
@@ -69,7 +67,7 @@ const MediaDetails = () => {
                   <h2 className="heading capitalize">recent Media</h2>
                 </div>
                 <div className="media-groups grid grid-cols-2 gap-6">
-                  {recent?.slice(0, 2)?.map((item, index) => (
+                  {recent?.slice(0, 3)?.map((item, index) => (
                     <div
                       className="col-span-full sm:col-span-1 lg:col-span-full"
                       key={index}
@@ -84,7 +82,7 @@ const MediaDetails = () => {
                           <span>{(item?.media_date_month)?.slice(0, 3)}</span>
                           </div>
                           <div className="media-brief">
-                            <h2 className="mb-2 line-clamp-1 text-secondary hover:underline">
+                            <h2 className="mb-2 line-clamp-1 text-secondary hover:underline" title={item?.name}>
                               {item?.name}
                             </h2>
                             <div className="line-clamp-3 leading-7"><HtmlParse data={item?.description}/></div>

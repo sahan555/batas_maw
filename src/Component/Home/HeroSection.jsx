@@ -24,7 +24,7 @@ const HeroSection = ({banners}) => {
           {banners?.length > 0 ? (
             banners?.map((item) => (
               <div key={item?.id}>
-                <figure className=" h-[400px] lg:h-[600px]">
+                <figure className=" h-[300px] md:h-[400px] lg:h-[600px]">
                   <img
                     src={item?.image}
                     className="object-cover object-center"

@@ -57,7 +57,7 @@ const NewsEvent = () => {
                       </figure>
                       <div className="side-padding md:absolute inset-x-0 bottom-0 !h-auto bg-white md:bg-light-grey md:bg-opacity-65 py-6  xl:pl-[16%] xl:pr-[70px]">
                         <article className="container mx-auto ">
-                          <h3 className="text-lg font-medium uppercase text-primary">
+                          <h3 className="text-lg font-medium uppercase text-primary line-clamp-1" title={blog?.name}>
                             {blog?.name}
                           </h3>
                           <span className="inline-block text-[13px] font-medium uppercase text-gray-700">
@@ -121,7 +121,7 @@ const NewsEvent = () => {
                             </span>
                             {item?.day}
                           </h6>
-                          <h2 className="line-clamp-1 text-base duration-200 hover:text-primary hover:underline">
+                          <h2 className="line-clamp-1 text-base duration-200 hover:text-primary hover:underline" title={item?.name}>
                             {item?.name}
                           </h2>
                           <div className="line-clamp-2 font-hermes-thin-italic text-sm text-grey">

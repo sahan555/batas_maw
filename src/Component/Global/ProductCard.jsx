@@ -37,7 +37,7 @@ const ProductCard = ({
         <div className={`product-box h-full`}>
           {heading && (
             <article className="bg-light-grey bg-opacity-65 py-3">
-              <h4 className="line-clamp-1 px-2 text-center text-xl font-medium text-black">
+              <h4 className="line-clamp-1 px-2 text-center text-xl font-medium text-black" title={title}>
                 {title}
               </h4>
             </article>
@@ -91,7 +91,7 @@ const ProductCard = ({
                   to={`/vehicles/${slug}`}
                   className="cursor-pointer hover:text-primary"
                 >
-                  <h4 className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black  duration-200 hover:text-primary hover:underline">
+                  <h4 className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black  duration-200 hover:text-primary hover:underline" title={title}>
                     {title}
                   </h4>
                 </Link>

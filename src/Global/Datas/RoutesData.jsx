@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import SpareServices from "../../Pages/SpareServices";
 
 // Function to create a lazy-loaded component with a 300ms delay
 const lazyWithDelay = (importFunc, delay = 0) => {
@@ -166,5 +167,10 @@ export const routes = [
     path: "/gallery",
     element: <GalleryPage />,
     breadcrumb: "Gallery",
+  },
+  {
+    path: "/services",
+    element: <SpareServices />,
+    breadcrumb: "Spare Services",
   },
 ];

@@ -13,7 +13,7 @@ const BlogCard = ({ data, slug }) => {
         />
       </figure>
       <article className="border-t p-4 ">
-        <h2 className="line-clamp-1 text-xl text-primary">
+        <h2 className="line-clamp-1 text-xl text-primary" title={data?.name}>
           <Link
             to={`${slug ? slug : ""}${data?.slug}`}
             className="hover:underline"
