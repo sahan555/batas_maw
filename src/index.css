@@ -637,6 +637,9 @@ video {
 .top-\[-4px\] {
   top: -4px;
 }
+.top-\[200\%\] {
+  top: 200%;
+}
 .top-\[3px\] {
   top: 3px;
 }
@@ -651,15 +654,6 @@ video {
 }
 .top-full {
   top: 100%;
-}
-.top-\[\] {
-  top: ;
-}
-.top-\[200\%\] {
-  top: 200%;
-}
-.\!top-full {
-  top: 100% !important;
 }
 .-z-10 {
   z-index: -10;
