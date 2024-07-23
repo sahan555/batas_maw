@@ -23,7 +23,6 @@ import FixedSideLinks from "../Global/FixedSideLinks";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useGet from "../../Global/Apis/useGet";
-import PopUp from "../Global/PopUp";
 import { useLayoutData } from "../../Global/Context/Layout";
 
 const Footer = () => {

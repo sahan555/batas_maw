@@ -1,5 +1,4 @@
 import { lazy } from "react";
-import SpareServices from "../../Pages/SpareServices";
 
 // Function to create a lazy-loaded component with a 300ms delay
 const lazyWithDelay = (importFunc, delay = 0) => {
@@ -52,6 +51,7 @@ const ComplaintForm = lazyWithDelay(
 const ExchangeForm = lazyWithDelay(
   () => import("../../Pages/Form/ExchangeForm"),
 );
+const SpareServices = lazyWithDelay(() => import("../../Pages/SpareServices"));
 
 export const routes = [
   {

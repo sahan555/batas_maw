@@ -25,7 +25,7 @@ const TestDriveForm = () => {
     license_no: "",
     product_id: [],
     remarks: "",
-  }
+  };
 
   const customControl = [
     {
@@ -131,7 +131,11 @@ const TestDriveForm = () => {
       .min(2, "Location must be at least 2 characters long")
       .max(50, "Location can't be longer than 50 characters"),
     email: Yup.string().email("Invalid email format"),
-    age: Yup.string().required("Age is required"),
+    age: Yup.number()
+      .required("Age is required")
+      .min(18, "Age must be a positive number")
+      .max(105, "Your are too old")
+      .integer("Age must be an integer"),
     license_no: Yup.string().required("License is required"),
     product_id: Yup.array()
       .of(Yup.number().required("Product is required"))

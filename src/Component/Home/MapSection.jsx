@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef } from "react";
-import Map from "../Global/Map";
+import Map from "../Global/Map.jsx";
 import { IoIosSearch } from "react-icons/io";
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -11,11 +11,13 @@ const MapSection = forwardRef((props, ref) => {
   const { data: map } = useGet("services");
   const MapRef = useRef(null);
   const { city, setCity, coordinate, setCoordinate } = useLayoutData();
-  const scrollToCareerOpening = useScrollToElement(ref ??MapRef);
+  const scrollToCareerOpening = useScrollToElement(ref ?? MapRef);
   const handleCityInput = (event) => {
-    setCity(event.target.value.toLowerCase());
+    const value = event.target.value.toLowerCase();
+    setCity(value);
     setCoordinate("");
-  };
+};
+
 
   const handleCitySearch = (event) => {
     event.preventDefault();
@@ -133,7 +135,7 @@ const MapSection = forwardRef((props, ref) => {
                 to="/about/branches"
                 className="btn-full block w-full  py-2 text-center capitalize before:bg-primary"
               >
-                View ALl
+                View All
               </Link>
             </div>
           </div>

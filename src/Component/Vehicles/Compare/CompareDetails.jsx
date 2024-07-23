@@ -47,7 +47,7 @@ const CompareDetails = ({ compareWith, compareTo, compareAll }) => {
                 <td className="w-1/3"></td>
                 {compareAll?.map((item, index) => (
                   <td key={index} className="w-1/3">
-                    {item?.images ? (
+                    {item?.images?.length > 0 ? (
                       <Slider
                         {...CompareSlider}
                         className="product-slider-img w-[200px] lg:w-[300px] xl:w-[400px]"

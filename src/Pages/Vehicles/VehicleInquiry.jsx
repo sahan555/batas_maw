@@ -121,7 +121,8 @@ const VehicleInquiry = () => {
 
     age: Yup.number()
       .required("Age is required")
-      .min(10, "Age must be a positive number")
+      .min(18, "Age must be a positive number")
+      .max(105,"Your are too old")
       .integer("Age must be an integer"),
   });
 

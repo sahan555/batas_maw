@@ -246,7 +246,7 @@ export const extralink2 = [
   },
   {
     name: "SPARE SERVICES",
-    slug: "/",
+    slug: "/services",
   },
   {
     name: "FAQS",

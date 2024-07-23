@@ -820,16 +820,27 @@ html {
             }
         }
     }
+    @media only screen and (max-width: 1600px) {
+        .side-padding {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .testimonals-section {
+            .slick-prev {
+                left: -40px;
+            }
 
+            .slick-arrow {
+                right: -40px;
+            }
+        }
+    }
     @media only screen and (max-width: 1439px) {
         .career-gallery .gallery-slider a {
             height: 400px;
         }
 
-        .side-padding {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+      
 
         .testimonals-section {
             .slick-prev {
@@ -845,7 +856,10 @@ html {
     }
 
     @media only screen and (max-width: 1279px) {
-
+        .side-padding {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
         .career-gallery .gallery-slider a {
             height: 300px;
         }

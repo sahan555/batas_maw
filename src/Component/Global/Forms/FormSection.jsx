@@ -33,12 +33,17 @@ const FormSection = ({
         >
           {(formik) => (
             <Form onSubmit={formik.handleSubmit}>
-              <div className="grid grid-cols-2 xl:gap-8 gap-6">
+              <div className="grid grid-cols-2 gap-6 xl:gap-8">
                 {settings?.map((item, index) => {
                   return (
                     <React.Fragment key={index}>
-                      <div className={`col-span-full sm:col-span-${item?.cols}`}>
-                        <div className="form-group" key={index}>
+                      <div
+                        className={`col-span-full sm:col-span-${item?.cols}`}
+                      >
+                        <div
+                          className={`form-group ${item?.as === "file" ? "photo-group" : ""}`}
+                          key={index}
+                        >
                           {item?.label && (
                             <label
                               htmlFor={item?.name}
@@ -46,7 +51,7 @@ const FormSection = ({
                             >
                               {item?.labelName ?? item?.name}
                               {item?.required && (
-                                <span className="text-red-400">*</span>
+                                <span className="pl-1 text-red-400">*</span>
                               )}
                             </label>
                           )}
@@ -108,6 +113,7 @@ const FormSection = ({
                                     ? "error"
                                     : ""
                                 }`}
+                                rows={4}
                                 onChange={
                                   item.onChange
                                     ? item.onChange(formik)
@@ -200,8 +206,11 @@ const FormSection = ({
                                     }
                                   }}
                                 />
-                                <div className="btn-group">
-                                  <span className="photo-btn">
+                                <div className="btn-group flex flex-wrap items-center gap-y-2">
+                                  {" "}
+                                  <span
+                                    className={`photo-btn rounded-lg uppercase text-white `}
+                                  >
                                     Upload Photo
                                     <svg
                                       width="14"
@@ -216,7 +225,17 @@ const FormSection = ({
                                       />
                                     </svg>
                                   </span>
-                                  <p id="imageName">{imageName}</p>
+                                  <p
+                                    id="imageName"
+                                    className={`${
+                                      formik.errors[item?.name] &&
+                                      formik.touched[item?.name]
+                                        ? "text-primary"
+                                        : ""
+                                    }`}
+                                  >
+                                    {imageName}
+                                  </p>
                                 </div>
                               </>
                             ))}

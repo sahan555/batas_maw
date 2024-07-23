@@ -29,7 +29,7 @@ const EmiCalculator = () => {
     const DownPayment = values.down_payment;
     const Result = (
       [Principal * Rate * (1 + Rate) ** Year] / [(1 + Rate) ** Year - 1]
-    ).toFixed(0);
+    ).toFixed(2);
 
     setEmiCalculate({ Result, initialPrincipal, DownPayment });
   };

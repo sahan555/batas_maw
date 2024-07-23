@@ -32,16 +32,16 @@ const SearchField = ({ data, slug, compare, title }) => {
   const highlightedItemRef = useRef(null);
 
   const filteredData = useMemo(() => {
-    const searchTerms = compareSelected.toLowerCase().split(" ");
+    const searchTerms = compareSelected?.toLowerCase().split(" ");
     return data?.filter(
       (item) =>
         item?.name !== slug?.name &&
-        searchTerms.every((term) => item?.name.toLowerCase().includes(term)),
+        searchTerms.every((term) => item?.name?.toLowerCase().includes(term)),
     );
   }, [data, compareSelected, slug]);
 
   const handleClickOutside = useCallback(() => {
-    if (!filteredData.some((item) => item.name === compareSelected)) {
+    if (!filteredData?.some((item) => item?.name === compareSelected)) {
       setCompareSelected("");
       compare("");
       setHighlightedIndex(-1);
@@ -77,14 +77,21 @@ const SearchField = ({ data, slug, compare, title }) => {
             updateNeeded = true;
             break;
           case "Enter":
-            if (highlightedIndex >= 0) {
+            if (
+              highlightedIndex >= 0 &&
+              filteredData &&
+              filteredData.length > 0
+            ) {
               const selectedItem = filteredData[highlightedIndex];
-              newCompareSelected = selectedItem.name;
-              compare(selectedItem);
-              newShowDropdown = false;
-              updateNeeded = true;
+              if (selectedItem) {
+                newCompareSelected = selectedItem.name;
+                compare(selectedItem);
+                newShowDropdown = false;
+                updateNeeded = true;
+              }
             }
             break;
+
           case "Escape":
             newCompareSelected = "";
             compare("");
@@ -120,24 +127,25 @@ const SearchField = ({ data, slug, compare, title }) => {
   );
 
   //keyboard friendly
-
   const scrollToHighlightedItem = useCallback(() => {
     if (highlightedIndex >= 0 && filteredData?.length > 0) {
       const dropdown = listRef.current;
       if (dropdown) {
         const highlightedItem = dropdown.children[highlightedIndex];
-        const dropdownRect = dropdown.getBoundingClientRect();
-        const highlightedItemRect = highlightedItem.getBoundingClientRect();
+        if (highlightedItem) {
+          const dropdownRect = dropdown.getBoundingClientRect();
+          const highlightedItemRect = highlightedItem.getBoundingClientRect();
 
-        if (highlightedItemRect.bottom > dropdownRect.bottom) {
-          dropdown.scrollTop +=
-            highlightedItemRect.bottom - dropdownRect.bottom;
-        } else if (highlightedItemRect.top < dropdownRect.top) {
-          dropdown.scrollTop -= dropdownRect.top - highlightedItemRect.top;
+          if (highlightedItemRect.bottom > dropdownRect.bottom) {
+            dropdown.scrollTop +=
+              highlightedItemRect.bottom - dropdownRect.bottom;
+          } else if (highlightedItemRect.top < dropdownRect.top) {
+            dropdown.scrollTop -= dropdownRect.top - highlightedItemRect.top;
+          }
         }
       }
     }
-  }, [highlightedIndex,filteredData?.length]);
+  }, [highlightedIndex, filteredData?.length]);
 
   useEffect(() => {
     if (showDropdown) {
@@ -180,9 +188,7 @@ const SearchField = ({ data, slug, compare, title }) => {
                 key={index}
                 onClick={() => {
                   setCompareSelected(item?.name);
-                  compare(
-                    filteredData.find((all) => all?.name === item?.name),
-                  );
+                  compare(filteredData.find((all) => all?.name === item?.name));
                   setShowDropdown(false);
                 }}
                 className={`cursor-pointer bg-secondary p-3 duration-300 hover:bg-[#0b4884] ${highlightedIndex === index ? "!bg-[#0b4884]" : ""}`}

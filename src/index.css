@@ -2855,7 +2855,7 @@ body {
             width: 176px;
             height: 41px;
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             z-index: 1;
         }
@@ -3115,14 +3115,22 @@ body {
                 top: 11px;
                 z-index: -1;
             }
+@media only screen and (max-width: 1600px) {
+        .side-padding {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+            .testimonals-section .slick-prev {
+                left: -40px;
+            }
+
+            .testimonals-section .slick-arrow {
+                right: -40px;
+            }
+    }
 @media only screen and (max-width: 1439px) {
         .career-gallery .gallery-slider a {
             height: 400px;
-        }
-
-        .side-padding {
-            padding-left: 20px;
-            padding-right: 20px;
         }
             .testimonals-section .slick-prev {
                 left: -25px;
@@ -3135,7 +3143,10 @@ body {
 
     }
 @media only screen and (max-width: 1279px) {
-
+        .side-padding {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
         .career-gallery .gallery-slider a {
             height: 300px;
         }
@@ -4243,15 +4254,18 @@ a {
     .md\:stripe {
     position: relative;
   }
+    @media only screen and (max-width: 1600px) {
+        .md\:side-padding {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
 
-    @media only screen and (max-width: 1439px) {
-
+    @media only screen and (max-width: 1279px) {
         .md\:side-padding {
             padding-left: 20px;
             padding-right: 20px;
         }
-
-
     }
 
     .md\:before\:w-\[30px\]::before {

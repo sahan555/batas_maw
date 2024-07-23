@@ -50,7 +50,7 @@ const DetailTabs = ({ data }) => {
             {vehicleTabs?.map((item, index) => (
               <Tab
                 key={index}
-                className={`px-8 py-2 ${isMobileDevice && "px-8 py-4"}`}
+                className={`px-8 py-2 cursor-pointer ${isMobileDevice && "px-8 py-4"}`}
                 onClick={() => handleTab(item.name)}
               >
                 {item?.name}

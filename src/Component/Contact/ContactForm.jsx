@@ -132,8 +132,9 @@ const ContactForm = () => {
     sub_location: Yup.string(),
     occupation: Yup.string(),
     age: Yup.number()
-      .positive("Age must be a positive number")
-      .integer("Age must be an integer"),
+    .min(18, "Age must be a positive number")
+    .max(105,"Your are too old")
+    .integer("Age must be an integer"),
     inquiry: Yup.string(),
     contact_message: Yup.string(),
     product_id: Yup.array()

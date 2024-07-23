@@ -41,7 +41,7 @@ const Compare = () => {
               compareTo={details}
             />
             {/* Pass details.category_name to SimilarVehicles */}
-            <SimilarVehicles data={cateName} />
+            <SimilarVehicles data={details?.category_name} exclude={slug}/>
           </div>
         </main>
       ) : (

@@ -130,7 +130,7 @@ const ExchangeForm = () => {
       placeholder: "Vehicle Model Year",
     },
     {
-      label: true,
+      label: true,   required: true,
       labelName: "Your Vehicle Registration No.",
       name: "ex_veh_reg_no",
       type: "text",
@@ -164,10 +164,12 @@ const ExchangeForm = () => {
 
     age: Yup.number()
       .required("Age is required")
-      .min(18, "Your age must be older than 18")
+      .min(18, "Age must be a positive number")
+      .max(105,"Your are too old")
       .integer("Age must be an integer"),
     product_id: Yup.number().required("Product Model is required"),
     existing_vehicle: Yup.string().required("Your Vehicle Model is required"),
+    ex_veh_reg_no: Yup.string().required("Your Vehicle Registration is required"),
   });
 
   const handleSubmit = async (values, { resetForm }) => {

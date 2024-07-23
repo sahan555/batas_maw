@@ -115,6 +115,7 @@ const ComplaintForm = () => {
       label: true,
       labelName: "Your Vehicle Registration No.",
       name: "ex_veh_reg_no",
+      required: true,
       type: "text",
       cols: "2",
       as: "input",
@@ -166,10 +167,14 @@ const ComplaintForm = () => {
 
     age: Yup.number()
       .required("Age is required")
-      .min(10, "Age must be a positive number")
+      .min(18, "Age must be a positive number")
+      .max(105, "Your are too old")
       .integer("Age must be an integer"),
     existing_vehicle: Yup.string().required("Your Vehicle Model is required"),
     specify_problem: Yup.string().required("Your Vehicle Model is required"),
+    ex_veh_reg_no: Yup.string().required(
+      "Your Vehicle Registration is required",
+    ),
   });
 
   const handleSubmit = async (values, { resetForm }) => {

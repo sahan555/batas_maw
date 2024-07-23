@@ -5,7 +5,7 @@ const PopUp = ({ children, onloadPop, delay }) => {
   const [show, setShow] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
-  const popupDuration = 0 * 60 * 1000;
+  const popupDuration = 30 * 60 * 1000;
 
   useEffect(() => {
     const lastPopupTime = sessionStorage.getItem("lastPopupTime");
@@ -29,7 +29,7 @@ const PopUp = ({ children, onloadPop, delay }) => {
       if (delay) {
         setShowPopup(true);
       }
-    }, 6000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, [delay]);
