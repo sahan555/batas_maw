@@ -9,7 +9,7 @@ const Breadcrumbs = ({ data }) => {
   const generateBreadcrumbs = (pathname) => {
     const pathSegments = pathname
       .split("/")
-      .filter((segment) => segment !== "" && segment !== "compare" && segment !== 'inquiry'); // Skip the "compare" segment
+      .filter((segment) => segment !== "" && segment !== "compare" && segment !== 'inquiry');
     let cumulativePath = "";
     const breadcrumbs = [];
 
@@ -18,7 +18,6 @@ const Breadcrumbs = ({ data }) => {
     for (let i = 0; i < pathSegments.length; i++) {
       cumulativePath += `/${pathSegments[i]}`;
       let matchedRoute = routes.find((route) => {
-        // Check if route.path matches cumulativePath
         return route.path === cumulativePath;
       });
 

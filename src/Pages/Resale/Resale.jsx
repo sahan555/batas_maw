@@ -1,16 +1,15 @@
 import React from "react";
-import Article from "../Component/Global/Article";
-import { vehicleArticle } from "../Global/Datas/VehicleData";
-import Breadcrumbs from "../Component/Global/BreadCrumbs";
-import VehicleTabs from "../Component/Vehicles/VehicleTabs";
-import useGet from "../Global/Apis/useGet";
-import MetaHelmet from "../Component/Global/MetaHelmet";
-import { useLayoutData } from "../Global/Context/Layout";
+import Article from "../../Component/Global/Article";
+import { vehicleArticle } from "../../Global/Datas/VehicleData";
+import Breadcrumbs from "../../Component/Global/BreadCrumbs";
+import VehicleTabs from "../../Component/Vehicles/VehicleTabs";
+import useGet from "../../Global/Apis/useGet";
+import MetaHelmet from "../../Component/Global/MetaHelmet";
+import { useLayoutData } from "../../Global/Context/Layout";
 
 const Resale = () => {
-  const { data: cate } = useGet("categories");
+  const { data: cate } = useGet("resales");
   const { settings } = useLayoutData();
-
   return (
     <>
       <MetaHelmet title={`Resale | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
@@ -23,7 +22,7 @@ const Resale = () => {
               desc={vehicleArticle.desc}
               headClass={""}
             />
-            <VehicleTabs data={cate} />
+            <VehicleTabs data={cate} resale={true} />
           </div>
         </div>
       </section>

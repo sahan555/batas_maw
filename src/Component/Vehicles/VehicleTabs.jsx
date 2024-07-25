@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Pagination from "../Global/Pagination";
 
-const VehicleTabs = ({data:cate}) => {
+const VehicleTabs = ({data:cate,resale}) => {
 
   const [tabIndex, setTabIndex] = useState(0);
   const [dataFromChild, setDataFromChild] = useState([]);
@@ -90,11 +90,12 @@ const VehicleTabs = ({data:cate}) => {
                       index={idx}
                       col={true}
                       slider={true}
-                      title={item?.name}
+                      title={item?.name ?? item?.resale_product_name}
                       image={item?.images?.length >0 ? item?.images : item?.image}
                       desc={item?.description}
                       slug={item?.slug}
                       download={item?.pdf}
+                      resale={resale}
                     />
                   ))
                 ) : (

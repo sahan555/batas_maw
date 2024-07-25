@@ -16,14 +16,22 @@ const Vehicles = lazyWithDelay(() => import("../../Pages/Vehicles/Vehicles"));
 const VehicleDetails = lazyWithDelay(
   () => import("../../Pages/Vehicles/VehicleDetails"),
 );
+const VehicleInquiry = lazyWithDelay(
+  () => import("../../Pages/Vehicles/VehicleInquiry"),
+);
 const Compare = lazyWithDelay(() => import("../../Pages/Vehicles/Compare"));
 const About = lazyWithDelay(() => import("../../Pages/About/About"));
 const Career = lazyWithDelay(() => import("../../Pages/About/Career"));
 const Branches = lazyWithDelay(() => import("../../Pages/About/Branches"));
-const Form = lazyWithDelay(() => import("../../Pages/Form/Form"));
-const SupportForm = lazyWithDelay(() => import("../../Pages/Form/SupportForm"));
+
 const Contact = lazyWithDelay(() => import("../../Pages/Contact"));
-const Resale = lazyWithDelay(() => import("../../Pages/Resale"));
+const Resale = lazyWithDelay(() => import("../../Pages/Resale/Resale"));
+const ResaleDetail = lazyWithDelay(
+  () => import("../../Pages/Resale/ResaleDetails"),
+);
+const ResaleInquiry = lazyWithDelay(
+  () => import("../../Pages/Resale/ResaleInquiry"),
+);
 const Blogs = lazyWithDelay(() => import("../../Pages/Media/Blogs"));
 const BlogDetails = lazyWithDelay(
   () => import("../../Pages/Media/BlogDetails"),
@@ -32,16 +40,16 @@ const Events = lazyWithDelay(() => import("../../Pages/Media/Events"));
 const EventDetails = lazyWithDelay(
   () => import("../../Pages/Media/EventDetails"),
 );
-const Faq = lazyWithDelay(() => import("../../Pages/Faq"));
-const Testimonials = lazyWithDelay(() => import("../../Pages/Testimonials"));
-const GalleryPage = lazyWithDelay(() => import("../../Pages/GalleryPage"));
 const Media = lazyWithDelay(() => import("../../Pages/Media/Media"));
 const MediaDetails = lazyWithDelay(
   () => import("../../Pages/Media/MediaDetails"),
 );
-const VehicleInquiry = lazyWithDelay(
-  () => import("../../Pages/Vehicles/VehicleInquiry"),
-);
+const Faq = lazyWithDelay(() => import("../../Pages/Faq"));
+const Testimonials = lazyWithDelay(() => import("../../Pages/Testimonials"));
+const GalleryPage = lazyWithDelay(() => import("../../Pages/GalleryPage"));
+
+const Form = lazyWithDelay(() => import("../../Pages/Form/Form"));
+const SupportForm = lazyWithDelay(() => import("../../Pages/Form/SupportForm"));
 const TestDriveForm = lazyWithDelay(
   () => import("../../Pages/Form/TestDriveForm"),
 );
@@ -125,6 +133,15 @@ export const routes = [
     path: "/resale",
     element: <Resale />,
     breadcrumb: "Resale",
+  },
+  {
+    path: "/resale/:slug",
+    element: <ResaleDetail />,
+    breadcrumb: "Resale",
+  },
+  {
+    path: "/resale/inquiry/:slug",
+    element: <ResaleInquiry />,
   },
   {
     path: "/blog",

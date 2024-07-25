@@ -16,8 +16,7 @@ const MapSection = forwardRef((props, ref) => {
     const value = event.target.value.toLowerCase();
     setCity(value);
     setCoordinate("");
-};
-
+  };
 
   const handleCitySearch = (event) => {
     event.preventDefault();
@@ -116,19 +115,28 @@ const MapSection = forwardRef((props, ref) => {
               </form>
             </div>
             <div className="dealer-group h-[360px] overflow-y-auto md:h-[500px] xl:h-[600px]">
-              {city
-                ? map
-                    ?.filter((item) => item?.city.toLowerCase().includes(city))
-                    ?.map((item, index) => (
-                      <div key={index} className="dealer-box-wrapper  ">
+              {city ? (
+                map?.filter((item) => item?.city.toLowerCase().includes(city))
+                  .length > 0 ? (
+                  map
+                    ?.filter((item) =>
+                      item?.city.toLowerCase().includes(city.toLowerCase()),
+                    )
+                    .map((item, index) => (
+                      <div key={index} className="dealer-box-wrapper">
                         {renderServiceCenter(item, index)}
                       </div>
                     ))
-                : map?.map((item, index) => (
-                    <div key={index} className="dealer-box-wrapper  ">
-                      {renderServiceCenter(item, index)}
-                    </div>
-                  ))}
+                ) : (
+                  <div className="text-center px-3"><h6>No matching items found</h6></div>
+                )
+              ) : (
+                map?.map((item, index) => (
+                  <div key={index} className="dealer-box-wrapper  ">
+                    {renderServiceCenter(item, index)}
+                  </div>
+                ))
+              )}
             </div>
             <div className="btn-wrapper absolute bottom-0 left-0 right-0">
               <Link

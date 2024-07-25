@@ -101,7 +101,7 @@ const ProductsTab = () => {
                     <TabPanel key={item?.id}>
                       {item?.products?.length > 0 ? (
                         <Slider {...ProductSlider} className="product-slider">
-                          {item?.products?.map((product, index) => (
+                          {item?.products?.slice(0,8)?.map((product, index) => (
                             <div key={index}>
                               <Link to={`/vehicles/${product?.slug}`}>
                                 <ProductCard

@@ -15,6 +15,7 @@ const ProductCard = ({
   desc,
   slug,
   download,
+  resale,
 }) => {
   var ProductSlider = {
     dots: true,
@@ -37,14 +38,17 @@ const ProductCard = ({
         <div className={`product-box h-full`}>
           {heading && (
             <article className="bg-light-grey bg-opacity-65 py-3">
-              <h4 className="line-clamp-1 px-2 text-center text-xl font-medium text-black" title={title}>
+              <h4
+                className="line-clamp-1 px-2 text-center text-xl font-medium text-black"
+                title={title}
+              >
                 {title}
               </h4>
             </article>
           )}
 
           {slider ? (
-            <Link to={`/vehicles/${slug}`}>
+            <Link to={`${resale ? "/resale/" : "/vehicles/"}${slug}`}>
               {Array.isArray(image) ? (
                 <Slider {...ProductSlider} className="product-slider-img">
                   {image?.map((item, index) => (
@@ -88,10 +92,13 @@ const ProductCard = ({
             >
               <article className="mb-6 text-center">
                 <Link
-                  to={`/vehicles/${slug}`}
+                  to={`${resale ? "/resale/" : "/vehicles/"}${slug}`}
                   className="cursor-pointer hover:text-primary"
                 >
-                  <h4 className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black  duration-200 hover:text-primary hover:underline" title={title}>
+                  <h4
+                    className="mb-2 line-clamp-1 text-2xl font-medium capitalize text-black  duration-200 hover:text-primary hover:underline"
+                    title={title}
+                  >
                     {title}
                   </h4>
                 </Link>
@@ -100,11 +107,11 @@ const ProductCard = ({
                 </div>
               </article>
               <div className="product-info text-sm text-grey opacity-90">
-                <ul className="flex items-start justify-between">
+                <ul className="flex items-start justify-center">
                   <li className="w-1/2 px-2">
                     <div className="info-wrapper text-center">
                       <Link
-                        to={`/vehicles/${slug}`}
+                        to={`${resale ? "/resale/" : "/vehicles/"}${slug}`}
                         className="cursor-pointer hover:text-primary"
                       >
                         <LiaLongArrowAltRightSolid className="mx-auto text-2xl" />
@@ -124,20 +131,22 @@ const ProductCard = ({
                       </Link>
                     </div>
                   </li> */}
-                  <li className="w-1/2 px-2">
-                    <div className="info-wrapper text-center">
-                      <Link
-                        to={download}
-                        target="_blank"
-                        className="cursor-pointer hover:text-primary"
-                      >
-                        <BsFiletypePdf className="mx-auto text-2xl" />
-                        <span className="inline-block pt-3">
-                          Download Brochure
-                        </span>
-                      </Link>
-                    </div>
-                  </li>
+                  {download && (
+                    <li className="w-1/2 px-2">
+                      <div className="info-wrapper text-center">
+                        <Link
+                          to={download}
+                          target="_blank"
+                          className="cursor-pointer hover:text-primary"
+                        >
+                          <BsFiletypePdf className="mx-auto text-2xl" />
+                          <span className="inline-block pt-3">
+                            Download Brochure
+                          </span>
+                        </Link>
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

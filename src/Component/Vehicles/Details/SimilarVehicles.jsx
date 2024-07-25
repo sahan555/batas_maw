@@ -6,8 +6,8 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import Slider from "react-slick";
 import useGet from "../../../Global/Apis/useGet";
 
-const SimilarVehicles = ({ data, exclude }) => {
-  const { data: cate } = useGet("categories");
+const SimilarVehicles = ({ data, exclude, resale }) => {
+  const { data: cate } = useGet(resale ? "resales" : "categories");
   const similarItems = useMemo(() => {
     if (!cate || !data) return [];
     const categories = cate.find((item) => item?.name === data);
@@ -52,47 +52,51 @@ const SimilarVehicles = ({ data, exclude }) => {
     ],
   };
   return (
-    <div className="similar-section section-break bg-[#EFEFEF]">
-      <div className="side-padding">
-        <div className="container mx-auto">
-          <div className="heading-wrapper pb-6">
-            <h4 className="heading text-lg capitalize ">
-              similar products at our dealership
-            </h4>
-          </div>
-          <div className="flex w-full flex-wrap gap-y-8">
-            <Slider {...ProductSlider} className="custom-slider w-full">
-              {similarItems?.products?.map((item, index) => (
-                <React.Fragment key={index}>
-                  <ProductCard
-                    key={index}
-                    index={index}
-                    col={false}
-                    slider={true}
-                    title={item?.name}
-                    image={
-                      item?.images?.length > 0 ? item?.images : item?.image
-                    }
-                    desc={item?.description}
-                    slug={item?.slug}
-                    download={item?.pdf}
-                  />
-                </React.Fragment>
-              ))}
-            </Slider>
-          </div>
-          <div className="view-all mt-8 pt-8 text-center">
-            <Link
-              to="/vehicles/"
-              className="group inline-flex items-center gap-3 text-secondary"
-            >
-              View all products
-              <HiOutlineArrowLongRight className="text-2xl duration-300 group-hover:ml-2" />
-            </Link>
+    <>
+      {similarItems?.products?.length > 0 && (
+        <div className="similar-section section-break bg-[#EFEFEF]">
+          <div className="side-padding">
+            <div className="container mx-auto">
+              <div className="heading-wrapper pb-6">
+                <h4 className="heading text-lg capitalize ">
+                  similar products at our dealership
+                </h4>
+              </div>
+              <div className="flex w-full flex-wrap gap-y-8">
+                <Slider {...ProductSlider} className="custom-slider w-full">
+                  {similarItems?.products?.slice(0, 8)?.map((item, index) => (
+                    <React.Fragment key={index}>
+                      <ProductCard
+                        key={index}
+                        index={index}
+                        col={false}
+                        slider={true}
+                        title={item?.name}
+                        image={
+                          item?.images?.length > 0 ? item?.images : item?.image
+                        }
+                        desc={item?.description}
+                        slug={item?.slug}
+                        download={item?.pdf}
+                      />
+                    </React.Fragment>
+                  ))}
+                </Slider>
+              </div>
+              <div className="view-all mt-8 pt-8 text-center">
+                <Link
+                  to="/vehicles/"
+                  className="group inline-flex items-center gap-3 text-secondary"
+                >
+                  View all products
+                  <HiOutlineArrowLongRight className="text-2xl duration-300 group-hover:ml-2" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
