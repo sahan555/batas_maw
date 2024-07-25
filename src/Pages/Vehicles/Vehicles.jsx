@@ -9,15 +9,16 @@ import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Loading from "../../Component/Global/Loading";
 
 const Vehicles = () => {
-  const { data: cate,isLoading } = useGet("categories");
   const { data: staticData } = useGet("static-content");
-  const { settings } = useLayoutData();
-  if (isLoading || !cate) {
+  const { settings, cate, cateLoading } = useLayoutData();
+  if (cateLoading || !cate) {
     return <Loading />;
   }
   return (
     <>
-      <MetaHelmet title={`Vehicles | ${settings?.meta_title !== undefined? settings?.meta_title :'Batas Maw'}`} />
+      <MetaHelmet
+        title={`Vehicles | ${settings?.meta_title !== undefined ? settings?.meta_title : "Batas Maw"}`}
+      />
       <Breadcrumbs />
       <section className="vehicles-page section-break bg-light-grey bg-opacity-40">
         <div className="side-padding">

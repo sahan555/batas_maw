@@ -6,11 +6,11 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import useMediaQuery from "../../Global/Hooks/useMediaQuery";
 import { FaChevronDown } from "react-icons/fa6";
-import useGet from "../../Global/Apis/useGet";
+import { useLayoutData } from "../../Global/Context/Layout";
 // import useGetById from "../../Global/Apis/useGetById";
 
 const ProductsTab = () => {
-  const { data: cate } = useGet("categories");
+  const {  cate } = useLayoutData();
   const [activeTabName, setActiveTabName] = useState("Featured");
   const isMobileDevice = useMediaQuery("(max-width: 1023px)");
   const [mobileNav, setMobileNav] = useState(false);

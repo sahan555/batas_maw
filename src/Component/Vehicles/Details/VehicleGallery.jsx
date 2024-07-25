@@ -91,11 +91,11 @@ const VehicleGallery = ({data}) => {
             >
               {data?.images?.map((item, index) => (
                 <div key={index}>
-                  <figure className="h-[111px] border border-solid border-[#dddddd]">
+                  <figure className="h-[111px] border border-solid border-[#dddddd] cursor-pointer">
                     <img
                       src={item?.image}
                       alt={data?.name}
-                      className="object-scale-down object-center"
+                      className="object-cover object-center"
                     />
                   </figure>
                 </div>
@@ -128,11 +128,11 @@ const VehicleGallery = ({data}) => {
               },
             ]}
           >
-            <figure className="h-[111px] border border-solid border-[#dddddd]">
+            <figure className="h-[111px] border border-solid border-[#dddddd] cursor-pointer">
               <img
                 src={data?.image}
                 alt={data?.name}
-                className="object-scale-down object-center"
+                className="object-cover object-center"
               />
             </figure>
           </Slider>

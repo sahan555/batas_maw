@@ -29,7 +29,12 @@ const CareerForm = ({ jobid }) => {
   };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
+    name: Yup.string()
+    .required("Name is required")
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name cannot be longer than 50 characters")
+    .matches(/^[a-zA-Z\s]+$/, "Name must contain only letters and spaces"),
+
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),

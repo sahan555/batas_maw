@@ -18,7 +18,7 @@ const WhiteBox = ({ details, link, name, slug }) => {
             {Object.keys.length > 0 ? (
               <>
                 <article>
-                  <h5 className="asdsad text-xl uppercase text-secondary">{details?.name}</h5>
+                  <h5 className="text-xl uppercase text-secondary">{details?.name}</h5>
                   <ul className="text-sm text-grey">
                     <li>
                       <p className="text-xs  mb-2">{details?.created_at}</p>

@@ -1,16 +1,25 @@
-import React, { useMemo } from "react";
-// import { productData } from "../../../Global/Datas/HomeData";
+import React, { useEffect, useMemo, useState } from "react";
 import ProductCard from "../../Global/ProductCard";
 import { Link } from "react-router-dom";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import Slider from "react-slick";
-import useGet from "../../../Global/Apis/useGet";
+import { useLayoutData } from "../../../Global/Context/Layout";
 
 const SimilarVehicles = ({ data, exclude, resale }) => {
-  const { data: cate } = useGet(resale ? "resales" : "categories");
+  const { cate, resale: resaleData } = useLayoutData();
+  const [similar, setSimilar] = useState("");
+
+  useEffect(() => {
+    if (resale) {
+      setSimilar(resaleData);
+    } else {
+      setSimilar(cate);
+    }
+  }, [resale, resaleData, cate]);
+
   const similarItems = useMemo(() => {
-    if (!cate || !data) return [];
-    const categories = cate.find((item) => item?.name === data);
+    if (!similar || !data) return [];
+    const categories = similar.find((item) => item?.name === data);
     if (!categories) return [];
     const filterCate = categories.products.filter(
       (item) => item.slug !== exclude,
@@ -20,7 +29,7 @@ const SimilarVehicles = ({ data, exclude, resale }) => {
       products: filterCate,
     };
     return newCate;
-  }, [cate, data, exclude]);
+  }, [similar, data, exclude]);
   var ProductSlider = {
     dots: true,
     arrows: false,
@@ -71,7 +80,7 @@ const SimilarVehicles = ({ data, exclude, resale }) => {
                         index={index}
                         col={false}
                         slider={true}
-                        title={item?.name}
+                        title={item?.name ?? item?.resale_product_name}
                         image={
                           item?.images?.length > 0 ? item?.images : item?.image
                         }

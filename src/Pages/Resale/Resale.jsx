@@ -8,7 +8,7 @@ import MetaHelmet from "../../Component/Global/MetaHelmet";
 import { useLayoutData } from "../../Global/Context/Layout";
 
 const Resale = () => {
-  const { data: cate } = useGet("resales");
+  const {  resale } = useLayoutData();
   const { settings } = useLayoutData();
   return (
     <>
@@ -22,7 +22,7 @@ const Resale = () => {
               desc={vehicleArticle.desc}
               headClass={""}
             />
-            <VehicleTabs data={cate} resale={true} />
+            <VehicleTabs data={resale} resale={true} />
           </div>
         </div>
       </section>

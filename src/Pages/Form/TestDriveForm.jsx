@@ -120,9 +120,11 @@ const TestDriveForm = () => {
   ];
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .required("Name is required")
-      .min(2, "Name must be at least 2 characters long")
-      .max(50, "Name can't be longer than 50 characters"),
+    .required("Name is required")
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name cannot be longer than 50 characters")
+    .matches(/^[a-zA-Z\s]+$/, "Name must contain only letters and spaces"),
+
     phone: Yup.string()
       .required("Phone number is required")
       .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits"),

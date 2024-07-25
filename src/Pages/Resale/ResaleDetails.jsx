@@ -7,11 +7,14 @@ import SimilarVehicles from "../../Component/Vehicles/Details/SimilarVehicles";
 import useGetById from "../../Global/Apis/useGetById";
 import Loading from "../../Component/Global/Loading";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Error from "../Error";
 
 const ResaleDetails = () => {
   const { slug } = useParams();
-  const { data: details, isLoading } = useGetById("resales", slug);
-
+  const { data: details, isLoading, error } = useGetById("resales", slug);
+  if (error) {
+    return <Error />;
+  }
   if (isLoading || !details) {
     return <Loading />;
   }
@@ -22,7 +25,7 @@ const ResaleDetails = () => {
         title={
           details?.meta_title !== undefined
             ? `${details.meta_title} | BatasMaw`
-            :`${details?.resale_product_name} | BatasMaw`
+            : `${details?.resale_product_name} | BatasMaw`
         }
         description={details?.meta_description}
         keyword={details?.meta_keywords}
@@ -37,7 +40,7 @@ const ResaleDetails = () => {
           </div>
         </div>
       </section>
-  
+
       <SimilarVehicles
         data={details?.category_name}
         exclude={slug}

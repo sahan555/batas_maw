@@ -22,12 +22,13 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import FixedSideLinks from "../Global/FixedSideLinks";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import useGet from "../../Global/Apis/useGet";
 import { useLayoutData } from "../../Global/Context/Layout";
 
 const Footer = () => {
-  const { data: cate } = useGet("categories");
-  const { settings } = useLayoutData();
+  const { settings, cate, resale } = useLayoutData();
+  const combinedResale = resale?.reduce((acc, vehicle) => {
+    return acc.concat(vehicle?.products);
+  }, []);
 
   const phoneData = {
     value: ["01 - 4520025", "4541031", "4536532", settings?.phone],
@@ -126,18 +127,15 @@ const Footer = () => {
                 {/* <FooterLinks data={extralink} title={false} /> */}
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">
-                {footerLinks
-                  .filter((item) => item.title === "resale")
-                  .map((item, index) => (
-                    <FooterLinks
-                      title={item.title}
-                      data={item.list}
-                      showList={3}
-                      className="mb-5"
-                      key={index}
-                      slug={"/resale/"}
-                    />
-                  ))}
+                {combinedResale && (
+                  <FooterLinks
+                    title={"Resale"}
+                    data={combinedResale}
+                    showList={3}
+                    className="mb-5"
+                    slug={"/resale/"}
+                  />
+                )}
                 {footerLinks
                   .filter((item) => item.title === "media")
                   .map((item, index) => (

@@ -17,6 +17,7 @@ const useGetById = (url,id) => {
       const fetchedData = response?.data?.data;
       setData(fetchedData);
     } catch (err) {
+      console.error(err)
       setError(err);
     } finally {
       setIsLoading(false);

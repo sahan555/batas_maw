@@ -52,15 +52,15 @@ const ProductCard = ({
               {Array.isArray(image) ? (
                 <Slider {...ProductSlider} className="product-slider-img">
                   {image?.map((item, index) => (
-                    <div className="asdsa" key={index}>
+                    <React.Fragment key={index}>
                       <figure className="h-[298px] bg-white">
                         <img
                           src={item?.image}
                           alt={title}
-                          className="object-cover object-center"
+                          className="object-contain object-center"
                         />
                       </figure>
-                    </div>
+                    </React.Fragment>
                   ))}
                 </Slider>
               ) : (
@@ -70,7 +70,7 @@ const ProductCard = ({
                       <img
                         src={image}
                         alt={title}
-                        className="object-cover object-center"
+                        className="object-contain object-center"
                       />
                     </figure>
                   </div>
@@ -82,7 +82,7 @@ const ProductCard = ({
               <img
                 src={image}
                 alt={title}
-                className="object-cover object-center"
+                className="object-contain object-center"
               />
             </figure>
           )}
