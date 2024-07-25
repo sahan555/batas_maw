@@ -21,7 +21,7 @@ const ProductCard = ({
     dots: true,
     arrows: false,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     fade: true,
     speed: 500,
     slidesToShow: 1,
