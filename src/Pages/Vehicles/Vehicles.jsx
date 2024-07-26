@@ -9,6 +9,8 @@ import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Loading from "../../Component/Global/Loading";
 
 const Vehicles = () => {
+
+
   const { data: staticData } = useGet("static-content");
   const { settings, cate, cateLoading } = useLayoutData();
   if (cateLoading || !cate) {

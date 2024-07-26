@@ -1149,6 +1149,9 @@ video {
 .cursor-pointer {
   cursor: pointer;
 }
+.resize {
+  resize: both;
+}
 .list-disc {
   list-style-type: disc;
 }
@@ -2009,10 +2012,10 @@ body {
   inset: 0px;
 }
 .stripe-wrapper::before {
-  left: 100%;
+  left: 100% !important;
 }
 .stripe-wrapper::before {
-  right: auto;
+  right: auto !important;
 }
 .stripe-wrapper::before {
   width: 50px;
@@ -4806,6 +4809,10 @@ a {
 
   .xl\:pl-\[16\%\] {
     padding-left: 16%;
+  }
+
+  .xl\:pr-10 {
+    padding-right: 2.5rem;
   }
 
   .xl\:pr-3 {

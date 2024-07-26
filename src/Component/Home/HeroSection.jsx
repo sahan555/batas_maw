@@ -34,7 +34,7 @@ const HeroSection = ({banners}) => {
                 <div className="hero-desc stripe -mt-1.5 bg-light-grey py-8 text-center before:w-0 after:w-0 md:before:w-[30px] md:after:right-[60px] md:after:w-[30px] lg:py-10 2xl:before:w-[50px] 2xl:after:right-[90px] 2xl:after:w-[50px]">
                   <div className="side-padding">
                     <div className="container mx-auto">
-                      <div className="text-base font-medium leading-8 text-secondary md:pr-16  md:text-xl 2xl:pr-0 ">
+                      <div className="text-base font-medium leading-8 text-secondary md:pr-16  md:text-xl xl:pr-10 2xl:pr-0 ">
                         <HtmlParse data={item?.description} />
                       </div>
                     </div>

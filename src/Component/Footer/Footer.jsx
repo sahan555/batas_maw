@@ -25,7 +25,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { useLayoutData } from "../../Global/Context/Layout";
 
 const Footer = () => {
-  const { settings, cate, resale } = useLayoutData();
+  const { settings, cate, resale, vehicleTabIndex, setVehicleTabIndex } =
+    useLayoutData();
+
   const combinedResale = resale?.reduce((acc, vehicle) => {
     return acc.concat(vehicle?.products);
   }, []);
@@ -117,8 +119,15 @@ const Footer = () => {
                         data={item?.products}
                         showList={3}
                         className="mb-5"
-                        key={index}
                         slug={"/vehicles/"}
+                        onClick={() => {
+                          setVehicleTabIndex(index);
+                          window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                          });
+                        }}
                       />
                     )}
                   </React.Fragment>
@@ -127,7 +136,7 @@ const Footer = () => {
                 {/* <FooterLinks data={extralink} title={false} /> */}
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">
-                {combinedResale && (
+                {combinedResale?.length > 0 && (
                   <FooterLinks
                     title={"Resale"}
                     data={combinedResale}

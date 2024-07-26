@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const FooterLinks = ({ title, data, showList, className, slug }) => {
+const FooterLinks = ({ title, data, showList, className, slug, onClick }) => {
   return (
     <div className={`footer-links mb-[30px] ${className}`}>
       {title && (
@@ -29,7 +29,8 @@ const FooterLinks = ({ title, data, showList, className, slug }) => {
         <div className="btn-wrapper">
           <Link
             to={slug}
-            className="btn-transparent skew-btn inline-block w-full  max-w-[140px] py-1 text-center text-sm uppercase text-white hover:text-secondary hover:before:bg-white"
+            className="btn-transparent skew-btn inline-block w-full max-w-[140px] py-1 text-center text-sm uppercase text-white hover:text-secondary hover:before:bg-white"
+            onClick={onClick}
           >
             more
           </Link>

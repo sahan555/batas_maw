@@ -1,14 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProductCard from "../Global/ProductCard";
 import { TabList, TabPanel, Tabs } from "react-tabs";
 import { CustomTab } from "../Global/CustomTab";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Pagination from "../Global/Pagination";
+import { useLayoutData } from "../../Global/Context/Layout";
 
-const VehicleTabs = ({data:cate,resale}) => {
-
-  const [tabIndex, setTabIndex] = useState(0);
+const VehicleTabs = ({ data: cate, resale }) => {
+  const { vehicleTabIndex: tabIndex, setVehicleTabIndex: setTabIndex } =
+    useLayoutData();
+  const [deviceType, setDeviceType] = useState("desktop");
   const [dataFromChild, setDataFromChild] = useState([]);
   const productsRef = useRef(null);
   const CustomPrevArrow = (props) => {
@@ -60,7 +62,22 @@ const VehicleTabs = ({data:cate,resale}) => {
       },
     ],
   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1023) {
+        setDeviceType("tablet");
+      } else if (window.innerWidth <= 1535) {
+        setDeviceType("laptop");
+      } else {
+        setDeviceType("desktop");
+      }
+    };
 
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div className="product-wrapper" ref={productsRef}>
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
@@ -91,7 +108,9 @@ const VehicleTabs = ({data:cate,resale}) => {
                       col={true}
                       slider={true}
                       title={item?.name ?? item?.resale_product_name}
-                      image={item?.images?.length >0 ? item?.images : item?.image}
+                      image={
+                        item?.images?.length > 0 ? item?.images : item?.image
+                      }
                       desc={item?.description}
                       slug={item?.slug}
                       download={item?.pdf}
@@ -99,7 +118,7 @@ const VehicleTabs = ({data:cate,resale}) => {
                     />
                   ))
                 ) : (
-                  <div className="text-center w-full">
+                  <div className="w-full text-center">
                     <p>No Data found</p>
                   </div>
                 )}
@@ -107,7 +126,9 @@ const VehicleTabs = ({data:cate,resale}) => {
               <Pagination
                 ref={productsRef}
                 data={item?.products}
-                view={8}
+                view={
+                  deviceType === "tablet" ? 8 : deviceType === "laptop" ? 9 : 8
+                }
                 setDataFromChild={setDataFromChild}
               />
             </TabPanel>

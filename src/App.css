@@ -83,7 +83,7 @@ html {
         @apply relative;
 
         &::before {
-            @apply absolute content-[''] inset-0 w-[50px] left-full right-auto;
+            @apply absolute content-[''] inset-0 w-[50px] !left-full !right-auto;
             clip-path: polygon(0 0, 0% 100%, 27% 0);
 
         }

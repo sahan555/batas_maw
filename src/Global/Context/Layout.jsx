@@ -7,10 +7,12 @@ const LayoutData = createContext();
 export const Layout = ({ children }) => {
   const [city, setCity] = useState("");
   const [coordinate, setCoordinate] = useState("");
+  const [vehicleTabIndex, setVehicleTabIndex] = useState(0);
   const { data: settings } = useGet("settings");
   const { data: popup } = useGet("schemes");
-  const { data: cate, isLoading:cateLoading } = useGet("categories");
-  const { data: resale, isLoading:resaleLoading } = useGet("resales");
+  const { data: cate, isLoading: cateLoading } = useGet("categories");
+  const { data: resale, isLoading: resaleLoading } = useGet("resales");
+
   return (
     <LayoutData.Provider
       value={{
@@ -24,6 +26,8 @@ export const Layout = ({ children }) => {
         cateLoading,
         resale,
         resaleLoading,
+        vehicleTabIndex,
+        setVehicleTabIndex,
       }}
     >
       {children}
