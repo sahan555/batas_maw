@@ -1,55 +1,46 @@
 import React, {
   useRef,
   useState,
-  useMemo,
   useEffect,
   useCallback,
+  useMemo,
 } from "react";
+import {
+  useClickOutside,
+  useScrollToHighlightedItem,
+} from "../../Global/utils/SearchFieldUtils";
+import { Link, useNavigate } from "react-router-dom";
+import { MdSearch } from "react-icons/md";
 
-const useClickOutside = (ref, callback) => {
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        callback();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref, callback]);
-};
-
-const SearchField = ({ data, slug, compare, title }) => {
+const SearchField = ({ data, title, placeholder, loading, handleNavbar }) => {
   const [compareSelected, setCompareSelected] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
-  const dropdownRef = useRef(null);
-
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
+
+  const dropdownRef = useRef(null);
   const inputRef = useRef(null);
   const listRef = useRef(null);
   const highlightedItemRef = useRef(null);
+  const navigate = useNavigate();
 
   const filteredData = useMemo(() => {
     const searchTerms = compareSelected?.toLowerCase().split(" ");
-    return data?.filter(
-      (item) =>
-        item?.name !== slug?.name &&
-        searchTerms.every((term) => item?.name?.toLowerCase().includes(term)),
+    return data?.filter((item) =>
+      // item?.name !== slug&&
+      searchTerms.every((term) => item?.name?.toLowerCase().includes(term)),
     );
-  }, [data, compareSelected, slug]);
+  }, [data, compareSelected]);
 
   const handleClickOutside = useCallback(() => {
     if (!filteredData?.some((item) => item?.name === compareSelected)) {
       setCompareSelected("");
-      compare("");
       setHighlightedIndex(-1);
     }
     setShowDropdown(false);
-  }, [compareSelected, filteredData, compare]);
+  }, [compareSelected, filteredData]);
+
   useClickOutside(dropdownRef, handleClickOutside);
-  //keyboard friendly
+
   const handleKeyDown = useCallback(
     (e) => {
       const { key } = e;
@@ -77,27 +68,23 @@ const SearchField = ({ data, slug, compare, title }) => {
             updateNeeded = true;
             break;
           case "Enter":
-            if (
-              highlightedIndex >= 0 &&
-              filteredData &&
-              filteredData.length > 0
-            ) {
+            if (highlightedIndex >= 0) {
               const selectedItem = filteredData[highlightedIndex];
               if (selectedItem) {
-                newCompareSelected = selectedItem.name;
-                compare(selectedItem);
+                newCompareSelected = "";
                 newShowDropdown = false;
                 updateNeeded = true;
+                navigate(`/vehicles/${selectedItem.slug}`);
+                inputRef.current.blur();
               }
             }
             break;
-
           case "Escape":
             newCompareSelected = "";
-            compare("");
             newIndex = 0;
-            newShowDropdown = true;
+            newShowDropdown = false;
             updateNeeded = true;
+            inputRef.current.blur();
             break;
           default:
             break;
@@ -107,10 +94,11 @@ const SearchField = ({ data, slug, compare, title }) => {
           case "Enter":
           case "Escape":
             newCompareSelected = "";
-            compare("");
-            newShowDropdown = true;
+            newShowDropdown = false;
             newIndex = -1;
             updateNeeded = true;
+            inputRef.current.blur();
+
             break;
           default:
             break;
@@ -123,29 +111,10 @@ const SearchField = ({ data, slug, compare, title }) => {
         setShowDropdown(newShowDropdown);
       }
     },
-    [highlightedIndex, filteredData, compare, showDropdown, compareSelected],
+    [highlightedIndex, filteredData, showDropdown, compareSelected, navigate],
   );
 
-  //keyboard friendly
-  const scrollToHighlightedItem = useCallback(() => {
-    if (highlightedIndex >= 0 && filteredData?.length > 0) {
-      const dropdown = listRef.current;
-      if (dropdown) {
-        const highlightedItem = dropdown.children[highlightedIndex];
-        if (highlightedItem) {
-          const dropdownRect = dropdown.getBoundingClientRect();
-          const highlightedItemRect = highlightedItem.getBoundingClientRect();
-
-          if (highlightedItemRect.bottom > dropdownRect.bottom) {
-            dropdown.scrollTop +=
-              highlightedItemRect.bottom - dropdownRect.bottom;
-          } else if (highlightedItemRect.top < dropdownRect.top) {
-            dropdown.scrollTop -= dropdownRect.top - highlightedItemRect.top;
-          }
-        }
-      }
-    }
-  }, [highlightedIndex, filteredData?.length]);
+  useScrollToHighlightedItem(highlightedIndex, listRef, filteredData?.length);
 
   useEffect(() => {
     if (showDropdown) {
@@ -153,49 +122,57 @@ const SearchField = ({ data, slug, compare, title }) => {
     }
   }, [showDropdown]);
 
-  useEffect(() => {
-    scrollToHighlightedItem();
-  }, [highlightedIndex, scrollToHighlightedItem]);
   return (
-    <div className="form-group  flex w-1/2 flex-wrap items-center gap-3">
+    <div
+      className={`form-group flex flex-wrap items-center gap-3 ${loading ? "pointer-events-none" : ""}`}
+    >
       {title && <label>{title}</label>}
-
       <div className="searchable-field relative flex-grow" ref={dropdownRef}>
-        <input
-          type="text"
-          ref={inputRef}
-          onChange={(e) => {
-            setCompareSelected(e.target.value);
-            setShowDropdown(true);
-          }}
-          onClick={() => {
-            setShowDropdown(true);
-            if (filteredData?.length > 0) {
-              setHighlightedIndex(0);
-            }
-          }}
-          onKeyDown={handleKeyDown}
-          value={compareSelected}
-          className=" w-full border border-gray-300 bg-white py-2 pl-2 outline-0"
-        />
+        <div className="input-group relative">
+          <input
+            type="text"
+            ref={inputRef}
+            onChange={(e) => {
+              setCompareSelected(e.target.value);
+              setShowDropdown(true);
+            }}
+            onClick={() => {
+              setShowDropdown(true);
+              if (filteredData?.length > 0) {
+                setHighlightedIndex(0);
+              }
+            }}
+            placeholder={placeholder}
+            onKeyDown={handleKeyDown}
+            value={compareSelected}
+            className="w-full border border-gray-300 bg-white py-2 pl-2 outline-0"
+          />
+          <MdSearch className="absolute right-1.5 top-1.5 text-2xl transition-all hover:text-primary" />
+        </div>
         {showDropdown && (
           <ul
             ref={listRef}
             className="vehicle-data-ul absolute inset-x-0 top-full z-10 max-h-[190px] overflow-y-auto text-white"
           >
-            {filteredData.map((item, index) => (
+            {filteredData?.map((item, index) => (
               <li
                 key={index}
                 onClick={() => {
-                  setCompareSelected(item?.name);
-                  compare(filteredData.find((all) => all?.name === item?.name));
+                  setCompareSelected("");
                   setShowDropdown(false);
                 }}
-                className={`cursor-pointer bg-secondary p-3 duration-300 hover:bg-[#0b4884] ${highlightedIndex === index ? "!bg-[#0b4884]" : ""}`}
+                className={`cursor-pointer bg-secondary duration-300 hover:bg-[#0b4884] ${highlightedIndex === index ? "!bg-[#0b4884]" : ""}`}
                 onMouseEnter={() => setHighlightedIndex(index)}
                 ref={highlightedIndex === index ? highlightedItemRef : null}
               >
-                {item?.name}
+                <Link
+                  className="block p-3"
+                  to={`/vehicles/${item?.slug}`}
+                  onClick={handleNavbar}
+                >
+                  {" "}
+                  {item?.name}
+                </Link>
               </li>
             ))}
           </ul>

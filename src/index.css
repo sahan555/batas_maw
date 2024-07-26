@@ -1707,9 +1707,6 @@ video {
 .pr-6 {
   padding-right: 1.5rem;
 }
-.pr-8 {
-  padding-right: 2rem;
-}
 .pr-\[60px\] {
   padding-right: 60px;
 }
@@ -1940,6 +1937,10 @@ video {
 }
 .outline-0 {
   outline-width: 0px;
+}
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .invert {
   --tw-invert: invert(100%);
@@ -3820,15 +3821,6 @@ a {
   --tw-border-opacity: 1;
   border-color: rgb(103 107 113 / var(--tw-border-opacity));
 }
-.focus\:border-primary:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(227 33 52 / var(--tw-border-opacity));
-}
-.focus\:shadow-none:focus {
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -3846,9 +3838,6 @@ a {
 }
 .group:hover .group-hover\:mr-2 {
   margin-right: 0.5rem;
-}
-.group:hover .group-hover\:block {
-  display: block;
 }
 .group:hover .group-hover\:h-\[44px\] {
   height: 44px;
@@ -3938,6 +3927,10 @@ a {
 
   .sm\:w-60 {
     width: 15rem;
+  }
+
+  .sm\:w-auto {
+    width: auto;
   }
 
   .sm\:grid-cols-2 {
@@ -4874,6 +4867,10 @@ a {
     width: 30%;
   }
 
+  .\32xl\:max-w-\[250px\] {
+    max-width: 250px;
+  }
+
   .\32xl\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -4897,6 +4894,11 @@ a {
   .\32xl\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .\32xl\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .\32xl\:pr-0 {

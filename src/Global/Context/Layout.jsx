@@ -9,8 +9,8 @@ export const Layout = ({ children }) => {
   const [coordinate, setCoordinate] = useState("");
   const { data: settings } = useGet("settings");
   const { data: popup } = useGet("schemes");
-  const { data: cate, cateLoading } = useGet("categories");
-  const { data: resale, resaleLoading } = useGet("resales");
+  const { data: cate, isLoading:cateLoading } = useGet("categories");
+  const { data: resale, isLoading:resaleLoading } = useGet("resales");
   return (
     <LayoutData.Provider
       value={{

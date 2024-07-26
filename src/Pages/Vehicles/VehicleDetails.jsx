@@ -10,15 +10,22 @@ import useGetById from "../../Global/Apis/useGetById";
 import useScrollToElement from "../../Global/Hooks/useScrollToElement";
 import Loading from "../../Component/Global/Loading";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
+import Error from "../Error";
 
 const VehicleDetails = () => {
   const { slug } = useParams();
-  const { data: details, isLoading } = useGetById("products-single", slug);
+  const {
+    data: details,
+    isLoading,
+    error,
+  } = useGetById("products-single", slug);
   const reviewRef = useRef(null);
   const mapRef = useRef(null);
   const scrollToReview = useScrollToElement(reviewRef);
   const scrollToMap = useScrollToElement(mapRef);
-
+  if (error) {
+    return <Error />;
+  }
   if (isLoading || !details) {
     return <Loading />;
   }

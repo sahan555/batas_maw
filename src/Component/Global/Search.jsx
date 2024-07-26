@@ -1,17 +1,27 @@
 import React from "react";
-import { Input } from "./Input";
-import { MdSearch } from "react-icons/md";
+import SearchField from "./SearchField";
+import { useLayoutData } from "../../Global/Context/Layout";
 
-const Search = ({classname}) => {
+const Search = ({ classname, handleNavbar }) => {
+  const { cate, cateLoading } = useLayoutData();
+  const reduceData = cate?.reduce((acc, products) => {
+    return acc.concat(products.products);
+  }, []);
   return (
     <>
-      <form action="" className={`lg:max-w-[200px] w-full lg:p-0 lg:border-0 p-2 border-b border-solid border-[#dddddd] ${classname}`}>
-        <div className="form-group relative">
-          <Input classname="form-control py-1.5 px-6 pr-8 w-full focus:shadow-none focus:outline-none border border-solid border-light-grey focus:border-primary" placeholder="Search" type="text" name="search" />
-          <button type="submit" className="absolute right-1.5 top-1.5 text-2xl hover:text-primary transition-all  ">
-            <MdSearch />
-          </button>
-        </div>
+      <form
+        action=""
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className={`w-full border-b border-solid border-[#dddddd] p-2 lg:max-w-[200px] lg:border-0 lg:p-0 2xl:max-w-[250px] ${classname}`}
+      >
+        <SearchField
+          handleNavbar={handleNavbar}
+          placeholder={"Search"}
+          data={reduceData}
+          loading={cateLoading}
+        />
       </form>
     </>
   );

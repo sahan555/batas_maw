@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SubMenu } from "../../Global/Datas/SubMenu";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -13,7 +13,7 @@ const Navbar = () => {
   const isMobileDevice = useMediaQuery("(max-width: 1023px)");
   const navbar = useRef(null);
   const newDiv = useRef(null);
-
+  const [openChildNav, setOpenChildNav] = useState(false);
   useEffect(() => {
     newDiv.current = document.createElement("div");
     newDiv.current.classList.add("overflow-background");
@@ -58,6 +58,11 @@ const Navbar = () => {
       } else {
         openNavbar();
       }
+    }
+  };
+  const handleMouseEnter = (item) => {
+    if (item?.children && !isMobileDevice) {
+      setOpenChildNav((prev) => !prev);
     }
   };
   return (
@@ -114,15 +119,23 @@ const Navbar = () => {
                 </figure>
                 <ul className="navbar-group order-3 mb-2 flex flex-col border-b  border-solid border-[#dddddd] pb-2 lg:-order-none lg:m-0 lg:flex-row lg:border-0 lg:p-0">
                   {NavbarMenu.map((item, index) => (
-                    <li key={index} className="group relative">
+                    <li
+                      key={index}
+                      className="group relative"
+                      onMouseEnter={() => handleMouseEnter(item)}
+                      onMouseLeave={() => setOpenChildNav(false)}
+                    >
                       <NavLink
                         activeclassname="is-active"
-                        className={`block px-[15px] py-4 uppercase  hover:text-primary lg:inline-block lg:text-sm  xl:px-6 xl:text-base ${item?.children && isMobileDevice && "flex items-center justify-between"}`}
+                        className={`block px-[15px] py-4 uppercase  hover:text-primary lg:inline-block lg:text-sm xl:px-4  xl:text-base 2xl:px-6 ${item?.children && isMobileDevice && "flex items-center justify-between "}`}
                         to={item?.slug ? item?.slug : "#!"}
                         onClick={
                           item?.children
                             ? (e) => {
                                 e.preventDefault();
+                                if (isMobileDevice) {
+                                  setOpenChildNav((prev) => !prev);
+                                }
                               }
                             : handleNavbar
                         }
@@ -136,13 +149,18 @@ const Navbar = () => {
                       </NavLink>
                       {item?.children && (
                         <>
-                          <ul className="dropdown-menu -left-3 top-full z-20 hidden  bg-secondary text-white group-hover:block lg:absolute lg:w-[200px] lg:max-w-[200px] ">
+                          <ul
+                            className={`${openChildNav ? "hello !block" : ""} dropdown-menu -left-3 top-full z-20 hidden  bg-secondary text-white    lg:absolute lg:w-[200px] lg:max-w-[200px] `}
+                          >
                             {item?.children?.map((item, index) => (
                               <li key={index}>
                                 <NavLink
                                   className="block w-full px-[15px] py-3  uppercase hover:bg-black hover:bg-opacity-20 lg:inline-block  lg:text-sm xl:px-6 xl:text-base"
                                   to={item.slug}
-                                  onClick={handleNavbar}
+                                  onClick={() => {
+                                    handleNavbar();
+                                    setOpenChildNav((prev) => !prev);
+                                  }}
                                 >
                                   {item.name}
                                 </NavLink>
@@ -155,7 +173,10 @@ const Navbar = () => {
                   ))}
                 </ul>
                 <TopContact classname={"lg:hidden block order-4 pb-11"} />
-                <Search classname={"lg:-order-none order-2"} />
+                <Search
+                  classname={"lg:-order-none order-2"}
+                  handleNavbar={handleNavbar}
+                />
                 <div
                   className="btn-wrapper absolute right-[10px] top-5 block rounded-[50%] bg-primary p-[1px] text-3xl text-white md:right-0 lg:hidden"
                   onClick={handleNavbar}
