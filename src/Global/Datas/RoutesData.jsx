@@ -19,6 +19,7 @@ const VehicleDetails = lazyWithDelay(
 const VehicleInquiry = lazyWithDelay(
   () => import("../../Pages/Vehicles/VehicleInquiry"),
 );
+// const Generator = lazyWithDelay(() => import("../../Pages/Generator/Generator"));
 const Compare = lazyWithDelay(() => import("../../Pages/Vehicles/Compare"));
 const About = lazyWithDelay(() => import("../../Pages/About/About"));
 const Career = lazyWithDelay(() => import("../../Pages/About/Career"));
@@ -84,6 +85,23 @@ export const routes = [
     path: "/vehicles/inquiry/:slug",
     element: <VehicleInquiry />,
   },
+  // {
+  //   path: "/generators",
+  //   element: <Generator />,
+  //   breadcrumb: "Vehicles",
+  // },
+  // {
+  //   path: "/generators/:slug",
+  //   element: <VehicleDetails />,
+  // },
+  // {
+  //   path: "/generators/compare/:slug",
+  //   element: <Compare />,
+  // },
+  // {
+  //   path: "/generators/inquiry/:slug",
+  //   element: <VehicleInquiry />,
+  // },
   {
     path: "/about",
     element: <About />,

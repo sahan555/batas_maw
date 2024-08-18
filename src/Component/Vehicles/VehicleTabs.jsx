@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Pagination from "../Global/Pagination";
 import { useLayoutData } from "../../Global/Context/Layout";
+import HtmlParse from "../Global/HtmlParse";
 
 const VehicleTabs = ({ data: cate, resale }) => {
   const { vehicleTabIndex: tabIndex, setVehicleTabIndex: setTabIndex } =
@@ -90,7 +91,7 @@ const VehicleTabs = ({ data: cate, resale }) => {
                   key={item?.id}
                   className={`skew-btn btn-transparent cursor-pointer px-4 py-2 text-center uppercase text-grey transition-all duration-300 ease-linear before:border-grey  ${index === tabIndex ? "text-white transition-all duration-300 ease-linear before:border-primary before:bg-primary " : ""}`}
                 >
-                  {item?.name}
+                  <HtmlParse data={item?.name} />
                 </CustomTab>
               ))}
             </Slider>

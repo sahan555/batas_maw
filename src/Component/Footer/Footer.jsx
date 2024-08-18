@@ -7,6 +7,7 @@ import {
 } from "react-icons/md";
 import FooterLinks from "./FooterLinks";
 import {
+  extralink,
   extralink2,
   footerAffiliated,
   footerLinks,
@@ -133,7 +134,18 @@ const Footer = () => {
                   </React.Fragment>
                 ))}
 
-                {/* <FooterLinks data={extralink} title={false} /> */}
+                <FooterLinks
+                  data={extralink}
+                  title={false}
+                  onClick={() => {
+                    setVehicleTabIndex(3);
+                    window.scrollTo({
+                      top: 0,
+                      left: 0,
+                      behavior: "smooth",
+                    });
+                  }}
+                />
               </div>
               <div className="col-span-full md:col-span-2 xl:col-span-1">
                 {combinedResale?.length > 0 && (

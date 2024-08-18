@@ -228,16 +228,16 @@ export const footerLinks = [
 export const extralink = [
   {
     name: "GENERATOR",
-    slug: "/",
+    slug: "/vehicles",
   },
-  {
-    name: "route permit buses",
-    slug: "/",
-  },
-  {
-    name: "Special Purpose Vehicle",
-    slug: "/",
-  },
+  // {
+  //   name: "route permit buses",
+  //   slug: "/",
+  // },
+  // {
+  //   name: "Special Purpose Vehicle",
+  //   slug: "/",
+  // },
 ];
 export const extralink2 = [
   {

@@ -8,8 +8,11 @@ import TopContact from "./TopContact";
 import { IoClose } from "react-icons/io5";
 import useMediaQuery from "../../Global/Hooks/useMediaQuery";
 import { FaChevronDown } from "react-icons/fa6";
+import { useLayoutData } from "../../Global/Context/Layout";
+import HtmlParse from "../Global/HtmlParse";
 
 const Navbar = () => {
+  const { cate, vehicleTabIndex, setVehicleTabIndex } = useLayoutData();
   const isMobileDevice = useMediaQuery("(max-width: 1023px)");
   const navbar = useRef(null);
   const newDiv = useRef(null);
@@ -79,16 +82,40 @@ const Navbar = () => {
                 </div>
                 <div className="nbar-top-links ml-20 mr-auto hidden xl:block">
                   <ul className="flex flex-wrap gap-6">
-                    {SubMenu?.slice(0, 3).map((item, index) => (
+                    {cate?.slice(0, 2)?.map((item, index) => (
                       <li key={index}>
                         <Link
                           to="/vehicles"
                           className="uppercase  hover:text-primary"
+                          onClick={() => {
+                            setVehicleTabIndex(index);
+                            window.scrollTo({
+                              top: 0,
+                              left: 0,
+                              behavior: "smooth",
+                            });
+                          }}
                         >
-                          {item.name}
+                          <HtmlParse data={item?.name} />
                         </Link>
                       </li>
                     ))}
+                    <li>
+                      <Link
+                        to="/vehicles"
+                        className="uppercase  hover:text-primary"
+                        onClick={() => {
+                          setVehicleTabIndex(3);
+                          window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        generators
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <TopContact classname={"hidden lg:block"} />
