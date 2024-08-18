@@ -11,6 +11,13 @@ import HtmlParse from "../Global/HtmlParse";
 const VehicleTabs = ({ data: cate, resale }) => {
   const { vehicleTabIndex: tabIndex, setVehicleTabIndex: setTabIndex } =
     useLayoutData();
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(tabIndex);
+    }
+  }, [tabIndex]);
   const [deviceType, setDeviceType] = useState("desktop");
   const [dataFromChild, setDataFromChild] = useState([]);
   const productsRef = useRef(null);
@@ -39,12 +46,18 @@ const VehicleTabs = ({ data: cate, resale }) => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    draggable: false,
+    draggable: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
     responsive: [
       {
         breakpoint: 1441,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1025,
         settings: {
           slidesToShow: 3,
         },
@@ -84,7 +97,11 @@ const VehicleTabs = ({ data: cate, resale }) => {
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="product-tabs mb-8 px-5 lg:px-0">
           <TabList>
-            <Slider {...ProductTab} className="product-tab-slider">
+            <Slider
+              ref={sliderRef}
+              {...ProductTab}
+              className="product-tab-slider"
+            >
               {cate?.map((item, index) => (
                 <CustomTab
                   onClick={() => setTabIndex(index)}

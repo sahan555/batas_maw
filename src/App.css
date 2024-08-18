@@ -425,11 +425,11 @@ html {
             }
 
             .slick-prev {
-                @apply left-[-30px];
+                @apply left-[-15px];
             }
 
             .slick-next {
-                @apply right-[-30px]
+                @apply right-[-15px]
             }
 
             .slick-disabled {

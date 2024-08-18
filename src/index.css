@@ -2635,10 +2635,10 @@ body {
   display: none;
 }
 .vehicles-page .product-tab-slider .slick-prev {
-  left: -30px;
+  left: -15px;
 }
 .vehicles-page .product-tab-slider .slick-next {
-  right: -30px;
+  right: -15px;
 }
 .vehicles-page .product-tab-slider .slick-disabled {
   pointer-events: none;
