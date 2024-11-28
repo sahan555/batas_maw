@@ -54,7 +54,7 @@ export const vehicleTabs = [
     data: "",
   },
   {
-    name: "benifits",
+    name: "benefits",
     data: "",
   },
 ];

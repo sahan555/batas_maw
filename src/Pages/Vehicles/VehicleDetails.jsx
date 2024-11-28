@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import Breadcrumbs from "../../Component/Global/BreadCrumbs";
 import VehicleBrief from "../../Component/Vehicles/Details/VehicleBrief";
 import DetailTabs from "../../Component/Vehicles/Details/DetailTabs";
@@ -12,13 +12,18 @@ import Loading from "../../Component/Global/Loading";
 import MetaHelmet from "../../Component/Global/MetaHelmet";
 import Error from "../Error";
 
-const VehicleDetails = () => {
+const VehicleDetails = ({ cate }) => {
   const { slug } = useParams();
   const {
     data: details,
     isLoading,
     error,
   } = useGetById("products-single", slug);
+  const location = useLocation();
+  const [genset, setGenset] = useState("");
+  useEffect(() => {
+    setGenset(location.pathname.includes("generators"));
+  }, [location]);
   const reviewRef = useRef(null);
   const mapRef = useRef(null);
   const scrollToReview = useScrollToElement(reviewRef);
@@ -50,6 +55,7 @@ const VehicleDetails = () => {
               data={details}
               reviewScroll={scrollToReview}
               mapScroll={scrollToMap}
+              genset={genset}
             />
             <DetailTabs data={details} />
             <DetailReview ref={reviewRef} id={details?.id} />
@@ -57,7 +63,7 @@ const VehicleDetails = () => {
           </div>
         </div>
       </section>
-      <SimilarVehicles data={details?.category_name} exclude={slug} />
+      <SimilarVehicles data={details?.category_name} exclude={slug}  genset={genset} />
     </>
   );
 };

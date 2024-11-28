@@ -16,6 +16,7 @@ const ProductCard = ({
   slug,
   download,
   resale,
+  genset = false,
 }) => {
   var ProductSlider = {
     dots: true,
@@ -48,7 +49,7 @@ const ProductCard = ({
           )}
 
           {slider ? (
-            <Link to={`${resale ? "/resale/" : "/vehicles/"}${slug}`}>
+            <Link to={`${genset ? '/generators/' : resale ? "/resale/" : "/vehicles/"}${slug}`}>
               {Array.isArray(image) ? (
                 <Slider {...ProductSlider} className="product-slider-img">
                   {image?.map((item, index) => (
@@ -92,7 +93,7 @@ const ProductCard = ({
             >
               <article className="mb-6 text-center">
                 <Link
-                  to={`${resale ? "/resale/" : "/vehicles/"}${slug}`}
+                  to={`${genset ? '/generators/' : resale ? "/resale/" : "/vehicles/"}${slug}`}
                   className="cursor-pointer hover:text-primary"
                 >
                   <h4
@@ -111,7 +112,7 @@ const ProductCard = ({
                   <li className="w-1/2 px-2">
                     <div className="info-wrapper text-center">
                       <Link
-                        to={`${resale ? "/resale/" : "/vehicles/"}${slug}`}
+                        to={`${genset ? '/generators/' : resale ? "/resale/" : "/vehicles/"}${slug}`}
                         className="cursor-pointer hover:text-primary"
                       >
                         <LiaLongArrowAltRightSolid className="mx-auto text-2xl" />

@@ -70,7 +70,7 @@ const HeroSection = ({banners}) => {
       </div>
       <div className="container pointer-events-none absolute inset-x-0 top-9 mx-auto flex justify-end">
         <figure className="w-full max-w-[160px] bg-white bg-opacity-40 px-4 py-2 md:max-w-[200px] lg:max-w-[330px] lg:px-5 lg:py-3">
-          <img src="./assets/images/eicher.png" alt="Eicher" />
+          <img src="./assets/images/eicher2.png" alt="Eicher" />
         </figure>
       </div>
     </section>

@@ -16,10 +16,10 @@ export const NavbarMenu = [
     title: "Vehicles",
     slug: "/vehicles",
   },
-  {
-    title: "SPARE SERVICES",
-    slug: "/services",
-  },
+  // {
+  //   title: "Generators",
+  //   slug: "/generators",
+  // },
   {
     title: "MEDIA",
     slug: "/media",

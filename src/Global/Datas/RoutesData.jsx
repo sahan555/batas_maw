@@ -61,6 +61,7 @@ const ExchangeForm = lazyWithDelay(
   () => import("../../Pages/Form/ExchangeForm"),
 );
 const SpareServices = lazyWithDelay(() => import("../../Pages/SpareServices"));
+const Generator = lazyWithDelay(() => import("../../Pages/Generators/Generator"));
 
 export const routes = [
   {
@@ -85,23 +86,23 @@ export const routes = [
     path: "/vehicles/inquiry/:slug",
     element: <VehicleInquiry />,
   },
-  // {
-  //   path: "/generators",
-  //   element: <Generator />,
-  //   breadcrumb: "Vehicles",
-  // },
-  // {
-  //   path: "/generators/:slug",
-  //   element: <VehicleDetails />,
-  // },
-  // {
-  //   path: "/generators/compare/:slug",
-  //   element: <Compare />,
-  // },
-  // {
-  //   path: "/generators/inquiry/:slug",
-  //   element: <VehicleInquiry />,
-  // },
+  {
+    path: "/generators",
+    element: <Generator />,
+    breadcrumb: "Generators",
+  },
+  {
+    path: "/generators/:slug",
+    element: <VehicleDetails />,
+  },
+  {
+    path: "/generators/compare/:slug",
+    element: <Compare />,
+  },
+  {
+    path: "/generators/inquiry/:slug",
+    element: <VehicleInquiry />,
+  },
   {
     path: "/about",
     element: <About />,
@@ -203,9 +204,9 @@ export const routes = [
     element: <GalleryPage />,
     breadcrumb: "Gallery",
   },
-  {
-    path: "/services",
-    element: <SpareServices />,
-    breadcrumb: "Spare Services",
-  },
+  // {
+  //   path: "/services",
+  //   element: <SpareServices />,
+  //   breadcrumb: "Spare Services",
+  // },
 ];

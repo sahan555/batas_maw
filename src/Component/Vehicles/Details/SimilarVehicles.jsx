@@ -5,7 +5,7 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import Slider from "react-slick";
 import { useLayoutData } from "../../../Global/Context/Layout";
 
-const SimilarVehicles = ({ data, exclude, resale }) => {
+const SimilarVehicles = ({ data, exclude, resale, genset = false }) => {
   const { cate, resale: resaleData } = useLayoutData();
   const [similar, setSimilar] = useState("");
 
@@ -87,6 +87,7 @@ const SimilarVehicles = ({ data, exclude, resale }) => {
                         desc={item?.description}
                         slug={item?.slug}
                         download={item?.pdf}
+                        genset={genset}
                       />
                     </React.Fragment>
                   ))}
@@ -94,7 +95,7 @@ const SimilarVehicles = ({ data, exclude, resale }) => {
               </div>
               <div className="view-all mt-8 pt-8 text-center">
                 <Link
-                  to="/vehicles/"
+                  to={genset ? "/generators/" : "/vehicles/"}
                   className="group inline-flex items-center gap-3 text-secondary"
                 >
                   View all products

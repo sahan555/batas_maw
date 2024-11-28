@@ -170,7 +170,7 @@ const SearchField = ({ data, title, placeholder, loading, handleNavbar }) => {
                   to={`/vehicles/${item?.slug}`}
                   onClick={handleNavbar}
                 >
-                  {" "}
+                  
                   {item?.name}
                 </Link>
               </li>

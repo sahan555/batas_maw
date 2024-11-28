@@ -4,7 +4,13 @@ import HtmlParse from "../../Global/HtmlParse";
 import VehicleGallery from "./VehicleGallery";
 // import useScrollToElement from "../../../Global/Hooks/useScrollToElement";
 
-const VehicleBrief = ({ data, reviewScroll, mapScroll, resale }) => {
+const VehicleBrief = ({
+  data,
+  reviewScroll,
+  mapScroll,
+  resale,
+  genset = false,
+}) => {
   const [bigNav, setBigNav] = useState(null);
   const [smallNav, setSmallNav] = useState(null);
   let bigSliderRef = useRef(null);
@@ -19,7 +25,7 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll, resale }) => {
     {
       icon: "/assets/images/icons/compare.svg",
       name: "Compare",
-      link: `/vehicles/compare/${data?.slug}`,
+      link: `${genset ? "/generators/compare/" : "/vehicles/compare/"}${data?.slug}`,
     },
     {
       icon: "/assets/images/icons/pin.svg",
@@ -30,7 +36,7 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll, resale }) => {
     {
       icon: "/assets/images/icons/Inquiry.svg",
       name: "Inquiry",
-      link: `/vehicles/inquiry/${data?.slug}`,
+      link: `${genset ? "/generators/inquiry/" : "/vehicles/inquiry/"}${data?.slug}`,
     },
     {
       icon: "/assets/images/icons/star.svg",
@@ -58,7 +64,9 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll, resale }) => {
             </div>
             {data?.product_features?.length > 0 && !resale && (
               <div className="details-vehicle pb-8">
-                <h5 className="bg-[#D5D5D5] px-4 py-3">Vehicle Data</h5>
+                <h5 className="bg-[#D5D5D5] px-4 py-3">
+                  {genset ? "Eicher Genset" : "Vehicle Data"}
+                </h5>
                 <div className="grid grid-cols-2 gap-6 border-4 border-solid border-[#D5D5D5] p-4">
                   {data?.product_features?.map((item) => (
                     <div
@@ -117,7 +125,7 @@ const VehicleBrief = ({ data, reviewScroll, mapScroll, resale }) => {
                 <div className="btn-wrapper">
                   <Link
                     to={`/resale/inquiry/${data?.slug}`}
-                    className="skew-btn btn-full inline-block px-8 py-3 border-0 before:bg-primary hover:opacity-90"
+                    className="skew-btn btn-full inline-block border-0 px-8 py-3 before:bg-primary hover:opacity-90"
                   >
                     Inquiry Now
                   </Link>

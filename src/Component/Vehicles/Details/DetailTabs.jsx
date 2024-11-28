@@ -80,17 +80,17 @@ const DetailTabs = ({ data, resale }) => {
             <TabPanel>
               <div className="tab-panel-content">
                 <SimpleTable data={data?.product_application} />
-              </div>{" "}
+              </div>
             </TabPanel>
             <TabPanel>
               <div className="tab-panel-content">
                 <SimpleTable data={data?.product_technology} />
-              </div>{" "}
+              </div>
             </TabPanel>
             <TabPanel>
               <div className="tab-panel-content">
                 <SimpleTable data={data?.product_benifits} />
-              </div>{" "}
+              </div>
             </TabPanel>
           </div>
         </Tabs>

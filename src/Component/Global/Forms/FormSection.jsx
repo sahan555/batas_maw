@@ -207,7 +207,7 @@ const FormSection = ({
                                   }}
                                 />
                                 <div className="btn-group flex flex-wrap items-center gap-y-2">
-                                  {" "}
+                                  
                                   <span
                                     className={`photo-btn rounded-lg uppercase text-white `}
                                   >

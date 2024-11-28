@@ -8,7 +8,7 @@ import Pagination from "../Global/Pagination";
 import { useLayoutData } from "../../Global/Context/Layout";
 import HtmlParse from "../Global/HtmlParse";
 
-const VehicleTabs = ({ data: cate, resale }) => {
+const VehicleTabs = ({ data: cate, resale, generator = false }) => {
   const { vehicleTabIndex: tabIndex, setVehicleTabIndex: setTabIndex } =
     useLayoutData();
   const sliderRef = useRef(null);
@@ -57,7 +57,7 @@ const VehicleTabs = ({ data: cate, resale }) => {
         },
       },
       {
-        breakpoint: 1025,
+        breakpoint: 992,
         settings: {
           slidesToShow: 3,
         },
@@ -102,55 +102,68 @@ const VehicleTabs = ({ data: cate, resale }) => {
               {...ProductTab}
               className="product-tab-slider"
             >
-              {cate?.map((item, index) => (
-                <CustomTab
-                  onClick={() => setTabIndex(index)}
-                  key={item?.id}
-                  className={`skew-btn btn-transparent cursor-pointer px-4 py-2 text-center uppercase text-grey transition-all duration-300 ease-linear before:border-grey  ${index === tabIndex ? "text-white transition-all duration-300 ease-linear before:border-primary before:bg-primary " : ""}`}
-                >
-                  <HtmlParse data={item?.name} />
-                </CustomTab>
-              ))}
+              {cate?.map((item, index) => {
+                if (generator ? item?.name : item?.name === "Genset")
+                  return null;
+                return (
+                  <CustomTab
+                    onClick={() => setTabIndex(index)}
+                    key={item?.id}
+                    className={`skew-btn btn-transparent cursor-pointer px-4 py-2 text-center uppercase text-grey transition-all duration-300 ease-linear before:border-grey  ${index === tabIndex ? "text-white transition-all duration-300 ease-linear before:border-primary before:bg-primary " : ""}`}
+                  >
+                    <HtmlParse data={item?.name} />
+                  </CustomTab>
+                );
+              })}
             </Slider>
           </TabList>
         </div>
         <div className="tab-content">
-          {cate?.map((item, index) => (
-            <TabPanel key={index}>
-              <div className="-mx-4 flex flex-wrap gap-y-8">
-                {dataFromChild?.length > 0 ? (
-                  dataFromChild?.map((item, idx) => (
-                    <ProductCard
-                      key={idx}
-                      index={idx}
-                      col={true}
-                      slider={true}
-                      title={item?.name ?? item?.resale_product_name}
-                      image={
-                        item?.images?.length > 0 ? item?.images : item?.image
-                      }
-                      desc={item?.description}
-                      slug={item?.slug}
-                      download={item?.pdf}
-                      resale={resale}
-                    />
-                  ))
-                ) : (
-                  <div className="w-full text-center">
-                    <p>No Data found</p>
-                  </div>
-                )}
-              </div>
-              <Pagination
-                ref={productsRef}
-                data={item?.products}
-                view={
-                  deviceType === "tablet" ? 8 : deviceType === "laptop" ? 9 : 8
-                }
-                setDataFromChild={setDataFromChild}
-              />
-            </TabPanel>
-          ))}
+          {cate?.map((item, index) => {
+            if (generator ? item?.name !== "Genset" : item?.name === "Genset")
+              return null;
+            return (
+              <TabPanel key={index}>
+                <div className="-mx-4 flex flex-wrap gap-y-8">
+                  {dataFromChild?.length > 0 ? (
+                    dataFromChild?.map((item, idx) => (
+                      <ProductCard
+                        key={idx}
+                        index={idx}
+                        col={true}
+                        slider={true}
+                        title={item?.name ?? item?.resale_product_name}
+                        image={
+                          item?.images?.length > 0 ? item?.images : item?.image
+                        }
+                        desc={item?.description}
+                        slug={item?.slug}
+                        download={item?.pdf}
+                        resale={resale}
+                        genset={generator}
+                      />
+                    ))
+                  ) : (
+                    <div className="w-full text-center">
+                      <p>No Data found</p>
+                    </div>
+                  )}
+                </div>
+                <Pagination
+                  ref={productsRef}
+                  data={item?.products}
+                  view={
+                    deviceType === "tablet"
+                      ? 8
+                      : deviceType === "laptop"
+                        ? 9
+                        : 8
+                  }
+                  setDataFromChild={setDataFromChild}
+                />
+              </TabPanel>
+            );
+          })}
         </div>
       </Tabs>
     </div>

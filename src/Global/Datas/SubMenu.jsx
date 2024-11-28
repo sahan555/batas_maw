@@ -1,13 +1,9 @@
 export const SubMenu = [
   {
-    id:'1',
+    id: "1",
     name: "trucks",
-link:''
+    link: "",
   },
-  {  id:'2',
-    name: "tipper",
-  },
-  {  id:'3',
-    name: "GENERATOR",
-  },
+  { id: "2", name: "tipper" },
+  { id: "3", name: "GENERATOR" },
 ];

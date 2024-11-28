@@ -102,10 +102,10 @@ const Navbar = () => {
                     ))}
                     <li>
                       <Link
-                        to="/vehicles"
+                        to="/generators"
                         className="uppercase  hover:text-primary"
                         onClick={() => {
-                          setVehicleTabIndex(3);
+                       
                           window.scrollTo({
                             top: 0,
                             left: 0,
